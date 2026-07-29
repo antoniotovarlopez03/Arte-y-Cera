@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arte y Cera · Velas pintadas a mano</title>
+<meta name="description" content="Velas artesanales pintadas a mano: cirios pascuales, velas de bautizo y velas de mesa y bodas. Piezas únicas adaptadas a tu estilo.">
+<meta name="google-site-verification" content="QW0y33f1-3HDhKxeZfqZ-AGcY9tVwsW9VE4HpkzdeMA" />
+
+<!-- Vista previa al compartir el enlace (Open Graph / Twitter Card) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://resplendent-dodol-376226.netlify.app/">
+<meta property="og:title" content="Arte y Cera · Velas pintadas a mano">
+<meta property="og:description" content="Velas artesanales pintadas a mano: cirios pascuales, velas de bautizo y velas de mesa y bodas.">
+<meta property="og:image" content="https://resplendent-dodol-376226.netlify.app/images/portada-miguel.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Arte y Cera · Velas pintadas a mano">
+<meta name="twitter:description" content="Velas artesanales pintadas a mano: cirios pascuales, velas de bautizo y velas de mesa y bodas.">
+<meta name="twitter:image" content="https://resplendent-dodol-376226.netlify.app/images/portada-miguel.jpg">
+
+<link rel="icon" href="images/logo/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="cursor-halo" id="cursorHalo" aria-hidden="true"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="#inicio" class="logo">
+      <img src="images/logo/logo.png" alt="Arte y Cera" class="logo-img">
+      <span class="logo-text">Arte <em>&amp;</em> Cera</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#inicio" class="nav-link active">Inicio</a>
+      <a href="#nosotros" class="nav-link">Nosotros</a>
+      <a href="#proceso" class="nav-link">Proceso</a>
+      <a href="#colecciones" class="nav-link">Colecciones</a>
+      <a href="#contacto" class="nav-link nav-cta">Contacto</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio">
+  <!-- Fondo del hero: degradado oscuro cálido, sin símbolos (se quitaron a
+       petición expresa). El SVG de <symbol> de aquí abajo se deja intacto
+       aunque ya no se instancie en el hero: "El Proceso" lo reutiliza vía
+       <use href="#sym-...">, ver buildProcessSymbols en js/script.js. -->
+  <div class="hero-symbols" id="heroSymbols" aria-hidden="true">
+    <svg width="0" height="0" style="position:absolute" focusable="false">
+      <defs>
+        <symbol id="sym-cross" viewBox="0 0 48 48"><path d="M24 4 V44 M12 15 H36"/></symbol>
+        <symbol id="sym-chrismon" viewBox="0 0 48 48"><path d="M18 6 V42 M18 6 C31 6 31 23 18 23"/><path d="M9 11 L29 33 M29 11 L9 33"/></symbol>
+        <symbol id="sym-alpha" viewBox="0 0 48 48"><ellipse cx="19" cy="27" rx="11" ry="10"/><path d="M28 17 L35 39"/></symbol>
+        <symbol id="sym-omega" viewBox="0 0 48 48"><path d="M13 35 V27 a11 11 0 1 1 22 0 V35"/><path d="M8 35 H18 M30 35 H40"/></symbol>
+        <symbol id="sym-dove" viewBox="0 0 48 48"><path d="M5 27 Q17 13 25 22 Q33 13 43 27 Q33 22 25 29 Q17 22 5 27 Z"/><circle cx="25" cy="21.5" r="2"/></symbol>
+        <symbol id="sym-wheat" viewBox="0 0 48 48"><path d="M24 44 V6 M24 11 L17 6 M24 11 L31 6 M24 18 L16 13 M24 18 L32 13 M24 25 L16 20 M24 25 L32 20 M24 32 L17 27 M24 32 L31 27"/></symbol>
+        <symbol id="sym-grapes" viewBox="0 0 48 48"><path d="M24 9 V4 M24 4 Q29 2 31 6"/><circle cx="24" cy="14" r="3.6"/><circle cx="18" cy="20.5" r="3.6"/><circle cx="30" cy="20.5" r="3.6"/><circle cx="14" cy="27" r="3.6"/><circle cx="24" cy="27" r="3.6"/><circle cx="34" cy="27" r="3.6"/><circle cx="19" cy="33.5" r="3.6"/><circle cx="29" cy="33.5" r="3.6"/></symbol>
+        <symbol id="sym-star" viewBox="0 0 48 48"><path d="M24 4 L27.5 20.5 L44 24 L27.5 27.5 L24 44 L20.5 27.5 L4 24 L20.5 20.5 Z"/></symbol>
+        <symbol id="sym-flame" viewBox="0 0 48 48"><path d="M24 4 C13 17 11 25 16 33 C18.5 38 24 40.5 24 40.5 C24 40.5 29.5 38 32 33 C37 25 35 17 24 4 Z"/><path d="M24 21 C19.5 27 19.5 32 24 35.5 C28.5 32 28.5 27 24 21 Z"/></symbol>
+        <symbol id="sym-crown" viewBox="0 0 48 48"><path d="M8 35 L8 21 L16 28 L24 15 L32 28 L40 21 L40 35 Z"/><path d="M8 35 H40"/></symbol>
+        <symbol id="sym-fish" viewBox="0 0 48 48"><path d="M4 24 Q20 10 37 24 Q20 38 4 24"/><path d="M37 24 L45 18 M37 24 L45 30"/></symbol>
+        <symbol id="sym-olive" viewBox="0 0 48 48"><path d="M6 41 Q21 30 43 7"/><ellipse cx="14.5" cy="34.5" rx="4.3" ry="2.2" transform="rotate(-32 14.5 34.5)"/><ellipse cx="21.5" cy="27" rx="4.3" ry="2.2" transform="rotate(-32 21.5 27)"/><ellipse cx="28.5" cy="19.5" rx="4.3" ry="2.2" transform="rotate(-32 28.5 19.5)"/><ellipse cx="35.5" cy="12" rx="4.3" ry="2.2" transform="rotate(-32 35.5 12)"/></symbol>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Rayos de luz muy suaves + destellos cálidos (mismos que "El Proceso")
+       + polvo dorado a la deriva (mismo que "Nuestro Universo"): sustituyen
+       a los símbolos flotantes que había antes. -->
+  <div class="hero-rays" aria-hidden="true"></div>
+  <div class="hero-sparkles" id="heroSparkles" aria-hidden="true"></div>
+  <div class="hero-motes" id="heroMotes" aria-hidden="true"></div>
+
+  <div class="hero-text-scrim" aria-hidden="true"></div>
+
+  <div class="container hero-row">
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Hecho a mano · Pieza única</p>
+      <h1 class="hero-title reveal">
+        Velas que se <span class="text-gradient">pintan</span><br> con el corazón
+      </h1>
+      <p class="hero-sub reveal">
+        Cirios pascuales, velas de bautizo, de mesa para bodas y toallas bordadas — cada una adaptada
+        a tu estilo, tus colores y el momento que quieres celebrar.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#colecciones" class="btn btn-primary">Ver colecciones</a>
+        <a href="#contacto" class="btn btn-ghost">Pide tu vela a medida</a>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div class="stat"><span class="stat-num" data-count="8">0</span><span class="stat-label">años de oficio</span></div>
+        <div class="stat"><span class="stat-num" data-count="2000" data-suffix="+">0</span><span class="stat-label">piezas creadas</span></div>
+        <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-label">% hecho a mano</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="about-glow" aria-hidden="true"></div>
+      <div class="about-frame">
+        <img src="images/portada-miguel.jpg" alt="Artesanos pintando velas a mano en el taller" class="about-photo" fetchpriority="high">
+        <div class="about-glass">
+          <span class="about-glass-icon">🕯️</span>
+          <div>
+            <strong>Nuestro taller</strong>
+            <span>Cada pieza, pintada a mano frente a ti</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#nosotros" class="scroll-cue" aria-label="Bajar">
+    <svg viewBox="0 0 24 24" class="scroll-arrow" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 9l8 8 8-8"/>
+    </svg>
+  </a>
+</section>
+
+<!-- ===== NOSOTROS ===== -->
+<section class="about" id="nosotros">
+  <!-- Fondo cálido/artesanal: degradado marfil-crema-arena + rayos de luz
+       diagonales + halos muy sutiles, todo en la propiedad background de
+       .about (ver styles.css) — sin imágenes ni JS, un único pintado. -->
+  <div class="container about-grid">
+    <div class="about-content">
+      <p class="eyebrow reveal">Nuestro oficio</p>
+      <h2 class="section-title reveal">Cada vela cuenta una historia</h2>
+      <p class="reveal">
+        En <strong>Arte &amp; Cera</strong> pintamos cada vela a mano, trazo a trazo, para que sea
+        irrepetible. Trabajamos cirios pascuales, velas de bautizo y velas de mesa para bodas,
+        cuidando el color, la textura y cada detalle que tú imaginas. Además, bordamos toallas
+        personalizadas para bautizos, bodas y otras celebraciones, convirtiendo cada pieza en un
+        recuerdo único hecho artesanalmente.
+      </p>
+      <p class="reveal">
+        No hacemos catálogos cerrados. Creamos una vela única para cada celebración.
+      </p>
+
+      <ul class="feature-list reveal">
+        <li><span class="feature-icon">🎨</span> Diseño 100% personalizado</li>
+        <li><span class="feature-icon">🖌️</span> Pintado íntegramente a mano</li>
+        <li><span class="feature-icon">📦</span> Envíos cuidados a toda España</li>
+      </ul>
+    </div>
+
+    <!-- Mosaico vivo: 1 pieza grande + 3 pequeñas, las 4 reproduciendo el
+         MISMO montaje original (videos/nosotros-bg.mp4, el de los 25 clips
+         que no se quería recortar) pero desde un instante distinto cada
+         una — así se ve mucho más montaje a la vez, nada queda fuera (ver
+         initAboutMosaic en js/script.js). -->
+    <div class="about-mosaic reveal" id="aboutMosaic" aria-hidden="true">
+      <div class="about-tile is-large">
+        <span class="tile-glow"></span>
+        <video muted loop playsinline preload="none" poster="images/nosotros-bg-poster.jpg"></video>
+        <span class="tile-sheen"></span>
+      </div>
+      <div class="about-tile is-small">
+        <span class="tile-glow"></span>
+        <video muted loop playsinline preload="none" poster="images/nosotros-bg-poster.jpg"></video>
+        <span class="tile-sheen"></span>
+      </div>
+      <div class="about-tile is-small">
+        <span class="tile-glow"></span>
+        <video muted loop playsinline preload="none" poster="images/nosotros-bg-poster.jpg"></video>
+        <span class="tile-sheen"></span>
+      </div>
+      <div class="about-tile is-small">
+        <span class="tile-glow"></span>
+        <video muted loop playsinline preload="none" poster="images/nosotros-bg-poster.jpg"></video>
+        <span class="tile-sheen"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section class="process" id="proceso">
+  <!-- Fondo "taller vivo": textura + motas de luz + bocetos a lápiz que se
+       dibujan y se apagan + destellos + pinceladas + pan de oro, todo
+       modulado por --pp (progreso 0-1 a través de las 8 etapas, ver
+       script.js) para que el fondo evolucione muy sutilmente con el scroll. -->
+  <div class="process-atelier-bg" aria-hidden="true" id="processAtelierBg">
+    <!-- Lienzo de color: un fondo que va cambiando de tono muy despacio y
+         siempre dentro de la misma paleta cálida (oro/cobre/ámbar/platino),
+         nunca un arcoíris — ver .process-color-wash en styles.css. -->
+    <div class="process-color-wash"></div>
+
+    <div class="process-grain"></div>
+
+    <!-- Motas, bocetos, destellos, pan de oro y símbolos se generan en
+         script.js (buildAtelierBg): así podemos poner decenas de elementos
+         variados sin repetir a mano cientos de líneas de HTML. -->
+    <div class="process-dust" id="processDust"></div>
+
+    <div class="process-wax"></div>
+
+    <div class="process-watercolor">
+      <span class="p-water" style="--x:16%; --y:24%;"></span>
+      <span class="p-water" style="--x:70%; --y:20%;"></span>
+      <span class="p-water" style="--x:44%; --y:52%;"></span>
+      <span class="p-water" style="--x:80%; --y:64%;"></span>
+      <span class="p-water" style="--x:20%; --y:78%;"></span>
+    </div>
+
+    <div class="process-sketches-rise"><div class="process-sketches-calm">
+      <div class="process-sketches" id="processSketches"></div>
+    </div></div>
+
+    <!-- Símbolos flotantes: mismos <symbol> definidos una vez en el hero
+         (#sym-cross, #sym-dove...), reutilizados aquí vía <use> para no
+         duplicar SVG — ver buildProcessSymbols en script.js. -->
+    <div class="process-symbols" id="processSymbols"></div>
+
+    <div class="process-sparkles" id="processSparkles"></div>
+    <div class="process-gold-leaf" id="processGoldLeaf"></div>
+
+    <div class="process-finish-sweep"></div>
+  </div>
+
+  <div class="container">
+    <p class="eyebrow reveal center">Cómo lo hacemos</p>
+    <h2 class="section-title reveal center">Del boceto a la cera</h2>
+    <p class="section-sub reveal center">Ocho etapas, el mismo cuidado en cada una — recorre el taller y descubre cómo nace una vela pintada a mano.</p>
+  </div>
+
+  <div class="process-path" id="processPath">
+    <div class="process-path-line" aria-hidden="true"><div class="process-path-fill" id="processPathFill"></div></div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="24" cy="24" r="4"/>
+          <line x1="24" y1="6" x2="24" y2="14"/><line x1="24" y1="34" x2="24" y2="42"/>
+          <line x1="6" y1="24" x2="14" y2="24"/><line x1="34" y1="24" x2="42" y2="24"/>
+          <line x1="11" y1="11" x2="16.5" y2="16.5"/><line x1="31.5" y1="31.5" x2="37" y2="37"/>
+          <line x1="37" y1="11" x2="31.5" y2="16.5"/><line x1="16.5" y1="31.5" x2="11" y2="37"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">01</span>
+        <h3>Inspiración<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Todo empieza con un porqué: una fecha, un nombre que se repite en la familia, un recuerdo que alguien quiere convertir en objeto. Ya sea sobre la cera de un cirio o sobre el lino de una toalla de bautizo, escuchamos esa historia con calma antes de tocar el material, en ese gesto silencioso nace la idea que dará forma a la pieza.</p>
+      </div>
+    </div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 8 L14 40 L34 40 Z"/>
+          <circle cx="24" cy="8" r="2.2" fill="currentColor" stroke="none"/>
+          <line x1="19" y1="28" x2="29" y2="28"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">02</span>
+        <h3>Diseño<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Elegimos juntos el motivo, la paleta y las proporciones antes de empezar: el color que irá sobre la vela, la tipografía que llevará el nombre bordado en la toalla. Cuidamos que cada elección tenga sentido y no sea solo estética, imaginando la pieza terminada mucho antes de que exista.</p>
+      </div>
+    </div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 34 Q16 20 24 30 T40 18"/>
+          <path d="M36 14 L44 6 L42 12 Z" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">03</span>
+        <h3>Boceto<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Trasladamos la idea a un boceto a lápiz, línea a línea: la curva de un motivo floral, el trazo exacto de las iniciales que después se bordarán a mano en la toalla. Probamos ángulos y proporciones hasta que el dibujo respira con naturalidad. Solo cuando convence a la mano, damos paso al color y al hilo.</p>
+      </div>
+    </div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="17" y="16" width="14" height="26" rx="4"/>
+          <line x1="24" y1="8" x2="24" y2="16"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">04</span>
+        <h3>Preparación<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Seleccionamos la cera y la pulimos con paciencia hasta dejar una superficie lisa y uniforme; con la misma atención, elegimos el lino de la toalla y lo tensamos en el bastidor, listo para recibir cada puntada. Un paso invisible en el resultado final, pero decisivo para que todo lo que viene después salga bien.</p>
+      </div>
+    </div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 34 L28 20 L32 24 L18 38 Z"/>
+          <path d="M28 20 L34 10 L38 14 L32 24"/>
+          <circle cx="16" cy="36" r="2.2" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">05</span>
+        <h3>Pintura y bordado<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Aplicamos cada trazo a mano, capa a capa, directamente sobre la cera; en paralelo, bordamos hilo a hilo el nombre elegido sobre la toalla, dejando que cada puntada se asiente antes de continuar con la siguiente. Es el momento más lento del proceso, y también el más nuestro.</p>
+      </div>
+    </div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 8 L28 20 L40 24 L28 28 L24 40 L20 28 L8 24 L20 20 Z"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">06</span>
+        <h3>Detalles finales<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Pan de oro y relieves en la vela; un ribete cosido a mano o una inicial en punto de cruz en la toalla. Son los pequeños toques de precisión que dan carácter a cada pieza, ese matiz final que distingue lo hecho a mano de lo producido en serie.</p>
+      </div>
+    </div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 8 H34 M14 40 H34 M14 8 Q14 22 24 24 Q34 22 34 8 M14 40 Q14 26 24 24 Q34 26 34 40"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">07</span>
+        <h3>Secado<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Dejamos reposar cada vela el tiempo que necesita para que el color y la cera se fundan en un solo cuerpo; la toalla bordada se plancha y se airea con el mismo cuidado, sin prisa, como manda el oficio.</p>
+      </div>
+    </div>
+
+    <div class="process-phase reveal">
+      <div class="process-phase-node"></div>
+      <div class="process-phase-media">
+        <div class="process-phase-glow"></div>
+        <svg class="process-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="16"/>
+          <path d="M17 24 L22 29 L32 18"/>
+        </svg>
+      </div>
+      <div class="process-phase-body">
+        <span class="process-phase-num">08</span>
+        <h3>Acabado<span class="process-brush" aria-hidden="true"></span></h3>
+        <p>Revisamos cada detalle bajo la luz: la vela pulida pieza a pieza, la toalla doblada y presentada lista para el día del bautizo. El mismo cuidado con el que empezó todo el proceso, hasta el último paso antes de llegar a tus manos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COLECCIONES ===== -->
+<section class="collections" id="colecciones">
+  <div class="paper-bg" id="collectionsBg" data-scene="all" aria-hidden="true">
+    <!-- Pestaña "Todas": ya no es la escena de papel, es un cielo estrellado
+         oscuro (mismo lenguaje visual que el cosmos de más abajo, en
+         #esfera) para que la cabecera del catálogo y el universo de velas
+         se sientan como un único fondo continuo, sin costura entre ambos.
+         Las estrellas se generan en js/script.js (buildCollAllStars). -->
+    <div class="paper-scene scene-all">
+      <div class="scene-all-glow" aria-hidden="true"></div>
+      <div class="cosmos-far" id="collAllFar"></div>
+      <div class="cosmos-mid" id="collAllMid"></div>
+      <div class="cosmos-gold-far" id="collAllGold"></div>
+    </div>
+    <div class="paper-scene scene-pascua">
+      <div class="scene-texture texture-pascua"></div>
+      <div class="scene-photo photo-pascua">
+    <video muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-src="videos/video-cirios-ia.mp4"></video>
+</div>
+      <div class="paper-grain"></div>
+      <div class="scene-filigree"></div>
+      <div class="scene-light light-pascua"></div>
+    </div>
+    <div class="paper-scene scene-bautizo">
+      <div class="scene-texture texture-bautizo"></div>
+      <div class="scene-photo photo-bautizo">
+    <video muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-src="videos/video-bautizo-ia.mp4"></video>
+</div>
+      <div class="scene-bokeh"></div>
+      <div class="scene-light light-bautizo"></div>
+    </div>
+    <div class="paper-scene scene-boda">
+      <div class="scene-texture texture-boda"></div>
+      <div class="scene-photo photo-boda">
+    <video muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-src="videos/video-boda-ia.mp4"></video>
+</div>
+      <div class="paper-grain"></div>
+      <div class="scene-bloom"></div>
+      <div class="scene-sparkle"></div>
+      <div class="scene-light light-boda"></div>
+    </div>
+    <div class="paper-scene scene-navidad">
+      <div class="scene-texture texture-pascua"></div>
+     <div class="scene-photo photo-navidad">
+    <video muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-src="videos/video-navidad-ia.mp4"></video>
+</div>
+      <div class="paper-grain"></div>
+      <div class="scene-light light-navidad"></div>
+    </div>
+    <div class="paper-scene scene-toallas">
+      <div class="scene-texture texture-bautizo"></div>
+      <div class="scene-photo photo-toallas">
+    <video muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-src="videos/video-toallas-ia.mp4"></video>
+</div>
+      <div class="scene-light light-toallas"></div>
+    </div>
+    <div class="paper-scene scene-toallas-vela">
+      <div class="scene-texture texture-boda"></div>
+      <div class="scene-photo photo-toallas-vela">
+    <video muted loop playsinline preload="none" disablepictureinpicture disableremoteplayback data-src="videos/video-toallas-vela-ia.mp4"></video>
+</div>
+      <div class="paper-grain"></div>
+      <div class="scene-light light-toallas-vela"></div>
+    </div>
+  </div>
+  <div class="container">
+    <p class="eyebrow reveal center">Catálogo</p>
+    <h2 class="section-title reveal center">Nuestras colecciones</h2>
+    <p class="section-sub reveal center">
+      Filtra por ocasión y descubre el estilo que mejor se adapta a tu celebración.
+    </p>
+
+    <div class="filters reveal" role="tablist" aria-label="Filtrar colecciones">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="cirios">Cirios Pascuales</button>
+      <button class="filter-btn" data-filter="bautizo">Bautizo</button>
+      <button class="filter-btn" data-filter="mesa">Velas para Mesa y Bodas</button>
+      <button class="filter-btn" data-filter="navidad">Navidad</button>
+      <button class="filter-btn" data-filter="toallas">Toallas de Bautizo</button>
+      <button class="filter-btn" data-filter="toallas-vela">Toallas de Bautizo con Vela</button>
+    </div>
+
+    <div class="collections-list" id="collectionsList">
+
+      <div class="coll-block reveal" data-cat="cirios">
+        <h3 class="coll-title">Cirios Pascuales</h3>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Básicos</span>
+              <span class="coll-tier-price">200€</span>
+            </div>
+            <span class="coll-tier-size">Tamaño: 70 × 7 cm</span>
+            <span class="coll-tier-note">Para otros tamaños, consultar precio.</span>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-02.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-01.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-03.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-04.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-05.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-06.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-07.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-08.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-09.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-basicos/cirios-basicos-10.webp" alt="Cirio Pascual básico pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">10</span></div>
+          </div>
+        </div>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Elaborados</span>
+              <span class="coll-tier-price">260€</span>
+            </div>
+            <span class="coll-tier-size">Tamaño: 70 × 7 cm</span>
+            <span class="coll-tier-note">Para otros tamaños, consultar precio.</span>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-18.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-01.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-02.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-03.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-04.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-05.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-06.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-07.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-08.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-09.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-10.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-11.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-12.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-13.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-14.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-15.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-16.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-17.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/cirios-elaborados/cirios-elaborados-19.webp" alt="Cirio Pascual elaborado pintado a mano" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">19</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="coll-block reveal" data-cat="bautizo">
+        <h3 class="coll-title">Bautizo</h3>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Lazos y bordados</span>
+              <span class="coll-tier-price">20€</span>
+            </div>
+            <span class="coll-tier-note">Incluye la vela.</span>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/lazos-personalizados/lazos-personalizados-04.webp" alt="Vela de bautizo con lazos y bordados" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-personalizados/lazos-personalizados-01.webp" alt="Vela de bautizo con lazos y bordados" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-personalizados/lazos-personalizados-02.webp" alt="Vela de bautizo con lazos y bordados" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-personalizados/lazos-personalizados-03.webp" alt="Vela de bautizo con lazos y bordados" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-personalizados/lazos-personalizados-05.webp" alt="Vela de bautizo con lazos y bordados" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-personalizados/lazos-personalizados-06.webp" alt="Vela de bautizo con lazos y bordados" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">6</span></div>
+          </div>
+        </div>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Básicas</span>
+              <span class="coll-tier-price">30€</span>
+            </div>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-15.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-01.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-02.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-03.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-04.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-05.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-06.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-07.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-08.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-09.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-10.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-11.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-12.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-13.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-14.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-16.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-basicos/lazos-basicos-17.webp" alt="Vela de bautizo básica" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">17</span></div>
+          </div>
+        </div>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Elaboradas</span>
+              <span class="coll-tier-price">35€</span>
+            </div>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-04.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-01.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-02.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-03.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-05.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-06.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-07.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-08.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-09.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-10.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-11.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-12.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-13.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-14.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-15.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-16.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-17.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-18.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-19.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-20.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-21.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-22.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-23.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-24.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-25.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-26.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-27.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-28.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-29.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-elaborados/lazos-elaborados-30.webp" alt="Vela de bautizo elaborada" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">30</span></div>
+          </div>
+        </div>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Al detalle</span>
+              <span class="coll-tier-price">40€</span>
+            </div>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-19.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-01.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-02.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-03.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-04.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-05.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-06.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-07.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-08.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-09.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-10.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-11.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-12.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-13.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-14.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-15.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-16.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-17.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-18.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-20.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-21.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-22.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-23.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/lazos-al-detalle/lazos-al-detalle-24.webp" alt="Vela de bautizo al detalle" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">24</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="coll-block reveal" data-cat="mesa">
+        <h3 class="coll-title">Velas para Mesa y Bodas</h3>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Básicas</span>
+              <div class="coll-tier-prices">
+                <span class="coll-price-line"><span>1 vela</span><strong>55€</strong></span>
+                <span class="coll-price-line"><span>2 velas</span><strong>100€</strong></span>
+              </div>
+            </div>
+            <span class="coll-tier-size">Tamaño: 20 × 9 cm</span>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-03.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-01.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-02.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-04.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-05.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-06.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-07.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-08.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-09.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-10.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-11.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-12.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-13.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-14.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-15.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-16.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-17.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-18.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-19.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-20.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-21.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-22.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-23.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-24.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-basicas/mesa-basicas-25.webp" alt="Vela de mesa y boda básica" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">25</span></div>
+          </div>
+        </div>
+        <div class="coll-tier">
+          <div class="coll-tier-info">
+            <div class="coll-tier-row">
+              <span class="coll-tier-name">Elaboradas</span>
+              <div class="coll-tier-prices">
+                <span class="coll-price-line"><span>1 vela</span><strong>70€</strong></span>
+                <span class="coll-price-line"><span>2 velas</span><strong>130€</strong></span>
+              </div>
+            </div>
+            <span class="coll-tier-size">Tamaño: 20 × 9 cm</span>
+          </div>
+          <div class="coll-slider">
+            <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <div class="coll-slider-viewport">
+              <div class="coll-slider-track">
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-01.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-02.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-03.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-04.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-05.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-06.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-07.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-08.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-09.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-10.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-11.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-12.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-13.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-14.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-15.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+                <div class="coll-slide"><img src="images/colecciones/mesa-elaboradas/mesa-elaboradas-16.webp" alt="Vela de mesa y boda elaborada" loading="lazy" decoding="async" data-lightbox></div>
+              </div>
+            </div>
+            <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+            <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">16</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="coll-block reveal" data-cat="navidad">
+        <div class="coll-block-head">
+          <h3 class="coll-title">Navidad</h3>
+          <span class="coll-standalone-price">20€</span>
+        </div>
+        <div class="coll-slider">
+          <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="coll-slider-viewport">
+            <div class="coll-slider-track">
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-01.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-02.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-03.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-04.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-05.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-06.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-07.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-08.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/navidad/navidad-09.jpeg" alt="Vela de Navidad pintada a mano" loading="lazy" decoding="async" data-lightbox></div>
+            </div>
+          </div>
+          <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+          <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">9</span></div>
+        </div>
+      </div>
+
+      <div class="coll-block reveal" data-cat="toallas">
+        <div class="coll-block-head">
+          <h3 class="coll-title">Toallas de Bautizo</h3>
+          <span class="coll-standalone-price">18€</span>
+        </div>
+        <div class="coll-slider">
+          <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="coll-slider-viewport">
+            <div class="coll-slider-track">
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo/toallas-bautizo-02.jpeg" alt="Toalla de bautizo bordada" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo/toallas-bautizo-01.jpeg" alt="Toalla de bautizo bordada" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo/toallas-bautizo-03.jpeg" alt="Toalla de bautizo bordada" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo/toallas-bautizo-04.jpeg" alt="Toalla de bautizo bordada" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo/toallas-bautizo-05.jpeg" alt="Toalla de bautizo bordada" loading="lazy" decoding="async" data-lightbox></div>
+            </div>
+          </div>
+          <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+          <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">5</span></div>
+        </div>
+      </div>
+
+      <div class="coll-block reveal" data-cat="toallas-vela">
+        <div class="coll-block-head">
+          <h3 class="coll-title">Pack Bautizo: Vela + Toalla Personalizada</h3>
+          <span class="coll-standalone-price">15€</span>
+        </div>
+        <p class="coll-note">Llevándote tu Vela de Bautizo, añade la Toalla Personalizada por solo 15€.</p>
+        <div class="coll-slider">
+          <button class="gallery-arrow prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <div class="coll-slider-viewport">
+            <div class="coll-slider-track">
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-03.jpeg" alt="Toalla de bautizo con vela a juego" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-01.jpeg" alt="Toalla de bautizo con vela a juego" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-02.jpeg" alt="Toalla de bautizo con vela a juego" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-04.jpeg" alt="Toalla de bautizo con vela a juego" loading="lazy" decoding="async" data-lightbox></div>
+              <div class="coll-slide"><img src="images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-05.jpeg" alt="Toalla de bautizo con vela a juego" loading="lazy" decoding="async" data-lightbox></div>
+            </div>
+          </div>
+          <button class="gallery-arrow next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+          <div class="coll-slider-count"><span class="cur">1</span> / <span class="total">5</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== UNIVERSO (ahora vive aquí, como contenido de la pestaña "Todas")
+       ===== Se ha trasladado desde su antigua sección independiente sin
+       tocar nada de su interior (esfera 3D, cosmos):
+       js/script.js la muestra/oculta con la misma clase .hide que usan los
+       .coll-block, atada al filtro "all" (ver COLLECTION FILTERS). -->
+<section class="sphere-section" id="esfera">
+  <div class="cosmos" id="cosmos" aria-hidden="true">
+    <div class="cosmos-nebula">
+      <span class="neb-a"></span>
+      <span class="neb-b"></span>
+      <span class="neb-c"></span>
+      <span class="neb-d"></span>
+    </div>
+    <div class="cosmos-rays" id="cosmosRays"></div>
+    <div class="cosmos-far" id="cosmosFar"></div>
+    <div class="cosmos-mid" id="cosmosMid"></div>
+    <!-- Estrellas y polvo dorados: capa extra, sutil, sobre el campo estelar
+         blanco de arriba (ver buildCosmosAmbience en js/script.js). -->
+    <div class="cosmos-gold-far" id="cosmosGoldFar"></div>
+    <div class="cosmos-gold-dust" id="cosmosGoldDust"></div>
+    <div class="cosmos-motes" id="cosmosMotes"></div>
+    <div class="cosmos-shooting" id="cosmosShooting"></div>
+    <div class="cosmos-farmeteor" id="cosmosFarMeteor"></div>
+    <svg class="cosmos-constellations" id="cosmosConstellations" aria-hidden="true"></svg>
+    <div class="cosmos-vignette"></div>
+    <span class="cosmos-star" style="--x:4%; --y:12%; --s:1.4px; --delay:0s; --dur:3.4s;"></span>
+    <span class="cosmos-star" style="--x:9%; --y:38%; --s:1px; --delay:1.1s; --dur:4.1s;"></span>
+    <span class="cosmos-star" style="--x:14%; --y:70%; --s:1.8px; --delay:2.3s; --dur:3.8s;"></span>
+    <span class="cosmos-star" style="--x:18%; --y:22%; --s:1px; --delay:.6s; --dur:3.2s;"></span>
+    <span class="cosmos-star" style="--x:23%; --y:85%; --s:1.3px; --delay:3.1s; --dur:4.4s;"></span>
+    <span class="cosmos-star" style="--x:27%; --y:5%; --s:1px; --delay:1.8s; --dur:3.6s;"></span>
+    <span class="cosmos-star" style="--x:31%; --y:52%; --s:1.6px; --delay:.2s; --dur:4s;"></span>
+    <span class="cosmos-star" style="--x:36%; --y:30%; --s:1px; --delay:2.6s; --dur:3.3s;"></span>
+    <span class="cosmos-star" style="--x:40%; --y:66%; --s:1.4px; --delay:1.4s; --dur:4.2s;"></span>
+    <span class="cosmos-star" style="--x:45%; --y:15%; --s:1px; --delay:3.5s; --dur:3.7s;"></span>
+    <span class="cosmos-star" style="--x:49%; --y:90%; --s:1.7px; --delay:.9s; --dur:4.3s;"></span>
+    <span class="cosmos-star" style="--x:53%; --y:44%; --s:1px; --delay:2s; --dur:3.5s;"></span>
+    <span class="cosmos-star" style="--x:57%; --y:8%; --s:1.3px; --delay:.4s; --dur:3.9s;"></span>
+    <span class="cosmos-star" style="--x:61%; --y:60%; --s:1px; --delay:2.9s; --dur:4.1s;"></span>
+    <span class="cosmos-star" style="--x:65%; --y:35%; --s:1.5px; --delay:1.6s; --dur:3.4s;"></span>
+    <span class="cosmos-star" style="--x:69%; --y:78%; --s:1px; --delay:3.3s; --dur:4s;"></span>
+    <span class="cosmos-star" style="--x:73%; --y:18%; --s:1.4px; --delay:.7s; --dur:3.6s;"></span>
+    <span class="cosmos-star" style="--x:77%; --y:50%; --s:1px; --delay:2.4s; --dur:4.4s;"></span>
+    <span class="cosmos-star" style="--x:81%; --y:92%; --s:1.6px; --delay:1.2s; --dur:3.2s;"></span>
+    <span class="cosmos-star" style="--x:85%; --y:26%; --s:1px; --delay:3.7s; --dur:3.8s;"></span>
+    <span class="cosmos-star" style="--x:89%; --y:64%; --s:1.3px; --delay:.3s; --dur:4.2s;"></span>
+    <span class="cosmos-star" style="--x:93%; --y:10%; --s:1px; --delay:2.1s; --dur:3.5s;"></span>
+    <span class="cosmos-star" style="--x:96%; --y:48%; --s:1.5px; --delay:1.5s; --dur:4s;"></span>
+    <span class="cosmos-star" style="--x:6%; --y:55%; --s:1px; --delay:3.9s; --dur:3.7s;"></span>
+    <span class="cosmos-star" style="--x:11%; --y:95%; --s:1.4px; --delay:.5s; --dur:4.3s;"></span>
+    <span class="cosmos-star" style="--x:20%; --y:40%; --s:1px; --delay:2.7s; --dur:3.3s;"></span>
+    <span class="cosmos-star" style="--x:34%; --y:78%; --s:1.2px; --delay:1.9s; --dur:3.9s;"></span>
+    <span class="cosmos-star" style="--x:42%; --y:5%; --s:1px; --delay:.1s; --dur:4.1s;"></span>
+    <span class="cosmos-star" style="--x:58%; --y:88%; --s:1.6px; --delay:3.2s; --dur:3.6s;"></span>
+    <span class="cosmos-star" style="--x:66%; --y:12%; --s:1px; --delay:1.3s; --dur:4.4s;"></span>
+    <span class="cosmos-star" style="--x:78%; --y:70%; --s:1.3px; --delay:2.5s; --dur:3.4s;"></span>
+    <span class="cosmos-star" style="--x:91%; --y:34%; --s:1px; --delay:.8s; --dur:3.8s;"></span>
+    <span class="cosmos-star" style="--x:2%; --y:80%; --s:1.4px; --delay:3.4s; --dur:4.2s;"></span>
+    <span class="cosmos-star" style="--x:16%; --y:8%; --s:1px; --delay:1.7s; --dur:3.5s;"></span>
+    <span class="cosmos-star" style="--x:29%; --y:62%; --s:1.5px; --delay:2.8s; --dur:4s;"></span>
+    <span class="cosmos-star" style="--x:98%; --y:80%; --s:1px; --delay:.6s; --dur:3.6s;"></span>
+
+    <span class="cosmos-drift" style="--x:0%; --y:15%; --s:1.6px; --dx:110vw; --dy:14vh; --dur:22s; --delay:0s;"></span>
+    <span class="cosmos-drift" style="--x:0%; --y:40%; --s:1.2px; --dx:110vw; --dy:-10vh; --dur:28s; --delay:6s;"></span>
+    <span class="cosmos-drift" style="--x:0%; --y:65%; --s:1.8px; --dx:110vw; --dy:8vh; --dur:25s; --delay:12s;"></span>
+    <span class="cosmos-drift" style="--x:0%; --y:85%; --s:1.3px; --dx:110vw; --dy:-12vh; --dur:31s; --delay:18s;"></span>
+    <span class="cosmos-drift" style="--x:0%; --y:28%; --s:1.4px; --dx:110vw; --dy:6vh; --dur:26s; --delay:9s;"></span>
+    <span class="cosmos-drift" style="--x:0%; --y:52%; --s:1px; --dx:110vw; --dy:-8vh; --dur:23s; --delay:15s;"></span>
+
+    <div class="cosmos-meteor m1"></div>
+    <div class="cosmos-meteor m2"></div>
+  </div>
+
+  <div class="container">
+    <p class="section-sub reveal center">Arrastra para girar, acerca el cursor a una pieza y haz clic para verla de cerca.</p>
+  </div>
+
+  <div class="sphere-stage reveal" id="sphereStage">
+    <canvas id="sphereCanvas"></canvas>
+    <div class="sphere-hint" id="sphereHint">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11l-4 4 4 4M17 5l4 4-4 4M3 15h13M8 9h13" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Arrastra para explorar
+    </div>
+    <div class="sphere-loading" id="sphereLoading">Cargando la galería…</div>
+  </div>
+
+  <div class="sphere-viewer" id="sphereViewer">
+    <button class="sphere-viewer-close" id="sphereViewerClose" aria-label="Cerrar">&times;</button>
+    <img id="sphereViewerImg" src="" alt="">
+    <video id="sphereViewerVideo" src="" muted loop playsinline autoplay controls></video>
+  </div>
+</section>
+</section>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">&times;</button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <div class="lightbox-content" id="lightboxContent"></div>
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+</div>
+
+<!-- ===== CONTACTO ===== -->
+<section class="contact" id="contacto">
+  <div class="container contact-grid">
+    <div class="contact-info reveal">
+      <p class="eyebrow">Hablemos</p>
+      <h2 class="section-title">Diseñemos tu vela a medida</h2>
+      <p>Cuéntanos qué celebración estás preparando y te ayudamos a crear una pieza única.</p>
+
+      <ul class="contact-list">
+        <li>✉️ <a href="mailto:contacto@arteycera.es">contacto@arteycera.es</a></li>
+        <li>📍 Taller artesanal — España</li>
+        <li>⏱️ Respuesta en menos de 48h</li>
+        <li class="contact-ig">
+          <a href="https://www.instagram.com/arte.y.cera/" target="_blank" rel="noopener" aria-label="Instagram de Arte y Cera">
+            <span class="ig-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <defs>
+                  <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FEE411"/>
+                    <stop offset="25%" stop-color="#FD5949"/>
+                    <stop offset="55%" stop-color="#D6249F"/>
+                    <stop offset="100%" stop-color="#285AEB"/>
+                  </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGrad)"/>
+                <rect x="6.2" y="6.2" width="11.6" height="11.6" rx="3.6" fill="none" stroke="#fff" stroke-width="1.6"/>
+                <circle cx="12" cy="12" r="3.4" fill="none" stroke="#fff" stroke-width="1.6"/>
+                <circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/>
+              </svg>
+            </span>
+            @arte.y.cera
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm" novalidate>
+      <div class="form-row">
+        <div class="field">
+          <input type="text" id="name" name="name" placeholder=" " required>
+          <label for="name">Nombre</label>
+          <span class="field-error">Cuéntanos cómo te llamas</span>
+        </div>
+        <div class="field">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email">Email</label>
+          <span class="field-error">Introduce un email válido</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <select id="type" name="type" required>
+          <option value="" disabled selected hidden></option>
+          <option value="pascua">Cirio Pascual</option>
+          <option value="bautizo">Vela de Bautizo</option>
+          <option value="boda">Vela de Mesa / Boda</option>
+          <option value="otro">Otro / Consulta</option>
+        </select>
+        <label for="type">Tipo de vela</label>
+      </div>
+
+      <div class="field">
+        <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+        <label for="message">Cuéntanos tu idea</label>
+        <span class="field-error">Escríbenos unas líneas</span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">
+        <span>Enviar mensaje</span>
+      </button>
+
+      <p class="form-success" id="formSuccess">¡Gracias! Tu mensaje se ha preparado. Te responderemos muy pronto. 🕯️</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="#inicio" class="logo">
+      <img src="images/logo/logo.png" alt="Arte y Cera" class="logo-img">
+      <span class="logo-text">Arte <em>&amp;</em> Cera</span>
+    </a>
+    <p class="footer-tag">Velas pintadas a mano, con calma y con cuidado.</p>
+    <nav class="footer-nav">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#colecciones">Colecciones</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://www.instagram.com/arte.y.cera/" target="_blank" rel="noopener" class="footer-ig" aria-label="Instagram de Arte y Cera">
+        <span class="ig-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <defs>
+              <linearGradient id="igGradFooter" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#FEE411"/>
+                <stop offset="25%" stop-color="#FD5949"/>
+                <stop offset="55%" stop-color="#D6249F"/>
+                <stop offset="100%" stop-color="#285AEB"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGradFooter)"/>
+            <rect x="6.2" y="6.2" width="11.6" height="11.6" rx="3.6" fill="none" stroke="#fff" stroke-width="1.6"/>
+            <circle cx="12" cy="12" r="3.4" fill="none" stroke="#fff" stroke-width="1.6"/>
+            <circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/>
+          </svg>
+        </span>
+        Instagram
+      </a>
+    </nav>
+    <p class="footer-copy">© <span id="year"></span> Arte y Cera. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba">&#8593;</button>
+
+<a href="https://wa.me/34667241539" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.25.62 4.36 1.7 6.17L4 29l8-1.65a12 12 0 0 0 4.02.7c6.62 0 12.02-5.4 12.02-12.03C28.04 8.4 22.64 3 16.02 3Zm0 21.9c-1.3 0-2.58-.26-3.75-.77l-.27-.12-4.74.98.98-4.62-.18-.29a9.83 9.83 0 0 1-1.53-5.28c0-5.46 4.45-9.9 9.93-9.9 2.65 0 5.14 1.03 7.01 2.9a9.83 9.83 0 0 1 2.9 6.99c0 5.46-4.45 9.91-9.35 9.91Zm5.44-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.37-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.49-.5-.67-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.48.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/>
+  </svg>
+</a>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="js/sphere.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
