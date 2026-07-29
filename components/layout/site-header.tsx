@@ -15,12 +15,9 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [abierto, setAbierto] = useState(false);
 
-  // El menú móvil se cierra al navegar y con Escape: si no, el usuario que
-  // toca un enlace se queda con el panel encima de la página nueva.
-  useEffect(() => {
-    setAbierto(false);
-  }, [pathname]);
-
+  // El panel se cierra al pulsar cualquiera de sus enlaces (más abajo, en el
+  // onClick) y con Escape. Se hace así, y no con un efecto que mire el
+  // pathname, para no provocar un render en cascada en cada navegación.
   useEffect(() => {
     if (!abierto) return;
     const alPulsar = (e: KeyboardEvent) => {
@@ -113,6 +110,7 @@ export function SiteHeader() {
                 <Link
                   href={enlace.href}
                   aria-current={esActivo(enlace.href) ? 'page' : undefined}
+                  onClick={() => setAbierto(false)}
                   className="block border-b border-sand/50 py-3.5 text-base text-ink"
                 >
                   {enlace.texto}
@@ -122,6 +120,7 @@ export function SiteHeader() {
           </ul>
           <Link
             href="/contacto"
+            onClick={() => setAbierto(false)}
             className="mt-5 block rounded-full bg-ink px-5 py-3 text-center text-sm font-medium text-ivory"
           >
             Pedir presupuesto

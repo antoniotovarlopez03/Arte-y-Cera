@@ -131,7 +131,10 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                   Pedir por WhatsApp
                 </a>
                 <Link
-                  href={{ pathname: '/contacto', query: { pieza: linea.href } }}
+                  href={{
+                    pathname: '/contacto',
+                    query: { linea: `${categoria.slug}/${linea.slug}` },
+                  }}
                   className={clasesBoton('secundario')}
                 >
                   Pedir presupuesto por email

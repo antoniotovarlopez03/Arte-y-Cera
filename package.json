@@ -2,6 +2,7 @@
   "name": "arte-y-cera",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Web de Arte y Cera — velas artesanales pintadas a mano",
   "engines": {
     "node": ">=20.9.0"

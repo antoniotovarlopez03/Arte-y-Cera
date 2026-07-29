@@ -38,6 +38,12 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
     const ref = new URLSearchParams(window.location.search).get('pieza');
     if (!ref) return;
     const i = piezas.findIndex((p) => p.ref === ref);
+    // La regla avisa de los setState dentro de efectos, y con razón; este es la
+    // excepción que la propia regla contempla: sincronizar con algo de fuera de
+    // React (la URL) al montar. No se puede leer en el render porque el
+    // servidor no conoce los parámetros de la petición en una página estática,
+    // y hacerlo provocaría un desajuste de hidratación.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (i >= 0) abrir(i);
   }, [piezas, abrir]);
 

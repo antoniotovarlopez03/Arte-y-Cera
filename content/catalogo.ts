@@ -32,8 +32,7 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'basicos',
         nombre: 'Básicos',
-        resumen:
-          'Fondo en un color, con la cruz, el año y los trazos en oro sobre la cera.',
+        resumen: 'Fondo en un color, con la cruz, el año y los trazos en oro sobre la cera.',
         precios: [{ importe: 200 }],
         notaPrecio: 'Para otros tamaños, consultar precio.',
         medidas: '70 × 7 cm',
@@ -45,8 +44,7 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'elaborados',
         nombre: 'Elaborados',
-        resumen:
-          'Escenas a todo color al estilo de los iconos, cubriendo el cirio entero.',
+        resumen: 'Escenas a todo color al estilo de los iconos, cubriendo el cirio entero.',
         precios: [{ importe: 260 }],
         notaPrecio: 'Para otros tamaños, consultar precio.',
         medidas: '70 × 7 cm',
@@ -166,11 +164,7 @@ export const CATALOGO: CategoriaFuente[] = [
           { etiqueta: '2 velas', importe: 130 },
         ],
         medidas: '20 × 9 cm',
-        incluye: [
-          'La vela',
-          'Pintura a todo color',
-          'Composición diseñada para la celebración',
-        ],
+        incluye: ['La vela', 'Pintura a todo color', 'Composición diseñada para la celebración'],
         altBase: 'Vela de mesa y boda elaborada pintada a mano',
         carpeta: 'mesa-elaboradas',
         portadaRef: 'MB-E-01',

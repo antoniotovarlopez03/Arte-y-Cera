@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'feat/**']
+  pull_request:
+
+jobs:
+  verificar:
+    name: Tipos, lint, tests y build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Tipos
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      # Estas pruebas fallan si una foto del catálogo no existe, si dos piezas
+      # comparten referencia o si una portada apunta a una foto que no está.
+      - name: Pruebas del catálogo y del formulario
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+  navegador:
+    name: Recorrido de usuario y accesibilidad
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+
+      # Playwright levanta el build de producción por su cuenta
+      # (ver webServer en playwright.config.ts).
+      - run: npm run test:e2e
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
