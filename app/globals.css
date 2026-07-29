@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   Sistema de diseño de Arte y Cera
+   Los colores y las tipografías vienen de la web original
+   (legacy/css/styles.css:1-26) para no perder la identidad de
+   la marca: marfil, negro cálido y dorado.
+   ============================================================ */
+@theme {
+  /* Negros cálidos y marfiles */
+  --color-ink: #0f0d0b;
+  --color-ink-2: #1a1613;
+  --color-ink-soft: #4a4038;
+  --color-cream: #f6f1e7;
+  --color-cream-2: #efe7d8;
+  --color-sand: #e6d6b3;
+  --color-ivory: #faf7f0;
+  --color-white-warm: #fffdf9;
+
+  /* Dorados.
+     OJO con el contraste: --color-gold sobre marfil da 2,1:1 y no cumple
+     WCAG AA — en la web original el texto dorado sobre crema era ilegible.
+     Por eso hay dos dorados distintos y no son intercambiables:
+       · gold      → decoración (filetes, bordes, iconos) y texto SOBRE ink (8,3:1)
+       · gold-ink  → texto dorado sobre marfil/crema (5,2:1, cumple AA) */
+  --color-gold: #c9a463;
+  --color-gold-light: #e9d3a3;
+  --color-gold-deep: #9c7a3a;
+  --color-gold-ink: #7d6029;
+  --color-terracotta: #b5651d;
+
+  /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
+  --font-display: var(--fuente-display), 'Playfair Display', Georgia, serif;
+  --font-sans: var(--fuente-sans), 'Jost', system-ui, sans-serif;
+
+  /* Sombras cálidas, nunca grises */
+  --shadow-pieza: 0 18px 40px -24px rgb(15 13 11 / 0.35);
+  --shadow-alzada: 0 24px 70px -30px rgb(15 13 11 / 0.45);
+
+  --radius-pieza: 1.25rem;
+
+  --ease-suave: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa el header pegajoso al saltar a un ancla */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visible siempre, en dorado oscuro para que se vea sobre marfil
+     y sobre negro. Nunca se elimina el outline. */
+  :focus-visible {
+    outline: 2px solid var(--color-gold-deep);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Quien pida menos movimiento, no ve movimiento. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Filete dorado: el único adorno recurrente de la marca. */
+  .filete {
+    display: block;
+    width: 3.5rem;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-gold),
+      transparent
+    );
+  }
+}
