@@ -97,6 +97,17 @@
 }
 
 @layer components {
+  /* En el móvil, la ficha de producto lleva su propia barra fija con el precio
+     y el botón de WhatsApp. Si además apareciera el botón flotante, el círculo
+     se pondría justo encima del botón de la barra y le taparía el texto: en esas
+     páginas el flotante se esconde y manda la barra, que es más útil porque
+     lleva el precio al lado. */
+  @media (width < 40rem) {
+    body:has([data-barra-ficha]) .whatsapp-flotante {
+      display: none;
+    }
+  }
+
   /* Filete dorado: el único adorno recurrente de la marca. */
   .filete {
     display: block;

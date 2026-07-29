@@ -14,7 +14,7 @@ export function BotonWhatsapp() {
       target="_blank"
       rel="noopener"
       aria-label="Escríbenos por WhatsApp"
-      className="fixed right-4 bottom-4 z-30 flex h-13 w-13 items-center justify-center rounded-full bg-[#0f7a40] text-white shadow-pieza transition-transform hover:scale-105 print:hidden"
+      className="whatsapp-flotante fixed right-4 bottom-4 z-20 flex h-13 w-13 items-center justify-center rounded-full bg-[#0f7a40] text-white shadow-pieza transition-transform hover:scale-105 print:hidden"
     >
       <IconoWhatsapp className="h-7 w-7" />
     </a>

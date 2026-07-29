@@ -191,7 +191,10 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
 
       {/* Barra fija en móvil: en un catálogo se navega con el pulgar y el
           precio y el botón tienen que estar siempre a mano. */}
-      <div className="sticky bottom-0 z-20 border-t border-sand bg-ivory/95 backdrop-blur-sm sm:hidden">
+      <div
+        data-barra-ficha
+        className="sticky bottom-0 z-30 border-t border-sand bg-ivory/95 backdrop-blur-sm sm:hidden"
+      >
         <div className="flex items-center justify-between gap-3 px-5 py-3">
           <Precio precios={linea.precios} />
           <a
