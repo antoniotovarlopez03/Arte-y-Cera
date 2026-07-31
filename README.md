@@ -70,6 +70,7 @@ Las referencias no se renumeran nunca: son el código que el cliente escribe por
 | `npm run dev`              | Levanta la web en local (http://localhost:3000)                      |
 | `npm run build`            | Compila para producción; falla si el catálogo tiene errores          |
 | `npm run catalogo:generar` | Reescribe las piezas a partir de las fotos que hay en `public/`      |
+| `npm run media:recuperar`  | Baja las fotos originales del WordPress y sustituye las pequeñas     |
 | `npm run media:auditar`    | Dice qué fotos son demasiado pequeñas y por cuáles empezar a reponer |
 | `npm test`                 | Pruebas del catálogo y del formulario                                |
 | `npm run test:e2e`         | Recorrido completo en el navegador + accesibilidad (axe)             |
@@ -115,7 +116,16 @@ legacy/                 la web estática anterior, solo como referencia
   no hay nada que consentir.
 - **La galería usa `<dialog>` nativo**, así que el foco se atrapa y se devuelve solo, y funciona
   con teclado sin código nuestro.
-- **Las fotos no se amplían más de 1,4× (ficha) o 2× (galería).** 147 de las 166 fotos actuales
-  son de 300 px; estirarlas solo enseña los píxeles. Cuando lleguen los originales se ven mejor
-  sin cambiar nada.
+- **Ninguna foto se amplía por encima de su tamaño real.** 141 de las 166 se recuperaron a
+  1200-1600 px del WordPress del cliente (`npm run media:recuperar`), pero seis siguen a 300 px
+  porque no estaban allí. La regla las protege: se ven pequeñas en vez de pixeladas.
+- **La portada de la ficha no lleva proporción impuesta.** Hay portadas que son montajes de varias
+  vistas de la misma vela, así que recortarlas se come el trabajo, y encajarlas en un 4/5 dejaba
+  bandas de crema en las cuadradas, que son casi todas.
+- **La paleta es la de su WordPress** (verde `#14453d` + marfil + dorado), no la del sitio que le
+  montaron. Los contrastes están anotados en `app/globals.css`: el dorado sobre verde solo vale
+  para decoración, y el anillo de foco no puede pasar a verde porque desaparece sobre los fondos
+  oscuros.
+- **Los textos son suyos**, del WordPress. Si hay que reescribir algo, mejor preguntarle a él que
+  inventarlo.
 - **`legacy/` se borra** cuando la web nueva esté aprobada; está solo para comparar textos.

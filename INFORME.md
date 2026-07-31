@@ -73,6 +73,17 @@ Esto es lo que más te va a cambiar el día a día: se acabó el «quiero una co
 exactamente de qué vela se habla. Además, el enlace de una pieza concreta se puede compartir: si
 una novia le manda a su madre `…/basicas?pieza=MB-B-07`, se le abre esa vela y no otra.
 
+### Y todas las piezas de una colección juntas, como las tenías tú
+
+En tu WordPress los cuatro acabados de bautizo estaban en la misma página: se bajaba con el dedo y
+se veían las setenta y siete velas seguidas. Al darle a cada acabado su propia página —que es lo
+correcto para que el precio quede claro y para que Google entienda la web— eso se perdía.
+
+Ahora está en los dos sitios. Al final de `/colecciones/velas-de-bautizo` están **las 77 piezas
+juntas**, de los cuatro acabados, cada una con su código y con el acabado al que pertenece. Quien
+llega buscando «una vela de bautizo» las ve todas sin entrar y salir cuatro veces; quien ya sabe
+que quiere las de 40 € entra en su ficha.
+
 ### El precio, siempre a la vista
 
 En las tarjetas, en la ficha y en una barra fija abajo cuando se mira desde el móvil. Con el
@@ -91,13 +102,17 @@ Para que funcione en la web publicada hace falta una cosa tuya: una clave gratui
 
 Medido con Lighthouse de Google, en móvil:
 
-|                              | Antes (arteycera.es) | Ahora   |
-| ---------------------------- | -------------------- | ------- |
-| Nota de rendimiento          | 62                   | **93**  |
-| Nota de accesibilidad        | 95                   | **100** |
-| Peso de la página            | 4.803 KB             | **517 KB** |
-| Tiempo hasta ver la foto     | 9,9 s                | **3,1 s** |
-| Tiempo hasta ver algo        | 3,0 s                | **0,9 s** |
+|                              | Antes (arteycera.es) | Ahora      |
+| ---------------------------- | -------------------- | ---------- |
+| Nota de rendimiento          | 62                   | **98**     |
+| Nota de accesibilidad        | 95                   | **100**    |
+| Peso de la página            | 4.803 KB             | **588 KB** |
+| Tiempo hasta ver la foto     | 9,9 s                | **2,2 s**  |
+| Tiempo hasta ver algo        | 3,0 s                | **0,9 s**  |
+| Saltos de maquetación        | —                    | **0**      |
+
+Lo llamativo: las fotos son ahora **cinco veces más grandes** y la web va **más rápida** que antes
+de cambiarlas. No es magia, es que a cada pantalla se le manda solo el tamaño que necesita.
 
 Se han quitado la esfera 3D, el cielo de estrellas, el halo del cursor, los contadores que subían
 y los fondos animados. No es que estuvieran mal hechos: es que competían con las fotos de tus
@@ -110,38 +125,82 @@ molesto aviso. Las fuentes y las imágenes se sirven desde tu propio dominio.
 
 ---
 
-## 3. Dos cosas que hay que hablar
+## 3. Tu WordPress nos ha resuelto dos cosas
 
-### Las fotos son pequeñas
+Fuimos a ver **arteycera.wordpress.com**, la web que te hiciste tú hace unos años, y ahí estaban
+dos cosas que valían más que todo lo que habíamos escrito nosotros.
 
-**147 de tus 166 fotos miden unos 300 píxeles de ancho.** Son diminutas: al ampliarlas se ven los
-píxeles, y justo lo que vende una vela pintada a mano es acercarse y ver el trazo.
+### Tus fotos originales seguían ahí, y son diez veces más grandes
 
-La web está hecha para que eso no cante (nunca amplía una foto más de lo razonable), pero la
-solución de verdad es mandar los originales. Si puedes, empieza por estas ocho, que son las que
-salen de portada en cada colección:
+Las fotos que había en el proyecto medían unos **300 píxeles**: diminutas, y justo lo que vende una
+vela pintada a mano es acercarse y ver el trazo. Las mismas fotos siguen publicadas en tu
+WordPress a **1536 × 2048**.
+
+Así que no hace falta que nos mandes nada: **se han recuperado 141 de las 147 fotos pequeñas**, con
+sus nombres y sus códigos intactos. Ahora se ve el pincel.
+
+Solo seis se quedan pequeñas, porque son piezas que subiste después de dejar el WordPress. Si las
+tienes a mano, son estas:
 
 ```
-CP-B-02   CP-E-18   BZ-L-04   BZ-B-15
-BZ-E-04   BZ-D-19   MB-B-03   MB-E-01
+cirios-elaborados-06   cirios-elaborados-08   cirios-elaborados-09
+cirios-elaborados-11   lazos-basicos-12       lazos-elaborados-17
 ```
 
-Importante: **manda las fotos originales, no reenviadas por WhatsApp**, porque WhatsApp las
-reduce. Las de Navidad y las de toallas (1.100 px) están bien: se ven perfectas.
+Y si las mandas: **los archivos originales, no reenviados por WhatsApp**, que los recomprime.
 
-### La foto de portada anterior era de inteligencia artificial
+### Tus textos eran mejores que los nuestros
 
-La imagen del taller que había en la portada estaba generada con IA, y se nota: las dos personas
-no tienen cara. En un negocio que vende trabajo hecho a mano, la primera imagen que ve alguien no
-puede ser una imagen falsa: es justo lo que hace dudar de si las velas son de verdad.
+Los titulares que habíamos escrito nosotros están fuera. Ahora la web abre con los tuyos:
 
-La portada nueva usa una de tus fotos reales (las toallas de Lorenzo y María con sus velas).
-Cuando tengas una foto buena del taller de verdad, con vosotros trabajando, se cambia en un
-minuto y será mucho mejor que cualquier imagen generada.
+> **Velas pintadas a mano para un momento muy especial**
+> Desde los colores hasta los detalles grabados, cada elemento puede ser adaptado a tu estilo y
+> necesidades.
+
+Y cierra con tu «¿Tienes alguna duda?». Esa segunda frase dice en una línea lo que nosotros
+decíamos en tres, y además es la promesa que de verdad vende esto: que la pieza se adapta. Solo se
+ha corregido una tilde.
+
+También hemos copiado dos decisiones tuyas:
+
+- **El orden.** En tu WordPress la portada abría con las velas de bautizo (20 €) y dejaba el cirio
+  de 260 € para el final. Nosotros habíamos puesto los cirios primero, que es lo más caro y lo que
+  menos gente busca. Ahora va como lo tenías tú.
+- **«Ver nuestros modelos»**, tu botón, ahora está escrito debajo de cada colección. Antes solo
+  había una flechita.
+
+### Y el color
+
+Tu WordPress era **marfil, verde oscuro y dorado**. La web que te montaron después es negra y
+dorada. Hemos vuelto a tu verde, y resulta que además se lee mejor: los precios en dorado sobre
+crema estaban al límite de lo legible, y en verde no.
+
+---
+
+## 3 bis. Una cosa que sí hay que hablar
+
+### La foto del taller es una ilustración, y ahora lo dice
+
+La imagen del taller que había en tu portada estaba generada con inteligencia artificial, y se
+nota: las dos personas no tienen cara. En un negocio que vende trabajo hecho a mano, la primera
+imagen que ve alguien no puede ser falsa; es justo lo que hace dudar de si las velas son de verdad.
+
+La portada nueva es una de tus piezas reales. De las seis imágenes generadas que había en el
+proyecto se han borrado cinco, y **queda una sola**: la del taller con los cirios, más abajo en la
+página, en un bloque secundario y **con un pie que dice «Ilustración»**. Etiquetada así es
+legítima; sin etiquetar sería engañar.
+
+En cuanto tengas una foto buena del taller de verdad, con vosotros trabajando, se cambia en un
+minuto, el pie desaparece y será mucho mejor que cualquier imagen generada.
 
 ---
 
 ## 4. Qué necesito de ti
+
+Son menos cosas que antes: las fotos ya están resueltas y **los precios quedan confirmados**, porque
+los de tu WordPress coinciden exactamente con los que teníamos (200/260 € los cirios, 20/30/35/40 €
+las de bautizo, 55/100 y 70/130 € las de mesa, 20 € Navidad, 18 € las toallas y 15 € la toalla
+junto a la vela).
 
 1. **Datos fiscales** para el aviso legal y la privacidad: nombre o razón social, NIF y un
    domicilio. Sin eso esas dos páginas están incompletas y no se pueden publicar.
@@ -150,10 +209,10 @@ minuto y será mucho mejor que cualquier imagen generada.
 3. **Plazos reales**: cuánto tardas en un cirio, cuánto en una vela de bautizo, si pides anticipo,
    cuánto cuesta el envío. Ahora la ficha dice «escríbenos y te confirmamos», que es honesto pero
    es la duda número uno de quien tiene una fecha marcada.
-4. **Confirmar los precios**. Los he copiado tal cual estaban en tu web: 200/260 € los cirios,
-   20/30/35/40 € las de bautizo, 55/100 y 70/130 € las de mesa, 20 € Navidad, 18 € las toallas y
-   15 € la toalla junto a la vela.
-5. **Las fotos originales**, aunque sea por tandas.
+4. **¿Qué correo es el bueno?** En tu WordPress pone `ciriospintadosamano@gmail.com` y en
+   arteycera.es pone `contacto@arteycera.es`. La web usa ahora mismo el segundo.
+5. **Las seis fotos** que no estaban en el WordPress (la lista está en el punto 3), si las
+   conservas. No es urgente: son seis de ciento sesenta y seis.
 
 ---
 

@@ -32,10 +32,15 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-sand/70 bg-ivory/90 backdrop-blur-sm">
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-5">
+        {/* El rótulo se escribe «Arte & Cera», así que el aria-label tiene que
+            contener ese texto tal cual y no «Arte y Cera»: si el nombre accesible
+            no incluye lo que se ve, quien maneja el navegador por voz dice el
+            rótulo y no pasa nada (WCAG 2.5.3, «Label in Name»). Lo encontró
+            Lighthouse; axe no trae esa regla activada por defecto. */}
         <Link
           href="/"
           className="flex shrink-0 items-center gap-2.5"
-          aria-label="Arte y Cera, inicio"
+          aria-label="Arte & Cera, inicio"
         >
           <Image
             src="/images/logo/logo.png"
