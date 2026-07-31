@@ -13,54 +13,18 @@ import type { CategoriaFuente } from '@/lib/catalogo/esquemas';
    · `importe` va en euros y como número, sin el símbolo €.
    · `portadaRef` es la foto que se ve en las tarjetas y la primera de la
      galería. Tiene que existir en la carpeta de esa línea.
+
+   El ORDEN del array es el que se ve en la portada, y es el mismo que Antonio
+   puso en su WordPress: primero el bautizo, que es lo de más volumen y el
+   precio de entrada más bajo, y el cirio de 260 € al final. En la página de
+   colecciones manda el agrupado por ocasión (ver ocasionesConCategorias).
+
+   Los `resumen` de las líneas de una misma categoría están escritos para
+   COMPARARSE entre ellos: quien mira 30 € y 40 € necesita saber qué cambia,
+   y en todas las categorías lo que cambia es cuánta pintura lleva la pieza.
    ============================================================ */
 
 export const CATALOGO: CategoriaFuente[] = [
-  {
-    slug: 'cirios-pascuales',
-    nombre: 'Cirios pascuales',
-    ocasiones: ['pascua'],
-    resumen: 'Para la Vigilia Pascual, pintados a mano de arriba abajo.',
-    descripcion:
-      'El cirio pascual es la pieza más grande que sale del taller y la que más horas lleva. Se pinta a mano sobre cera, con el año, la cruz y la iconografía que la comunidad pida. Trabajamos con parroquias, comunidades y grupos, y podemos repetir un motivo de un año para otro o partir de una idea nueva.',
-    seo: {
-      titulo: 'Cirios pascuales pintados a mano',
-      descripcion:
-        'Cirios pascuales artesanales pintados a mano para parroquias y comunidades, con el año, la cruz y la iconografía que elijas. Desde 200 €.',
-    },
-    lineas: [
-      {
-        slug: 'basicos',
-        nombre: 'Básicos',
-        resumen: 'Fondo en un color, con la cruz, el año y los trazos en oro sobre la cera.',
-        precios: [{ importe: 200 }],
-        notaPrecio: 'Para otros tamaños, consultar precio.',
-        medidas: '70 × 7 cm',
-        incluye: ['El cirio', 'La pintura a mano', 'El año y la iconografía que elijas'],
-        altBase: 'Cirio pascual básico pintado a mano',
-        carpeta: 'cirios-basicos',
-        portadaRef: 'CP-B-02',
-      },
-      {
-        slug: 'elaborados',
-        nombre: 'Elaborados',
-        resumen: 'Escenas a todo color al estilo de los iconos, cubriendo el cirio entero.',
-        precios: [{ importe: 260 }],
-        notaPrecio: 'Para otros tamaños, consultar precio.',
-        medidas: '70 × 7 cm',
-        incluye: [
-          'El cirio',
-          'La pintura a mano',
-          'Varias escenas alrededor del cirio',
-          'El año y la iconografía que elijas',
-        ],
-        altBase: 'Cirio pascual elaborado pintado a mano',
-        carpeta: 'cirios-elaborados',
-        portadaRef: 'CP-E-18',
-      },
-    ],
-  },
-
   {
     slug: 'velas-de-bautizo',
     nombre: 'Velas de bautizo',
@@ -76,8 +40,9 @@ export const CATALOGO: CategoriaFuente[] = [
     lineas: [
       {
         slug: 'lazos-y-bordados',
-        nombre: 'Lazos y bordados',
-        resumen: 'La vela lisa con su lazo de raso y el nombre bordado.',
+        nombre: 'Lazos y bordado',
+        resumen:
+          'La vela sin pintar, con su lazo de raso y el nombre bordado a mano. Es la opción más sobria.',
         precios: [{ importe: 20 }],
         notaPrecio: 'Incluye la vela.',
         incluye: ['La vela', 'Lazo de raso en el color que elijas', 'El nombre bordado'],
@@ -88,7 +53,8 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'basicas',
         nombre: 'Básicas',
-        resumen: 'Un icono pintado a mano y el nombre, en dos tonos sobre la cera natural.',
+        resumen:
+          'Un icono pintado a mano en dos tonos y el nombre. El resto de la vela se queda con la cera a la vista.',
         precios: [{ importe: 30 }],
         incluye: ['La vela', 'Un icono pintado a mano', 'El nombre y la fecha'],
         altBase: 'Vela de bautizo básica pintada a mano',
@@ -98,7 +64,8 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'elaboradas',
         nombre: 'Elaboradas',
-        resumen: 'Más trazo y más detalle: retratos e iconos con el nombre a mano.',
+        resumen:
+          'El mismo dibujo con más trazo, más color y más superficie pintada. Aquí ya cabe un retrato.',
         precios: [{ importe: 35 }],
         incluye: [
           'La vela',
@@ -113,7 +80,8 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'al-detalle',
         nombre: 'Al detalle',
-        resumen: 'Color pleno y una composición que envuelve la vela entera.',
+        resumen:
+          'Pintada a todo color y de arriba abajo, con una composición que da la vuelta a la vela entera.',
         precios: [{ importe: 40 }],
         incluye: [
           'La vela',
@@ -144,7 +112,8 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'basicas',
         nombre: 'Básicas',
-        resumen: 'Dos tonos y un icono pintado a mano, con remates en oro.',
+        resumen:
+          'Un icono pintado a mano en dos tonos, con los remates en oro y la cera a la vista alrededor.',
         precios: [
           { etiqueta: '1 vela', importe: 55 },
           { etiqueta: '2 velas', importe: 100 },
@@ -158,7 +127,8 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'elaboradas',
         nombre: 'Elaboradas',
-        resumen: 'Color pleno y más detalle en el dibujo, para que sea la pieza que se mire.',
+        resumen:
+          'A todo color y con mucho más detalle en el dibujo: es la vela que se queda mirando la gente en la mesa.',
         precios: [
           { etiqueta: '1 vela', importe: 70 },
           { etiqueta: '2 velas', importe: 130 },
@@ -168,6 +138,53 @@ export const CATALOGO: CategoriaFuente[] = [
         altBase: 'Vela de mesa y boda elaborada pintada a mano',
         carpeta: 'mesa-elaboradas',
         portadaRef: 'MB-E-01',
+      },
+    ],
+  },
+
+  {
+    slug: 'cirios-pascuales',
+    nombre: 'Cirios pascuales',
+    ocasiones: ['pascua'],
+    resumen: 'Para la Vigilia Pascual, pintados a mano de arriba abajo.',
+    descripcion:
+      'El cirio pascual es la pieza más grande que sale del taller y la que más horas lleva. Se pinta a mano sobre cera, con el año, la cruz y la iconografía que la comunidad pida. Trabajamos con parroquias, comunidades y grupos, y podemos repetir un motivo de un año para otro o partir de una idea nueva.',
+    seo: {
+      titulo: 'Cirios pascuales pintados a mano',
+      descripcion:
+        'Cirios pascuales artesanales pintados a mano para parroquias y comunidades, con el año, la cruz y la iconografía que elijas. Desde 200 €.',
+    },
+    lineas: [
+      {
+        slug: 'basicos',
+        nombre: 'Básicos',
+        resumen:
+          'Un color de fondo con la cruz, el año y los trazos en oro. Queda cera a la vista entre los motivos.',
+        precios: [{ importe: 200 }],
+        notaPrecio: 'Para otros tamaños, consultar precio.',
+        medidas: '70 × 7 cm',
+        incluye: ['El cirio', 'La pintura a mano', 'El año y la iconografía que elijas'],
+        altBase: 'Cirio pascual básico pintado a mano',
+        carpeta: 'cirios-basicos',
+        portadaRef: 'CP-B-02',
+      },
+      {
+        slug: 'elaborados',
+        nombre: 'Elaborados',
+        resumen:
+          'Escenas a todo color al estilo de los iconos, cubriendo el cirio entero y dando la vuelta alrededor.',
+        precios: [{ importe: 260 }],
+        notaPrecio: 'Para otros tamaños, consultar precio.',
+        medidas: '70 × 7 cm',
+        incluye: [
+          'El cirio',
+          'La pintura a mano',
+          'Varias escenas alrededor del cirio',
+          'El año y la iconografía que elijas',
+        ],
+        altBase: 'Cirio pascual elaborado pintado a mano',
+        carpeta: 'cirios-elaborados',
+        portadaRef: 'CP-E-18',
       },
     ],
   },

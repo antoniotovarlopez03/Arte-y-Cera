@@ -51,13 +51,16 @@ export default async function PaginaContacto({ searchParams }: Props) {
       <div className="mt-8 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
           <p className="rotulo">Hablemos</p>
+          {/* El titular y el párrafo son los suyos, del WordPress. «Coméntanos qué
+              tipo de vela tienes pensada para tu momento» invita a la duda en vez
+              de pedir un pliego de condiciones, y eso es lo que hace escribir. */}
           <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
-            Diseñemos tu vela
+            ¿Tienes alguna duda?
           </h1>
           <span className="filete mt-5" />
           <p className="mt-5 text-lg leading-relaxed text-ink-soft">
-            Cuéntanos qué celebración preparas, para cuándo y qué te gustaría ver pintado. Te
-            respondemos con una propuesta y un precio.
+            No dudes en contactarnos y cuéntanos qué tipo de vela tienes pensada para tu momento;
+            estaremos encantados de ayudarte a encontrar lo que buscas.
           </p>
 
           {pieza && (

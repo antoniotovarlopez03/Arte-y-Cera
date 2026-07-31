@@ -21,30 +21,28 @@ export function TarjetaLinea({
             alt={linea.portada.alt}
             width={linea.portada.ancho}
             height={linea.portada.alto}
-            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 340px"
+            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 360px"
             quality={90}
             className="aspect-4/5 w-full object-cover transition-transform duration-700 ease-suave group-hover:scale-[1.04]"
           />
         </div>
 
-        <div className="mt-4">
-          {mostrarCategoria && (
-            <p className="rotulo">
-              {linea.categoria.nombre}
-            </p>
-          )}
-          <h3 className="mt-1 font-display text-xl font-semibold">{linea.nombre}</h3>
-          <p className="mt-1 text-sm leading-relaxed text-ink-soft">{linea.resumen}</p>
+        <div className="mt-5">
+          {mostrarCategoria && <p className="rotulo">{linea.categoria.nombre}</p>}
+          <h3 className="mt-1 font-display text-2xl font-semibold">{linea.nombre}</h3>
+          {/* El resumen de cada acabado está escrito para compararse con el de sus
+              hermanos: es aquí donde alguien decide entre 30 € y 40 €. */}
+          <p className="mt-1.5 leading-relaxed text-ink-soft">{linea.resumen}</p>
         </div>
       </Link>
 
-      <div className="mt-3 flex items-end justify-between gap-4">
+      <div className="mt-5 flex items-end justify-between gap-4">
         <Precio precios={linea.precios} nota={linea.notaPrecio} />
         <Link
           href={linea.href}
-          className="flex items-center gap-1.5 pb-1 text-sm text-ink-soft hover:text-verde"
+          className="flex shrink-0 items-center gap-1.5 border-b border-verde/25 pb-0.5 text-sm font-medium text-verde hover:border-verde"
         >
-          Ver las {linea.piezas.length}
+          Ver los {linea.piezas.length} modelos
           <IconoFlecha className="h-4 w-4 text-gold-deep transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
