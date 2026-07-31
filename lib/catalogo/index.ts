@@ -67,6 +67,7 @@ function construir(): Categoria[] {
       const piezas: Pieza[] = generadas.map((p) => ({
         ...p,
         alt: `${resto.altBase}, referencia ${p.ref}`,
+        lineaNombre: resto.nombre,
       }));
 
       const portada = piezas.find((p) => p.ref === portadaRef);

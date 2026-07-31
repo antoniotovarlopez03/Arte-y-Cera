@@ -11,11 +11,14 @@ import { clasesBoton } from '@/lib/ui';
 
 /**
  * Ancho máximo al que conviene mostrar una foto: hasta 1,4× su tamaño real y
- * nunca más de 416 px. Las fotos que hay hoy son de 300 px, así que esto evita
- * la portada borrosa que saldría al estirarlas a media pantalla. Cuando lleguen
- * los originales, el tope de 416 px es el que manda y se ven nítidas.
+ * nunca más del tope.
+ *
+ * Con los originales recuperados del WordPress (1200-1600 px) la regla del 1,4×
+ * ya no muerde y manda el tope. Se deja igualmente porque sigue protegiendo a
+ * las seis fotos que no estaban en el WordPress y siguen a 300 px: esas se
+ * muestran pequeñas en vez de estiradas y borrosas.
  */
-function anchoSeguro(pieza: Pieza, tope = 416): number {
+function anchoSeguro(pieza: Pieza, tope = 560): number {
   return Math.min(Math.round(pieza.ancho * 1.4), tope);
 }
 
@@ -44,23 +47,28 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
       </div>
 
       <article className="mx-auto max-w-6xl px-5 pt-6 pb-16">
-        <header className="grid gap-10 lg:grid-cols-[minmax(0,26rem)_1fr] lg:items-start lg:gap-14">
-          {/* Foto de portada. Dos decisiones:
-              · No se amplía más de 1,4× su tamaño real: las fotos actuales son
-                de 300 px y estirarlas solo enseña píxeles.
-              · object-contain en vez de cover, porque muchas fotos son montajes
-                de varias vistas de la misma vela y recortarlas se come la mitad
-                del trabajo. En la rejilla sí se recorta, por orden visual. */}
+        <header className="grid gap-10 lg:grid-cols-[minmax(0,35rem)_1fr] lg:items-start lg:gap-14">
+          {/* Foto de portada, sin proporción impuesta: se muestra tal como se
+              disparó.
+
+              Antes iba metida en un aspect-4/5 con object-contain, y eso dejaba
+              dos bandas de crema arriba y abajo en las fotos cuadradas —que son
+              casi todas— como si faltara algo. Recortarlas tampoco vale: hay
+              portadas que son montajes de varias vistas de la misma vela (la de
+              los cirios elaborados son cuatro) y el recorte se come la mitad del
+              trabajo. Dejarle su propia proporción resuelve las dos cosas, y no
+              hay riesgo de salto de maquetación porque el tamaño real de cada
+              foto viene en el catálogo. */}
           <div className="mx-auto w-full" style={{ maxWidth: `${anchoSeguro(linea.portada)}px` }}>
             <Image
               src={linea.portada.src}
               alt={linea.portada.alt}
               width={linea.portada.ancho}
               height={linea.portada.alto}
-              sizes="(max-width: 1024px) 92vw, 416px"
+              sizes="(max-width: 1024px) 92vw, 560px"
               quality={90}
               priority
-              className="aspect-4/5 w-full rounded-pieza bg-cream object-contain p-2 shadow-pieza"
+              className="w-full rounded-pieza bg-cream shadow-pieza"
             />
           </div>
 
@@ -83,6 +91,12 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
               {linea.resumen}
             </p>
 
+            {/* Esta caja NO es pegajosa en escritorio, aunque tentaba: vive dentro
+                de una columna del grid de la cabecera, y la galería —que es por
+                donde se hace scroll de verdad— queda fuera, así que no tendría
+                recorrido por el que viajar. Quien está mirando piezas tiene el
+                botón de WhatsApp con la referencia dentro del visor de cada foto,
+                que es el camino que se usa. En móvil sí hay barra fija. */}
             <div className="mt-7 rounded-pieza border border-sand bg-cream/60 p-6 sm:p-7">
               <Precio precios={linea.precios} nota={linea.notaPrecio} tamano="grande" />
 

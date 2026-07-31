@@ -7,7 +7,9 @@ import { expect, test } from '@playwright/test';
 test('la portada lleva al catálogo', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Velas pintadas a mano');
-  await page.getByRole('link', { name: 'Ver colecciones' }).click();
+  // «Ver nuestros modelos» es la llamada a la acción del cliente, la de su
+  // WordPress. En la portada hay una sola, la del hero.
+  await page.getByRole('link', { name: 'Ver nuestros modelos' }).first().click();
   await expect(page).toHaveURL('/colecciones');
   await expect(page.getByRole('heading', { name: 'Nuestras colecciones' })).toBeVisible();
 });
@@ -78,6 +80,27 @@ test('el botón de WhatsApp lleva la referencia de la pieza', async ({ page }) =
   expect(decodeURIComponent(href ?? '')).toContain('NV-05');
 });
 
+test('la colección enseña todas sus piezas y cada una sabe de qué acabado es', async ({ page }) => {
+  await page.goto('/colecciones/velas-de-bautizo');
+
+  // Las 77 piezas de los cuatro acabados, juntas, como en su WordPress.
+  await expect(
+    page.getByRole('heading', { name: 'Las 77 piezas de la colección' }),
+  ).toBeVisible();
+
+  // Lo delicado de mezclarlas: el mensaje de WhatsApp de una foto tiene que
+  // nombrar SU acabado («Al detalle»), no la colección entera. Si esto se rompe,
+  // Antonio recibe mensajes que no dicen qué está pidiendo el cliente.
+  await page
+    .getByRole('button', { name: /Ver Al detalle BZ-D-/ })
+    .first()
+    .click();
+
+  const enlace = page.getByRole('link', { name: /Preguntar por la BZ-D-/ });
+  const href = decodeURIComponent((await enlace.getAttribute('href')) ?? '');
+  expect(href).toContain('(Al detalle)');
+});
+
 test('el formulario avisa de los campos que faltan', async ({ page }) => {
   await page.goto('/contacto');
   await page.getByRole('button', { name: 'Enviar mensaje' }).click();
@@ -95,6 +118,9 @@ const PAGINAS = [
   '/',
   '/colecciones',
   '/colecciones/cirios-pascuales',
+  // Ésta lleva la galería de los cuatro acabados mezclados, 77 botones de foto:
+  // es la página con más elementos interactivos de la web.
+  '/colecciones/velas-de-bautizo',
   '/colecciones/cirios-pascuales/elaborados',
   '/contacto',
   '/taller',

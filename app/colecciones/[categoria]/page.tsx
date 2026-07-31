@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FichaLinea } from '@/components/catalogo/ficha-linea';
+import { GaleriaPiezas } from '@/components/catalogo/galeria-piezas';
 import { TarjetaLinea } from '@/components/catalogo/tarjeta-linea';
 import { Migas } from '@/components/ui/migas';
 import { DatosEstructurados } from '@/components/datos-estructurados';
@@ -49,6 +50,7 @@ export default async function PaginaCategoria({ params }: Props) {
   }
 
   const desde = Math.min(...categoria.lineas.map(precioMinimo));
+  const todasLasPiezas = categoria.lineas.flatMap((l) => l.piezas);
 
   return (
     <>
@@ -76,11 +78,40 @@ export default async function PaginaCategoria({ params }: Props) {
           </p>
         </header>
 
-        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {categoria.lineas.map((linea) => (
-            <TarjetaLinea key={linea.slug} linea={linea} />
-          ))}
-        </div>
+        <section className="mt-16" aria-labelledby="titulo-acabados">
+          <h2 id="titulo-acabados" className="font-display text-2xl font-semibold">
+            Elige el acabado
+          </h2>
+          <p className="mt-2 max-w-2xl text-ink-soft">
+            Lo que cambia de un precio a otro es cuánta pintura lleva la pieza.
+          </p>
+          <div className="mt-8 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {categoria.lineas.map((linea) => (
+              <TarjetaLinea key={linea.slug} linea={linea} />
+            ))}
+          </div>
+        </section>
+
+        {/* Todas las piezas de la colección juntas, de todos los acabados.
+            En su WordPress los cuatro acabados de bautizo estaban en la misma
+            página y se podían recorrer de un scroll; al partirlos en cuatro
+            fichas (que es lo correcto para el precio y para Google) se perdió
+            eso. Aquí vuelve: quien viene por «una vela de bautizo» ve las 77 sin
+            entrar y salir cuatro veces, y cada foto lleva su referencia y su
+            acabado. Las fichas siguen siendo el sitio donde está el precio. */}
+        <section className="mt-24" aria-labelledby="titulo-todas">
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <h2 id="titulo-todas" className="font-display text-2xl font-semibold">
+              Las {categoria.totalPiezas} piezas de la colección
+            </h2>
+            <p className="text-sm text-ink-soft">
+              Cada foto lleva su referencia: dínosla y sabemos exactamente cuál te gusta.
+            </p>
+          </div>
+          <div className="mt-8">
+            <GaleriaPiezas piezas={todasLasPiezas} nombreLinea={categoria.nombre} />
+          </div>
+        </section>
       </div>
     </>
   );

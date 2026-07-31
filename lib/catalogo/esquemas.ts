@@ -69,6 +69,13 @@ export type Pieza = {
   ancho: number;
   alto: number;
   alt: string;
+  /**
+   * Acabado al que pertenece la pieza («Elaboradas»). Va sellado en la pieza y
+   * no como parámetro de la galería porque la página de colección muestra las
+   * piezas de los cuatro acabados mezcladas, y el mensaje de WhatsApp de cada
+   * foto tiene que nombrar el suyo, no el de la galería entera.
+   */
+  lineaNombre: string;
 };
 
 export type Linea = Omit<LineaFuente, 'carpeta' | 'portadaRef'> & {

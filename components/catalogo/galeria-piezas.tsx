@@ -21,10 +21,19 @@ import { clasesBoton, cx } from '@/lib/ui';
  *    devolver el foco al salir y de cerrar con Escape. Menos código nuestro y
  *    accesibilidad de verdad.
  *
- * Las fotos actuales son de 300 px, así que la vista grande nunca las amplía
- * más de el doble: ampliarlas más solo enseña los píxeles.
+ * La vista grande nunca amplía una foto por encima de su tamaño real: con los
+ * originales recuperados del WordPress eso permite llegar a 1200 px, y las seis
+ * que siguen a 300 px se muestran pequeñas en lugar de pixeladas.
  */
-export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombreLinea: string }) {
+export function GaleriaPiezas({
+  piezas,
+  nombreLinea,
+}: {
+  piezas: Pieza[];
+  /** Solo para el título accesible del visor. El acabado de cada foto sale de
+   *  `pieza.lineaNombre`, porque en la página de colección van mezcladas. */
+  nombreLinea: string;
+}) {
   const dialogo = useRef<HTMLDialogElement>(null);
   const [indice, setIndice] = useState<number | null>(null);
 
@@ -91,11 +100,11 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
   );
 
   const pieza = indice === null ? null : piezas[indice]!;
-  const anchoMaximo = pieza ? Math.min(pieza.ancho * 2, 720) : 720;
+  const anchoMaximo = pieza ? Math.min(pieza.ancho, 1200) : 1200;
 
   return (
     <>
-      <ul role="list" className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+      <ul role="list" className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 xl:grid-cols-4">
         {piezas.map((p, i) => (
           <li key={p.ref}>
             <button
@@ -108,7 +117,7 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
                 alt={p.alt}
                 width={p.ancho}
                 height={p.alto}
-                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 260px"
+                sizes="(max-width: 640px) 48vw, (max-width: 1024px) 32vw, 340px"
                 quality={90}
                 className="aspect-4/5 w-full object-cover transition-transform duration-500 ease-suave group-hover:scale-[1.03]"
               />
@@ -116,7 +125,7 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
                 {p.ref}
               </span>
               <span className="sr-only">
-                Ver {nombreLinea} {p.ref} en grande
+                Ver {p.lineaNombre} {p.ref} en grande
               </span>
             </button>
           </li>
@@ -152,7 +161,7 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
           if (e.target === dialogo.current) cerrar();
         }}
         aria-label={`${nombreLinea}: piezas en grande`}
-        className="m-auto max-h-dvh w-full max-w-3xl bg-transparent p-0 text-cream outline-none backdrop:bg-ink/92"
+        className="m-auto max-h-dvh w-full max-w-5xl bg-transparent p-0 text-cream outline-none backdrop:bg-ink/92"
       >
         {pieza && (
           <div className="flex max-h-dvh flex-col gap-4 p-4 sm:p-6">
@@ -160,7 +169,7 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
               <p className="font-mono text-sm tracking-wide text-gold-light">
                 {pieza.ref}
                 <span className="ml-3 font-sans text-cream/60">
-                  · {indice! + 1} de {piezas.length}
+                  · {pieza.lineaNombre} · {indice! + 1} de {piezas.length}
                 </span>
               </p>
               <button
@@ -189,11 +198,11 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
                 alt={pieza.alt}
                 width={pieza.ancho}
                 height={pieza.alto}
-                sizes="(max-width: 640px) 80vw, 620px"
+                sizes="(max-width: 640px) 84vw, 1100px"
                 quality={90}
                 priority
                 style={{ maxWidth: `${anchoMaximo}px` }}
-                className="h-auto max-h-[64dvh] w-full rounded-lg object-contain shadow-alzada"
+                className="h-auto max-h-[78dvh] w-full rounded-lg object-contain shadow-alzada"
               />
               <FlechaGaleria direccion="siguiente" onClick={() => mover(1)} />
             </div>
@@ -201,7 +210,7 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
             <div className="flex flex-col items-center gap-2">
               <a
                 href={whatsappUrl(
-                  `Hola, me interesa la pieza ${pieza.ref} (${nombreLinea}) que he visto en la web.`,
+                  `Hola, me interesa la pieza ${pieza.ref} (${pieza.lineaNombre}) que he visto en la web.`,
                 )}
                 target="_blank"
                 rel="noopener"
