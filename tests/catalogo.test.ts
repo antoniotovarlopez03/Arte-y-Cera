@@ -42,6 +42,17 @@ describe('catálogo', () => {
     }
   });
 
+  /* Las once fotos de portada son las que se ven en las tarjetas y en la cabecera
+     de cada ficha: si alguna vuelve a caer a los ~300 px que tenía el repositorio
+     antes de recuperar los originales del WordPress, la web se ve borrosa justo
+     por donde más se mira. Se recuperan con `npm run media:recuperar`. */
+  it('ninguna foto de portada baja de 1000 px de lado mayor', () => {
+    const borrosas = lineas
+      .filter((l) => Math.max(l.portada.ancho, l.portada.alto) < 1000)
+      .map((l) => `${l.portada.ref} (${l.portada.ancho}×${l.portada.alto}) en ${l.href}`);
+    expect(borrosas).toEqual([]);
+  });
+
   it('la portada de cada línea es la primera de su galería', () => {
     for (const linea of lineas) {
       expect(linea.piezas[0]?.ref, linea.href).toBe(linea.portada.ref);

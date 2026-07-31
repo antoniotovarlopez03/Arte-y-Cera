@@ -17,6 +17,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "catalogo:generar": "node scripts/generar-catalogo.mjs",
+    "media:recuperar": "node scripts/recuperar-originales.mjs",
     "media:auditar": "node scripts/auditar-media.mjs"
   },
   "dependencies": {

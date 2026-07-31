@@ -7,6 +7,9 @@ build/
 .env
 .env*.local
 
+# Caché de trabajo (originales bajados del WordPress; no van al repo)
+/.cache/
+
 # Tests
 /test-results/
 /playwright-report/
