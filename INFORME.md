@@ -107,8 +107,8 @@ Medido con Lighthouse de Google, en móvil:
 | Nota de rendimiento          | 62                   | **98**     |
 | Nota de accesibilidad        | 95                   | **100**    |
 | Peso de la página            | 4.803 KB             | **588 KB** |
-| Tiempo hasta ver la foto     | 9,9 s                | **2,2 s**  |
-| Tiempo hasta ver algo        | 3,0 s                | **0,9 s**  |
+| Tiempo hasta ver la foto     | 9,9 s                | **2,1 s**  |
+| Tiempo hasta ver algo        | 3,0 s                | **1,8 s**  |
 | Saltos de maquetación        | —                    | **0**      |
 
 Lo llamativo: las fotos son ahora **cinco veces más grandes** y la web va **más rápida** que antes
