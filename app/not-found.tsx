@@ -5,8 +5,8 @@ import { clasesBoton } from '@/lib/ui';
 export default function NoEncontrada() {
   return (
     <div className="mx-auto max-w-2xl px-5 py-24 text-center">
-      <p className="font-display text-5xl font-bold text-gold-ink">404</p>
-      <h1 className="mt-4 font-display text-3xl font-semibold text-ink">Esta página no existe</h1>
+      <p className="font-display text-5xl font-bold text-verde">404</p>
+      <h1 className="mt-4 font-display text-3xl font-semibold">Esta página no existe</h1>
       <p className="mt-4 leading-relaxed text-ink-soft">
         Puede que el enlace esté mal escrito o que la colección haya cambiado de nombre. Estas son
         las que hay ahora mismo:
@@ -17,7 +17,7 @@ export default function NoEncontrada() {
           <li key={categoria.slug}>
             <Link
               href={categoria.href}
-              className="inline-block rounded-full border border-sand bg-cream/50 px-4 py-2 text-sm text-ink-soft hover:border-gold-deep hover:text-ink"
+              className="inline-block rounded-full border border-sand bg-cream/50 px-4 py-2 text-sm text-ink-soft hover:border-verde hover:text-verde"
             >
               {categoria.nombre}
             </Link>

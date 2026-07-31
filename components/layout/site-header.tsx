@@ -45,7 +45,7 @@ export function SiteHeader() {
             className="h-10 w-10 rounded-full"
             priority
           />
-          <span className="font-display text-xl font-bold tracking-tight text-ink">
+          <span className="font-display text-xl font-bold tracking-tight text-verde">
             Arte <span className="text-gold-ink">&amp;</span> Cera
           </span>
         </Link>
@@ -56,9 +56,9 @@ export function SiteHeader() {
               key={enlace.href}
               href={enlace.href}
               aria-current={esActivo(enlace.href) ? 'page' : undefined}
-              className={`text-[0.95rem] transition-colors hover:text-ink ${
+              className={`text-[0.95rem] transition-colors hover:text-verde ${
                 esActivo(enlace.href)
-                  ? 'font-medium text-ink underline decoration-gold decoration-2 underline-offset-8'
+                  ? 'font-medium text-verde underline decoration-gold decoration-2 underline-offset-8'
                   : 'text-ink-soft'
               }`}
             >
@@ -67,7 +67,7 @@ export function SiteHeader() {
           ))}
           <Link
             href="/contacto"
-            className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-ink-2"
+            className="rounded-full bg-verde px-5 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-verde-profundo"
           >
             Pedir presupuesto
           </Link>
@@ -121,7 +121,7 @@ export function SiteHeader() {
           <Link
             href="/contacto"
             onClick={() => setAbierto(false)}
-            className="mt-5 block rounded-full bg-ink px-5 py-3 text-center text-sm font-medium text-ivory"
+            className="mt-5 block rounded-full bg-verde px-5 py-3 text-center text-sm font-medium text-ivory"
           >
             Pedir presupuesto
           </Link>

@@ -23,10 +23,10 @@ export function TarjetaCategoria({ categoria }: { categoria: Categoria }) {
         </div>
 
         <div className="mt-4">
-          <h3 className="font-display text-xl font-semibold text-ink">{categoria.nombre}</h3>
+          <h3 className="font-display text-xl font-semibold">{categoria.nombre}</h3>
           <p className="mt-1 text-sm leading-relaxed text-ink-soft">{categoria.resumen}</p>
           <p className="mt-3 flex items-center gap-2 text-sm">
-            <span className="font-display font-bold text-gold-ink">
+            <span className="font-display font-bold text-verde">
               desde {formatearPrecio(desde)}
             </span>
             <span className="text-ink-soft/60">·</span>

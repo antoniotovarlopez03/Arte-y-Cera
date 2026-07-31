@@ -49,10 +49,10 @@ export default function PaginaInicio() {
       <section className="border-b border-sand/60 bg-cream/40">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-20">
           <div>
-            <p className="text-xs tracking-[0.14em] text-gold-ink uppercase">
+            <p className="rotulo">
               Hecho a mano · Pieza única
             </p>
-            <h1 className="mt-3 font-display text-4xl leading-[1.08] font-bold text-ink sm:text-5xl lg:text-6xl">
+            <h1 className="mt-3 font-display text-4xl leading-[1.08] font-bold sm:text-5xl lg:text-6xl">
               Velas pintadas a mano, una a una
             </h1>
             <span className="filete mt-6" />
@@ -96,7 +96,7 @@ export default function PaginaInicio() {
         aria-labelledby="titulo-colecciones"
       >
         <div className="max-w-2xl">
-          <p className="text-xs tracking-[0.14em] text-gold-ink uppercase">Catálogo</p>
+          <p className="rotulo">Catálogo</p>
           <h2
             id="titulo-colecciones"
             className="mt-2 font-display text-3xl font-semibold text-ink sm:text-4xl"
@@ -117,7 +117,7 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Cómo se encarga ===== */}
-      <section className="bg-ink text-cream" aria-labelledby="titulo-pasos">
+      <section className="bg-verde-profundo text-cream" aria-labelledby="titulo-pasos">
         <div className="mx-auto max-w-6xl px-5 py-16 lg:py-20">
           <div className="max-w-2xl">
             <p className="text-xs tracking-[0.14em] text-gold uppercase">Cómo funciona</p>
@@ -147,7 +147,7 @@ export default function PaginaInicio() {
 
       {/* ===== Cierre ===== */}
       <section className="mx-auto max-w-3xl px-5 py-16 text-center lg:py-24">
-        <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
+        <h2 className="font-display text-3xl font-semibold sm:text-4xl">
           ¿Tienes una fecha en mente?
         </h2>
         <p className="mt-4 text-lg leading-relaxed text-ink-soft">

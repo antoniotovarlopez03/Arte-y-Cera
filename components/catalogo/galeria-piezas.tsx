@@ -112,7 +112,7 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
                 quality={90}
                 className="aspect-4/5 w-full object-cover transition-transform duration-500 ease-suave group-hover:scale-[1.03]"
               />
-              <span className="absolute bottom-0 left-0 rounded-tr-lg bg-ink/75 px-2 py-1 font-mono text-[0.68rem] tracking-wide text-cream">
+              <span className="absolute bottom-0 left-0 rounded-tr-lg bg-verde-profundo/85 px-2 py-1 font-mono text-[0.68rem] tracking-wide text-cream">
                 {p.ref}
               </span>
               <span className="sr-only">
@@ -126,7 +126,11 @@ export function GaleriaPiezas({ piezas, nombreLinea }: { piezas: Pieza[]; nombre
       {/* El diálogo recibe el foco al abrirse (de ahí que funcionen las
           flechas), pero no es un control: el anillo de foco rodearía todo el
           modal sin aportar nada, así que se le quita con outline-none. Los
-          botones de dentro sí lo llevan. */}
+          botones de dentro sí lo llevan.
+
+          El fondo se queda en negro cálido y NO pasa al verde de la marca: un
+          velo verde le cambia la percepción del color a la foto que hay encima,
+          y aquí lo único que importa es cómo se ve la vela. */}
       <dialog
         ref={dialogo}
         onKeyDown={(e) => {

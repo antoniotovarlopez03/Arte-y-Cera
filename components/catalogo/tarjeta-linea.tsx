@@ -29,11 +29,11 @@ export function TarjetaLinea({
 
         <div className="mt-4">
           {mostrarCategoria && (
-            <p className="text-xs tracking-[0.14em] text-gold-ink uppercase">
+            <p className="rotulo">
               {linea.categoria.nombre}
             </p>
           )}
-          <h3 className="mt-1 font-display text-xl font-semibold text-ink">{linea.nombre}</h3>
+          <h3 className="mt-1 font-display text-xl font-semibold">{linea.nombre}</h3>
           <p className="mt-1 text-sm leading-relaxed text-ink-soft">{linea.resumen}</p>
         </div>
       </Link>
@@ -42,7 +42,7 @@ export function TarjetaLinea({
         <Precio precios={linea.precios} nota={linea.notaPrecio} />
         <Link
           href={linea.href}
-          className="flex items-center gap-1.5 pb-1 text-sm text-ink-soft hover:text-ink"
+          className="flex items-center gap-1.5 pb-1 text-sm text-ink-soft hover:text-verde"
         >
           Ver las {linea.piezas.length}
           <IconoFlecha className="h-4 w-4 text-gold-deep transition-transform group-hover:translate-x-1" />

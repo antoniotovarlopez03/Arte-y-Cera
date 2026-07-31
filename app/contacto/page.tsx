@@ -50,8 +50,8 @@ export default async function PaginaContacto({ searchParams }: Props) {
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
-          <p className="text-xs tracking-[0.14em] text-gold-ink uppercase">Hablemos</p>
-          <h1 className="mt-2 font-display text-4xl leading-tight font-bold text-ink sm:text-5xl">
+          <p className="rotulo">Hablemos</p>
+          <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
             Diseñemos tu vela
           </h1>
           <span className="filete mt-5" />

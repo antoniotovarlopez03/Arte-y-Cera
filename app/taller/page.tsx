@@ -73,8 +73,8 @@ export default function PaginaTaller() {
 
       <section className="mx-auto grid max-w-6xl items-start gap-12 px-5 pt-8 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p className="text-xs tracking-[0.14em] text-gold-ink uppercase">Nuestro oficio</p>
-          <h1 className="mt-2 font-display text-4xl leading-tight font-bold text-ink sm:text-5xl">
+          <p className="rotulo">Nuestro oficio</p>
+          <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
             Cada vela cuenta una historia
           </h1>
           <span className="filete mt-5" />
@@ -92,7 +92,7 @@ export default function PaginaTaller() {
           <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-sand pt-8">
             {DATOS.map((item) => (
               <div key={item.pie}>
-                <dt className="font-display text-3xl font-bold text-ink">{item.dato}</dt>
+                <dt className="font-display text-3xl font-bold text-verde">{item.dato}</dt>
                 <dd className="mt-1 text-sm text-ink-soft">{item.pie}</dd>
               </div>
             ))}
@@ -121,7 +121,7 @@ export default function PaginaTaller() {
         </div>
       </section>
 
-      <section className="mt-24 bg-ink text-cream" aria-labelledby="titulo-proceso">
+      <section className="mt-24 bg-verde-profundo text-cream" aria-labelledby="titulo-proceso">
         <div className="mx-auto max-w-6xl px-5 py-16 lg:py-20">
           <div className="max-w-2xl">
             <p className="text-xs tracking-[0.14em] text-gold uppercase">Cómo lo hacemos</p>
@@ -154,7 +154,7 @@ export default function PaginaTaller() {
       </section>
 
       <section className="mx-auto max-w-3xl px-5 py-16 text-center lg:py-20">
-        <h2 className="font-display text-3xl font-semibold text-ink">¿Empezamos con la tuya?</h2>
+        <h2 className="font-display text-3xl font-semibold">¿Empezamos con la tuya?</h2>
         <p className="mt-4 text-lg leading-relaxed text-ink-soft">
           Mira las colecciones para coger ideas o escríbenos directamente con la fecha de tu
           celebración.

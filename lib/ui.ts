@@ -9,13 +9,14 @@ const BASE =
   'inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60';
 
 const VARIANTES: Record<Variante, string> = {
-  primario: 'bg-ink text-ivory hover:bg-ink-2 px-6 py-3',
-  secundario: 'border border-ink/25 text-ink hover:border-ink hover:bg-cream px-6 py-3',
-  // Verde de WhatsApp oscurecido a propósito: el #25d366 de marca con texto
-  // blanco da 2:1 de contraste y no pasa WCAG AA. Este da 5,4:1 y se sigue
-  // leyendo como «WhatsApp».
+  primario: 'bg-verde text-ivory hover:bg-verde-profundo px-6 py-3',
+  secundario: 'border border-verde/30 text-verde hover:border-verde hover:bg-cream px-6 py-3',
+  // El verde de WhatsApp convive con el de la marca, y es a propósito: es el
+  // canal por el que este negocio recibe los encargos de verdad, así que
+  // conviene que el botón se reconozca al instante. Va oscurecido porque el
+  // #25d366 oficial con texto blanco da 2:1 y no pasa WCAG AA; este da 5,4:1.
   whatsapp: 'bg-[#0f7a40] text-white hover:bg-[#0b6135] px-6 py-3',
-  discreto: 'text-ink-soft hover:text-ink underline decoration-gold underline-offset-4',
+  discreto: 'text-ink-soft hover:text-verde underline decoration-gold underline-offset-4',
 };
 
 export function clasesBoton(variante: Variante = 'primario', extra?: string): string {

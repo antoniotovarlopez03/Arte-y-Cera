@@ -64,15 +64,15 @@ export default async function PaginaCategoria({ params }: Props) {
         />
 
         <header className="mt-8 max-w-2xl">
-          <p className="text-xs tracking-[0.14em] text-gold-ink uppercase">Colección</p>
-          <h1 className="mt-2 font-display text-4xl leading-tight font-bold text-ink sm:text-5xl">
+          <p className="rotulo">Colección</p>
+          <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
             {categoria.nombre}
           </h1>
           <span className="filete mt-5" />
           <p className="mt-5 text-lg leading-relaxed text-ink-soft">{categoria.descripcion}</p>
           <p className="mt-4 text-sm text-ink-soft">
             {categoria.lineas.length} acabados · {categoria.totalPiezas} piezas · desde{' '}
-            <span className="font-display font-bold text-gold-ink">{desde} €</span>
+            <span className="font-display font-bold text-verde">{desde} €</span>
           </p>
         </header>
 

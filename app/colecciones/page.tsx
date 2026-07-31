@@ -21,8 +21,8 @@ export default function PaginaColecciones() {
       <Migas migas={[{ href: '/', texto: 'Inicio' }, { texto: 'Colecciones' }]} />
 
       <header className="mt-8 max-w-2xl">
-        <p className="text-xs tracking-[0.14em] text-gold-ink uppercase">Catálogo</p>
-        <h1 className="mt-2 font-display text-4xl leading-tight font-bold text-ink sm:text-5xl">
+        <p className="rotulo">Catálogo</p>
+        <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
           Nuestras colecciones
         </h1>
         <span className="filete mt-5" />
@@ -41,7 +41,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-sand bg-cream/50 px-4 py-2 text-sm text-ink-soft transition-colors hover:border-gold-deep hover:text-ink"
+                className="inline-block rounded-full border border-sand bg-cream/50 px-4 py-2 text-sm text-ink-soft transition-colors hover:border-verde hover:text-verde"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -55,7 +55,7 @@ export default function PaginaColecciones() {
           const grupo = categoriasDe(ocasion);
           return (
             <section key={ocasion} id={ocasion} aria-labelledby={`titulo-${ocasion}`}>
-              <h2 id={`titulo-${ocasion}`} className="font-display text-2xl font-semibold text-ink">
+              <h2 id={`titulo-${ocasion}`} className="font-display text-2xl font-semibold">
                 {ETIQUETAS_OCASION[ocasion]}
               </h2>
               <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

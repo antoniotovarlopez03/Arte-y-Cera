@@ -21,7 +21,7 @@ export function FormularioContacto({
   if (estado.estado === 'ok') {
     return (
       <div className="rounded-pieza border border-gold/60 bg-cream/60 p-8 text-center">
-        <p className="font-display text-2xl font-semibold text-ink">Mensaje enviado</p>
+        <p className="font-display text-2xl font-semibold text-verde">Mensaje enviado</p>
         <p className="mt-3 text-ink-soft">
           Gracias por escribirnos. Te contestamos al correo que nos has dejado, normalmente en menos
           de 48 h.

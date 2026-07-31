@@ -11,7 +11,7 @@ const LEGALES = [
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 bg-ink text-cream">
+    <footer className="mt-24 bg-verde-profundo text-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2.5">

@@ -25,7 +25,7 @@ export function Precio({
   return (
     <div className={className}>
       {precios.length === 1 && precios[0] ? (
-        <p className={cx('font-display font-bold text-gold-ink', grande ? 'text-3xl' : 'text-xl')}>
+        <p className={cx('font-display font-bold text-verde', grande ? 'text-3xl' : 'text-xl')}>
           {precios[0].desde && <span className="text-base font-normal">desde </span>}
           {formatearPrecio(precios[0].importe)}
         </p>
@@ -37,7 +37,7 @@ export function Precio({
               <span className="h-px flex-1 border-b border-dotted border-sand" aria-hidden="true" />
               <span
                 className={cx(
-                  'font-display font-bold text-gold-ink',
+                  'font-display font-bold text-verde',
                   grande ? 'text-2xl' : 'text-lg',
                 )}
               >
