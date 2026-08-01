@@ -104,9 +104,24 @@ export function GaleriaPiezas({
 
   return (
     <>
-      <ul role="list" className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 xl:grid-cols-4">
+      {/* Columnas CSS en vez de rejilla, para que cada foto conserve SU proporción.
+          Antes todas iban recortadas a 4:5 y eso se comía la composición que él
+          eligió al disparar: una foto apaisada de dos velas se quedaba en una
+          vertical con media pieza fuera. Sus fotos son cuadradas, 3:4, 4:3 y
+          algún recorte, y ninguna se hizo para recortarse otra vez.
+
+          Es CSS puro: no entra JavaScript, y siguen funcionando la carga
+          perezosa, el <dialog> y el enlace ?pieza=. Las tarjetas de categoría y
+          de línea SÍ mantienen el recorte 4:5, porque ahí lo que hace legible la
+          comparación entre colecciones es que todas midan igual.
+
+          Ojo con el orden: en columnas CSS el contenido cae por columnas, no por
+          filas, así que lo que se lee de izquierda a derecha no es consecutivo.
+          Para una galería de piezas sin orden semántico da igual, y el foco del
+          teclado sigue el orden del DOM (comprobado tabulando). */}
+      <ul role="list" className="columns-2 gap-4 sm:columns-3 sm:gap-6 xl:columns-4">
         {piezas.map((p, i) => (
-          <li key={p.ref}>
+          <li key={p.ref} className="mb-4 break-inside-avoid sm:mb-6">
             <button
               type="button"
               onClick={() => abrir(i)}
@@ -119,7 +134,7 @@ export function GaleriaPiezas({
                 height={p.alto}
                 sizes="(max-width: 640px) 48vw, (max-width: 1024px) 32vw, 340px"
                 quality={90}
-                className="aspect-4/5 w-full object-cover transition-transform duration-500 ease-suave group-hover:scale-[1.03]"
+                className="w-full transition-transform duration-500 ease-suave group-hover:scale-[1.03]"
               />
               <span className="absolute bottom-0 left-0 rounded-tr-lg bg-verde-profundo/85 px-2 py-1 font-mono text-[0.68rem] tracking-wide text-cream">
                 {p.ref}
