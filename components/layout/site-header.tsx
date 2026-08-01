@@ -13,10 +13,21 @@ import { useEffect, useId, useRef, useState } from 'react';
 export type EntradaMenu = {
   slug: string;
   nombre: string;
+  /** Nombre corto para la barra: «Bautizo» en vez de «Velas de bautizo». */
+  nombreMenu: string;
   href: string;
   desde: string;
+  piezas: number;
   portada: { src: string; alt: string; ancho: number; alto: number };
 };
+
+/**
+ * Cuántas colecciones van sueltas en la barra, antes del desplegable. Son las
+ * tres primeras del catálogo, que están ordenadas por el criterio comercial de
+ * Antonio (bautizo, bodas, cirios): si algún día reordena el catálogo, la barra
+ * le sigue sin tocar nada aquí.
+ */
+const ATAJOS = 3;
 
 /**
  * Cabecera.
@@ -91,7 +102,26 @@ export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
           </span>
         </Link>
 
-        <nav aria-label="Principal" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Principal" className="hidden items-center gap-6 md:flex">
+          {/* Las tres colecciones que más se venden, sueltas y con el nombre
+              corto: quien llega buscando una vela de bautizo pulsa «Bautizo» y
+              ya está, sin pasar por ningún desplegable ni por la palabra
+              «colecciones». A partir de lg, que es donde caben las tres. */}
+          {colecciones.slice(0, ATAJOS).map((coleccion) => (
+            <Link
+              key={coleccion.slug}
+              href={coleccion.href}
+              aria-current={pathname === coleccion.href ? 'page' : undefined}
+              className={`hidden text-[0.95rem] transition-colors hover:text-verde lg:block ${
+                pathname === coleccion.href
+                  ? 'font-medium text-verde underline decoration-gold decoration-2 underline-offset-8'
+                  : 'text-ink-soft'
+              }`}
+            >
+              {coleccion.nombreMenu}
+            </Link>
+          ))}
+
           <div className="relative" ref={contenedorPanel}>
             <button
               ref={botonPanel}
@@ -105,7 +135,7 @@ export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
                   : 'text-ink-soft'
               }`}
             >
-              Velas y toallas
+              Todas las colecciones
               <svg
                 viewBox="0 0 24 24"
                 className={`h-4 w-4 transition-transform ${panelAbierto ? 'rotate-180' : ''}`}
@@ -121,31 +151,35 @@ export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
             {panelAbierto && (
               <div
                 id={idPanel}
-                className="absolute top-full left-1/2 z-50 mt-4 w-[34rem] -translate-x-1/2 rounded-pieza border border-sand bg-ivory p-3 shadow-alzada"
+                className="absolute top-full left-1/2 z-50 mt-4 w-[38rem] -translate-x-1/2 rounded-pieza border border-sand bg-ivory p-3 shadow-alzada"
               >
+                {/* Al grano: el nombre entero bien legible, el precio desde en
+                    verde y cuántas piezas hay. Con eso se decide sin entrar. */}
                 <ul role="list" className="grid grid-cols-2 gap-1">
                   {colecciones.map((coleccion) => (
                     <li key={coleccion.slug}>
                       <Link
                         href={coleccion.href}
                         onClick={() => setPanelAbierto(false)}
-                        className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-cream"
+                        className="flex items-center gap-3.5 rounded-lg p-2.5 transition-colors hover:bg-cream"
                       >
                         <Image
                           src={coleccion.portada.src}
                           alt=""
                           width={coleccion.portada.ancho}
                           height={coleccion.portada.alto}
-                          sizes="56px"
+                          sizes="64px"
                           quality={90}
-                          className="h-14 w-14 shrink-0 rounded-md object-cover"
+                          className="h-16 w-16 shrink-0 rounded-md object-cover"
                         />
                         <span className="min-w-0">
-                          <span className="block truncate text-sm font-medium text-verde">
+                          <span className="block font-display text-lg leading-tight font-semibold text-verde">
                             {coleccion.nombre}
                           </span>
-                          <span className="block text-xs text-ink-soft">
-                            desde {coleccion.desde}
+                          <span className="mt-1 block text-sm text-ink-soft">
+                            <span className="font-medium text-verde">desde {coleccion.desde}</span>
+                            {' · '}
+                            {coleccion.piezas} modelos
                           </span>
                         </span>
                       </Link>

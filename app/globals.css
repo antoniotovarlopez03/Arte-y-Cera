@@ -138,6 +138,13 @@
     color: var(--color-gold-ink);
   }
 
+  /* AVISO: la esquina inferior derecha de la ventana está OCUPADA.
+     Ahí vive el botón flotante de WhatsApp, que es `fixed` y va por encima de
+     todo. Ya se comió tres cosas: la barra de precio de la ficha en móvil, el
+     «Ver esta pieza» de la portada y los controles del carrusel. Si necesitas
+     poner algo ahí, o lo mueves tú o escondes el flotante como se hace más
+     abajo con la barra de la ficha. */
+
   /* Filete dorado: el único adorno recurrente de la marca. */
   .filete {
     display: block;

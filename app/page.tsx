@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { TarjetaCategoria } from '@/components/catalogo/tarjeta-categoria';
+import { CarruselPortada } from '@/components/inicio/carrusel-portada';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { IconoFlecha, IconoWhatsapp } from '@/components/iconos';
 import { categorias, muestraDelCatalogo, piezaPorRef } from '@/lib/catalogo';
@@ -8,17 +9,15 @@ import { jsonLdNegocio } from '@/lib/seo';
 import { site, whatsappUrl } from '@/lib/site';
 import { clasesBoton } from '@/lib/ui';
 
-/* La foto de portada es una pieza real del catálogo, recuperada del WordPress
-   de Antonio a 1600 × 1200: una vela de mesa elaborada, sola y enfocada, con el
-   fondo desenfocado. Se descartaron las imágenes generadas con IA que había en
-   el proyecto: en un oficio que vende trabajo hecho a mano, la primera imagen
-   tiene que ser trabajo real (la única que se conserva está más abajo, en un
-   bloque secundario y etiquetada como ilustración).
+/* Las piezas que van pasando en la portada: una por familia (mesa y boda,
+   cirios, bautizo, pack y Navidad), elegidas mirándolas una a una entre las
+   recuperadas a 1200-1600 px. Todas son piezas reales del catálogo y cada una
+   enlaza a su ficha, así que la portada no es un escaparate: es el primer paso
+   del encargo.
 
-   Se referencia por su código y no por su ruta: así la portada es una pieza que
-   se puede pedir, con su enlace a la ficha, y si algún día esa foto sale del
-   catálogo el build avisa en lugar de dejar la portada rota. */
-const REF_PORTADA = 'MB-E-01';
+   Se referencian por su código y no por su ruta: si alguna sale del catálogo,
+   el build avisa en lugar de dejar la portada rota. */
+const REFS_PORTADA = ['MB-E-01', 'CP-E-02', 'BZ-D-19', 'PK-03', 'NV-01'] as const;
 
 /* Alineación de la portada: el texto arranca en la misma vertical que el
    contenido del resto de la web (un contenedor de 72rem con 1.25rem de aire),
@@ -51,7 +50,19 @@ const PASOS = [
 
 export default function PaginaInicio() {
   const totalPiezas = categorias.reduce((n, c) => n + c.totalPiezas, 0);
-  const { pieza: portada, linea: lineaPortada } = piezaPorRef(REF_PORTADA);
+  const diapositivas = REFS_PORTADA.map((ref) => {
+    const { pieza, linea } = piezaPorRef(ref);
+    return {
+      ref: pieza.ref,
+      src: pieza.src,
+      alt: pieza.alt,
+      ancho: pieza.ancho,
+      alto: pieza.alto,
+      href: `${linea.href}?pieza=${pieza.ref}`,
+      categoria: linea.categoria.nombre,
+      linea: linea.nombre,
+    };
+  });
   const muestra = muestraDelCatalogo(12);
 
   return (
@@ -97,67 +108,10 @@ export default function PaginaInicio() {
             </p>
           </div>
 
-          <div className="relative lg:h-full">
-            <Image
-              src={portada.src}
-              alt={portada.alt}
-              width={portada.ancho}
-              height={portada.alto}
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              quality={90}
-              priority
-              className="aspect-4/5 w-full object-cover sm:aspect-16/10 lg:h-full lg:min-h-[min(86svh,44rem)] lg:aspect-auto"
-            />
-
-            {/* Un detalle de la misma pieza, ampliado, montado sobre la costura
-                entre el panel verde y la foto. Hace dos cosas a la vez: da
-                profundidad a la portada —que era plana, dos rectángulos— y
-                enseña en la primera pantalla lo único que de verdad distingue
-                una vela pintada a mano de una estampada, que es el trazo.
-
-                Va DENTRO de la foto y no montado sobre el panel: sobresaliendo
-                hacia la izquierda se comía el final del párrafo. Y a media
-                altura tirando a arriba, para no chocar con la etiqueta de la
-                pieza, que vive abajo a la izquierda.
-
-                Solo en pantallas anchas: en móvil no hay sitio y taparía la
-                vela. Es decorativo —la foto grande ya está descrita—, así que
-                va con alt vacío. */}
-            <div className="pointer-events-none absolute top-[36%] left-8 hidden h-40 w-40 -translate-y-1/2 overflow-hidden rounded-pieza border-4 border-ivory shadow-alzada lg:block xl:h-48 xl:w-48">
-              <Image
-                src={portada.src}
-                alt=""
-                width={portada.ancho}
-                height={portada.alto}
-                sizes="384px"
-                quality={90}
-                priority
-                className="h-full w-full scale-[2.6] object-cover"
-                style={{ objectPosition: '62% 45%', transformOrigin: '62% 45%' }}
-              />
-            </div>
-
-            {/* La foto de portada no es decoración: es una pieza que se puede
-                pedir. La etiqueta lleva su referencia y entra directamente en su
-                ficha, con la foto abierta. De paso enseña en la primera pantalla
-                el sistema de códigos con el que funciona todo el catálogo, que es
-                lo que luego usa el cliente por WhatsApp. */}
-            <Link
-              href={`${lineaPortada.href}?pieza=${portada.ref}`}
-              /* Anclada a la IZQUIERDA en pantallas anchas, no a la derecha: en
-                 la esquina derecha vive el botón flotante de WhatsApp, que es
-                 fijo, y se comía el «Ver esta pieza». */
-              className="absolute right-4 bottom-4 left-4 flex items-center justify-between gap-3 rounded-full bg-verde-profundo/85 px-4 py-2.5 text-sm text-cream backdrop-blur-sm transition-colors hover:bg-verde-profundo sm:right-auto sm:w-auto sm:gap-5"
-            >
-              <span>
-                <span className="font-mono tracking-wide text-gold-light">{portada.ref}</span>
-                <span className="ml-2.5 text-cream/70">
-                  {lineaPortada.categoria.nombre} · {lineaPortada.nombre}
-                </span>
-              </span>
-              <span className="shrink-0 font-medium">Ver esta pieza</span>
-            </Link>
-          </div>
+          {/* El pase de piezas. El detalle ampliado que había aquí se retira:
+              con el carrusel, un primer plano fijo de una sola pieza dejaría de
+              corresponderse con la foto en cuanto pasara la primera. */}
+          <CarruselPortada diapositivas={diapositivas} />
         </div>
       </section>
 

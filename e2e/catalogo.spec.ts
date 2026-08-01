@@ -27,7 +27,7 @@ test('el menú de escritorio lleva a la celebración sin pasar por «colecciones
   test.skip(!!isMobile, 'En móvil el menú es la hamburguesa; se prueba en el siguiente.');
   await page.goto('/');
 
-  const boton = page.getByRole('button', { name: /Velas y toallas/ });
+  const boton = page.getByRole('button', { name: /Todas las colecciones/ });
   await expect(boton).toHaveAttribute('aria-expanded', 'false');
   await boton.click();
   await expect(boton).toHaveAttribute('aria-expanded', 'true');
@@ -66,6 +66,39 @@ test('la foto de la portada es una pieza que se puede pedir', async ({ page }) =
   await expect(page).toHaveURL('/colecciones/velas-de-mesa-y-boda/elaboradas?pieza=MB-E-01');
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.getByRole('link', { name: /Preguntar por la MB-E-01/ })).toBeVisible();
+});
+
+test('el pase de la portada se puede parar y cambia la pieza enlazada', async ({ page }) => {
+  await page.goto('/');
+
+  // WCAG 2.2.2: cualquier cosa que se mueva sola más de cinco segundos tiene que
+  // poder pararse. Si esto desaparece, el carrusel deja de ser accesible.
+  const pausa = page.getByRole('button', { name: 'Pausar el pase de fotos' });
+  await expect(pausa).toBeVisible();
+  await pausa.click();
+  await expect(page.getByRole('button', { name: 'Reanudar el pase de fotos' })).toBeVisible();
+
+  // Saltar a otra pieza cambia también la etiqueta y su enlace: el carrusel no
+  // es un escaparate, cada foto lleva a su ficha.
+  await page.getByRole('button', { name: /Ver la pieza 2 de/ }).click();
+  const etiqueta = page.getByRole('link', { name: /Ver esta pieza/ });
+  await expect(etiqueta).toContainText('CP-E-02');
+  await expect(etiqueta).toHaveAttribute('href', /pieza=CP-E-02/);
+});
+
+test('quien pide menos movimiento no ve el pase automático', async ({ browser }) => {
+  const contexto = await browser.newContext({ reducedMotion: 'reduce' });
+  const pagina = await contexto.newPage();
+  await pagina.goto('/');
+
+  // No hay control de pausa, y es correcto: no hay nada que pausar, así que
+  // ofrecer un botón que no puede arrancar nada sería mentir.
+  await expect(pagina.getByRole('button', { name: /pase de fotos/ })).toHaveCount(0);
+
+  // Y sigue en la primera pieza pasado el tiempo de un salto.
+  await pagina.waitForTimeout(7000);
+  await expect(pagina.getByRole('link', { name: /Ver esta pieza/ })).toContainText('MB-E-01');
+  await contexto.close();
 });
 
 test('de la colección a la ficha, con el precio a la vista', async ({ page }) => {

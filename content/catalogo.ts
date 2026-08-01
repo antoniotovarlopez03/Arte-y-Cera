@@ -28,6 +28,7 @@ export const CATALOGO: CategoriaFuente[] = [
   {
     slug: 'velas-de-bautizo',
     nombre: 'Velas de bautizo',
+    nombreMenu: 'Bautizo',
     ocasiones: ['bautizo'],
     resumen: 'Con el nombre, la fecha y el dibujo que queráis.',
     descripcion:
@@ -99,6 +100,7 @@ export const CATALOGO: CategoriaFuente[] = [
   {
     slug: 'velas-de-mesa-y-boda',
     nombre: 'Velas de mesa y boda',
+    nombreMenu: 'Bodas',
     ocasiones: ['boda'],
     resumen: 'Para el altar y para la mesa, sueltas o en pareja.',
     descripcion:
@@ -147,6 +149,7 @@ export const CATALOGO: CategoriaFuente[] = [
   {
     slug: 'cirios-pascuales',
     nombre: 'Cirios pascuales',
+    nombreMenu: 'Cirios',
     ocasiones: ['pascua'],
     resumen: 'Para la Vigilia Pascual, pintados a mano de arriba abajo.',
     descripcion:
@@ -196,6 +199,7 @@ export const CATALOGO: CategoriaFuente[] = [
   {
     slug: 'velas-de-navidad',
     nombre: 'Velas de Navidad',
+    nombreMenu: 'Navidad',
     ocasiones: ['navidad'],
     resumen: 'Nacimientos y motivos de Navidad, pintados uno a uno.',
     descripcion:
@@ -222,6 +226,7 @@ export const CATALOGO: CategoriaFuente[] = [
   {
     slug: 'toallas-de-bautizo',
     nombre: 'Toallas de bautizo',
+    nombreMenu: 'Toallas',
     ocasiones: ['bautizo'],
     resumen: 'Bordadas con el nombre, a juego con la vela.',
     descripcion:
@@ -248,6 +253,7 @@ export const CATALOGO: CategoriaFuente[] = [
   {
     slug: 'pack-vela-y-toalla',
     nombre: 'Pack vela + toalla',
+    nombreMenu: 'Pack',
     ocasiones: ['bautizo'],
     resumen: 'Añade la toalla bordada a tu vela de bautizo por 15 €.',
     descripcion:

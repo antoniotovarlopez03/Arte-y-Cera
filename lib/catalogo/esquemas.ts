@@ -57,6 +57,12 @@ export const LineaFuenteSchema = z.object({
 export const CategoriaFuenteSchema = z.object({
   slug,
   nombre: z.string().min(1),
+  /**
+   * Nombre corto para el menú. «Velas de bautizo» no cabe tres veces en una
+   * barra de navegación, y quien busca su celebración lee antes «Bautizo» que
+   * una frase larga. Si no se pone, se usa `nombre`.
+   */
+  nombreMenu: z.string().min(1).optional(),
   /** Para qué celebración es. Alimenta el filtro por ocasión. */
   ocasiones: z.array(z.enum(['pascua', 'bautizo', 'boda', 'navidad'])).min(1),
   /** Frase corta para las tarjetas del índice. */

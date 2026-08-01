@@ -13,6 +13,8 @@ import { site } from '@/lib/site';
 const COLECCIONES_MENU = categorias.map((categoria) => ({
   slug: categoria.slug,
   nombre: categoria.nombre,
+  nombreMenu: categoria.nombreMenu ?? categoria.nombre,
+  piezas: categoria.totalPiezas,
   href: categoria.href,
   desde: formatearPrecio(Math.min(...categoria.lineas.map(precioMinimo))),
   portada: {
