@@ -29,7 +29,7 @@ export function TarjetaLinea({
 
         <div className="mt-5">
           {mostrarCategoria && <p className="rotulo">{linea.categoria.nombre}</p>}
-          <h3 className="mt-1 font-display text-2xl font-semibold">{linea.nombre}</h3>
+          <h3 className="mt-1 font-display text-[1.7rem] font-semibold">{linea.nombre}</h3>
           {/* El resumen de cada acabado está escrito para compararse con el de sus
               hermanos: es aquí donde alguien decide entre 30 € y 40 €. */}
           <p className="mt-1.5 leading-relaxed text-ink-soft">{linea.resumen}</p>

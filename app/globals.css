@@ -41,7 +41,7 @@
   --color-terracotta: #b5651d;
 
   /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
-  --font-display: var(--fuente-display), 'Playfair Display', Georgia, serif;
+  --font-display: var(--fuente-display), 'EB Garamond', Georgia, serif;
   --font-sans: var(--fuente-sans), 'Jost', system-ui, sans-serif;
 
   /* Sombras cálidas, nunca grises */

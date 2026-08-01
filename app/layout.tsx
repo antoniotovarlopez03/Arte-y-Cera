@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Jost, Playfair_Display } from 'next/font/google';
+import { EB_Garamond, Jost } from 'next/font/google';
 import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -8,8 +8,17 @@ import { site } from '@/lib/site';
 
 /* Las fuentes se sirven desde el propio dominio (next/font las descarga en
    build). La web original las pedía a fonts.googleapis.com en cada visita:
-   dos conexiones extra antes de poder pintar el texto. */
-const display = Playfair_Display({
+   dos conexiones extra antes de poder pintar el texto.
+
+   EB Garamond es la que Antonio eligió para su propio WordPress. Sustituye a
+   Playfair Display, que venía del sitio que le montaron: Playfair es una didone
+   de alto contraste, de portada de revista de moda, y al lado de unas velas de
+   cera pintadas a mano queda fría. La Garamond es una humanista, más cálida y
+   más de oficio, y va con el verde que también es suyo.
+
+   Tiene el ojo medio más pequeño, así que los cuerpos de los titulares están
+   subidos respecto a lo que pedía Playfair. */
+const display = EB_Garamond({
   subsets: ['latin'],
   weight: ['500', '600', '700'],
   variable: '--fuente-display',

@@ -73,7 +73,7 @@ export default function PaginaInicio() {
             {/* Titular y entradilla son suyos, del WordPress que se hizo él mismo.
                 Dicen en dos frases lo que yo decía en cuatro, y lo dicen como él
                 habla; solo se les corrige la ortografía. */}
-            <h1 className="mt-4 font-display text-[clamp(2.25rem,4.4vw,3.5rem)] leading-[1.08] font-bold text-ivory">
+            <h1 className="mt-4 font-display text-[clamp(2.4rem,4.4vw,3.6rem)] leading-[1.08] font-bold text-ivory">
               Velas pintadas a mano para un momento muy especial
             </h1>
             <span className="filete mt-7" />
@@ -139,7 +139,7 @@ export default function PaginaInicio() {
       >
         <div className="max-w-2xl">
           <p className="rotulo">Catálogo</p>
-          <h2 id="titulo-colecciones" className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
+          <h2 id="titulo-colecciones" className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">
             Elige la celebración
           </h2>
           <span className="filete mt-6" />
@@ -190,7 +190,7 @@ export default function PaginaInicio() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <p className="rotulo">Nuestro oficio</p>
-            <h2 id="titulo-taller" className="mt-3 font-display text-4xl font-semibold sm:text-5xl">
+            <h2 id="titulo-taller" className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">
               Cada vela empieza en un papel
             </h2>
             <span className="filete mt-6" />
@@ -238,7 +238,7 @@ export default function PaginaInicio() {
         <div className="mx-auto max-w-3xl px-5 py-20 text-center lg:py-28">
           {/* Su cierre, tal cual lo tenía en el WordPress: invita a preguntar en
               vez de pedir un pliego de condiciones. */}
-          <h2 className="font-display text-4xl font-semibold sm:text-5xl">¿Tienes alguna duda?</h2>
+          <h2 className="font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">¿Tienes alguna duda?</h2>
           <p className="mt-6 text-lg leading-relaxed text-ink-soft">
             No dudes en contactarnos y cuéntanos qué tipo de vela tienes pensada para tu momento;
             estaremos encantados de ayudarte a encontrar lo que buscas. Si ya has visto una pieza

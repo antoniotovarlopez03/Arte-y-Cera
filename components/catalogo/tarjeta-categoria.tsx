@@ -23,7 +23,7 @@ export function TarjetaCategoria({ categoria }: { categoria: Categoria }) {
         </div>
 
         <div className="mt-5">
-          <h3 className="font-display text-2xl font-semibold">{categoria.nombre}</h3>
+          <h3 className="font-display text-[1.7rem] font-semibold">{categoria.nombre}</h3>
           <p className="mt-1.5 leading-relaxed text-ink-soft">{categoria.resumen}</p>
 
           <p className="mt-4 flex items-baseline gap-2 text-sm">

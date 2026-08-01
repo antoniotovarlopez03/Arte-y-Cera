@@ -74,7 +74,7 @@ export default function PaginaTaller() {
       <section className="mx-auto grid max-w-6xl items-start gap-12 px-5 pt-8 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="rotulo">Nuestro oficio</p>
-          <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
+          <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
             Cada vela cuenta una historia
           </h1>
           <span className="filete mt-5" />

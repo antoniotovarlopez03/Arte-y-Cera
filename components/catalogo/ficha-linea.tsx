@@ -83,7 +83,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                 {categoria.nombre}
               </Link>
             )}
-            <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
+            <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
               {categoria.esFicha ? categoria.nombre : linea.nombre}
             </h1>
             <span className="filete mt-5" />
@@ -165,7 +165,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
 
         <section className="mt-14" aria-labelledby="titulo-piezas">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <h2 id="titulo-piezas" className="font-display text-2xl font-semibold">
+            <h2 id="titulo-piezas" className="font-display text-[1.7rem] font-semibold">
               {linea.piezas.length} piezas ya pintadas
             </h2>
             <p className="text-sm text-ink-soft">
@@ -179,7 +179,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
 
         {otras.length > 0 && (
           <section className="mt-20" aria-labelledby="titulo-otras">
-            <h2 id="titulo-otras" className="font-display text-2xl font-semibold">
+            <h2 id="titulo-otras" className="font-display text-[1.7rem] font-semibold">
               Otros acabados de {categoria.nombre.toLowerCase()}
             </h2>
             <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

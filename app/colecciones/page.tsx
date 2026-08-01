@@ -22,7 +22,7 @@ export default function PaginaColecciones() {
 
       <header className="mt-8 max-w-2xl">
         <p className="rotulo">Catálogo</p>
-        <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
+        <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
           Nuestras colecciones
         </h1>
         <span className="filete mt-5" />
@@ -55,7 +55,7 @@ export default function PaginaColecciones() {
           const grupo = categoriasDe(ocasion);
           return (
             <section key={ocasion} id={ocasion} aria-labelledby={`titulo-${ocasion}`}>
-              <h2 id={`titulo-${ocasion}`} className="font-display text-2xl font-semibold">
+              <h2 id={`titulo-${ocasion}`} className="font-display text-[1.7rem] font-semibold">
                 {ETIQUETAS_OCASION[ocasion]}
               </h2>
               <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

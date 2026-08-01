@@ -54,7 +54,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
           {/* El titular y el párrafo son los suyos, del WordPress. «Coméntanos qué
               tipo de vela tienes pensada para tu momento» invita a la duda en vez
               de pedir un pliego de condiciones, y eso es lo que hace escribir. */}
-          <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
+          <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
             ¿Tienes alguna duda?
           </h1>
           <span className="filete mt-5" />

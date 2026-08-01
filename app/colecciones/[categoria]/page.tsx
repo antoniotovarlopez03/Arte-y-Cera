@@ -67,7 +67,7 @@ export default async function PaginaCategoria({ params }: Props) {
 
         <header className="mt-8 max-w-2xl">
           <p className="rotulo">Colección</p>
-          <h1 className="mt-2 font-display text-4xl leading-tight font-bold sm:text-5xl">
+          <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
             {categoria.nombre}
           </h1>
           <span className="filete mt-5" />
@@ -79,7 +79,7 @@ export default async function PaginaCategoria({ params }: Props) {
         </header>
 
         <section className="mt-16" aria-labelledby="titulo-acabados">
-          <h2 id="titulo-acabados" className="font-display text-2xl font-semibold">
+          <h2 id="titulo-acabados" className="font-display text-[1.7rem] font-semibold">
             Elige el acabado
           </h2>
           <p className="mt-2 max-w-2xl text-ink-soft">
@@ -101,7 +101,7 @@ export default async function PaginaCategoria({ params }: Props) {
             acabado. Las fichas siguen siendo el sitio donde está el precio. */}
         <section className="mt-24" aria-labelledby="titulo-todas">
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <h2 id="titulo-todas" className="font-display text-2xl font-semibold">
+            <h2 id="titulo-todas" className="font-display text-[1.7rem] font-semibold">
               Las {categoria.totalPiezas} piezas de la colección
             </h2>
             <p className="text-sm text-ink-soft">
