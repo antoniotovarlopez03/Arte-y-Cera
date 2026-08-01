@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FichaLinea } from '@/components/catalogo/ficha-linea';
 import { GaleriaPiezas } from '@/components/catalogo/galeria-piezas';
-import { TarjetaLinea } from '@/components/catalogo/tarjeta-linea';
+import { ComparadorAcabados } from '@/components/catalogo/comparador-acabados';
 import { Migas } from '@/components/ui/migas';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { categorias, getCategoria, precioMinimo } from '@/lib/catalogo';
@@ -85,11 +85,7 @@ export default async function PaginaCategoria({ params }: Props) {
           <p className="mt-2 max-w-2xl text-ink-soft">
             Lo que cambia de un precio a otro es cuánta pintura lleva la pieza.
           </p>
-          <div className="mt-8 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-            {categoria.lineas.map((linea) => (
-              <TarjetaLinea key={linea.slug} linea={linea} />
-            ))}
-          </div>
+          <ComparadorAcabados categoria={categoria} />
         </section>
 
         {/* Todas las piezas de la colección juntas, de todos los acabados.

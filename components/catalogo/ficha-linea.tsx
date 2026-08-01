@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { GaleriaPiezas } from '@/components/catalogo/galeria-piezas';
+import { EscalaDePiezas } from '@/components/catalogo/escala';
 import { Precio } from '@/components/catalogo/precio';
 import { TarjetaLinea } from '@/components/catalogo/tarjeta-linea';
 import { IconoFlecha, IconoWhatsapp } from '@/components/iconos';
@@ -159,9 +160,14 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
           </div>
         </header>
 
-        <p className="mt-14 max-w-prose text-base leading-relaxed text-ink-soft">
-          {categoria.descripcion}
-        </p>
+        <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start">
+          <p className="max-w-prose text-base leading-relaxed text-ink-soft">
+            {categoria.descripcion}
+          </p>
+          {/* «70 × 7 cm» no se lo imagina nadie. Solo aparece en las líneas que
+              tienen la medida declarada en el catálogo. */}
+          <EscalaDePiezas linea={linea} />
+        </div>
 
         <section className="mt-14" aria-labelledby="titulo-piezas">
           <div className="flex flex-wrap items-baseline justify-between gap-3">

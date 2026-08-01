@@ -30,7 +30,20 @@ export const LineaFuenteSchema = z.object({
   precios: z.array(PrecioSchema).min(1),
   /** Matiz sobre el precio: «Para otros tamaños, consultar». */
   notaPrecio: z.string().optional(),
+  /** El tamaño tal como se lee en la ficha: «70 × 7 cm». */
   medidas: z.string().optional(),
+  /**
+   * El mismo tamaño en números, para poder DIBUJARLO a escala.
+   *
+   * Va aparte de `medidas` a propósito: `medidas` es texto libre porque a veces
+   * lleva matices, y de un texto libre no se puede sacar un dibujo fiable. Es
+   * opcional porque hay líneas cuya medida todavía no nos ha dado el taller, y
+   * en esas no se dibuja nada: preferimos no enseñar una escala a inventarnos
+   * un centímetro.
+   */
+  dimensiones: z
+    .object({ alto: z.number().positive(), diametro: z.number().positive() })
+    .optional(),
   /** Qué entra en el precio. Se muestra como lista en la ficha. */
   incluye: z.array(z.string().min(1)).default([]),
   /** Base del texto alternativo de sus fotos (accesibilidad y SEO). */
