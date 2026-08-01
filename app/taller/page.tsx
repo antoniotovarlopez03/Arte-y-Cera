@@ -64,6 +64,43 @@ const DATOS = [
   { dato: '100 %', pie: 'hecho a mano' },
 ];
 
+/**
+ * Tres piezas del catálogo, ampliadas para que se vea el pincel.
+ *
+ * `foco` es el punto de la foto sobre el que se centra el recorte, elegido a
+ * ojo mirando cada una: casi siempre la franja pintada, que en una vela cae a
+ * media altura. Si algún día se cambian estas fotos, hay que volver a mirarlo.
+ */
+const DETALLES = [
+  {
+    ref: 'MB-B-01',
+    href: '/colecciones/velas-de-mesa-y-boda/basicas?pieza=MB-B-01',
+    src: '/images/colecciones/mesa-basicas/mesa-basicas-01.webp',
+    alt: 'Detalle del icono pintado a mano en rojo sobre la cera de una vela de mesa',
+    ancho: 1200,
+    alto: 900,
+    foco: '38% 48%',
+  },
+  {
+    ref: 'BZ-E-26',
+    href: '/colecciones/velas-de-bautizo/elaboradas?pieza=BZ-E-26',
+    src: '/images/colecciones/lazos-elaborados/lazos-elaborados-26.webp',
+    alt: 'Detalle de una Virgen con el Niño pintada a mano en rosa y oro sobre una vela de bautizo',
+    ancho: 1051,
+    alto: 1600,
+    foco: '50% 45%',
+  },
+  {
+    ref: 'BZ-D-19',
+    href: '/colecciones/velas-de-bautizo/al-detalle?pieza=BZ-D-19',
+    src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-19.webp',
+    alt: 'Detalle de una escena pintada a todo color que envuelve una vela de bautizo',
+    ancho: 1200,
+    alto: 1200,
+    foco: '25% 55%',
+  },
+];
+
 export default function PaginaTaller() {
   return (
     <div className="pb-4">
@@ -137,6 +174,32 @@ export default function PaginaTaller() {
             </p>
           </div>
 
+          {/* «Del boceto a la cera» contado sin una sola imagen era la página más
+              floja de la web. Esta foto es literalmente eso: la vela terminada
+              con los dibujos a lápiz de los que salió, apoyados al lado. Es una
+              pieza real del catálogo, no una foto de archivo. */}
+          <figure className="mt-12">
+            <Image
+              src="/images/colecciones/lazos-elaborados/lazos-elaborados-04.webp"
+              alt="Vela de bautizo con el retrato de Francisco pintado a mano, junto a los bocetos a lápiz de los que salió"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 1024px) 92vw, 1100px"
+              quality={90}
+              className="aspect-16/10 w-full rounded-pieza object-cover"
+            />
+            <figcaption className="mt-3 text-sm text-cream/60">
+              La pieza terminada junto a los bocetos de los que salió. Es la{' '}
+              <Link
+                href="/colecciones/velas-de-bautizo/elaboradas?pieza=BZ-E-04"
+                className="text-gold-light underline decoration-gold/50 underline-offset-4 hover:decoration-gold"
+              >
+                BZ-E-04
+              </Link>{' '}
+              del catálogo.
+            </figcaption>
+          </figure>
+
           <ol className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2">
             {ETAPAS.map((etapa, i) => (
               <li key={etapa.titulo} className="border-t border-cream/15 pt-5">
@@ -151,6 +214,59 @@ export default function PaginaTaller() {
             ))}
           </ol>
         </div>
+      </section>
+
+      {/* Detalles a tamaño grande.
+          Esto solo se puede hacer desde que las fotos son de 1200-1600 px: son
+          recortes cerrados sobre piezas que ya están en el catálogo, no material
+          nuevo. Enseñan lo que de verdad vende una vela pintada a mano y lo que
+          antes no se veía nunca, que es el pincel. */}
+      <section className="mx-auto max-w-6xl px-5 py-20 lg:py-24" aria-labelledby="titulo-detalles">
+        <div className="max-w-2xl">
+          <p className="rotulo">De cerca</p>
+          <h2 id="titulo-detalles" className="mt-3 font-display text-[2.25rem] font-semibold">
+            El trazo, a un palmo
+          </h2>
+          <p className="mt-4 leading-relaxed text-ink-soft">
+            Tres piezas del catálogo, ampliadas. Se ve el pulso de la mano, el grosor del pincel y el
+            oro dado a mano, que es lo que distingue una vela pintada de una estampada.
+          </p>
+        </div>
+
+        <ul role="list" className="mt-10 grid gap-6 sm:grid-cols-3">
+          {DETALLES.map((detalle) => (
+            <li key={detalle.ref}>
+              <Link href={detalle.href} className="group block">
+                {/* El recorte lo hace el contenedor y el acercamiento la escala
+                    de la imagen: sin overflow-hidden aquí, la foto ampliada se
+                    saldría por los cuatro lados. */}
+                <div className="aspect-square overflow-hidden rounded-pieza bg-cream">
+                  {/* Dos cosas que no son obvias:
+                      · El acercamiento va por transform-origin, no por
+                        object-position. Con una foto cuadrada en una caja
+                        cuadrada, object-cover no desborda y object-position no
+                        hace nada: el scale ampliaba siempre por el centro y los
+                        puntos de foco no se notaban. Se ponen los dos al mismo
+                        valor para que también funcione con las apaisadas.
+                      · `sizes` pide el doble de lo que mide la caja, porque
+                        después se amplía 1,9×. Con el tamaño de la caja, la foto
+                        ampliada salía borrosa. */}
+                  <Image
+                    src={detalle.src}
+                    alt={detalle.alt}
+                    width={detalle.ancho}
+                    height={detalle.alto}
+                    sizes="(max-width: 640px) 180vw, 720px"
+                    quality={90}
+                    className="h-full w-full scale-[1.9] object-cover"
+                    style={{ objectPosition: detalle.foco, transformOrigin: detalle.foco }}
+                  />
+                </div>
+                <p className="mt-3 font-mono text-xs tracking-wide text-ink-soft">{detalle.ref}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="mx-auto max-w-3xl px-5 py-16 text-center lg:py-20">
