@@ -84,6 +84,30 @@ juntas**, de los cuatro acabados, cada una con su código y con el acabado al qu
 llega buscando «una vela de bautizo» las ve todas sin entrar y salir cuatro veces; quien ya sabe
 que quiere las de 40 € entra en su ficha.
 
+### Los cuatro acabados, uno al lado de otro
+
+La pregunta que se hace todo el que entra en velas de bautizo es «¿qué me llevo por 10 € más?».
+Antes había que entrar y salir de cuatro fichas intentando acordarse. Ahora, en la página de la
+colección, están los cuatro en fila —numerados de menos a más pintura, con su foto, su precio y una
+frase de qué cambia— y la respuesta se ve de un vistazo.
+
+### Cómo de grande es, de verdad
+
+«70 × 7 cm» no se lo imagina nadie. En la ficha de los cirios y en la de las velas de mesa aparece
+un dibujo a escala real comparando las dos: el cirio es tres veces y media la vela de mesa, que es
+justo la diferencia entre pagar 55 € y pagar 260 €. Evita el «pensaba que era más grande» cuando
+llega el paquete.
+
+Falta la medida de las velas de bautizo, que son las que más vendes: en cuanto me la digas, entran
+solas en el dibujo.
+
+### El trazo, de cerca
+
+En la página del taller hay ahora tres piezas ampliadas donde se ve el grosor del pincel y el oro
+dado a mano. **Esto no se podía hacer antes**: con las fotos de 300 píxeles habría salido una
+mancha. Y arriba, la foto en la que se ve una vela terminada junto a los bocetos a lápiz de los que
+salió, que es literalmente «del boceto a la cera».
+
 ### El precio, siempre a la vista
 
 En las tarjetas, en la ficha y en una barra fija abajo cuando se mira desde el móvil. Con el

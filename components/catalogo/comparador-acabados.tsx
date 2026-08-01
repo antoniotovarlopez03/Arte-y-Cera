@@ -42,10 +42,15 @@ export function ComparadorAcabados({ categoria }: { categoria: Categoria }) {
             <div className="min-w-0">
               <p className="flex items-baseline gap-2.5">
                 {/* El número ordena la escala: quien mira sabe que va de menos a
-                    más pintura, no que son cuatro opciones sueltas. */}
+                    más pintura, no que son cuatro opciones sueltas.
+
+                    En gold-ink y no en gold-deep: el dorado oscuro se queda en
+                    3,55:1 sobre crema y axe lo cazó. gold-ink da 5,2:1, que es
+                    para lo que está (ver la tabla de contrastes en globals.css).
+                    Que sea aria-hidden no exime: se sigue viendo. */}
                 <span
                   aria-hidden="true"
-                  className="font-display text-sm font-bold text-gold-deep"
+                  className="font-display text-sm font-bold text-gold-ink"
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>

@@ -156,9 +156,31 @@ export function formatearPrecio(importe: number): string {
 }
 
 /**
- * Una selección para la portada: la foto de portada de cada línea. Son las que
- * el autor eligió a mano en la web original, así que son la mejor vitrina.
+ * Una muestra del catálogo para la portada, repartida entre todas las líneas.
+ *
+ * Excluye las portadas a propósito: esas ya se ven en las tarjetas de colección
+ * justo encima, y repetirlas daría la sensación de que hay menos piezas de las
+ * que hay. Aquí lo que se quiere transmitir es lo contrario: que detrás de
+ * seis colecciones hay más de ciento sesenta velas ya pintadas.
+ *
+ * El reparto es determinista (va cogiendo una de cada línea por turnos), así
+ * que la portada no cambia entre compilaciones ni provoca diferencias de
+ * hidratación.
  */
-export function piezasDestacadas(limite = 8): Array<{ pieza: Pieza; linea: Linea }> {
-  return lineas.slice(0, limite).map((linea) => ({ pieza: linea.portada, linea }));
+export function muestraDelCatalogo(limite = 12): Pieza[] {
+  const porLinea = lineas.map((l) => l.piezas.filter((p) => p.ref !== l.portada.ref));
+  const muestra: Pieza[] = [];
+
+  for (let vuelta = 0; muestra.length < limite; vuelta += 1) {
+    const antes = muestra.length;
+    for (const piezas of porLinea) {
+      const pieza = piezas[vuelta];
+      if (pieza) muestra.push(pieza);
+      if (muestra.length === limite) return muestra;
+    }
+    // Ninguna línea tenía pieza en esta vuelta: no queda nada por repartir.
+    if (muestra.length === antes) break;
+  }
+
+  return muestra;
 }

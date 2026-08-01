@@ -74,10 +74,12 @@ export function EscalaDePiezas({ linea }: { linea: Linea }) {
           );
         })}
 
+        {/* No se repite aquí la medida: ya está arriba, en la caja del precio, y
+            además las barras la llevan escrita debajo. Decirla por tercera vez
+            no añadía nada (y hacía ambiguo el test que la buscaba). */}
         <p className="self-center text-sm leading-relaxed text-ink-soft">
-          {linea.medidas} de alto y de grosor.
-          <br />
-          Comparado con {piezas.length === 2 ? 'la otra medida' : 'las otras medidas'} del catálogo.
+          A escala, junto a {piezas.length === 2 ? 'la otra medida' : 'las otras medidas'} del
+          catálogo.
         </p>
       </div>
     </figure>

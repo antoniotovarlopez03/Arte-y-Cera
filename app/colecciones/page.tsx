@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { TarjetaCategoria } from '@/components/catalogo/tarjeta-categoria';
+import {
+  TarjetaCategoria,
+  TarjetaCategoriaAncha,
+} from '@/components/catalogo/tarjeta-categoria';
 import { Migas } from '@/components/ui/migas';
 import { categorias, categoriasDe, ocasionesConCategorias } from '@/lib/catalogo';
 import { ETIQUETAS_OCASION } from '@/lib/catalogo/esquemas';
@@ -58,11 +61,20 @@ export default function PaginaColecciones() {
               <h2 id={`titulo-${ocasion}`} className="font-display text-[1.7rem] font-semibold">
                 {ETIQUETAS_OCASION[ocasion]}
               </h2>
-              <div className="mt-6 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {grupo.map((categoria) => (
-                  <TarjetaCategoria key={categoria.slug} categoria={categoria} />
-                ))}
-              </div>
+              {/* Con una sola colección en el grupo, la tarjeta de un tercio
+                  dejaba dos tercios de fila vacíos. Ahí se usa la variante
+                  ancha. */}
+              {grupo.length === 1 && grupo[0] ? (
+                <div className="mt-6">
+                  <TarjetaCategoriaAncha categoria={grupo[0]} />
+                </div>
+              ) : (
+                <div className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+                  {grupo.map((categoria) => (
+                    <TarjetaCategoria key={categoria.slug} categoria={categoria} />
+                  ))}
+                </div>
+              )}
             </section>
           );
         })}

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { TarjetaCategoria } from '@/components/catalogo/tarjeta-categoria';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { IconoFlecha, IconoWhatsapp } from '@/components/iconos';
-import { categorias, piezaPorRef } from '@/lib/catalogo';
+import { categorias, muestraDelCatalogo, piezaPorRef } from '@/lib/catalogo';
 import { jsonLdNegocio } from '@/lib/seo';
 import { site, whatsappUrl } from '@/lib/site';
 import { clasesBoton } from '@/lib/ui';
@@ -52,6 +52,7 @@ const PASOS = [
 export default function PaginaInicio() {
   const totalPiezas = categorias.reduce((n, c) => n + c.totalPiezas, 0);
   const { pieza: portada, linea: lineaPortada } = piezaPorRef(REF_PORTADA);
+  const muestra = muestraDelCatalogo(12);
 
   return (
     <>
@@ -154,6 +155,51 @@ export default function PaginaInicio() {
             <TarjetaCategoria key={categoria.slug} categoria={categoria} />
           ))}
         </div>
+      </section>
+
+      {/* ===== Muestra del catálogo =====
+          Una tira a sangre con piezas de todas las colecciones, sin pies ni
+          botones. No repite las portadas que están justo encima: aquí lo que se
+          enseña es la cantidad, que detrás de seis colecciones hay más de ciento
+          sesenta velas ya pintadas. Es una sola frase dicha con fotos, y con las
+          de 300 px de antes habría sido una mancha. */}
+      <section
+        aria-labelledby="titulo-muestra"
+        className="border-y border-sand/60 bg-cream/30 py-14"
+      >
+        <h2 id="titulo-muestra" className="sr-only">
+          Una muestra de las piezas ya pintadas
+        </h2>
+        <ul
+          role="list"
+          className="grid grid-cols-4 gap-2 px-2 sm:grid-cols-6 sm:gap-3 lg:grid-cols-12"
+        >
+          {muestra.map((pieza) => (
+            <li key={pieza.ref}>
+              {/* alt vacío: son decorativas. Lo que dicen ya está en el titular
+                  oculto, y 12 textos alternativos seguidos en un lector de
+                  pantalla serían ruido, no información. */}
+              <Image
+                src={pieza.src}
+                alt=""
+                width={pieza.ancho}
+                height={pieza.alto}
+                sizes="(max-width: 640px) 25vw, (max-width: 1024px) 17vw, 9vw"
+                quality={85}
+                className="aspect-square w-full rounded-md object-cover"
+              />
+            </li>
+          ))}
+        </ul>
+        <p className="mt-9 text-center">
+          <Link
+            href="/colecciones"
+            className="inline-flex items-center gap-2 border-b border-verde/25 pb-0.5 font-medium text-verde hover:border-verde"
+          >
+            Ver las {totalPiezas} piezas
+            <IconoFlecha className="h-4 w-4 text-gold-deep" />
+          </Link>
+        </p>
       </section>
 
       {/* ===== Cómo se encarga ===== */}
