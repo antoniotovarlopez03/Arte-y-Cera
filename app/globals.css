@@ -138,6 +138,37 @@
     color: var(--color-gold-ink);
   }
 
+  /* Carrusel de la portada.
+
+     «deriva» es un acercamiento lentísimo sobre la foto activa: da la sensación
+     de que la imagen respira en vez de quedarse clavada, que es lo que separa un
+     pase de fotos bueno de uno de plantilla. Va del 1 al 1,06 en toda la
+     duración de la diapositiva, así que no se ve moverse: se nota.
+
+     «progreso» rellena la barrita de la pieza activa. No es adorno: dice cuánto
+     falta para el cambio, y saberlo evita la sensación de que la web decide por
+     ti. Se pausa desde JavaScript con animation-play-state.
+
+     Las dos se apagan solas con prefers-reduced-motion, por la regla de más
+     arriba que anula duraciones. */
+  @keyframes deriva {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes progreso {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
   /* AVISO: la esquina inferior derecha de la ventana está OCUPADA.
      Ahí vive el botón flotante de WhatsApp, que es `fixed` y va por encima de
      todo. Ya se comió tres cosas: la barra de precio de la ficha en móvil, el
