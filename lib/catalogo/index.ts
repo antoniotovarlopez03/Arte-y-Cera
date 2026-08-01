@@ -115,6 +115,20 @@ export function getLinea(slugCategoria: string, slugLinea: string): Linea | unde
   return getCategoria(slugCategoria)?.lineas.find((l) => l.slug === slugLinea);
 }
 
+/**
+ * Busca una pieza por su referencia y devuelve también su línea, para poder
+ * enlazar a ella. Lanza si no existe: se usa desde la portada, y prefiero que
+ * el build se caiga a que la web se publique con la foto principal apuntando
+ * a ninguna parte.
+ */
+export function piezaPorRef(ref: string): { pieza: Pieza; linea: Linea } {
+  for (const linea of lineas) {
+    const pieza = linea.piezas.find((p) => p.ref === ref);
+    if (pieza) return { pieza, linea };
+  }
+  error(`no existe ninguna pieza con la referencia «${ref}»`);
+}
+
 export function categoriasDe(ocasion: Ocasion): Categoria[] {
   return categorias.filter((c) => c.ocasiones.includes(ocasion));
 }

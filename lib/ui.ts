@@ -3,7 +3,15 @@ export function cx(...clases: Array<string | false | null | undefined>): string 
   return clases.filter(Boolean).join(' ');
 }
 
-type Variante = 'primario' | 'secundario' | 'whatsapp' | 'discreto';
+type Variante =
+  | 'primario'
+  | 'secundario'
+  | 'whatsapp'
+  | 'discreto'
+  /* Las dos «claro» son para los bloques de fondo verde oscuro (la portada).
+     No se pueden usar sobre marfil: el marfil sobre marfil no se ve. */
+  | 'claro'
+  | 'contorno-claro';
 
 const BASE =
   'inline-flex items-center justify-center gap-2 rounded-full text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60';
@@ -17,6 +25,10 @@ const VARIANTES: Record<Variante, string> = {
   // #25d366 oficial con texto blanco da 2:1 y no pasa WCAG AA; este da 5,4:1.
   whatsapp: 'bg-[#0f7a40] text-white hover:bg-[#0b6135] px-6 py-3',
   discreto: 'text-ink-soft hover:text-verde underline decoration-gold underline-offset-4',
+  // Sobre verde profundo: marfil de fondo con el verde de marca encima da
+  // 10,07:1, y el contorno en crema al 40 % se ve sin gritar.
+  claro: 'bg-ivory text-verde hover:bg-cream px-6 py-3',
+  'contorno-claro': 'border border-cream/40 text-cream hover:bg-cream/10 px-6 py-3',
 };
 
 export function clasesBoton(variante: Variante = 'primario', extra?: string): string {

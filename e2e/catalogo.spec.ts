@@ -14,6 +14,18 @@ test('la portada lleva al catálogo', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Nuestras colecciones' })).toBeVisible();
 });
 
+test('la foto de la portada es una pieza que se puede pedir', async ({ page }) => {
+  await page.goto('/');
+
+  // La etiqueta sobre la foto lleva su referencia y entra en la ficha con esa
+  // pieza ya abierta: es lo que enseña, en la primera pantalla, el sistema de
+  // códigos con el que el cliente pide luego por WhatsApp.
+  await page.getByRole('link', { name: /MB-E-01.*Ver esta pieza/s }).click();
+  await expect(page).toHaveURL('/colecciones/velas-de-mesa-y-boda/elaboradas?pieza=MB-E-01');
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await expect(page.getByRole('link', { name: /Preguntar por la MB-E-01/ })).toBeVisible();
+});
+
 test('de la colección a la ficha, con el precio a la vista', async ({ page }) => {
   await page.goto('/colecciones');
   await page
