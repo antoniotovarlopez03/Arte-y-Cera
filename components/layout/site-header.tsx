@@ -3,31 +3,71 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 
-const ENLACES = [
-  { href: '/', texto: 'Inicio' },
-  { href: '/colecciones', texto: 'Colecciones' },
-  { href: '/taller', texto: 'El taller' },
-] as const;
+/**
+ * Lo mínimo que la cabecera necesita de cada colección. Llega como prop desde
+ * app/layout.tsx, que es servidor: importar aquí el catálogo metería zod y las
+ * 162 piezas en el bundle del navegador para pintar seis enlaces.
+ */
+export type EntradaMenu = {
+  slug: string;
+  nombre: string;
+  href: string;
+  desde: string;
+  portada: { src: string; alt: string; ancho: number; alto: number };
+};
 
-export function SiteHeader() {
+/**
+ * Cabecera.
+ *
+ * El menú nombra los productos, no la abstracción. Antes ponía «Colecciones»,
+ * que es palabra de museo: quien llega buscando una vela de bautizo no busca
+ * una colección, busca su celebración. Ahora se despliegan las seis con su foto
+ * y su precio desde, que es además como lo tenía Antonio en su WordPress (el
+ * menú eran «Cirios Pascuales», «Velas de bautizo», «Velas mesa y bodas»).
+ *
+ * Y «Inicio» desaparece del menú: para eso está el logotipo, y ese hueco vale
+ * más para un producto.
+ */
+export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
   const pathname = usePathname();
-  const [abierto, setAbierto] = useState(false);
+  const [movilAbierto, setMovilAbierto] = useState(false);
+  const [panelAbierto, setPanelAbierto] = useState(false);
+  const idPanel = useId();
+  const contenedorPanel = useRef<HTMLDivElement>(null);
+  const botonPanel = useRef<HTMLButtonElement>(null);
 
-  // El panel se cierra al pulsar cualquiera de sus enlaces (más abajo, en el
-  // onClick) y con Escape. Se hace así, y no con un efecto que mire el
-  // pathname, para no provocar un render en cascada en cada navegación.
+  // Escape cierra lo que esté abierto. Si era el panel de escritorio, el foco
+  // vuelve a su botón: si no, se quedaría en la nada y habría que tabular desde
+  // el principio de la página.
   useEffect(() => {
-    if (!abierto) return;
+    if (!movilAbierto && !panelAbierto) return;
     const alPulsar = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setAbierto(false);
+      if (e.key !== 'Escape') return;
+      setMovilAbierto(false);
+      if (panelAbierto) {
+        setPanelAbierto(false);
+        botonPanel.current?.focus();
+      }
     };
     document.addEventListener('keydown', alPulsar);
     return () => document.removeEventListener('keydown', alPulsar);
-  }, [abierto]);
+  }, [movilAbierto, panelAbierto]);
 
-  const esActivo = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+  // Clic fuera del panel de escritorio. No cierra con «blur» porque el foco se
+  // mueve entre los enlaces de dentro y se cerraría al tabular.
+  useEffect(() => {
+    if (!panelAbierto) return;
+    const alClicar = (e: MouseEvent) => {
+      if (!contenedorPanel.current?.contains(e.target as Node)) setPanelAbierto(false);
+    };
+    document.addEventListener('mousedown', alClicar);
+    return () => document.removeEventListener('mousedown', alClicar);
+  }, [panelAbierto]);
+
+  const enCatalogo = pathname.startsWith('/colecciones');
+  const enTaller = pathname.startsWith('/taller');
 
   return (
     <header className="sticky top-0 z-40 border-b border-sand/70 bg-ivory/90 backdrop-blur-sm">
@@ -37,11 +77,7 @@ export function SiteHeader() {
             no incluye lo que se ve, quien maneja el navegador por voz dice el
             rótulo y no pasa nada (WCAG 2.5.3, «Label in Name»). Lo encontró
             Lighthouse; axe no trae esa regla activada por defecto. */}
-        <Link
-          href="/"
-          className="flex shrink-0 items-center gap-2.5"
-          aria-label="Arte & Cera, inicio"
-        >
+        <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="Arte & Cera, inicio">
           <Image
             src="/images/logo/logo.png"
             alt=""
@@ -56,34 +92,107 @@ export function SiteHeader() {
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-8 md:flex">
-          {ENLACES.map((enlace) => (
-            <Link
-              key={enlace.href}
-              href={enlace.href}
-              aria-current={esActivo(enlace.href) ? 'page' : undefined}
-              className={`text-[0.95rem] transition-colors hover:text-verde ${
-                esActivo(enlace.href)
+          <div className="relative" ref={contenedorPanel}>
+            <button
+              ref={botonPanel}
+              type="button"
+              onClick={() => setPanelAbierto((v) => !v)}
+              aria-expanded={panelAbierto}
+              aria-controls={idPanel}
+              className={`flex items-center gap-1.5 text-[0.95rem] transition-colors hover:text-verde ${
+                enCatalogo
                   ? 'font-medium text-verde underline decoration-gold decoration-2 underline-offset-8'
                   : 'text-ink-soft'
               }`}
             >
-              {enlace.texto}
-            </Link>
-          ))}
+              Velas y toallas
+              <svg
+                viewBox="0 0 24 24"
+                className={`h-4 w-4 transition-transform ${panelAbierto ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+
+            {panelAbierto && (
+              <div
+                id={idPanel}
+                className="absolute top-full left-1/2 z-50 mt-4 w-[34rem] -translate-x-1/2 rounded-pieza border border-sand bg-ivory p-3 shadow-alzada"
+              >
+                <ul role="list" className="grid grid-cols-2 gap-1">
+                  {colecciones.map((coleccion) => (
+                    <li key={coleccion.slug}>
+                      <Link
+                        href={coleccion.href}
+                        onClick={() => setPanelAbierto(false)}
+                        className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-cream"
+                      >
+                        <Image
+                          src={coleccion.portada.src}
+                          alt=""
+                          width={coleccion.portada.ancho}
+                          height={coleccion.portada.alto}
+                          sizes="56px"
+                          quality={90}
+                          className="h-14 w-14 shrink-0 rounded-md object-cover"
+                        />
+                        <span className="min-w-0">
+                          <span className="block truncate text-sm font-medium text-verde">
+                            {coleccion.nombre}
+                          </span>
+                          <span className="block text-xs text-ink-soft">
+                            desde {coleccion.desde}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/colecciones"
+                  onClick={() => setPanelAbierto(false)}
+                  className="mt-2 block rounded-lg border-t border-sand px-2 pt-3 pb-1 text-sm text-ink-soft hover:text-verde"
+                >
+                  Ver todas las colecciones →
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/taller"
+            aria-current={enTaller ? 'page' : undefined}
+            className={`text-[0.95rem] transition-colors hover:text-verde ${
+              enTaller
+                ? 'font-medium text-verde underline decoration-gold decoration-2 underline-offset-8'
+                : 'text-ink-soft'
+            }`}
+          >
+            El taller
+          </Link>
+
+          {/* «Escríbenos» y no «Pedir presupuesto»: para un cirio de 260 € vale,
+              pero para una vela de bautizo de 20 € suena a obra, y es justo la
+              que más se vende. Además es lo que dice él: «no dudes en
+              contactarnos». */}
           <Link
             href="/contacto"
             className="rounded-full bg-verde px-5 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-verde-profundo"
           >
-            Pedir presupuesto
+            Escríbenos
           </Link>
         </nav>
 
         <button
           type="button"
-          onClick={() => setAbierto((v) => !v)}
-          aria-expanded={abierto}
+          onClick={() => setMovilAbierto((v) => !v)}
+          aria-expanded={movilAbierto}
           aria-controls="menu-movil"
-          aria-label={abierto ? 'Cerrar menú' : 'Abrir menú'}
+          aria-label={movilAbierto ? 'Cerrar menú' : 'Abrir menú'}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-sand text-ink md:hidden"
         >
           <svg
@@ -94,7 +203,7 @@ export function SiteHeader() {
             strokeWidth="1.7"
             aria-hidden="true"
           >
-            {abierto ? (
+            {movilAbierto ? (
               <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
             ) : (
               <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
@@ -103,32 +212,43 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {abierto && (
+      {/* En móvil no hay desplegable dentro del desplegable: las seis colecciones
+          van listadas directamente. Un menú de seis cosas no necesita niveles. */}
+      {movilAbierto && (
         <nav
           id="menu-movil"
           aria-label="Principal"
-          className="border-t border-sand/70 bg-ivory px-5 pb-5 md:hidden"
+          className="max-h-[70dvh] overflow-y-auto border-t border-sand/70 bg-ivory px-5 pb-5 md:hidden"
         >
           <ul className="flex flex-col">
-            {ENLACES.map((enlace) => (
-              <li key={enlace.href}>
+            {colecciones.map((coleccion) => (
+              <li key={coleccion.slug}>
                 <Link
-                  href={enlace.href}
-                  aria-current={esActivo(enlace.href) ? 'page' : undefined}
-                  onClick={() => setAbierto(false)}
-                  className="block border-b border-sand/50 py-3.5 text-base text-ink"
+                  href={coleccion.href}
+                  onClick={() => setMovilAbierto(false)}
+                  className="flex items-center justify-between gap-3 border-b border-sand/50 py-3.5"
                 >
-                  {enlace.texto}
+                  <span className="text-base text-ink">{coleccion.nombre}</span>
+                  <span className="shrink-0 text-sm text-ink-soft">desde {coleccion.desde}</span>
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/taller"
+                onClick={() => setMovilAbierto(false)}
+                className="block border-b border-sand/50 py-3.5 text-base text-ink"
+              >
+                El taller
+              </Link>
+            </li>
           </ul>
           <Link
             href="/contacto"
-            onClick={() => setAbierto(false)}
+            onClick={() => setMovilAbierto(false)}
             className="mt-5 block rounded-full bg-verde px-5 py-3 text-center text-sm font-medium text-ivory"
           >
-            Pedir presupuesto
+            Escríbenos
           </Link>
         </nav>
       )}

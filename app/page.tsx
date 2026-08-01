@@ -106,8 +106,36 @@ export default function PaginaInicio() {
               sizes="(max-width: 1024px) 100vw, 58vw"
               quality={90}
               priority
-              className="aspect-4/5 w-full object-cover sm:aspect-16/10 lg:h-full lg:min-h-[38rem] lg:aspect-auto"
+              className="aspect-4/5 w-full object-cover sm:aspect-16/10 lg:h-full lg:min-h-[min(86svh,44rem)] lg:aspect-auto"
             />
+
+            {/* Un detalle de la misma pieza, ampliado, montado sobre la costura
+                entre el panel verde y la foto. Hace dos cosas a la vez: da
+                profundidad a la portada —que era plana, dos rectángulos— y
+                enseña en la primera pantalla lo único que de verdad distingue
+                una vela pintada a mano de una estampada, que es el trazo.
+
+                Va DENTRO de la foto y no montado sobre el panel: sobresaliendo
+                hacia la izquierda se comía el final del párrafo. Y a media
+                altura tirando a arriba, para no chocar con la etiqueta de la
+                pieza, que vive abajo a la izquierda.
+
+                Solo en pantallas anchas: en móvil no hay sitio y taparía la
+                vela. Es decorativo —la foto grande ya está descrita—, así que
+                va con alt vacío. */}
+            <div className="pointer-events-none absolute top-[36%] left-8 hidden h-40 w-40 -translate-y-1/2 overflow-hidden rounded-pieza border-4 border-ivory shadow-alzada lg:block xl:h-48 xl:w-48">
+              <Image
+                src={portada.src}
+                alt=""
+                width={portada.ancho}
+                height={portada.alto}
+                sizes="384px"
+                quality={90}
+                priority
+                className="h-full w-full scale-[2.6] object-cover"
+                style={{ objectPosition: '62% 45%', transformOrigin: '62% 45%' }}
+              />
+            </div>
 
             {/* La foto de portada no es decoración: es una pieza que se puede
                 pedir. La etiqueta lleva su referencia y entra directamente en su

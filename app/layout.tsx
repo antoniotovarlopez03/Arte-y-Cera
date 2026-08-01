@@ -4,7 +4,24 @@ import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { BotonWhatsapp } from '@/components/layout/boton-whatsapp';
+import { categorias, formatearPrecio, precioMinimo } from '@/lib/catalogo';
 import { site } from '@/lib/site';
+
+/* El menú se arma aquí, en el servidor, y baja como prop. Si la cabecera
+   importara el catálogo directamente, zod y las 162 piezas acabarían en el
+   bundle del navegador solo para pintar seis enlaces. */
+const COLECCIONES_MENU = categorias.map((categoria) => ({
+  slug: categoria.slug,
+  nombre: categoria.nombre,
+  href: categoria.href,
+  desde: formatearPrecio(Math.min(...categoria.lineas.map(precioMinimo))),
+  portada: {
+    src: categoria.portada.src,
+    alt: categoria.portada.alt,
+    ancho: categoria.portada.ancho,
+    alto: categoria.portada.alto,
+  },
+}));
 
 /* Las fuentes se sirven desde el propio dominio (next/font las descarga en
    build). La web original las pedía a fonts.googleapis.com en cada visita:
@@ -66,7 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Saltar al contenido
         </a>
-        <SiteHeader />
+        <SiteHeader colecciones={COLECCIONES_MENU} />
         <main id="contenido" className="flex-1">
           {children}
         </main>

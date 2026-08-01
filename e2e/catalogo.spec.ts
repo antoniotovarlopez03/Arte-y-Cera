@@ -14,6 +14,48 @@ test('la portada lleva al catálogo', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Nuestras colecciones' })).toBeVisible();
 });
 
+/* El menú se prueba dos veces porque son dos menús distintos, no uno adaptado:
+   en escritorio es un panel desplegable con fotos y en móvil las seis
+   colecciones van listadas dentro de la hamburguesa, sin niveles. Lo que se
+   comprueba en los dos es lo mismo: que se llega a la celebración sin tener que
+   entender la palabra «colecciones». */
+
+test('el menú de escritorio lleva a la celebración sin pasar por «colecciones»', async ({
+  page,
+  isMobile,
+}) => {
+  test.skip(!!isMobile, 'En móvil el menú es la hamburguesa; se prueba en el siguiente.');
+  await page.goto('/');
+
+  const boton = page.getByRole('button', { name: /Velas y toallas/ });
+  await expect(boton).toHaveAttribute('aria-expanded', 'false');
+  await boton.click();
+  await expect(boton).toHaveAttribute('aria-expanded', 'true');
+
+  // Con el precio desde, para decidir sin entrar.
+  await expect(page.getByRole('link', { name: /Velas de bautizo desde 20/ })).toBeVisible();
+
+  // Escape cierra y devuelve el foco al botón: si no, se quedaría en la nada.
+  await page.keyboard.press('Escape');
+  await expect(boton).toHaveAttribute('aria-expanded', 'false');
+  await expect(boton).toBeFocused();
+
+  await boton.click();
+  await page.getByRole('link', { name: /Velas de bautizo desde 20/ }).click();
+  await expect(page).toHaveURL('/colecciones/velas-de-bautizo');
+});
+
+test('el menú de móvil lista las colecciones sin niveles', async ({ page, isMobile }) => {
+  test.skip(!isMobile, 'Solo aplica a la hamburguesa.');
+  await page.goto('/');
+
+  await page.getByRole('button', { name: 'Abrir menú' }).click();
+  const bautizo = page.getByRole('link', { name: /Velas de bautizo desde 20/ });
+  await expect(bautizo).toBeVisible();
+  await bautizo.click();
+  await expect(page).toHaveURL('/colecciones/velas-de-bautizo');
+});
+
 test('la foto de la portada es una pieza que se puede pedir', async ({ page }) => {
   await page.goto('/');
 
