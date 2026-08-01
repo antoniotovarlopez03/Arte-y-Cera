@@ -10,11 +10,21 @@ import { categorias, formatearPrecio, lineas, precioMinimo } from '@/lib/catalog
 const RAIZ = path.resolve(import.meta.dirname, '..');
 
 describe('catálogo', () => {
-  it('tiene las seis colecciones, sus once líneas y las 166 piezas', () => {
+  it('tiene las seis colecciones, sus once líneas y las 162 piezas', () => {
     expect(categorias).toHaveLength(6);
     expect(lineas).toHaveLength(11);
-    expect(lineas.flatMap((l) => l.piezas)).toHaveLength(166);
+    expect(lineas.flatMap((l) => l.piezas)).toHaveLength(162);
   });
+
+  /* NO hay aquí un test que detecte fotos generadas con IA, y es a propósito.
+     Cuatro fotos de Navidad (NV-05 a NV-08) eran producto generado y se
+     quitaron; lo que las delató fue una proporción 2:3 sin perfil de color.
+     Pero eso no se puede convertir en una regla: 2:3 es también la proporción
+     de cualquier réflex, y los recortes 4:5 o apaisados de fotos legítimas
+     harían saltar cualquier lista de proporciones «de cámara» (se probó: marcaba
+     siete fotos buenas). Un test así daría más falsos positivos que seguridad.
+     La comprobación vive en `npm run media:auditar`, que lista las proporciones
+     raras para mirarlas con los ojos, que es lo único que de verdad funciona. */
 
   it('no repite slugs de categoría', () => {
     const slugs = categorias.map((c) => c.slug);

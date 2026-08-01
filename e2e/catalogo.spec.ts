@@ -68,10 +68,10 @@ test('la galería abre la pieza, la refleja en la URL y cierra con Escape', asyn
 });
 
 test('un enlace con ?pieza abre esa pieza directamente', async ({ page }) => {
-  await page.goto('/colecciones/velas-de-navidad?pieza=NV-05');
+  await page.goto('/colecciones/velas-de-navidad?pieza=NV-09');
   const dialogo = page.getByRole('dialog');
   await expect(dialogo).toBeVisible();
-  await expect(dialogo.getByText('NV-05').first()).toBeVisible();
+  await expect(dialogo.getByText('NV-09').first()).toBeVisible();
 });
 
 test('las categorías de una sola línea no tienen página intermedia', async ({ page }) => {
@@ -85,11 +85,11 @@ test('las categorías de una sola línea no tienen página intermedia', async ({
 });
 
 test('el botón de WhatsApp lleva la referencia de la pieza', async ({ page }) => {
-  await page.goto('/colecciones/velas-de-navidad?pieza=NV-05');
-  const enlace = page.getByRole('link', { name: /Preguntar por la NV-05/ });
+  await page.goto('/colecciones/velas-de-navidad?pieza=NV-09');
+  const enlace = page.getByRole('link', { name: /Preguntar por la NV-09/ });
   const href = await enlace.getAttribute('href');
   expect(href).toContain('wa.me/34667241539');
-  expect(decodeURIComponent(href ?? '')).toContain('NV-05');
+  expect(decodeURIComponent(href ?? '')).toContain('NV-09');
 });
 
 test('la colección enseña todas sus piezas y cada una sabe de qué acabado es', async ({ page }) => {

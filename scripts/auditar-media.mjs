@@ -1,7 +1,7 @@
 /**
  * Revisa las fotos del catálogo y dice cuáles conviene reponer.
  *
- * El problema de partida: 147 de las 166 fotos de producto son de unos 300 px
+ * El problema de partida: las fotos de producto estaban a unos 300 px
  * de ancho. Sirven para una rejilla pequeña, pero no para que alguien acerque
  * una vela pintada a mano y vea el trazo, que es justo lo que vende. Este
  * script las lista para poder pedir los originales por tandas, empezando por
@@ -91,6 +91,28 @@ if (catalogo) {
       console.log(`    ${portada.ref.padEnd(9)} ${portada.carpeta}`);
     }
   }
+}
+
+/* Repaso de autenticidad, para hacer con los ojos.
+ *
+ * Cuatro fotos de Navidad resultaron ser producto generado con IA, con una
+ * referencia que un cliente podía pedir por WhatsApp. Las delataron dos señales
+ * juntas: proporción 2:3 y ningún perfil de color incrustado. Ninguna sirve por
+ * separado —2:3 es también la de cualquier réflex, y sharp quita el perfil al
+ * recomprimir—, así que esto no puede ser un test que falle: se intentó y
+ * marcaba siete fotos legítimas. Lo que sí sirve es esta lista corta de rarezas
+ * para abrirlas y mirarlas, que es exactamente como se encontraron. */
+const PROPORCION_GENERADOR = 2 / 3;
+const raras = porCarpeta.flatMap((grupo) =>
+  grupo.medidas
+    .filter((m) => Math.abs(m.width / m.height - PROPORCION_GENERADOR) < 0.01)
+    .map((m) => `${grupo.carpeta}/${m.archivo} (${m.width}×${m.height})`),
+);
+
+if (raras.length > 0) {
+  console.log(`\n  Mirar con los ojos: ${raras.length} fotos en proporción 2:3.`);
+  console.log('  Puede ser una réflex, o puede ser una imagen generada. Ábrelas.');
+  for (const r of raras) console.log(`    · ${r}`);
 }
 
 console.log(

@@ -177,7 +177,33 @@ crema estaban al límite de lo legible, y en verde no.
 
 ---
 
-## 3 bis. Una cosa que sí hay que hablar
+## 3 bis. Dos cosas que sí hay que hablar
+
+### Cuatro velas de Navidad no eran fotos tuyas
+
+Esto es lo más serio que ha salido en la revisión, y además es una corrección de algo que te dije
+mal en la versión anterior de este informe.
+
+**Cuatro de las nueve fotos de Velas de Navidad estaban generadas con inteligencia artificial**: las
+que llevaban las referencias NV-05, NV-06, NV-07 y NV-08. Eran mesas navideñas perfectas, con copa
+de vino y luces de fondo. Si te fijas en la copa de una de ellas, el pie está torcido de una forma
+que no existe; en otra, los cubiertos de la esquina están mal formados.
+
+Por qué importa más de lo que parece: en esta web **cada foto lleva un código que el cliente te
+escribe por WhatsApp**. Con esas cuatro puestas, alguien podía escribirte «quiero la NV-06» y estar
+pidiéndote una vela que quizá no has pintado nunca.
+
+Se han quitado. Navidad se queda con cinco piezas, todas fotos tuyas de verdad. Las referencias de
+las que quedan **no se han renumerado** (son NV-01, 02, 03, 04 y NV-09, con un hueco en medio), a
+propósito: una referencia que ya circula por WhatsApp no puede cambiar de vela de un día para otro.
+
+**Lo que te dije mal:** en la versión anterior escribí que «las de Navidad y las de toallas están
+bien: se ven perfectas». Me fié de que tenían buena resolución. La resolución era buena justamente
+porque estaban generadas, no porque fueran mejores fotos. Las toallas sí son tuyas: se ve la
+puntada del bordado y la textura del rizo.
+
+**Lo que necesito saber:** ¿esas cuatro velas de Navidad existen? Si las has pintado y solo falta
+la foto, mándamela y vuelven al catálogo enseguida.
 
 ### La foto del taller es una ilustración, y ahora lo dice
 
@@ -202,17 +228,22 @@ los de tu WordPress coinciden exactamente con los que teníamos (200/260 € los
 las de bautizo, 55/100 y 70/130 € las de mesa, 20 € Navidad, 18 € las toallas y 15 € la toalla
 junto a la vela).
 
-1. **Datos fiscales** para el aviso legal y la privacidad: nombre o razón social, NIF y un
+1. **¿Existen las cuatro velas de Navidad?** Las de las referencias NV-05 a NV-08, que he tenido
+   que quitar. Si las has pintado, solo falta que me mandes una foto tuya y vuelven.
+2. **Datos fiscales** para el aviso legal y la privacidad: nombre o razón social, NIF y un
    domicilio. Sin eso esas dos páginas están incompletas y no se pueden publicar.
-2. **Una clave de Resend** para que el formulario envíe correo (es gratis hasta 3.000 correos al
+3. **Una clave de Resend** para que el formulario envíe correo (es gratis hasta 3.000 correos al
    mes). Hay que añadir dos registros en el DNS del dominio; te lo hago yo si me das acceso.
-3. **Plazos reales**: cuánto tardas en un cirio, cuánto en una vela de bautizo, si pides anticipo,
+4. **Plazos reales**: cuánto tardas en un cirio, cuánto en una vela de bautizo, si pides anticipo,
    cuánto cuesta el envío. Ahora la ficha dice «escríbenos y te confirmamos», que es honesto pero
    es la duda número uno de quien tiene una fecha marcada.
-4. **¿Qué correo es el bueno?** En tu WordPress pone `ciriospintadosamano@gmail.com` y en
+5. **La medida de la vela de bautizo** (alto y grosor). Es la única colección que se vende mucho y
+   no tiene medida puesta, y la web ahora dibuja los tamaños a escala para que la gente se los
+   imagine.
+6. **¿Qué correo es el bueno?** En tu WordPress pone `ciriospintadosamano@gmail.com` y en
    arteycera.es pone `contacto@arteycera.es`. La web usa ahora mismo el segundo.
-5. **Las seis fotos** que no estaban en el WordPress (la lista está en el punto 3), si las
-   conservas. No es urgente: son seis de ciento sesenta y seis.
+7. **Las seis fotos** que no estaban en el WordPress (la lista está en el punto 3), si las
+   conservas. No es urgente: son seis de ciento sesenta y dos.
 
 ---
 
