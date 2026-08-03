@@ -22,12 +22,12 @@ export type EntradaMenu = {
 };
 
 /**
- * Cuántas colecciones van sueltas en la barra, antes del desplegable. Son las
- * tres primeras del catálogo, que están ordenadas por el criterio comercial de
- * Antonio (bautizo, bodas, cirios): si algún día reordena el catálogo, la barra
- * le sigue sin tocar nada aquí.
+ * Qué colecciones van sueltas en la barra, antes del desplegable, y en qué
+ * orden. Elegidas a mano por slug (no las N primeras del catálogo) porque
+ * «toallas-de-bautizo» va aquí junto a «cirios-pascuales» aunque no sea
+ * contigua en el catálogo (entre medias está «velas-de-navidad»).
  */
-const ATAJOS = 3;
+const ATAJOS = ['velas-de-bautizo', 'velas-de-mesa-y-boda', 'cirios-pascuales', 'toallas-de-bautizo'];
 
 /**
  * Cabecera.
@@ -103,11 +103,13 @@ export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-6 md:flex">
-          {/* Las tres colecciones que más se venden, sueltas y con el nombre
-              corto: quien llega buscando una vela de bautizo pulsa «Bautizo» y
-              ya está, sin pasar por ningún desplegable ni por la palabra
-              «colecciones». A partir de lg, que es donde caben las tres. */}
-          {colecciones.slice(0, ATAJOS).map((coleccion) => (
+          {/* Las colecciones elegidas como atajo (ver ATAJOS), sueltas y con el
+              nombre corto: quien llega buscando una vela de bautizo pulsa
+              «Bautizo» y ya está, sin pasar por ningún desplegable ni por la
+              palabra «colecciones». A partir de lg, que es donde caben. */}
+          {ATAJOS.map((slug) => colecciones.find((c) => c.slug === slug))
+            .filter((coleccion): coleccion is EntradaMenu => coleccion !== undefined)
+            .map((coleccion) => (
             <Link
               key={coleccion.slug}
               href={coleccion.href}
