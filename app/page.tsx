@@ -214,8 +214,8 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== El taller ===== */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:py-28" aria-labelledby="titulo-taller">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <section className="bg-cream/40" aria-labelledby="titulo-taller">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <div>
             <p className="rotulo">Nuestro oficio</p>
             <h2 id="titulo-taller" className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">
