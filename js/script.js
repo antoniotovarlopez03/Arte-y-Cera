@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isAll = filter === 'all';
 
     collBlocks.forEach(block => {
-      const show = !isAll && block.dataset.cat === filter;
+      const show = isAll || block.dataset.cat === filter;
       block.classList.toggle('hide', !show);
     });
 
