@@ -227,7 +227,7 @@ export const CATALOGO: CategoriaFuente[] = [
     slug: 'toallas-de-bautizo',
     nombre: 'Toallas de bautizo',
     nombreMenu: 'Toallas',
-    ocasiones: ['bautizo'],
+    ocasiones: ['toallas'],
     resumen: 'Bordadas con el nombre, a juego con la vela.',
     descripcion:
       'Toallas de rizo bordadas a mano con el nombre del niño o la niña, en el color de hilo que elijáis. Se pueden pedir solas o junto a la vela de bautizo, para que las dos piezas vayan a juego.',
@@ -254,7 +254,7 @@ export const CATALOGO: CategoriaFuente[] = [
     slug: 'pack-vela-y-toalla',
     nombre: 'Pack vela + toalla',
     nombreMenu: 'Pack',
-    ocasiones: ['bautizo'],
+    ocasiones: ['toallas'],
     resumen: 'Añade la toalla bordada a tu vela de bautizo por 15 €.',
     descripcion:
       'Si ya te llevas una vela de bautizo, la toalla bordada a juego sale por 15 € en lugar de 18 €. Mismo nombre, mismos colores, las dos piezas pensadas como un conjunto.',
