@@ -116,7 +116,7 @@ export type Categoria = Omit<z.infer<typeof CategoriaFuenteSchema>, 'lineas'> & 
 };
 
 export const ETIQUETAS_OCASION: Record<Ocasion, string> = {
-  pascua: 'Pascua y parroquias',
+  pascua: 'Cirios pascuales',
   bautizo: 'Bautizos',
   boda: 'Bodas y celebraciones',
   navidad: 'Navidad',
