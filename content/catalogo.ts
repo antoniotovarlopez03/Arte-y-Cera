@@ -254,7 +254,7 @@ export const CATALOGO: CategoriaFuente[] = [
     slug: 'pack-vela-y-toalla',
     nombre: 'Pack vela + toalla',
     nombreMenu: 'Pack',
-    ocasiones: ['toallas'],
+    ocasiones: ['pack'],
     resumen: 'Añade la toalla bordada a tu vela de bautizo por 15 €.',
     descripcion:
       'Si ya te llevas una vela de bautizo, la toalla bordada a juego sale por 15 € en lugar de 18 €. Mismo nombre, mismos colores, las dos piezas pensadas como un conjunto.',

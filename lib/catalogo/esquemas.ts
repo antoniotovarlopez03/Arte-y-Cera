@@ -64,7 +64,7 @@ export const CategoriaFuenteSchema = z.object({
    */
   nombreMenu: z.string().min(1).optional(),
   /** Para qué celebración es. Alimenta el filtro por ocasión. */
-  ocasiones: z.array(z.enum(['pascua', 'bautizo', 'boda', 'navidad', 'toallas'])).min(1),
+  ocasiones: z.array(z.enum(['pascua', 'bautizo', 'boda', 'navidad', 'toallas', 'pack'])).min(1),
   /** Frase corta para las tarjetas del índice. */
   resumen: z.string().min(1),
   /** Párrafo de la cabecera de la categoría. */
@@ -121,4 +121,5 @@ export const ETIQUETAS_OCASION: Record<Ocasion, string> = {
   boda: 'Bodas y celebraciones',
   navidad: 'Navidad',
   toallas: 'Toallas de bautizo',
+  pack: 'Pack',
 };

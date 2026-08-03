@@ -135,7 +135,7 @@ export function categoriasDe(ocasion: Ocasion): Categoria[] {
 
 /** Las ocasiones que de verdad tienen categorías, para pintar el filtro. */
 export function ocasionesConCategorias(): Ocasion[] {
-  const orden: Ocasion[] = ['bautizo', 'boda', 'pascua', 'toallas', 'navidad'];
+  const orden: Ocasion[] = ['bautizo', 'boda', 'pascua', 'toallas', 'pack', 'navidad'];
   return orden.filter((o) => categoriasDe(o).length > 0);
 }
 
