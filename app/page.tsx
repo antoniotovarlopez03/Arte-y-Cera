@@ -116,10 +116,8 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Colecciones ===== */}
-      <section
-        className="mx-auto max-w-6xl px-5 py-20 lg:py-28"
-        aria-labelledby="titulo-colecciones"
-      >
+      <section className="bg-sand/50" aria-labelledby="titulo-colecciones">
+        <div className="mx-auto max-w-6xl px-5 py-20 lg:py-28">
         <div className="max-w-2xl">
           <p className="rotulo">Catálogo</p>
           <h2 id="titulo-colecciones" className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">
@@ -137,6 +135,7 @@ export default function PaginaInicio() {
             <TarjetaCategoria key={categoria.slug} categoria={categoria} />
           ))}
         </div>
+        </div>
       </section>
 
       {/* ===== Muestra del catálogo =====
@@ -147,7 +146,7 @@ export default function PaginaInicio() {
           de 300 px de antes habría sido una mancha. */}
       <section
         aria-labelledby="titulo-muestra"
-        className="border-y border-sand/60 bg-cream/30 py-14"
+        className="border-y border-verde-profundo bg-verde-profundo py-14"
       >
         <h2 id="titulo-muestra" className="sr-only">
           Una muestra de las piezas ya pintadas
@@ -176,10 +175,10 @@ export default function PaginaInicio() {
         <p className="mt-9 text-center">
           <Link
             href="/colecciones"
-            className="inline-flex items-center gap-2 border-b border-verde/25 pb-0.5 font-medium text-verde hover:border-verde"
+            className="inline-flex items-center gap-2 border-b border-gold-light/40 pb-0.5 font-medium text-gold-light hover:border-gold-light"
           >
             Ver las {totalPiezas} piezas
-            <IconoFlecha className="h-4 w-4 text-gold-deep" />
+            <IconoFlecha className="h-4 w-4 text-gold-light" />
           </Link>
         </p>
       </section>
@@ -214,7 +213,7 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== El taller ===== */}
-      <section className="bg-cream/40" aria-labelledby="titulo-taller">
+      <section className="bg-terracotta/18" aria-labelledby="titulo-taller">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <div>
             <p className="rotulo">Nuestro oficio</p>
@@ -262,7 +261,7 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Cierre ===== */}
-      <section className="border-t border-sand/60 bg-cream/40">
+      <section className="border-t border-sand/60 bg-cream/60">
         <div className="mx-auto max-w-3xl px-5 py-20 text-center lg:py-28">
           {/* Su cierre, tal cual lo tenía en el WordPress: invita a preguntar en
               vez de pedir un pliego de condiciones. */}

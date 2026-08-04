@@ -78,7 +78,10 @@ export default async function PaginaCategoria({ params }: Props) {
           </p>
         </header>
 
-        <section className="mt-16" aria-labelledby="titulo-acabados">
+        <section
+          className="mt-16 rounded-pieza bg-sand/30 p-6 sm:p-10"
+          aria-labelledby="titulo-acabados"
+        >
           <h2 id="titulo-acabados" className="font-display text-[1.7rem] font-semibold">
             Elige el acabado
           </h2>

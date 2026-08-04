@@ -8,6 +8,12 @@ import { Migas } from '@/components/ui/migas';
 import { categorias, categoriasDe, ocasionesConCategorias } from '@/lib/catalogo';
 import { ETIQUETAS_OCASION } from '@/lib/catalogo/esquemas';
 
+/** Fondos que se van rotando entre los grupos, para que se distingan bien
+ * unos de otros sin salirse de la paleta de marca (verde, dorado, crema,
+ * terracota). Con 4 tonos en vez de 3, en las 6 ocasiones solo se repiten
+ * dos parejas en vez de tres. */
+const FONDOS_OCASION = ['bg-cream/60', 'bg-sand/40', 'bg-cream-2/60', 'bg-terracotta/20'];
+
 export const metadata: Metadata = {
   title: 'Colecciones',
   description:
@@ -53,11 +59,16 @@ export default function PaginaColecciones() {
         </ul>
       </nav>
 
-      <div className="mt-14 space-y-20">
-        {ocasiones.map((ocasion) => {
+      <div className="mt-14 space-y-8">
+        {ocasiones.map((ocasion, indice) => {
           const grupo = categoriasDe(ocasion);
           return (
-            <section key={ocasion} id={ocasion} aria-labelledby={`titulo-${ocasion}`}>
+            <section
+              key={ocasion}
+              id={ocasion}
+              aria-labelledby={`titulo-${ocasion}`}
+              className={`rounded-pieza p-6 sm:p-10 ${FONDOS_OCASION[indice % FONDOS_OCASION.length]}`}
+            >
               <h2 id={`titulo-${ocasion}`} className="font-display text-[1.7rem] font-semibold">
                 {ETIQUETAS_OCASION[ocasion]}
               </h2>

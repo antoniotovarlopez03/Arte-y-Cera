@@ -60,7 +60,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
     <div className="mx-auto max-w-6xl px-5 pt-8 pb-16">
       <Migas migas={[{ href: '/', texto: 'Inicio' }, { texto: 'Contacto' }]} />
 
-      <div className="mt-8 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div className="mt-8 grid gap-12 rounded-pieza bg-cream/60 p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
           <p className="rotulo">Hablemos</p>
           {/* El titular y el párrafo son los suyos, del WordPress. «Coméntanos qué
@@ -76,7 +76,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
           </p>
 
           {pieza && (
-            <p className="mt-5 rounded-xl border border-gold/50 bg-cream/60 px-4 py-3 text-sm text-ink">
+            <p className="mt-5 rounded-xl border border-gold/50 bg-ivory px-4 py-3 text-sm text-ink">
               Estás preguntando por la pieza <span className="font-mono">{pieza}</span>.
             </p>
           )}
@@ -124,7 +124,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
               tiene un código y que decirlo ahorra toda la conversación de «la
               tercera, no, la de arriba». La foto es una pieza real y enlaza a
               su ficha. */}
-          <div className="mt-12 rounded-pieza border border-sand bg-cream/40 p-5">
+          <div className="mt-12 rounded-pieza border border-sand bg-ivory p-5">
             <p className="rotulo">Un atajo</p>
             <p className="mt-2.5 leading-relaxed text-ink-soft">
               Si ya has visto una pieza que te gusta, dinos su referencia y sabemos exactamente cuál
@@ -150,7 +150,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
           </div>
         </div>
 
-        <div className="rounded-pieza border border-sand bg-cream/40 p-6 sm:p-8">
+        <div className="rounded-pieza border border-sand bg-ivory p-6 sm:p-8">
           <FormularioContacto interesInicial={interes} opciones={opcionesDeInteres()} />
         </div>
       </div>

@@ -108,7 +108,7 @@ export default function PaginaTaller() {
         <Migas migas={[{ href: '/', texto: 'Inicio' }, { texto: 'El taller' }]} />
       </div>
 
-      <section className="mx-auto grid max-w-6xl items-start gap-12 px-5 pt-8 lg:grid-cols-2 lg:gap-16">
+      <section className="mx-auto grid max-w-6xl items-start gap-12 rounded-pieza bg-terracotta/15 px-5 py-8 sm:p-10 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="rotulo">Nuestro oficio</p>
           <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
@@ -221,7 +221,10 @@ export default function PaginaTaller() {
           recortes cerrados sobre piezas que ya están en el catálogo, no material
           nuevo. Enseñan lo que de verdad vende una vela pintada a mano y lo que
           antes no se veía nunca, que es el pincel. */}
-      <section className="mx-auto max-w-6xl px-5 py-20 lg:py-24" aria-labelledby="titulo-detalles">
+      <section
+        className="mx-auto max-w-6xl rounded-pieza bg-sand/40 px-5 py-20 lg:py-24"
+        aria-labelledby="titulo-detalles"
+      >
         <div className="max-w-2xl">
           <p className="rotulo">De cerca</p>
           <h2 id="titulo-detalles" className="mt-3 font-display text-[2.25rem] font-semibold">
@@ -269,7 +272,7 @@ export default function PaginaTaller() {
         </ul>
       </section>
 
-      <section className="mx-auto max-w-3xl px-5 py-16 text-center lg:py-20">
+      <section className="mx-auto max-w-3xl rounded-pieza bg-cream/60 px-5 py-16 text-center lg:py-20">
         <h2 className="font-display text-3xl font-semibold">¿Empezamos con la tuya?</h2>
         <p className="mt-4 text-lg leading-relaxed text-ink-soft">
           Mira las colecciones para coger ideas o escríbenos directamente con la fecha de tu

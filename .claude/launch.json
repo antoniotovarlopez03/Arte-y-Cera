@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "arte-y-cera",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "3210"],
+      "runtimeExecutable": "cmd.exe",
+      "runtimeArgs": ["/c", "set PATH=C:\\Program Files\\nodejs;%PATH% && npm run dev -- --port 3210"],
       "port": 3210
     }
   ]
