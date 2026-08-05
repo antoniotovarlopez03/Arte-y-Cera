@@ -8,11 +8,9 @@ import { Migas } from '@/components/ui/migas';
 import { categorias, categoriasDe, ocasionesConCategorias } from '@/lib/catalogo';
 import { ETIQUETAS_OCASION } from '@/lib/catalogo/esquemas';
 
-/** Fondos que se van rotando entre los grupos, para que se distingan bien
- * unos de otros sin salirse de la paleta de marca (verde, dorado, crema,
- * terracota). Con 4 tonos en vez de 3, en las 6 ocasiones solo se repiten
- * dos parejas en vez de tres. */
-const FONDOS_OCASION = ['bg-cream/60', 'bg-sand/40', 'bg-cream-2/60', 'bg-terracotta/20'];
+/** Fondos oscuros texturizados que se van alternando entre los grupos
+ * (carbón / oliva oscuro, sin nada en crema). */
+const FONDOS_OCASION = ['bg-carbon', 'bg-oliva-oscuro'];
 
 export const metadata: Metadata = {
   title: 'Colecciones',
@@ -50,7 +48,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-sand bg-cream/50 px-4 py-2 text-sm text-ink-soft transition-colors hover:border-verde hover:text-verde"
+                className="inline-block rounded-full border border-carbon/20 bg-carbon px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -67,9 +65,12 @@ export default function PaginaColecciones() {
               key={ocasion}
               id={ocasion}
               aria-labelledby={`titulo-${ocasion}`}
-              className={`rounded-pieza p-6 sm:p-10 ${FONDOS_OCASION[indice % FONDOS_OCASION.length]}`}
+              className={`textura-pared rounded-pieza p-6 sm:p-10 ${FONDOS_OCASION[indice % FONDOS_OCASION.length]}`}
             >
-              <h2 id={`titulo-${ocasion}`} className="font-display text-[1.7rem] font-semibold">
+              <h2
+                id={`titulo-${ocasion}`}
+                className="font-display text-[1.7rem] font-semibold text-white-warm"
+              >
                 {ETIQUETAS_OCASION[ocasion]}
               </h2>
               {/* Con una sola colección en el grupo, la tarjeta de un tercio
@@ -77,12 +78,12 @@ export default function PaginaColecciones() {
                   ancha. */}
               {grupo.length === 1 && grupo[0] ? (
                 <div className="mt-6">
-                  <TarjetaCategoriaAncha categoria={grupo[0]} />
+                  <TarjetaCategoriaAncha categoria={grupo[0]} oscuro />
                 </div>
               ) : (
                 <div className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
                   {grupo.map((categoria) => (
-                    <TarjetaCategoria key={categoria.slug} categoria={categoria} />
+                    <TarjetaCategoria key={categoria.slug} categoria={categoria} oscuro />
                   ))}
                 </div>
               )}
@@ -91,11 +92,11 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      <p className="mt-20 rounded-pieza border border-sand bg-cream/50 p-6 text-center text-ink-soft">
+      <p className="textura-pared mt-20 rounded-pieza bg-carbon p-6 text-center text-cream/80">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"
-          className="font-medium text-ink underline decoration-gold underline-offset-4"
+          className="font-medium text-gold-light underline decoration-gold-light/50 underline-offset-4"
         >
           Cuéntanos tu idea
         </Link>

@@ -98,26 +98,26 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                 recorrido por el que viajar. Quien está mirando piezas tiene el
                 botón de WhatsApp con la referencia dentro del visor de cada foto,
                 que es el camino que se usa. En móvil sí hay barra fija. */}
-            <div className="mt-7 rounded-pieza border border-sand bg-cream/60 p-6 sm:p-7">
-              <Precio precios={linea.precios} nota={linea.notaPrecio} tamano="grande" />
+            <div className="textura-pared mt-7 rounded-pieza bg-carbon p-6 sm:p-7">
+              <Precio precios={linea.precios} nota={linea.notaPrecio} tamano="grande" oscuro />
 
               <dl className="mt-6 space-y-4 text-sm">
                 {linea.medidas && (
                   <div>
-                    <dt className="text-ink-soft">Tamaño</dt>
-                    <dd className="font-medium text-ink">{linea.medidas}</dd>
+                    <dt className="text-cream/60">Tamaño</dt>
+                    <dd className="font-medium text-white-warm">{linea.medidas}</dd>
                   </div>
                 )}
                 {linea.incluye.length > 0 && (
                   <div>
-                    <dt className="text-ink-soft">Incluye</dt>
+                    <dt className="text-cream/60">Incluye</dt>
                     <dd>
                       <ul className="mt-1.5 space-y-1.5">
                         {linea.incluye.map((item) => (
-                          <li key={item} className="flex gap-2 text-ink">
+                          <li key={item} className="flex gap-2 text-cream">
                             <span
                               aria-hidden="true"
-                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-deep"
+                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-light"
                             />
                             {item}
                           </li>
@@ -127,8 +127,8 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                   </div>
                 )}
                 <div>
-                  <dt className="text-ink-soft">Plazo</dt>
-                  <dd className="text-ink">
+                  <dt className="text-cream/60">Plazo</dt>
+                  <dd className="text-cream">
                     Se pinta por encargo. Escríbenos con la fecha de tu celebración y te confirmamos
                     si llegamos.
                   </dd>
@@ -150,12 +150,12 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                     pathname: '/contacto',
                     query: { linea: `${categoria.slug}/${linea.slug}` },
                   }}
-                  className={clasesBoton('secundario')}
+                  className={clasesBoton('contorno-claro')}
                 >
                   Pedir presupuesto por email
                 </Link>
               </div>
-              <p className="mt-3 text-center text-xs text-ink-soft">{site.tiempoRespuesta}</p>
+              <p className="mt-3 text-center text-xs text-cream/60">{site.tiempoRespuesta}</p>
             </div>
           </div>
         </header>

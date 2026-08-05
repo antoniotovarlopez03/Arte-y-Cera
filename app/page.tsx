@@ -116,15 +116,18 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Colecciones ===== */}
-      <section className="bg-sand/50" aria-labelledby="titulo-colecciones">
+      <section
+        className="textura-pared bg-carbon text-cream"
+        aria-labelledby="titulo-colecciones"
+      >
         <div className="mx-auto max-w-6xl px-5 py-20 lg:py-28">
         <div className="max-w-2xl">
-          <p className="rotulo">Catálogo</p>
-          <h2 id="titulo-colecciones" className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">
+          <p className="rotulo text-gold">Catálogo</p>
+          <h2 id="titulo-colecciones" className="mt-3 font-display text-[2.75rem] font-semibold text-white-warm sm:text-[3.5rem]">
             Elige la celebración
           </h2>
           <span className="filete mt-6" />
-          <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+          <p className="mt-6 text-lg leading-relaxed text-cream/75">
             Seis colecciones y {totalPiezas} piezas ya pintadas, con los precios a la vista. Ninguna
             se repite: sirven para que veas el estilo y nos digas cuál te gusta.
           </p>
@@ -132,7 +135,7 @@ export default function PaginaInicio() {
 
         <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {categorias.map((categoria) => (
-            <TarjetaCategoria key={categoria.slug} categoria={categoria} />
+            <TarjetaCategoria key={categoria.slug} categoria={categoria} oscuro />
           ))}
         </div>
         </div>
@@ -146,7 +149,7 @@ export default function PaginaInicio() {
           de 300 px de antes habría sido una mancha. */}
       <section
         aria-labelledby="titulo-muestra"
-        className="border-y border-verde-profundo bg-verde-profundo py-14"
+        className="textura-pared border-y border-oliva-oscuro bg-oliva-oscuro py-14"
       >
         <h2 id="titulo-muestra" className="sr-only">
           Una muestra de las piezas ya pintadas
@@ -261,12 +264,14 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Cierre ===== */}
-      <section className="border-t border-sand/60 bg-cream/60">
+      <section className="textura-pared bg-carbon">
         <div className="mx-auto max-w-3xl px-5 py-20 text-center lg:py-28">
           {/* Su cierre, tal cual lo tenía en el WordPress: invita a preguntar en
               vez de pedir un pliego de condiciones. */}
-          <h2 className="font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">¿Tienes alguna duda?</h2>
-          <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+          <h2 className="font-display text-[2.75rem] font-semibold text-white-warm sm:text-[3.5rem]">
+            ¿Tienes alguna duda?
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-cream/75">
             No dudes en contactarnos y cuéntanos qué tipo de vela tienes pensada para tu momento;
             estaremos encantados de ayudarte a encontrar lo que buscas. Si ya has visto una pieza
             que te gusta, dinos su referencia.
@@ -281,15 +286,15 @@ export default function PaginaInicio() {
               <IconoWhatsapp className="h-4 w-4" />
               Escribir por WhatsApp
             </a>
-            <Link href="/contacto" className={clasesBoton('secundario')}>
+            <Link href="/contacto" className={clasesBoton('contorno-claro')}>
               Rellenar el formulario
             </Link>
           </div>
-          <p className="mt-7 text-sm text-ink-soft">
+          <p className="mt-7 text-sm text-cream/60">
             O por correo:{' '}
             <a
               href={`mailto:${site.email}`}
-              className="text-verde underline decoration-gold underline-offset-4"
+              className="text-gold-light underline decoration-gold-light/50 underline-offset-4"
             >
               {site.email}
             </a>

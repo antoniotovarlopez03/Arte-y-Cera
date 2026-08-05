@@ -40,6 +40,12 @@
   --color-gold-ink: #7d6029;
   --color-terracotta: #b5651d;
 
+  /* Paleta oscura "lujo artesanal": gris carbón y verde oliva oscuro, para
+     secciones concretas que piden un fondo texturizado en vez de crema.
+     No sustituyen al verde/dorado de marca, se usan aparte. */
+  --color-carbon: #2a2826;
+  --color-oliva-oscuro: #454a35;
+
   /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
   --font-display: var(--fuente-display), 'EB Garamond', Georgia, serif;
   --font-sans: var(--fuente-sans), 'Jost', system-ui, sans-serif;
@@ -136,6 +142,18 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-gold-ink);
+  }
+
+  /* Grano sutil tipo estuco/pared pintada a mano, para las secciones oscuras
+     de "lujo artesanal" (carbón, oliva oscuro). Es ruido SVG en capas, no una
+     imagen descargada: no pesa nada y no se pixela a ningún tamaño. La
+     opacidad es baja a propósito, para que dé profundidad sin distraer del
+     texto que va encima. */
+  .textura-pared {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-blend-mode: overlay;
+    background-size: 240px 240px;
   }
 
   /* Carrusel de la portada.
