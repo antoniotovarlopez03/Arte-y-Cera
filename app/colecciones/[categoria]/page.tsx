@@ -79,16 +79,16 @@ export default async function PaginaCategoria({ params }: Props) {
         </header>
 
         <section
-          className="textura-pared mt-16 rounded-pieza bg-oliva-oscuro p-6 sm:p-10"
+          className="textura-pared mt-16 rounded-pieza bg-salvia p-6 sm:p-10"
           aria-labelledby="titulo-acabados"
         >
-          <h2 id="titulo-acabados" className="font-display text-[1.7rem] font-semibold text-white-warm">
+          <h2 id="titulo-acabados" className="font-display text-[1.7rem] font-semibold">
             Elige el acabado
           </h2>
-          <p className="mt-2 max-w-2xl text-cream/75">
+          <p className="mt-2 max-w-2xl text-ink-soft">
             Lo que cambia de un precio a otro es cuánta pintura lleva la pieza.
           </p>
-          <ComparadorAcabados categoria={categoria} oscuro />
+          <ComparadorAcabados categoria={categoria} />
         </section>
 
         {/* Todas las piezas de la colección juntas, de todos los acabados.

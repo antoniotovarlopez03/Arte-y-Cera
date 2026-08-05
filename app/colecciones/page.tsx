@@ -8,9 +8,9 @@ import { Migas } from '@/components/ui/migas';
 import { categorias, categoriasDe, ocasionesConCategorias } from '@/lib/catalogo';
 import { ETIQUETAS_OCASION } from '@/lib/catalogo/esquemas';
 
-/** Fondos oscuros texturizados que se van alternando entre los grupos
- * (carbón / oliva oscuro, sin nada en crema). */
-const FONDOS_OCASION = ['bg-carbon', 'bg-oliva-oscuro'];
+/** Fondos claros texturizados tipo cal que se van alternando entre los
+ * grupos (beige piedra / verde salvia, sin nada en crema). */
+const FONDOS_OCASION = ['bg-piedra', 'bg-salvia'];
 
 export const metadata: Metadata = {
   title: 'Colecciones',
@@ -48,7 +48,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-carbon/20 bg-carbon px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
+                className="inline-block rounded-full border border-piedra bg-piedra px-4 py-2 text-sm text-ink-soft transition-colors hover:border-gold-deep hover:text-verde"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -69,7 +69,7 @@ export default function PaginaColecciones() {
             >
               <h2
                 id={`titulo-${ocasion}`}
-                className="font-display text-[1.7rem] font-semibold text-white-warm"
+                className="font-display text-[1.7rem] font-semibold"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </h2>
@@ -78,12 +78,12 @@ export default function PaginaColecciones() {
                   ancha. */}
               {grupo.length === 1 && grupo[0] ? (
                 <div className="mt-6">
-                  <TarjetaCategoriaAncha categoria={grupo[0]} oscuro />
+                  <TarjetaCategoriaAncha categoria={grupo[0]} />
                 </div>
               ) : (
                 <div className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
                   {grupo.map((categoria) => (
-                    <TarjetaCategoria key={categoria.slug} categoria={categoria} oscuro />
+                    <TarjetaCategoria key={categoria.slug} categoria={categoria} />
                   ))}
                 </div>
               )}
@@ -92,11 +92,11 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      <p className="textura-pared mt-20 rounded-pieza bg-carbon p-6 text-center text-cream/80">
+      <p className="textura-pared mt-20 rounded-pieza bg-piedra p-6 text-center text-ink-soft">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"
-          className="font-medium text-gold-light underline decoration-gold-light/50 underline-offset-4"
+          className="font-medium text-verde underline decoration-verde/40 underline-offset-4"
         >
           Cuéntanos tu idea
         </Link>
