@@ -60,17 +60,17 @@ export default async function PaginaContacto({ searchParams }: Props) {
     <div className="mx-auto max-w-6xl px-5 pt-8 pb-16">
       <Migas migas={[{ href: '/', texto: 'Inicio' }, { texto: 'Contacto' }]} />
 
-      <div className="textura-pared mt-8 grid gap-12 rounded-pieza bg-piedra p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div className="textura-pared mt-8 grid gap-12 rounded-pieza bg-carbon p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
-          <p className="rotulo">Hablemos</p>
+          <p className="rotulo text-gold">Hablemos</p>
           {/* El titular y el párrafo son los suyos, del WordPress. «Coméntanos qué
               tipo de vela tienes pensada para tu momento» invita a la duda en vez
               de pedir un pliego de condiciones, y eso es lo que hace escribir. */}
-          <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
+          <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold text-white-warm sm:text-[3.5rem]">
             ¿Tienes alguna duda?
           </h1>
           <span className="filete mt-5" />
-          <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+          <p className="mt-5 text-lg leading-relaxed text-cream/75">
             No dudes en contactarnos y cuéntanos qué tipo de vela tienes pensada para tu momento;
             estaremos encantados de ayudarte a encontrar lo que buscas.
           </p>
@@ -87,7 +87,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
                 href={whatsappUrl('Hola, os escribo desde la web de Arte y Cera.')}
                 target="_blank"
                 rel="noopener"
-                className="flex items-center gap-3 text-ink-soft hover:underline"
+                className="flex items-center gap-3 text-cream hover:underline"
               >
                 <IconoWhatsapp className="h-5 w-5 text-gold-deep" />
                 {site.whatsappVisible}
@@ -96,7 +96,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="flex items-center gap-3 text-ink-soft hover:underline"
+                className="flex items-center gap-3 text-cream hover:underline"
               >
                 <IconoSobre className="h-5 w-5 text-gold-deep" />
                 {site.email}
@@ -107,7 +107,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
                 href={site.instagram.url}
                 target="_blank"
                 rel="noopener"
-                className="flex items-center gap-3 text-ink-soft hover:underline"
+                className="flex items-center gap-3 text-cream hover:underline"
               >
                 <IconoInstagram className="h-5 w-5 text-gold-deep" />
                 {site.instagram.usuario}
@@ -115,7 +115,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
             </li>
           </ul>
 
-          <p className="mt-8 text-sm text-ink-soft/70">
+          <p className="mt-8 text-sm text-cream/60">
             {site.zona}. {site.tiempoRespuesta}.
           </p>
 
