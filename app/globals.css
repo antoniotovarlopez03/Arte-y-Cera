@@ -41,9 +41,9 @@
   --color-terracotta: #b5651d;
 
   /* Paleta de marca de tres colores: primario (verde, arriba), secundario
-     (vino, aquí) y terciario (dorado, arriba). El vino es el color de
-     acento para secciones con fondo oscuro texturizado, en vez de crema. */
-  --color-vino: #4e2436;
+     (bosque, aquí) y terciario (dorado, arriba). El bosque es un segundo
+     verde, más cálido, para secciones con fondo oscuro en vez de crema. */
+  --color-bosque: #2d4a2e;
 
   /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
   --font-display: var(--fuente-display), 'EB Garamond', Georgia, serif;
@@ -143,17 +143,29 @@
     color: var(--color-gold-ink);
   }
 
-  /* Veta tipo mármol/nube para las secciones de acento en vino: zonas más
-     claras y más oscuras muy difuminadas entre sí, sin líneas ni bandas
-     definidas. Nada de ruido procedural (sin feTurbulence) y sin imagen
-     descargada: es un SVG con unas elipses grandes y muy desenfocadas, que
-     no pesa nada y no se pixela a ningún tamaño. Con overlay a opacidades
-     altas el efecto es deliberadamente marcado, no un grano casi invisible. */
+  /* Destello de sol para las secciones de acento en bosque: un foco de luz
+     cálida arriba a la derecha, con unos rayos finos que se pierden hacia
+     el centro. Son solo dos degradados de CSS (cónico para los rayos,
+     radial para el resplandor), no una imagen: no pesa nada. La posición
+     es fija (arriba-derecha) en todas las secciones, para que se repita
+     como una firma visual en vez de notarse distinta en cada una. */
   .textura-pared {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='c'%3E%3CfeGaussianBlur stdDeviation='70'/%3E%3C/filter%3E%3Cg filter='url(%23c)'%3E%3Cellipse cx='140' cy='160' rx='230' ry='180' fill='%23fff' opacity='0.32'/%3E%3Cellipse cx='580' cy='120' rx='210' ry='160' fill='%23fff' opacity='0.20'/%3E%3Cellipse cx='600' cy='570' rx='250' ry='200' fill='%23000' opacity='0.42'/%3E%3Cellipse cx='120' cy='590' rx='200' ry='220' fill='%23000' opacity='0.32'/%3E%3Cellipse cx='360' cy='350' rx='180' ry='180' fill='%23fff' opacity='0.14'/%3E%3C/g%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-blend-mode: overlay;
-    background-size: 700px 700px;
+    background-image:
+      conic-gradient(
+        from 200deg at 88% 6%,
+        transparent 0deg, rgb(255 222 150 / 0.18) 6deg, transparent 12deg,
+        transparent 26deg, rgb(255 222 150 / 0.14) 32deg, transparent 38deg,
+        transparent 52deg, rgb(255 222 150 / 0.18) 58deg, transparent 64deg,
+        transparent 78deg, rgb(255 222 150 / 0.12) 84deg, transparent 90deg,
+        transparent 360deg
+      ),
+      radial-gradient(
+        circle at 88% 6%,
+        rgb(255 232 180 / 0.55),
+        rgb(255 232 180 / 0.14) 22%,
+        transparent 45%
+      );
+    background-repeat: no-repeat;
   }
 
   /* Carrusel de la portada.

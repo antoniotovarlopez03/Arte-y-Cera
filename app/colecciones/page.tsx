@@ -44,7 +44,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-vino/20 bg-vino px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
+                className="inline-block rounded-full border border-bosque/20 bg-bosque px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -61,7 +61,7 @@ export default function PaginaColecciones() {
               key={ocasion}
               id={ocasion}
               aria-labelledby={`titulo-${ocasion}`}
-              className="textura-pared bg-vino rounded-pieza p-6 sm:p-10"
+              className="textura-pared bg-bosque rounded-pieza p-6 sm:p-10"
             >
               <h2
                 id={`titulo-${ocasion}`}
@@ -88,7 +88,7 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      <p className="textura-pared mt-20 rounded-pieza bg-vino p-6 text-center text-cream/80">
+      <p className="textura-pared mt-20 rounded-pieza bg-bosque p-6 text-center text-cream/80">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"

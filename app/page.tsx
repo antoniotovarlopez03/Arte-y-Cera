@@ -117,7 +117,7 @@ export default function PaginaInicio() {
 
       {/* ===== Colecciones ===== */}
       <section
-        className="textura-pared bg-vino text-cream"
+        className="textura-pared bg-bosque text-cream"
         aria-labelledby="titulo-colecciones"
       >
         <div className="mx-auto max-w-6xl px-5 py-20 lg:py-28">
@@ -149,7 +149,7 @@ export default function PaginaInicio() {
           de 300 px de antes habría sido una mancha. */}
       <section
         aria-labelledby="titulo-muestra"
-        className="textura-pared border-y border-vino bg-vino py-14"
+        className="textura-pared border-y border-bosque bg-bosque py-14"
       >
         <h2 id="titulo-muestra" className="sr-only">
           Una muestra de las piezas ya pintadas
@@ -264,7 +264,7 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Cierre ===== */}
-      <section className="textura-pared bg-vino">
+      <section className="textura-pared bg-bosque">
         <div className="mx-auto max-w-3xl px-5 py-20 text-center lg:py-28">
           {/* Su cierre, tal cual lo tenía en el WordPress: invita a preguntar en
               vez de pedir un pliego de condiciones. */}

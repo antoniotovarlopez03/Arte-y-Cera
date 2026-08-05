@@ -60,7 +60,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
     <div className="mx-auto max-w-6xl px-5 pt-8 pb-16">
       <Migas migas={[{ href: '/', texto: 'Inicio' }, { texto: 'Contacto' }]} />
 
-      <div className="textura-pared mt-8 grid gap-12 rounded-pieza bg-vino p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div className="textura-pared mt-8 grid gap-12 rounded-pieza bg-bosque p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
           <p className="rotulo text-gold">Hablemos</p>
           {/* El titular y el párrafo son los suyos, del WordPress. «Coméntanos qué
