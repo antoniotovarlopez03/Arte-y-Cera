@@ -98,7 +98,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                 recorrido por el que viajar. Quien está mirando piezas tiene el
                 botón de WhatsApp con la referencia dentro del visor de cada foto,
                 que es el camino que se usa. En móvil sí hay barra fija. */}
-            <div className="textura-pared mt-7 rounded-pieza bg-carbon p-6 sm:p-7">
+            <div className="textura-pared mt-7 rounded-pieza bg-vino p-6 sm:p-7">
               <Precio precios={linea.precios} nota={linea.notaPrecio} tamano="grande" oscuro />
 
               <dl className="mt-6 space-y-4 text-sm">

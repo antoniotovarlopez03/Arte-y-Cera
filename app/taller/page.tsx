@@ -222,7 +222,7 @@ export default function PaginaTaller() {
           nuevo. Enseñan lo que de verdad vende una vela pintada a mano y lo que
           antes no se veía nunca, que es el pincel. */}
       <section
-        className="textura-pared mx-auto max-w-6xl rounded-pieza bg-carbon px-5 py-20 lg:py-24"
+        className="textura-pared mx-auto max-w-6xl rounded-pieza bg-vino px-5 py-20 lg:py-24"
         aria-labelledby="titulo-detalles"
       >
         <div className="max-w-2xl">
@@ -272,7 +272,7 @@ export default function PaginaTaller() {
         </ul>
       </section>
 
-      <section className="textura-pared mx-auto max-w-3xl rounded-pieza bg-oliva-oscuro px-5 py-16 text-center lg:py-20">
+      <section className="textura-pared mx-auto max-w-3xl rounded-pieza bg-vino px-5 py-16 text-center lg:py-20">
         <h2 className="font-display text-3xl font-semibold text-white-warm">¿Empezamos con la tuya?</h2>
         <p className="mt-4 text-lg leading-relaxed text-cream/75">
           Mira las colecciones para coger ideas o escríbenos directamente con la fecha de tu

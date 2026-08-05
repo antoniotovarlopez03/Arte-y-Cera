@@ -8,10 +8,6 @@ import { Migas } from '@/components/ui/migas';
 import { categorias, categoriasDe, ocasionesConCategorias } from '@/lib/catalogo';
 import { ETIQUETAS_OCASION } from '@/lib/catalogo/esquemas';
 
-/** Fondos oscuros texturizados que se van alternando entre los grupos
- * (carbón / oliva oscuro, sin nada en crema). */
-const FONDOS_OCASION = ['bg-carbon', 'bg-oliva-oscuro'];
-
 export const metadata: Metadata = {
   title: 'Colecciones',
   description:
@@ -48,7 +44,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-carbon/20 bg-carbon px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
+                className="inline-block rounded-full border border-vino/20 bg-vino px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -58,14 +54,14 @@ export default function PaginaColecciones() {
       </nav>
 
       <div className="mt-14 space-y-8">
-        {ocasiones.map((ocasion, indice) => {
+        {ocasiones.map((ocasion) => {
           const grupo = categoriasDe(ocasion);
           return (
             <section
               key={ocasion}
               id={ocasion}
               aria-labelledby={`titulo-${ocasion}`}
-              className={`textura-pared rounded-pieza p-6 sm:p-10 ${FONDOS_OCASION[indice % FONDOS_OCASION.length]}`}
+              className="textura-pared bg-vino rounded-pieza p-6 sm:p-10"
             >
               <h2
                 id={`titulo-${ocasion}`}
@@ -92,7 +88,7 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      <p className="textura-pared mt-20 rounded-pieza bg-carbon p-6 text-center text-cream/80">
+      <p className="textura-pared mt-20 rounded-pieza bg-vino p-6 text-center text-cream/80">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"

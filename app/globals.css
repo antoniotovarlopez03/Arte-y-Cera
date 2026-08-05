@@ -40,11 +40,10 @@
   --color-gold-ink: #7d6029;
   --color-terracotta: #b5651d;
 
-  /* Paleta oscura "lujo artesanal": gris carbón y verde oliva oscuro, para
-     secciones concretas que piden un fondo texturizado en vez de crema.
-     No sustituyen al verde/dorado de marca, se usan aparte. */
-  --color-carbon: #2a2826;
-  --color-oliva-oscuro: #454a35;
+  /* Paleta de marca de tres colores: primario (verde, arriba), secundario
+     (vino, aquí) y terciario (dorado, arriba). El vino es el color de
+     acento para secciones con fondo oscuro texturizado, en vez de crema. */
+  --color-vino: #4e2436;
 
   /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
   --font-display: var(--fuente-display), 'EB Garamond', Georgia, serif;
@@ -144,22 +143,17 @@
     color: var(--color-gold-ink);
   }
 
-  /* Pincelada ancha sobre pared de yeso, para las secciones oscuras de "lujo
-     artesanal" (carbón, oliva oscuro). Son varias franjas diagonales muy
-     difuminadas y en ángulos ligeramente distintos entre sí —como una pasada
-     de brocha real, no líneas paralelas perfectas— más unas pocas
-     acumulaciones de pintura menos difuminadas donde se nota más la presión
-     del pincel. Nada de ruido procedural (sin feTurbulence) y sin imagen
-     descargada: es un SVG en capas que no pesa nada y no se pixela a ningún
-     tamaño. Las franjas se salen del tile por los lados para que el borde de
-     la repetición quede disuelto en el desenfoque. Con soft-light y
-     opacidades muy bajas el resultado se queda en torno al 95 % color liso /
-     5 % textura: solo se nota mirando de cerca, nunca compite con las fotos. */
+  /* Veta tipo mármol/nube para las secciones de acento en vino: zonas más
+     claras y más oscuras muy difuminadas entre sí, sin líneas ni bandas
+     definidas. Nada de ruido procedural (sin feTurbulence) y sin imagen
+     descargada: es un SVG con unas elipses grandes y muy desenfocadas, que
+     no pesa nada y no se pixela a ningún tamaño. Con overlay a opacidades
+     altas el efecto es deliberadamente marcado, no un grano casi invisible. */
   .textura-pared {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='640'%3E%3Cfilter id='s'%3E%3CfeGaussianBlur stdDeviation='46'/%3E%3C/filter%3E%3Cfilter id='p'%3E%3CfeGaussianBlur stdDeviation='20'/%3E%3C/filter%3E%3Cg filter='url(%23s)'%3E%3Crect x='-220' y='-20' width='1100' height='70' fill='%23000' opacity='0.16' transform='rotate(-9 320 320)'/%3E%3Crect x='-220' y='120' width='1100' height='50' fill='%23fff' opacity='0.12' transform='rotate(-12 320 320)'/%3E%3Crect x='-220' y='260' width='1100' height='85' fill='%23000' opacity='0.14' transform='rotate(-10 320 320)'/%3E%3Crect x='-220' y='420' width='1100' height='55' fill='%23fff' opacity='0.10' transform='rotate(-13 320 320)'/%3E%3Crect x='-220' y='540' width='1100' height='65' fill='%23000' opacity='0.15' transform='rotate(-11 320 320)'/%3E%3C/g%3E%3Cg filter='url(%23p)'%3E%3Cellipse cx='150' cy='210' rx='90' ry='30' fill='%23000' opacity='0.10' transform='rotate(-10 150 210)'/%3E%3Cellipse cx='470' cy='470' rx='80' ry='26' fill='%23fff' opacity='0.08' transform='rotate(-12 470 470)'/%3E%3Cellipse cx='520' cy='90' rx='70' ry='24' fill='%23000' opacity='0.09' transform='rotate(-9 520 90)'/%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Cfilter id='c'%3E%3CfeGaussianBlur stdDeviation='70'/%3E%3C/filter%3E%3Cg filter='url(%23c)'%3E%3Cellipse cx='140' cy='160' rx='230' ry='180' fill='%23fff' opacity='0.32'/%3E%3Cellipse cx='580' cy='120' rx='210' ry='160' fill='%23fff' opacity='0.20'/%3E%3Cellipse cx='600' cy='570' rx='250' ry='200' fill='%23000' opacity='0.42'/%3E%3Cellipse cx='120' cy='590' rx='200' ry='220' fill='%23000' opacity='0.32'/%3E%3Cellipse cx='360' cy='350' rx='180' ry='180' fill='%23fff' opacity='0.14'/%3E%3C/g%3E%3C/svg%3E");
     background-repeat: repeat;
-    background-blend-mode: soft-light;
-    background-size: 640px 640px;
+    background-blend-mode: overlay;
+    background-size: 700px 700px;
   }
 
   /* Carrusel de la portada.
