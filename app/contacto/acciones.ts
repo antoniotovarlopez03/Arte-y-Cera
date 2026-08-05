@@ -84,7 +84,10 @@ export async function enviarFormulario(
       to: [destino],
       replyTo: formulario.email,
       subject: `Web: ${formulario.nombre}${formulario.interes ? ` · ${formulario.interes}` : ''}`,
-      text: cuerpoDelCorreo(formulario),
+      text: cuerpoDelCorreo(formulario, {
+        ip: ip !== 'local' ? ip : undefined,
+        enviadoEn: new Date(),
+      }),
     });
 
     if (error) {

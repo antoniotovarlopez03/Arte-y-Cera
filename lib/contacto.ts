@@ -29,13 +29,20 @@ export function erroresPorCampo(error: z.ZodError): Record<string, string> {
 }
 
 /** El correo que se envía al taller. Texto plano: se lee bien en el móvil. */
-export function cuerpoDelCorreo(datos: Omit<DatosFormulario, 'trampa'>): string {
+export function cuerpoDelCorreo(
+  datos: Omit<DatosFormulario, 'trampa'>,
+  meta?: { ip?: string; enviadoEn?: Date },
+): string {
   return [
     `Nombre: ${datos.nombre}`,
     `Email: ${datos.email}`,
     datos.telefono ? `Teléfono: ${datos.telefono}` : null,
     datos.interes ? `Le interesa: ${datos.interes}` : null,
     datos.fecha ? `Fecha de la celebración: ${datos.fecha}` : null,
+    meta?.enviadoEn
+      ? `Enviado: ${meta.enviadoEn.toLocaleString('es-ES', { dateStyle: 'long', timeStyle: 'short', timeZone: 'Europe/Madrid' })}`
+      : null,
+    meta?.ip ? `IP: ${meta.ip}` : null,
     '',
     datos.mensaje,
   ]
