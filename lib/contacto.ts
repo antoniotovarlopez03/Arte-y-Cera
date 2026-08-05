@@ -49,3 +49,27 @@ export function cuerpoDelCorreo(
     .filter((linea) => linea !== null)
     .join('\n');
 }
+
+/** La copia de cortesía que recibe quien rellena el formulario, confirmando
+ *  qué nos ha contado. Texto plano, igual que el correo al taller. */
+export function cuerpoConfirmacionCliente(datos: Omit<DatosFormulario, 'trampa'>): string {
+  return [
+    `Hola ${datos.nombre},`,
+    '',
+    'Gracias por escribirnos a Arte y Cera. Hemos recibido tu mensaje y te contestamos en menos de 48 h.',
+    '',
+    'Esto es lo que nos has contado:',
+    datos.interes ? `Te interesa: ${datos.interes}` : null,
+    datos.fecha ? `Fecha de la celebración: ${datos.fecha}` : null,
+    datos.telefono ? `Teléfono: ${datos.telefono}` : null,
+    '',
+    datos.mensaje,
+    '',
+    'Si tienes prisa, también puedes escribirnos por WhatsApp.',
+    '',
+    'Un saludo,',
+    'Arte y Cera',
+  ]
+    .filter((linea) => linea !== null)
+    .join('\n');
+}

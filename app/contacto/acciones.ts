@@ -2,7 +2,12 @@
 
 import { headers } from 'next/headers';
 import { Resend } from 'resend';
-import { cuerpoDelCorreo, EsquemaFormulario, erroresPorCampo } from '@/lib/contacto';
+import {
+  cuerpoConfirmacionCliente,
+  cuerpoDelCorreo,
+  EsquemaFormulario,
+  erroresPorCampo,
+} from '@/lib/contacto';
 import { site } from '@/lib/site';
 
 /* ============================================================
@@ -96,6 +101,24 @@ export async function enviarFormulario(
         estado: 'error',
         mensaje: `No hemos podido enviar el mensaje. Escríbenos por WhatsApp al ${site.whatsappVisible} o a ${site.email}.`,
       };
+    }
+
+    // Copia de cortesía a quien escribe. Va aparte: el mensaje ya está en el
+    // buzón del taller, así que si esta copia falla no se le dice a quien
+    // escribe que algo ha ido mal, solo queda constancia en el log.
+    try {
+      const { error: errorConfirmacion } = await resend.emails.send({
+        from: remitente,
+        to: [formulario.email],
+        replyTo: destino,
+        subject: 'Hemos recibido tu mensaje · Arte y Cera',
+        text: cuerpoConfirmacionCliente(formulario),
+      });
+      if (errorConfirmacion) {
+        console.error('[contacto] No se pudo enviar la confirmación al cliente:', errorConfirmacion);
+      }
+    } catch (errorConfirmacion) {
+      console.error('[contacto] Fallo al enviar la confirmación al cliente:', errorConfirmacion);
     }
 
     return { estado: 'ok' };
