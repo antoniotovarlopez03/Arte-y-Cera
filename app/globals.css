@@ -68,7 +68,9 @@
   }
 
   body {
-    background-color: var(--color-ivory);
+    /* Fondo general de toda la web: el dorado de la paleta de tres
+       colores, no el crema/marfil de antes. */
+    background-color: var(--color-gold);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-weight: 400;
