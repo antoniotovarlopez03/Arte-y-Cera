@@ -42,8 +42,14 @@
 
   /* Paleta de marca de tres colores: primario (verde, arriba), secundario
      (bosque, aquí) y terciario (dorado, arriba). El bosque es un segundo
-     verde, más cálido, para secciones con fondo oscuro en vez de crema. */
+     verde, más cálido, para secciones con fondo oscuro en vez de crema.
+     Es la paleta por defecto: plana, sin destello, en todos los sitios.
+
+     El morado es aparte: no forma parte de la paleta de marca, se usa
+     una única vez en toda la web (ver .destello más abajo), como
+     elemento especial. No se reutiliza en más sitios. */
   --color-bosque: #2d4a2e;
+  --color-morado: #1c1024;
 
   /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
   --font-display: var(--fuente-display), 'EB Garamond', Georgia, serif;
@@ -143,13 +149,16 @@
     color: var(--color-gold-ink);
   }
 
-  /* Destello de sol para las secciones de acento en bosque: un foco de luz
-     cálida arriba a la derecha, con unos rayos finos que se pierden hacia
-     el centro. Son solo dos degradados de CSS (cónico para los rayos,
-     radial para el resplandor), no una imagen: no pesa nada. La posición
-     es fija (arriba-derecha) en todas las secciones, para que se repita
-     como una firma visual en vez de notarse distinta en cada una. */
-  .textura-pared {
+  /* Destello de sol: un foco de luz cálida arriba a la derecha, con unos
+     rayos finos que se pierden hacia el centro. Son solo dos degradados de
+     CSS (cónico para los rayos, radial para el resplandor), no una imagen:
+     no pesa nada.
+
+     A PROPÓSITO se usa en un único sitio de toda la web (la sección "Elige
+     la celebración" en morado) y en el aviso final de Colecciones (en
+     dorado): es un recurso excepcional, no una textura de fondo genérica.
+     El resto de secciones de acento van en bosque liso, sin esta clase. */
+  .destello {
     background-image:
       conic-gradient(
         from 200deg at 88% 6%,

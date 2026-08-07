@@ -115,9 +115,13 @@ export default function PaginaInicio() {
         </div>
       </section>
 
-      {/* ===== Colecciones ===== */}
+      {/* ===== Colecciones =====
+          Único fondo en morado con destello de toda la web: es la sección
+          de acento inmediatamente después de la portada, el sitio de más
+          peso para un elemento especial. El resto de secciones de acento
+          van en bosque liso, sin este efecto. */}
       <section
-        className="textura-pared bg-bosque text-cream"
+        className="destello bg-morado text-cream"
         aria-labelledby="titulo-colecciones"
       >
         <div className="mx-auto max-w-6xl px-5 py-20 lg:py-28">
@@ -149,7 +153,7 @@ export default function PaginaInicio() {
           de 300 px de antes habría sido una mancha. */}
       <section
         aria-labelledby="titulo-muestra"
-        className="textura-pared border-y border-bosque bg-bosque py-14"
+        className="border-y border-bosque bg-bosque py-14"
       >
         <h2 id="titulo-muestra" className="sr-only">
           Una muestra de las piezas ya pintadas
@@ -264,7 +268,7 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Cierre ===== */}
-      <section className="textura-pared bg-bosque">
+      <section className="bg-bosque">
         <div className="mx-auto max-w-3xl px-5 py-20 text-center lg:py-28">
           {/* Su cierre, tal cual lo tenía en el WordPress: invita a preguntar en
               vez de pedir un pliego de condiciones. */}

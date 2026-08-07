@@ -61,7 +61,7 @@ export default function PaginaColecciones() {
               key={ocasion}
               id={ocasion}
               aria-labelledby={`titulo-${ocasion}`}
-              className="textura-pared bg-bosque rounded-pieza p-6 sm:p-10"
+              className="bg-bosque rounded-pieza p-6 sm:p-10"
             >
               <h2
                 id={`titulo-${ocasion}`}
@@ -88,11 +88,15 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      <p className="textura-pared mt-20 rounded-pieza bg-bosque p-6 text-center text-cream/80">
+      {/* Único fondo en dorado con destello de toda la web: el aviso de
+          cierre de la página, como remate. Texto oscuro porque el dorado
+          es un color claro y el texto claro de las demás secciones (pensado
+          para fondos oscuros) no se leería aquí. */}
+      <p className="destello mt-20 rounded-pieza bg-gold p-6 text-center text-ink">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"
-          className="font-medium text-gold-light underline decoration-gold-light/50 underline-offset-4"
+          className="font-medium text-verde underline decoration-verde/40 underline-offset-4"
         >
           Cuéntanos tu idea
         </Link>
