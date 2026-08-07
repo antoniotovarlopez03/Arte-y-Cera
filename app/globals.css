@@ -40,15 +40,10 @@
   --color-gold-ink: #7d6029;
   --color-terracotta: #b5651d;
 
-  /* Paleta de marca de tres colores: primario (verde, arriba), secundario
-     (bosque, aquí) y terciario (dorado, arriba). El bosque es un segundo
-     verde, más cálido, para secciones con fondo oscuro en vez de crema.
-     Es la paleta por defecto: plana, sin destello, en todos los sitios.
-
-     El morado es aparte: no forma parte de la paleta de marca, se usa
-     una única vez en toda la web (ver .destello más abajo), como
-     elemento especial. No se reutiliza en más sitios. */
-  --color-bosque: #2d4a2e;
+  /* Paleta de marca de tres colores, planos, sin variantes: primario
+     (verde, arriba), secundario (morado, aquí) y terciario (dorado,
+     arriba). Solo estos tres se usan como fondo de sección en toda la
+     web, sin degradados ni efectos encima. */
   --color-morado: #1c1024;
 
   /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
@@ -147,34 +142,6 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-gold-ink);
-  }
-
-  /* Destello de sol: un foco de luz cálida arriba a la derecha, con unos
-     rayos finos que se pierden hacia el centro. Son solo dos degradados de
-     CSS (cónico para los rayos, radial para el resplandor), no una imagen:
-     no pesa nada.
-
-     A PROPÓSITO se usa en un único sitio de toda la web (la sección "Elige
-     la celebración" en morado) y en el aviso final de Colecciones (en
-     dorado): es un recurso excepcional, no una textura de fondo genérica.
-     El resto de secciones de acento van en bosque liso, sin esta clase. */
-  .destello {
-    background-image:
-      conic-gradient(
-        from 200deg at 88% 6%,
-        transparent 0deg, rgb(255 222 150 / 0.18) 6deg, transparent 12deg,
-        transparent 26deg, rgb(255 222 150 / 0.14) 32deg, transparent 38deg,
-        transparent 52deg, rgb(255 222 150 / 0.18) 58deg, transparent 64deg,
-        transparent 78deg, rgb(255 222 150 / 0.12) 84deg, transparent 90deg,
-        transparent 360deg
-      ),
-      radial-gradient(
-        circle at 88% 6%,
-        rgb(255 232 180 / 0.55),
-        rgb(255 232 180 / 0.14) 22%,
-        transparent 45%
-      );
-    background-repeat: no-repeat;
   }
 
   /* Carrusel de la portada.

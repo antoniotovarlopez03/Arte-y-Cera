@@ -44,7 +44,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-bosque/20 bg-bosque px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
+                className="inline-block rounded-full border border-morado/20 bg-morado px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -61,7 +61,7 @@ export default function PaginaColecciones() {
               key={ocasion}
               id={ocasion}
               aria-labelledby={`titulo-${ocasion}`}
-              className="bg-bosque rounded-pieza p-6 sm:p-10"
+              className="bg-morado rounded-pieza p-6 sm:p-10"
             >
               <h2
                 id={`titulo-${ocasion}`}
@@ -88,11 +88,10 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      {/* Único fondo en dorado con destello de toda la web: el aviso de
-          cierre de la página, como remate. Texto oscuro porque el dorado
-          es un color claro y el texto claro de las demás secciones (pensado
-          para fondos oscuros) no se leería aquí. */}
-      <p className="destello mt-20 rounded-pieza bg-gold p-6 text-center text-ink">
+      {/* Texto oscuro porque el dorado es un color claro y el texto claro de
+          las demás secciones (pensado para fondos oscuros) no se leería
+          aquí. */}
+      <p className="mt-20 rounded-pieza bg-gold p-6 text-center text-ink">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"
