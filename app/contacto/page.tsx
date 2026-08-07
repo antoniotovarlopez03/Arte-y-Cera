@@ -151,7 +151,11 @@ export default async function PaginaContacto({ searchParams }: Props) {
         </div>
 
         <div className="rounded-pieza border border-sand bg-ivory p-6 sm:p-8">
-          <FormularioContacto interesInicial={interes} opciones={opcionesDeInteres()} />
+          <FormularioContacto
+            interesInicial={interes}
+            referenciaInicial={pieza}
+            opciones={opcionesDeInteres()}
+          />
         </div>
       </div>
     </div>

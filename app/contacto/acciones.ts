@@ -2,13 +2,41 @@
 
 import { headers } from 'next/headers';
 import { Resend } from 'resend';
+import { piezaPorRef } from '@/lib/catalogo';
 import {
   cuerpoConfirmacionCliente,
   cuerpoDelCorreo,
   EsquemaFormulario,
   erroresPorCampo,
 } from '@/lib/contacto';
+import {
+  cuerpoHtmlConfirmacionCliente,
+  cuerpoHtmlNotificacionNegocio,
+  type PiezaElegida,
+} from '@/lib/email/plantillas';
 import { site } from '@/lib/site';
+
+/** piezaPorRef lanza un error si la referencia no existe (es lo correcto
+ *  cuando se usa con un código fijo del catálogo, como en la página de
+ *  contacto). Aquí la referencia la escribe a mano quien rellena el
+ *  formulario, así que un código mal escrito o inventado no debe tumbar el
+ *  envío del correo: si no se encuentra, sencillamente no hay foto. */
+function buscarPiezaSegura(referencia: string | undefined): PiezaElegida | undefined {
+  if (!referencia) return undefined;
+  try {
+    const { pieza, linea } = piezaPorRef(referencia);
+    return {
+      ref: pieza.ref,
+      src: pieza.src,
+      alt: pieza.alt,
+      ancho: pieza.ancho,
+      alto: pieza.alto,
+      href: `${linea.href}?pieza=${pieza.ref}`,
+    };
+  } catch {
+    return undefined;
+  }
+}
 
 /* ============================================================
    Envío del formulario de contacto.
@@ -82,17 +110,23 @@ export async function enviarFormulario(
   const remitente = process.env.CONTACTO_REMITENTE ?? 'Web Arte y Cera <web@arteycera.es>';
   const destino = process.env.CONTACTO_DESTINO ?? site.email;
 
+  const enviadoEn = new Date();
+  const metaEnvio = { ip: ip !== 'local' ? ip : undefined, enviadoEn };
+  const pieza = buscarPiezaSegura(formulario.referencia);
+
   try {
     const resend = new Resend(clave);
     const { error } = await resend.emails.send({
       from: remitente,
       to: [destino],
       replyTo: formulario.email,
-      subject: `Web: ${formulario.nombre}${formulario.interes ? ` · ${formulario.interes}` : ''}`,
-      text: cuerpoDelCorreo(formulario, {
-        ip: ip !== 'local' ? ip : undefined,
-        enviadoEn: new Date(),
-      }),
+      subject: `Nueva solicitud desde la web · ${formulario.nombre}`,
+      text: cuerpoDelCorreo(formulario, metaEnvio),
+      html: cuerpoHtmlNotificacionNegocio(
+        formulario,
+        { ip: metaEnvio.ip, enviadoEn: metaEnvio.enviadoEn },
+        pieza,
+      ),
     });
 
     if (error) {
@@ -111,8 +145,9 @@ export async function enviarFormulario(
         from: remitente,
         to: [formulario.email],
         replyTo: destino,
-        subject: 'Hemos recibido tu mensaje · Arte y Cera',
+        subject: 'Hemos recibido tu solicitud · Arte y Cera',
         text: cuerpoConfirmacionCliente(formulario),
+        html: cuerpoHtmlConfirmacionCliente(formulario, pieza),
       });
       if (errorConfirmacion) {
         console.error('[contacto] No se pudo enviar la confirmación al cliente:', errorConfirmacion);

@@ -11,9 +11,11 @@ const INICIAL: EstadoEnvio = { estado: 'inicial' };
 
 export function FormularioContacto({
   interesInicial,
+  referenciaInicial,
   opciones,
 }: {
   interesInicial?: string;
+  referenciaInicial?: string;
   opciones: string[];
 }) {
   const [estado, accion, enviando] = useActionState(enviarFormulario, INICIAL);
@@ -125,6 +127,28 @@ export function FormularioContacto({
       </div>
 
       <div>
+        <label htmlFor="referencia" className="block text-sm text-ink-soft">
+          Referencia de la pieza que te gusta (opcional)
+        </label>
+        <input
+          id="referencia"
+          name="referencia"
+          type="text"
+          defaultValue={referenciaInicial}
+          placeholder="Por ejemplo CP-E-18"
+          aria-describedby="ayuda-referencia"
+          className={cx(
+            'mt-1.5 w-full rounded-xl border bg-white-warm px-4 py-3 text-ink',
+            errores.referencia ? 'border-terracotta' : 'border-sand',
+          )}
+        />
+        <p id="ayuda-referencia" className="mt-1.5 text-xs text-ink-soft">
+          Está debajo de cada foto del catálogo. Si la pones, la incluimos en el correo de
+          confirmación para que se vea de qué pieza hablamos.
+        </p>
+      </div>
+
+      <div>
         <label htmlFor="mensaje" className="block text-sm text-ink-soft">
           Cuéntanos tu idea <span aria-hidden="true">*</span>
         </label>
@@ -133,21 +157,16 @@ export function FormularioContacto({
           name="mensaje"
           rows={5}
           required
-          aria-describedby={errores.mensaje ? 'error-mensaje' : 'ayuda-mensaje'}
+          aria-describedby={errores.mensaje ? 'error-mensaje' : undefined}
           aria-invalid={errores.mensaje ? true : undefined}
           className={cx(
             'mt-1.5 w-full rounded-xl border bg-white-warm px-4 py-3 text-ink',
             errores.mensaje ? 'border-terracotta' : 'border-sand',
           )}
         />
-        {errores.mensaje ? (
+        {errores.mensaje && (
           <p id="error-mensaje" className="mt-1.5 text-sm text-terracotta">
             {errores.mensaje}
-          </p>
-        ) : (
-          <p id="ayuda-mensaje" className="mt-1.5 text-xs text-ink-soft">
-            Si has visto una pieza que te gusta, dinos su referencia (por ejemplo CP-E-18) y
-            sabremos exactamente cuál es.
           </p>
         )}
       </div>

@@ -44,3 +44,9 @@ export function mailtoUrl(asunto: string, cuerpo?: string): string {
   if (cuerpo) params.set('body', cuerpo);
   return `mailto:${site.email}?${params.toString()}`;
 }
+
+/** Ruta interna a URL absoluta. Los correos no pueden usar rutas relativas:
+ *  el cliente de correo carga las imágenes desde fuera de la web. */
+export function urlAbsoluta(ruta: string): string {
+  return new URL(ruta, site.url).toString();
+}
