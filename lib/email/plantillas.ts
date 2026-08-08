@@ -288,11 +288,6 @@ export function cuerpoHtmlConfirmacionCliente(
     </td>
   </tr>
   <tr>
-    <td bgcolor="${COLOR.marfil}" style="background-color:${COLOR.marfil};padding:28px 0 0;">
-      <img src="${urlImagenCorreo('/images/logo/email-banner.jpg')}" width="600" alt="Detalle de una vela pintada a mano por Arte y Cera" style="display:block;width:100%;max-width:600px;height:auto;border:0;">
-    </td>
-  </tr>
-  <tr>
     <td bgcolor="${COLOR.marfil}" style="background-color:${COLOR.marfil};line-height:28px;font-size:0;">&nbsp;</td>
   </tr>
   ${pie()}`;
@@ -324,7 +319,6 @@ export function cuerpoHtmlNotificacionNegocio(
     ['Producto', datos.interes ? escaparHtml(datos.interes) : 'Sin especificar'],
     ...(datos.fecha ? ([['Fecha de la celebración', escaparHtml(datos.fecha)]] as [string, string][]) : []),
     ['Hora de envío', escaparHtml(fecha)],
-    ...(meta.ip ? ([['IP', escaparHtml(meta.ip)]] as [string, string][]) : []),
   ];
   const filasHtml = filas
     .map(([etiqueta, valor], i) => filaDetalle(etiqueta, valor, i === filas.length - 1))

@@ -44,7 +44,6 @@ export function cuerpoDelCorreo(
     meta?.enviadoEn
       ? `Enviado: ${meta.enviadoEn.toLocaleString('es-ES', { dateStyle: 'long', timeStyle: 'short', timeZone: 'Europe/Madrid' })}`
       : null,
-    meta?.ip ? `IP: ${meta.ip}` : null,
     '',
     datos.mensaje,
   ]

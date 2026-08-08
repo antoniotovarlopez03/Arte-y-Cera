@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useActionState } from 'react';
 import { enviarFormulario, type EstadoEnvio } from './acciones';
 import { IconoWhatsapp } from '@/components/iconos';
+import { SelectorPieza, type PiezaSelector } from '@/components/contacto/selector-pieza';
 import { mailtoUrl, site, whatsappUrl } from '@/lib/site';
 import { clasesBoton, cx } from '@/lib/ui';
 
@@ -12,10 +13,12 @@ const INICIAL: EstadoEnvio = { estado: 'inicial' };
 export function FormularioContacto({
   interesInicial,
   referenciaInicial,
+  piezas,
   opciones,
 }: {
   interesInicial?: string;
   referenciaInicial?: string;
+  piezas: PiezaSelector[];
   opciones: string[];
 }) {
   const [estado, accion, enviando] = useActionState(enviarFormulario, INICIAL);
@@ -126,27 +129,7 @@ export function FormularioContacto({
         </select>
       </div>
 
-      <div>
-        <label htmlFor="referencia" className="block text-sm text-ink-soft">
-          Referencia de la pieza que te gusta (opcional)
-        </label>
-        <input
-          id="referencia"
-          name="referencia"
-          type="text"
-          defaultValue={referenciaInicial}
-          placeholder="Por ejemplo CP-E-18"
-          aria-describedby="ayuda-referencia"
-          className={cx(
-            'mt-1.5 w-full rounded-xl border bg-white-warm px-4 py-3 text-ink',
-            errores.referencia ? 'border-terracotta' : 'border-sand',
-          )}
-        />
-        <p id="ayuda-referencia" className="mt-1.5 text-xs text-ink-soft">
-          Está debajo de cada foto del catálogo. Si la pones, la incluimos en el correo de
-          confirmación para que se vea de qué pieza hablamos.
-        </p>
-      </div>
+      <SelectorPieza piezas={piezas} valorInicial={referenciaInicial} />
 
       <div>
         <label htmlFor="mensaje" className="block text-sm text-ink-soft">

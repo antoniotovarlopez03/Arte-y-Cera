@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import { FormularioContacto } from './formulario';
 import { IconoInstagram, IconoSobre, IconoWhatsapp } from '@/components/iconos';
 import { Migas } from '@/components/ui/migas';
-import Image from 'next/image';
-import Link from 'next/link';
-import { categorias, getCategoria, getLinea, piezaPorRef } from '@/lib/catalogo';
+import { categorias, getCategoria, getLinea } from '@/lib/catalogo';
 import { site, whatsappUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -16,9 +14,24 @@ export const metadata: Metadata = {
 
 type Props = { searchParams: Promise<{ linea?: string; pieza?: string }> };
 
-/** La pieza de ejemplo del bloque «Un atajo». Se resuelve del catálogo por su
- *  código, así que si algún día sale del catálogo el build avisa. */
-const REF_ATAJO = 'BZ-D-19';
+/** Todas las piezas del catálogo, aplanadas para el selector visual del
+ *  formulario: ya no hace falta escribir ni copiar ningún código, se elige
+ *  la foto con un clic (ver components/contacto/selector-pieza.tsx). */
+function piezasParaSelector() {
+  return categorias.flatMap((categoria) =>
+    categoria.lineas.flatMap((linea) =>
+      linea.piezas.map((pieza) => ({
+        ref: pieza.ref,
+        src: pieza.src,
+        alt: pieza.alt,
+        ancho: pieza.ancho,
+        alto: pieza.alto,
+        lineaNombre: pieza.lineaNombre,
+        categoriaNombre: categoria.nombre,
+      })),
+    ),
+  );
+}
 
 /** Todas las líneas, como «Cirios pascuales · Elaborados». */
 function opcionesDeInteres(): string[] {
@@ -49,12 +62,6 @@ function interesDesdeParametros(linea?: string): string | undefined {
 export default async function PaginaContacto({ searchParams }: Props) {
   const { linea, pieza } = await searchParams;
   const interes = interesDesdeParametros(linea);
-
-  const { pieza: piezaAtajo, linea: lineaAtajo } = piezaPorRef(REF_ATAJO);
-  const ATAJO = {
-    ...piezaAtajo,
-    href: `${lineaAtajo.href}?pieza=${piezaAtajo.ref}`,
-  };
 
   return (
     <div className="mx-auto max-w-6xl px-5 pt-8 pb-16">
@@ -118,42 +125,13 @@ export default async function PaginaContacto({ searchParams }: Props) {
           <p className="mt-8 text-sm text-cream/60">
             {site.zona}. {site.tiempoRespuesta}.
           </p>
-
-          {/* Debajo de los canales quedaba media página en blanco. Aquí va lo
-              único que de verdad acelera un encargo: recordar que cada foto
-              tiene un código y que decirlo ahorra toda la conversación de «la
-              tercera, no, la de arriba». La foto es una pieza real y enlaza a
-              su ficha. */}
-          <div className="mt-12 rounded-pieza border border-sand bg-ivory p-5">
-            <p className="rotulo">Un atajo</p>
-            <p className="mt-2.5 leading-relaxed text-ink-soft">
-              Si ya has visto una pieza que te gusta, dinos su referencia y sabemos exactamente cuál
-              es. Están debajo de cada foto del catálogo.
-            </p>
-            <Link href={ATAJO.href} className="group mt-5 flex items-center gap-4">
-              <Image
-                src={ATAJO.src}
-                alt={ATAJO.alt}
-                width={ATAJO.ancho}
-                height={ATAJO.alto}
-                sizes="96px"
-                quality={90}
-                className="h-24 w-24 shrink-0 rounded-lg object-cover"
-              />
-              <span>
-                <span className="font-mono text-sm tracking-wide text-verde">{ATAJO.ref}</span>
-                <span className="mt-1 block text-sm text-ink-soft">
-                  Así se lee una referencia. Ver esta pieza →
-                </span>
-              </span>
-            </Link>
-          </div>
         </div>
 
         <div className="rounded-pieza border border-sand bg-ivory p-6 sm:p-8">
           <FormularioContacto
             interesInicial={interes}
             referenciaInicial={pieza}
+            piezas={piezasParaSelector()}
             opciones={opcionesDeInteres()}
           />
         </div>
