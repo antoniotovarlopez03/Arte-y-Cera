@@ -16,26 +16,42 @@ import {
 } from '@/lib/email/plantillas';
 import { site } from '@/lib/site';
 
+/** Cuántas piezas como mucho se resuelven por mensaje. El formulario no deja
+ *  añadir tantas, pero el campo llega como texto libre y esto evita que un
+ *  envío manual a la Server Action arrastre un correo con cien fotos. */
+const MAXIMO_PIEZAS = 10;
+
 /** piezaPorRef lanza un error si la referencia no existe (es lo correcto
  *  cuando se usa con un código fijo del catálogo, como en la página de
- *  contacto). Aquí la referencia la escribe a mano quien rellena el
- *  formulario, así que un código mal escrito o inventado no debe tumbar el
- *  envío del correo: si no se encuentra, sencillamente no hay foto. */
-function buscarPiezaSegura(referencia: string | undefined): PiezaElegida | undefined {
-  if (!referencia) return undefined;
-  try {
-    const { pieza, linea } = piezaPorRef(referencia);
-    return {
-      ref: pieza.ref,
-      src: pieza.src,
-      alt: pieza.alt,
-      ancho: pieza.ancho,
-      alto: pieza.alto,
-      href: `${linea.href}?pieza=${pieza.ref}`,
-    };
-  } catch {
-    return undefined;
+ *  contacto). Aquí las referencias las escribe a mano quien rellena el
+ *  formulario (una o varias, separadas por comas), así que un código mal
+ *  escrito o inventado no debe tumbar el envío del correo: si no se
+ *  encuentra, sencillamente esa no sale en la lista. */
+function buscarPiezasSeguras(referencia: string | undefined): PiezaElegida[] {
+  if (!referencia) return [];
+  const refs = referencia
+    .split(',')
+    .map((r) => r.trim())
+    .filter(Boolean)
+    .slice(0, MAXIMO_PIEZAS);
+
+  const piezas: PiezaElegida[] = [];
+  for (const ref of refs) {
+    try {
+      const { pieza, linea } = piezaPorRef(ref);
+      piezas.push({
+        ref: pieza.ref,
+        src: pieza.src,
+        alt: pieza.alt,
+        ancho: pieza.ancho,
+        alto: pieza.alto,
+        href: `${linea.href}?pieza=${pieza.ref}`,
+      });
+    } catch {
+      // Referencia inventada o ya retirada del catálogo: se ignora.
+    }
   }
+  return piezas;
 }
 
 /* ============================================================
@@ -112,7 +128,7 @@ export async function enviarFormulario(
 
   const enviadoEn = new Date();
   const metaEnvio = { ip: ip !== 'local' ? ip : undefined, enviadoEn };
-  const pieza = buscarPiezaSegura(formulario.referencia);
+  const piezas = buscarPiezasSeguras(formulario.referencia);
 
   try {
     const resend = new Resend(clave);
@@ -125,7 +141,7 @@ export async function enviarFormulario(
       html: cuerpoHtmlNotificacionNegocio(
         formulario,
         { ip: metaEnvio.ip, enviadoEn: metaEnvio.enviadoEn },
-        pieza,
+        piezas,
       ),
     });
 
@@ -147,7 +163,7 @@ export async function enviarFormulario(
         replyTo: destino,
         subject: 'Hemos recibido tu solicitud · Arte y Cera',
         text: cuerpoConfirmacionCliente(formulario),
-        html: cuerpoHtmlConfirmacionCliente(formulario, pieza),
+        html: cuerpoHtmlConfirmacionCliente(formulario, piezas),
       });
       if (errorConfirmacion) {
         console.error('[contacto] No se pudo enviar la confirmación al cliente:', errorConfirmacion);

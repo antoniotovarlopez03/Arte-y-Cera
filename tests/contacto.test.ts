@@ -58,4 +58,24 @@ describe('formulario de contacto', () => {
     expect(cuerpo).toContain('Fecha de la celebración: 2026-10-12');
     expect(cuerpo).not.toContain('Teléfono');
   });
+
+  it('acepta varias referencias separadas por comas', () => {
+    const resultado = EsquemaFormulario.safeParse({ ...VALIDO, referencia: 'BZ-B-15,NV-03' });
+    expect(resultado.success).toBe(true);
+  });
+
+  it('la referencia va en singular con una pieza y en plural con varias', () => {
+    const base = {
+      nombre: 'María Ruiz',
+      email: 'maria@example.com',
+      mensaje: 'Quiero una como la BZ-B-15.',
+      consentimiento: 'si' as const,
+    };
+
+    const unaSola = cuerpoDelCorreo({ ...base, referencia: 'BZ-B-15' });
+    expect(unaSola).toContain('Referencia de la pieza: BZ-B-15');
+
+    const varias = cuerpoDelCorreo({ ...base, referencia: 'BZ-B-15,NV-03' });
+    expect(varias).toContain('Referencias de las piezas: BZ-B-15, NV-03');
+  });
 });

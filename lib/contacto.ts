@@ -10,7 +10,9 @@ export const EsquemaFormulario = z.object({
   telefono: z.string().trim().max(30).optional().or(z.literal('')),
   interes: z.string().trim().max(80).optional().or(z.literal('')),
   fecha: z.string().trim().max(30).optional().or(z.literal('')),
-  referencia: z.string().trim().max(20).optional().or(z.literal('')),
+  /** Una o varias referencias separadas por comas («BZ-B-06,NV-03»): se
+   *  puede pedir más de una pieza en el mismo mensaje. */
+  referencia: z.string().trim().max(240).optional().or(z.literal('')),
   mensaje: z.string().trim().min(10, 'Cuéntanos un poco más (10 caracteres al menos)').max(3000),
   consentimiento: z.literal('si', { message: 'Necesitamos tu permiso para responderte' }),
   /** Campo trampa: oculto por CSS. Si viene relleno, es un robot. */
@@ -29,6 +31,17 @@ export function erroresPorCampo(error: z.ZodError): Record<string, string> {
   return errores;
 }
 
+/** «Referencia de la pieza: BZ-B-06» o, con varias, «Referencias de las
+ *  piezas: BZ-B-06, NV-03». */
+function lineaReferencia(referencia: string): string {
+  const refs = referencia
+    .split(',')
+    .map((r) => r.trim())
+    .filter(Boolean);
+  const etiqueta = refs.length > 1 ? 'Referencias de las piezas' : 'Referencia de la pieza';
+  return `${etiqueta}: ${refs.join(', ')}`;
+}
+
 /** El correo que se envía al taller. Texto plano: se lee bien en el móvil. */
 export function cuerpoDelCorreo(
   datos: Omit<DatosFormulario, 'trampa'>,
@@ -40,7 +53,7 @@ export function cuerpoDelCorreo(
     datos.telefono ? `Teléfono: ${datos.telefono}` : null,
     datos.interes ? `Le interesa: ${datos.interes}` : null,
     datos.fecha ? `Fecha de la celebración: ${datos.fecha}` : null,
-    datos.referencia ? `Referencia de la pieza: ${datos.referencia}` : null,
+    datos.referencia ? lineaReferencia(datos.referencia) : null,
     meta?.enviadoEn
       ? `Enviado: ${meta.enviadoEn.toLocaleString('es-ES', { dateStyle: 'long', timeStyle: 'short', timeZone: 'Europe/Madrid' })}`
       : null,
@@ -63,7 +76,7 @@ export function cuerpoConfirmacionCliente(datos: Omit<DatosFormulario, 'trampa'>
     datos.interes ? `Te interesa: ${datos.interes}` : null,
     datos.fecha ? `Fecha de la celebración: ${datos.fecha}` : null,
     datos.telefono ? `Teléfono: ${datos.telefono}` : null,
-    datos.referencia ? `Referencia de la pieza: ${datos.referencia}` : null,
+    datos.referencia ? lineaReferencia(datos.referencia) : null,
     '',
     datos.mensaje,
     '',

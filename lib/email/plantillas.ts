@@ -141,9 +141,9 @@ function filaDetalle(etiqueta: string, valorHtml: string, esUltima: boolean): st
   </tr>`;
 }
 
-/** La foto de la pieza elegida, cuando quien escribe ha dado una referencia
- *  válida. Es una imagen real del catálogo (no una genérica), con su
- *  proporción real — igual que en la ficha de producto de la web. */
+/** La foto de una pieza elegida. Es una imagen real del catálogo (no una
+ *  genérica), con su proporción real — igual que en la ficha de producto de
+ *  la web. */
 function bloquePieza(pieza: PiezaElegida): string {
   const alturaMostrada = Math.round((320 * pieza.alto) / pieza.ancho);
   return `
@@ -156,6 +156,14 @@ function bloquePieza(pieza: PiezaElegida): string {
       </td>
     </tr>
   </table>`;
+}
+
+/** Una o varias piezas, cada una en su bloque, separadas por un poco de
+ *  aire. Quien escribe puede pedir más de una vela en el mismo mensaje. */
+function bloquePiezas(piezas: PiezaElegida[]): string {
+  return piezas
+    .map((pieza, i) => (i === 0 ? bloquePieza(pieza) : `<div style="margin-top:14px;">${bloquePieza(pieza)}</div>`))
+    .join('');
 }
 
 function tarjetaFilas(filas: string): string {
@@ -223,7 +231,7 @@ function envoltura(preheader: string, contenido: string): string {
  *  ha contado, con la identidad de la web (no el texto plano de antes). */
 export function cuerpoHtmlConfirmacionCliente(
   datos: Omit<DatosFormulario, 'trampa'>,
-  pieza?: PiezaElegida,
+  piezas?: PiezaElegida[],
 ): string {
   const filas: Array<[string, string]> = [
     ['Interés', datos.interes ? escaparHtml(datos.interes) : 'Todavía sin decidir'],
@@ -258,10 +266,10 @@ export function cuerpoHtmlConfirmacionCliente(
     </td>
   </tr>
   ${
-    pieza
+    piezas && piezas.length > 0
       ? `<tr>
     <td bgcolor="${COLOR.marfil}" class="pad-movil" style="background-color:${COLOR.marfil};padding:8px 40px 8px;">
-      ${bloquePieza(pieza)}
+      ${bloquePiezas(piezas)}
     </td>
   </tr>`
       : ''
@@ -304,7 +312,7 @@ export function cuerpoHtmlConfirmacionCliente(
 export function cuerpoHtmlNotificacionNegocio(
   datos: Omit<DatosFormulario, 'trampa'>,
   meta: { ip?: string; enviadoEn: Date },
-  pieza?: PiezaElegida,
+  piezas?: PiezaElegida[],
 ): string {
   const fecha = meta.enviadoEn.toLocaleString('es-ES', {
     dateStyle: 'long',
@@ -362,10 +370,10 @@ export function cuerpoHtmlNotificacionNegocio(
     </td>
   </tr>
   ${
-    pieza
+    piezas && piezas.length > 0
       ? `<tr>
     <td bgcolor="${COLOR.marfil}" class="pad-movil" style="background-color:${COLOR.marfil};padding:8px 40px 8px;">
-      ${bloquePieza(pieza)}
+      ${bloquePiezas(piezas)}
     </td>
   </tr>`
       : ''
