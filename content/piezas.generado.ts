@@ -180,6 +180,10 @@ export const PIEZAS: Record<string, PiezaGenerada[]> = {
     { ref: 'NV-03', src: '/images/colecciones/navidad/navidad-03.jpeg', ancho: 826, alto: 1100 },
     { ref: 'NV-04', src: '/images/colecciones/navidad/navidad-04.jpeg', ancho: 826, alto: 1100 },
     { ref: 'NV-09', src: '/images/colecciones/navidad/navidad-09.jpeg', ancho: 826, alto: 1100 },
+    { ref: 'NV-10', src: '/images/colecciones/navidad/navidad-10.jpeg', ancho: 1024, alto: 1536 },
+    { ref: 'NV-11', src: '/images/colecciones/navidad/navidad-11.jpeg', ancho: 1024, alto: 1536 },
+    { ref: 'NV-12', src: '/images/colecciones/navidad/navidad-12.jpeg', ancho: 1024, alto: 1536 },
+    { ref: 'NV-13', src: '/images/colecciones/navidad/navidad-13.jpeg', ancho: 1024, alto: 1536 },
   ],
   'toallas-bautizo': [
     { ref: 'TB-01', src: '/images/colecciones/toallas-bautizo/toallas-bautizo-01.jpeg', ancho: 826, alto: 1100 },
