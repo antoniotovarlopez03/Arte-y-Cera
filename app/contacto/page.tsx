@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { FormularioContacto } from './formulario';
 import { IconoInstagram, IconoSobre, IconoWhatsapp } from '@/components/iconos';
 import { Migas } from '@/components/ui/migas';
-import { categorias, getCategoria, getLinea } from '@/lib/catalogo';
+import { categorias, getCategoria, getLinea, lineas } from '@/lib/catalogo';
 import { site, whatsappUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -60,9 +60,28 @@ function interesDesdeParametros(linea?: string): string | undefined {
   return encontrada ? `${categoria.nombre} · ${encontrada.nombre}` : undefined;
 }
 
+/**
+ * Cuando se llega solo con ?pieza=REF (sin ?linea=, como al pinchar «Pedir
+ * por correo» desde una foto de la galería), el interés se saca de esa
+ * pieza en vez de quedarse en «Todavía no lo sé»: quien ya señaló una vela
+ * no debería tener que decir otra vez de qué acabado es.
+ *
+ * Se recorre `lineas` a mano (no `piezaPorRef`, que lanza si la referencia
+ * no existe) porque `pieza` viene de la URL, sin validar: una referencia
+ * vieja o mal escrita no puede tirar abajo la página de contacto.
+ */
+function interesDesdePieza(refPieza?: string): string | undefined {
+  if (!refPieza) return undefined;
+  const encontrada = lineas.find((l) => l.piezas.some((p) => p.ref === refPieza));
+  if (!encontrada) return undefined;
+  const categoria = getCategoria(encontrada.categoria.slug);
+  if (!categoria) return undefined;
+  return categoria.esFicha ? categoria.nombre : `${categoria.nombre} · ${encontrada.nombre}`;
+}
+
 export default async function PaginaContacto({ searchParams }: Props) {
   const { linea, pieza } = await searchParams;
-  const interes = interesDesdeParametros(linea);
+  const interes = interesDesdeParametros(linea) ?? interesDesdePieza(pieza);
 
   return (
     <div className="mx-auto max-w-6xl px-5 pt-8 pb-16">
