@@ -20,9 +20,9 @@ import { clasesBoton } from '@/lib/ui';
    el build avisa en lugar de dejar la portada rota. */
 const REFS_PORTADA = ['MB-E-01', 'CP-E-02', 'CP-B-02', 'PK-03', 'NV-03'] as const;
 
-/* Las cuatro piezas que pasan en «Nuestro oficio», en el mismo formato de
-   fundido que la portada y con su misma duración (ver CarruselFundido). */
-const REFS_TALLER = ['MB-B-01', 'CP-B-09', 'BZ-E-20', 'TB-03'] as const;
+/* Las piezas que pasan en «Nuestro oficio», en el mismo formato de fundido
+   que la portada y con su misma duración (ver CarruselFundido). */
+const REFS_TALLER = ['MB-B-01', 'CP-B-09', 'BZ-E-20', 'TB-03', 'BZ-D-16'] as const;
 
 /* Alineación de la portada: el texto arranca en la misma vertical que el
    contenido del resto de la web (un contenedor de 72rem con 1.25rem de aire),
