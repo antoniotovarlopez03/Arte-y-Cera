@@ -108,7 +108,7 @@ export default function PaginaTaller() {
         <Migas migas={[{ href: '/', texto: 'Inicio' }, { texto: 'El taller' }]} />
       </div>
 
-      <section className="mx-auto grid max-w-6xl items-start gap-12 rounded-pieza bg-terracotta/15 px-5 py-8 sm:p-10 lg:grid-cols-2 lg:gap-16">
+      <section className="mx-auto grid max-w-6xl items-start gap-12 rounded-pieza bg-terracotta/15 px-5 py-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div>
           <p className="rotulo">Nuestro oficio</p>
           <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
@@ -136,36 +136,45 @@ export default function PaginaTaller() {
           </dl>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
-          <Image
-            src="/images/colecciones/cirios-elaborados/cirios-elaborados-15.webp"
-            alt="Detalle de un cirio pascual pintado a mano con la cruz en blanco y negro sobre pan de oro y el año 2025"
-            width={1600}
-            height={1600}
-            sizes="(max-width: 640px) 30vw, 200px"
-            quality={90}
-            style={{ objectPosition: '38% 50%' }}
-            className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
-          />
-          <Image
-            src="/images/colecciones/cirios-elaborados/cirios-elaborados-03.webp"
-            alt="Detalle de un cirio pascual pintado a mano con Cristo y la inscripción «Amad a vuestros enemigos»"
-            width={1200}
-            height={1200}
-            sizes="(max-width: 640px) 30vw, 200px"
-            quality={90}
-            style={{ objectPosition: '38% 50%' }}
-            className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza sm:mt-10"
-          />
-          <Image
-            src="/images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-04.jpeg"
-            alt="Toalla de bautizo bordada con el nombre Tomás, junto a la vela a juego"
-            width={826}
-            height={1100}
-            sizes="(max-width: 640px) 30vw, 200px"
-            quality={90}
-            className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
-          />
+        <div className="grid grid-cols-3 gap-5">
+          <div>
+            <Image
+              src="/images/colecciones/cirios-elaborados/cirios-elaborados-15.webp"
+              alt="Detalle de un cirio pascual pintado a mano con la cruz en blanco y negro sobre pan de oro y el año 2025"
+              width={1600}
+              height={1600}
+              sizes="(max-width: 640px) 30vw, 260px"
+              quality={90}
+              style={{ objectPosition: '38% 50%' }}
+              className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
+            />
+            <p className="mt-2.5 font-mono text-xs tracking-wide text-ink-soft">CP-E-15</p>
+          </div>
+          <div className="sm:mt-10">
+            <Image
+              src="/images/colecciones/cirios-elaborados/cirios-elaborados-03.webp"
+              alt="Detalle de un cirio pascual pintado a mano con Cristo y la inscripción «Amad a vuestros enemigos»"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 640px) 30vw, 260px"
+              quality={90}
+              style={{ objectPosition: '38% 50%' }}
+              className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
+            />
+            <p className="mt-2.5 font-mono text-xs tracking-wide text-ink-soft">CP-E-03</p>
+          </div>
+          <div>
+            <Image
+              src="/images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-04.jpeg"
+              alt="Toalla de bautizo bordada con el nombre Tomás, junto a la vela a juego"
+              width={826}
+              height={1100}
+              sizes="(max-width: 640px) 30vw, 260px"
+              quality={90}
+              className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
+            />
+            <p className="mt-2.5 font-mono text-xs tracking-wide text-ink-soft">PK-04</p>
+          </div>
         </div>
       </section>
 
