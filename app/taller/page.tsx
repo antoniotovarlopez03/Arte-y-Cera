@@ -136,24 +136,35 @@ export default function PaginaTaller() {
           </dl>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-3 gap-4">
           <Image
-            src="/images/colecciones/navidad/navidad-01.jpeg"
-            alt="Vela de Navidad pintada a mano con la escena del nacimiento, sostenida junto a un árbol iluminado"
-            width={826}
-            height={1100}
-            sizes="(max-width: 640px) 92vw, 300px"
+            src="/images/colecciones/cirios-elaborados/cirios-elaborados-15.webp"
+            alt="Detalle de un cirio pascual pintado a mano con la cruz en blanco y negro sobre pan de oro y el año 2025"
+            width={1600}
+            height={1600}
+            sizes="(max-width: 640px) 30vw, 200px"
             quality={90}
+            style={{ objectPosition: '38% 50%' }}
             className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
           />
           <Image
-            src="/images/colecciones/toallas-bautizo/toallas-bautizo-02.jpeg"
-            alt="Toalla de bautizo blanca con un nombre bordado a mano en hilo azul"
+            src="/images/colecciones/cirios-elaborados/cirios-elaborados-03.webp"
+            alt="Detalle de un cirio pascual pintado a mano con Cristo y la inscripción «Amad a vuestros enemigos»"
+            width={1200}
+            height={1200}
+            sizes="(max-width: 640px) 30vw, 200px"
+            quality={90}
+            style={{ objectPosition: '38% 50%' }}
+            className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza sm:mt-10"
+          />
+          <Image
+            src="/images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-04.jpeg"
+            alt="Toalla de bautizo bordada con el nombre Tomás, junto a la vela a juego"
             width={826}
             height={1100}
-            sizes="(max-width: 640px) 92vw, 300px"
+            sizes="(max-width: 640px) 30vw, 200px"
             quality={90}
-            className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza sm:mt-10"
+            className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
           />
         </div>
       </section>
