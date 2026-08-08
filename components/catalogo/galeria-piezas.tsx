@@ -26,6 +26,36 @@ import { clasesBoton, cx } from '@/lib/ui';
  * originales recuperados del WordPress eso permite llegar a 1200 px, y las seis
  * que siguen a 300 px se muestran pequeñas en lugar de pixeladas.
  */
+/**
+ * Intenta compartir la foto de la pieza con el panel nativo del móvil (así
+ * llega adjunta, no solo nombrada en el texto). WhatsApp no ofrece otra
+ * forma de adjuntar una imagen desde un enlace: `wa.me` solo admite texto.
+ *
+ * Si el navegador no tiene panel de compartir con ficheros (la mayoría de
+ * escritorio), o la persona lo cierra sin elegir nada, se abre WhatsApp Web
+ * con el mensaje de siempre.
+ */
+async function compartirFotoPorWhatsapp(pieza: Pieza, mensaje: string) {
+  if (typeof navigator !== 'undefined' && navigator.canShare) {
+    try {
+      const respuesta = await fetch(pieza.src);
+      const blob = await respuesta.blob();
+      const archivo = new File([blob], pieza.src.split('/').pop() ?? `${pieza.ref}.jpg`, {
+        type: blob.type || 'image/jpeg',
+      });
+      if (navigator.canShare({ files: [archivo] })) {
+        await navigator.share({ files: [archivo], text: mensaje });
+        return;
+      }
+    } catch (error) {
+      // AbortError: la persona ha cerrado el panel de compartir sin elegir
+      // nada, así que no insistimos abriendo WhatsApp Web detrás.
+      if (error instanceof Error && error.name === 'AbortError') return;
+    }
+  }
+  window.open(whatsappUrl(mensaje), '_blank', 'noopener');
+}
+
 export function GaleriaPiezas({
   piezas,
   nombreLinea,
@@ -232,6 +262,16 @@ export function GaleriaPiezas({
                   target="_blank"
                   rel="noopener"
                   className={clasesBoton('whatsapp')}
+                  onClick={(e) => {
+                    // Con panel nativo de compartir, la foto va adjunta; sin
+                    // él, se deja el enlace normal (WhatsApp Web con texto).
+                    if (typeof navigator === 'undefined' || !navigator.canShare) return;
+                    e.preventDefault();
+                    compartirFotoPorWhatsapp(
+                      pieza,
+                      `Hola, me interesa la pieza ${pieza.ref} (${pieza.lineaNombre}) que he visto en la web.`,
+                    );
+                  }}
                 >
                   <IconoWhatsapp className="h-4 w-4" />
                   Preguntar por la {pieza.ref}
