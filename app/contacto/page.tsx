@@ -28,6 +28,7 @@ function piezasParaSelector() {
         alto: pieza.alto,
         lineaNombre: pieza.lineaNombre,
         categoriaNombre: categoria.nombre,
+        esFicha: categoria.esFicha,
       })),
     ),
   );

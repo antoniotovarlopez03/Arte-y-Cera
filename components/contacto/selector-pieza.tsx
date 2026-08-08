@@ -11,7 +11,16 @@ export type PiezaSelector = {
   alto: number;
   lineaNombre: string;
   categoriaNombre: string;
+  /** Si la categoría es de una sola línea, «Qué te interesa» solo lleva su
+   *  nombre (sin « · línea»). Hace falta para formar el mismo texto aquí. */
+  esFicha: boolean;
 };
+
+/** El mismo texto que ve «Qué te interesa» para esta pieza, para poder
+ *  comparar los dos campos y mantenerlos sincronizados en los dos sentidos. */
+export function interesDePieza(p: Pick<PiezaSelector, 'categoriaNombre' | 'lineaNombre' | 'esFicha'>): string {
+  return p.esFicha ? p.categoriaNombre : `${p.categoriaNombre} · ${p.lineaNombre}`;
+}
 
 /**
  * Elegir una foto en vez de copiar un código.
@@ -25,34 +34,54 @@ export type PiezaSelector = {
 export function SelectorPieza({
   piezas,
   valorInicial,
+  interesSeleccionado,
+  onElegir,
 }: {
   piezas: PiezaSelector[];
   valorInicial?: string;
+  /** El valor actual de «Qué te interesa». Si coincide con alguna pieza, el
+   *  buscador abre mostrando solo esas, en vez del catálogo entero. */
+  interesSeleccionado?: string;
+  /** Además de guardar la elección, avisa al formulario para que pueda
+   *  marcar en «Qué te interesa» la categoría de la foto elegida. */
+  onElegir?: (pieza: PiezaSelector) => void;
 }) {
   const dialogo = useRef<HTMLDialogElement>(null);
   const [busqueda, setBusqueda] = useState('');
+  const [soloDelInteres, setSoloDelInteres] = useState(false);
   const [elegida, setElegida] = useState<PiezaSelector | undefined>(() =>
     valorInicial ? piezas.find((p) => p.ref === valorInicial) : undefined,
   );
 
+  const piezasDelInteres = useMemo(
+    () => (interesSeleccionado ? piezas.filter((p) => interesDePieza(p) === interesSeleccionado) : []),
+    [piezas, interesSeleccionado],
+  );
+
   const filtradas = useMemo(() => {
+    const base = soloDelInteres && piezasDelInteres.length > 0 ? piezasDelInteres : piezas;
     const q = busqueda.trim().toLowerCase();
-    if (!q) return piezas;
-    return piezas.filter(
+    if (!q) return base;
+    return base.filter(
       (p) =>
         p.ref.toLowerCase().includes(q) ||
         p.lineaNombre.toLowerCase().includes(q) ||
         p.categoriaNombre.toLowerCase().includes(q),
     );
-  }, [piezas, busqueda]);
+  }, [piezas, piezasDelInteres, soloDelInteres, busqueda]);
 
   function abrir() {
     setBusqueda('');
+    // Si ya se ha dicho qué interesa, el buscador abre mostrando solo esas
+    // piezas; con una elegida sin coincidencias en el catálogo actual, se
+    // deja ver todo en vez de una pantalla vacía.
+    setSoloDelInteres(piezasDelInteres.length > 0);
     dialogo.current?.showModal();
   }
 
   function elegir(pieza: PiezaSelector) {
     setElegida(pieza);
+    onElegir?.(pieza);
     dialogo.current?.close();
   }
 
@@ -119,6 +148,20 @@ export function SelectorPieza({
         className="m-auto max-h-[85dvh] w-full max-w-3xl rounded-pieza bg-ivory p-0 outline-none backdrop:bg-ink/75"
       >
         <div className="flex max-h-[85dvh] flex-col">
+          {soloDelInteres && piezasDelInteres.length > 0 && (
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-sand bg-cream/60 px-4 py-2.5 text-sm">
+              <span className="text-ink-soft">
+                Viendo solo <span className="font-medium text-ink">{interesSeleccionado}</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => setSoloDelInteres(false)}
+                className="font-medium text-verde underline decoration-gold underline-offset-4"
+              >
+                Ver todo el catálogo
+              </button>
+            </div>
+          )}
           <div className="flex items-center gap-3 border-b border-sand p-4">
             <input
               type="text"

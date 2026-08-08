@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useActionState } from 'react';
+import { useActionState, useState } from 'react';
 import { enviarFormulario, type EstadoEnvio } from './acciones';
 import { IconoWhatsapp } from '@/components/iconos';
-import { SelectorPieza, type PiezaSelector } from '@/components/contacto/selector-pieza';
+import { SelectorPieza, interesDePieza, type PiezaSelector } from '@/components/contacto/selector-pieza';
 import { mailtoUrl, site, whatsappUrl } from '@/lib/site';
 import { clasesBoton, cx } from '@/lib/ui';
 
@@ -22,6 +22,9 @@ export function FormularioContacto({
   opciones: string[];
 }) {
   const [estado, accion, enviando] = useActionState(enviarFormulario, INICIAL);
+  // Controlado (no defaultValue) porque tiene que poder cambiar solo cuando
+  // se elige una foto en el selector de abajo, sin esperar a un reenvío.
+  const [interes, setInteres] = useState(interesInicial ?? '');
 
   if (estado.estado === 'ok') {
     return (
@@ -117,7 +120,8 @@ export function FormularioContacto({
         <select
           id="interes"
           name="interes"
-          defaultValue={interesInicial ?? ''}
+          value={interes}
+          onChange={(e) => setInteres(e.target.value)}
           className="mt-1.5 w-full rounded-xl border border-sand bg-white-warm px-4 py-3 text-ink"
         >
           <option value="">Todavía no lo sé</option>
@@ -129,7 +133,12 @@ export function FormularioContacto({
         </select>
       </div>
 
-      <SelectorPieza piezas={piezas} valorInicial={referenciaInicial} />
+      <SelectorPieza
+        piezas={piezas}
+        valorInicial={referenciaInicial}
+        interesSeleccionado={interes}
+        onElegir={(pieza) => setInteres(interesDePieza(pieza))}
+      />
 
       <div>
         <label htmlFor="mensaje" className="block text-sm text-ink-soft">
