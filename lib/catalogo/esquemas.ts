@@ -72,6 +72,14 @@ export const CategoriaFuenteSchema = z.object({
   /** Title y description para Google. */
   seo: z.object({ titulo: z.string().min(1), descripcion: z.string().min(1) }),
   lineas: z.array(LineaFuenteSchema).min(1),
+  /**
+   * Portada de la categoría, si tiene que ser una pieza distinta de la
+   * portada de su primera línea (el criterio por defecto). Puede ser la
+   * referencia de cualquier pieza de cualquier línea de la categoría: no
+   * hace falta reordenar `lineas` (ese orden importa aparte, por ejemplo
+   * para el 01-02-03-04 de menos a más pintura del comparador).
+   */
+  portadaRef: z.string().min(1).optional(),
 });
 
 export type PrecioFuente = z.infer<typeof PrecioSchema>;
@@ -107,7 +115,7 @@ export type Linea = Omit<LineaFuente, 'carpeta' | 'portadaRef'> & {
 
 export type Categoria = Omit<z.infer<typeof CategoriaFuenteSchema>, 'lineas'> & {
   lineas: Linea[];
-  /** Portada de la categoría: la de su primera línea. */
+  /** Portada de la categoría: la de su primera línea, salvo que `portadaRef` diga otra cosa. */
   portada: Pieza;
   href: string;
   /** Una sola línea → la categoría ES la ficha, sin nivel intermedio. */

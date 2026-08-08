@@ -90,10 +90,22 @@ function construir(): Categoria[] {
     const primera = lineas[0];
     if (!primera) error(`la categoría «${cat.slug}» no tiene líneas`);
 
+    let portada = primera.portada;
+    if (cat.portadaRef) {
+      const encontrada = lineas.flatMap((l) => l.piezas).find((p) => p.ref === cat.portadaRef);
+      if (!encontrada) {
+        error(
+          `la portada «${cat.portadaRef}» de la categoría «${cat.slug}» no está en ninguna de ` +
+            `sus líneas`,
+        );
+      }
+      portada = encontrada;
+    }
+
     return {
       ...cat,
       lineas,
-      portada: primera.portada,
+      portada,
       href: hrefCategoria,
       esFicha,
       totalPiezas: lineas.reduce((n, l) => n + l.piezas.length, 0),

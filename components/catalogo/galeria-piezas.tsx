@@ -1,8 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { IconoWhatsapp } from '@/components/iconos';
+import { IconoSobre, IconoWhatsapp } from '@/components/iconos';
 import type { Pieza } from '@/lib/catalogo/esquemas';
 import { whatsappUrl } from '@/lib/site';
 import { clasesBoton, cx } from '@/lib/ui';
@@ -223,17 +224,30 @@ export function GaleriaPiezas({
             </div>
 
             <div className="flex flex-col items-center gap-2">
-              <a
-                href={whatsappUrl(
-                  `Hola, me interesa la pieza ${pieza.ref} (${pieza.lineaNombre}) que he visto en la web.`,
-                )}
-                target="_blank"
-                rel="noopener"
-                className={clasesBoton('whatsapp')}
-              >
-                <IconoWhatsapp className="h-4 w-4" />
-                Preguntar por la {pieza.ref}
-              </a>
+              <div className="flex flex-wrap justify-center gap-3">
+                <a
+                  href={whatsappUrl(
+                    `Hola, me interesa la pieza ${pieza.ref} (${pieza.lineaNombre}) que he visto en la web.`,
+                  )}
+                  target="_blank"
+                  rel="noopener"
+                  className={clasesBoton('whatsapp')}
+                >
+                  <IconoWhatsapp className="h-4 w-4" />
+                  Preguntar por la {pieza.ref}
+                </a>
+                {/* Mismo destino que "Un atajo" antes de quitarlo: la página de
+                    contacto lee ?pieza= y deja esta foto ya elegida en el
+                    selector, sin que quien pregunta tenga que volver a decir
+                    cuál es. */}
+                <Link
+                  href={{ pathname: '/contacto', query: { pieza: pieza.ref } }}
+                  className={clasesBoton('contorno-claro')}
+                >
+                  <IconoSobre className="h-4 w-4" />
+                  Pedir por correo
+                </Link>
+              </div>
               <p className="text-center text-xs text-cream/60">
                 Cada pieza se pinta por encargo: esta foto es el punto de partida, no un artículo en
                 stock.

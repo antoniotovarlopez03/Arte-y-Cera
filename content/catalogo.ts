@@ -38,6 +38,7 @@ export const CATALOGO: CategoriaFuente[] = [
       descripcion:
         'Velas de bautizo pintadas a mano con el nombre y la fecha. Cuatro acabados, desde 20 € con la vela incluida. Envíos a toda España.',
     },
+    portadaRef: 'BZ-B-15',
     lineas: [
       {
         slug: 'lazos-y-bordados',
@@ -218,7 +219,7 @@ export const CATALOGO: CategoriaFuente[] = [
         incluye: ['La vela', 'Escena pintada a mano', 'Motivo a elegir'],
         altBase: 'Vela de Navidad pintada a mano',
         carpeta: 'navidad',
-        portadaRef: 'NV-01',
+        portadaRef: 'NV-03',
       },
     ],
   },

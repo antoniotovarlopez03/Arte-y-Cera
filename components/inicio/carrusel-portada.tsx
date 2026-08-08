@@ -15,8 +15,10 @@ export type Diapositiva = {
   linea: string;
 };
 
-/** Segundos por pieza. Cinco piezas = veintidós segundos de vuelta completa. */
-const SEGUNDOS = 4.5;
+/** Segundos por pieza. Cinco piezas = veintidós segundos de vuelta completa.
+ *  Se exporta para que otros carruseles de fundido (ver CarruselFundido)
+ *  compartan exactamente la misma duración en vez de otro número parecido. */
+export const SEGUNDOS = 4.5;
 
 /** Píxeles de arrastre a partir de los cuales se cuenta como gesto. */
 const UMBRAL_GESTO = 45;

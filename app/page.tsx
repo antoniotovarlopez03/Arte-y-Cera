@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { TarjetaCategoria } from '@/components/catalogo/tarjeta-categoria';
+import { CarruselFundido } from '@/components/inicio/carrusel-fundido';
 import { CarruselPortada } from '@/components/inicio/carrusel-portada';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { IconoFlecha, IconoWhatsapp } from '@/components/iconos';
@@ -17,7 +18,11 @@ import { clasesBoton } from '@/lib/ui';
 
    Se referencian por su código y no por su ruta: si alguna sale del catálogo,
    el build avisa en lugar de dejar la portada rota. */
-const REFS_PORTADA = ['MB-E-01', 'CP-E-02', 'BZ-D-19', 'PK-03', 'NV-01'] as const;
+const REFS_PORTADA = ['MB-E-01', 'CP-E-02', 'CP-B-02', 'PK-03', 'NV-03'] as const;
+
+/* Las cuatro piezas que pasan en «Nuestro oficio», en el mismo formato de
+   fundido que la portada y con su misma duración (ver CarruselFundido). */
+const REFS_TALLER = ['MB-B-01', 'CP-B-09', 'BZ-E-20', 'TB-03'] as const;
 
 /* Alineación de la portada: el texto arranca en la misma vertical que el
    contenido del resto de la web (un contenedor de 72rem con 1.25rem de aire),
@@ -63,6 +68,7 @@ export default function PaginaInicio() {
       linea: linea.nombre,
     };
   });
+  const fotosTaller = REFS_TALLER.map((ref) => piezaPorRef(ref).pieza);
   const muestra = muestraDelCatalogo(12);
 
   return (
@@ -240,26 +246,7 @@ export default function PaginaInicio() {
             </p>
           </div>
 
-          {/* Esta imagen está generada con inteligencia artificial y por eso lleva
-              el pie a la vista. Se conserva porque el taller real todavía no tiene
-              una foto buena, pero un negocio que vende trabajo hecho a mano no
-              puede colar una imagen falsa como si fuera fotografía: etiquetada es
-              un recurso legítimo, sin etiquetar es engañar. En cuanto llegue una
-              foto de verdad del taller, se cambia y el pie desaparece. */}
-          <figure>
-            <Image
-              src="/images/pascua/pascua-taller-bg.jpeg"
-              alt="Ilustración de un taller con cirios pascuales pintados a mano, pinceles y botes de pintura sobre una mesa de trabajo"
-              width={1536}
-              height={1024}
-              sizes="(max-width: 1024px) 92vw, 560px"
-              quality={90}
-              className="w-full rounded-pieza object-cover shadow-pieza"
-            />
-            <figcaption className="mt-2.5 text-xs text-ink-soft">
-              Ilustración. Las fotos de las piezas del catálogo son todas reales.
-            </figcaption>
-          </figure>
+          <CarruselFundido piezas={fotosTaller} className="rounded-pieza shadow-pieza" />
         </div>
       </section>
 
