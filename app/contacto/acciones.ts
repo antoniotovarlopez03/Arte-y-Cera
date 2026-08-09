@@ -2,7 +2,7 @@
 
 import { headers } from 'next/headers';
 import { Resend } from 'resend';
-import { piezaPorRef } from '@/lib/catalogo';
+import { getCategoria, piezaPorRef } from '@/lib/catalogo';
 import {
   cuerpoConfirmacionCliente,
   cuerpoDelCorreo,
@@ -39,6 +39,7 @@ function buscarPiezasSeguras(referencia: string | undefined): PiezaElegida[] {
   for (const ref of refs) {
     try {
       const { pieza, linea } = piezaPorRef(ref);
+      const categoria = getCategoria(linea.categoria.slug);
       piezas.push({
         ref: pieza.ref,
         src: pieza.src,
@@ -46,6 +47,7 @@ function buscarPiezasSeguras(referencia: string | undefined): PiezaElegida[] {
         ancho: pieza.ancho,
         alto: pieza.alto,
         href: `${linea.href}?pieza=${pieza.ref}`,
+        interes: categoria?.esFicha ? categoria.nombre : `${linea.categoria.nombre} · ${linea.nombre}`,
       });
     } catch {
       // Referencia inventada o ya retirada del catálogo: se ignora.

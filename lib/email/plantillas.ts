@@ -10,6 +10,10 @@ export type PiezaElegida = {
   ancho: number;
   alto: number;
   href: string;
+  /** «Velas de bautizo · Básicas», el mismo texto que «Qué te interesa».
+   *  Con varias piezas de categorías distintas, ese campo solo se queda con
+   *  la última: esto es lo que deja ver de cuál es cada una. */
+  interes: string;
 };
 
 /** URL absoluta para las imágenes del correo.
@@ -152,7 +156,8 @@ function bloquePieza(pieza: PiezaElegida): string {
       <td align="center" style="padding:20px;">
         <img src="${urlImagenCorreo(pieza.src)}" width="320" height="${alturaMostrada}" alt="${escaparHtml(pieza.alt)}" style="display:block;width:100%;max-width:320px;height:auto;border:0;border-radius:10px;">
         <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.08em;color:${COLOR.doradoProfundo};margin-top:12px;">${escaparHtml(pieza.ref)}</div>
-        <a href="${urlImagenCorreo(pieza.href)}" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:${COLOR.verde};text-decoration:underline;">Ver esta pieza en la web</a>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:${COLOR.textoSuave};margin-top:2px;">${escaparHtml(pieza.interes)}</div>
+        <a href="${urlImagenCorreo(pieza.href)}" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:${COLOR.verde};text-decoration:underline;margin-top:8px;display:inline-block;">Ver esta pieza en la web</a>
       </td>
     </tr>
   </table>`;
