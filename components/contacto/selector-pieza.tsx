@@ -180,9 +180,11 @@ export function SelectorPieza({
               />
               <div className="min-w-0 flex-1">
                 <p className="font-mono text-sm text-verde">{pieza.ref}</p>
-                <p className="truncate text-xs text-ink-soft">
-                  {pieza.categoriaNombre} · {pieza.lineaNombre}
-                </p>
+                {/* interesDePieza y no «categoría · línea» a mano: en las
+                    categorías de una sola línea (Navidad, toallas...) las dos
+                    se llaman igual, y repetirlo («Velas de Navidad · Velas de
+                    Navidad») parecía un error de la web. */}
+                <p className="truncate text-xs text-ink-soft">{interesDePieza(pieza)}</p>
               </div>
               <p className="shrink-0 text-sm text-ink-soft">desde {FORMATO_EUROS.format(pieza.precioDesde)}</p>
               <button
