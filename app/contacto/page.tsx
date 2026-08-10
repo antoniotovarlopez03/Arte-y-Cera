@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { FormularioContacto } from './formulario';
 import { IconoInstagram, IconoSobre, IconoWhatsapp } from '@/components/iconos';
 import { Migas } from '@/components/ui/migas';
-import { categorias, getCategoria, getLinea, lineas } from '@/lib/catalogo';
+import { categorias, getCategoria, getLinea, lineas, precioMinimo } from '@/lib/catalogo';
 import { site, whatsappUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ function piezasParaSelector() {
         lineaNombre: pieza.lineaNombre,
         categoriaNombre: categoria.nombre,
         esFicha: categoria.esFicha,
+        precioDesde: precioMinimo(linea),
       })),
     ),
   );

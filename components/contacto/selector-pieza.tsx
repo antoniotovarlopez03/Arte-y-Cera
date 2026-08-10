@@ -2,7 +2,19 @@
 
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCesta } from '@/lib/cesta';
 import { cx } from '@/lib/ui';
+
+/** Mismo formato que `formatearPrecio` de lib/catalogo, pero sin importar
+ *  ese módulo aquí: es un componente de cliente, y lib/catalogo valida las
+ *  166 piezas al cargarse — mandarlo entero al navegador por un formato de
+ *  moneda sería un despilfarro (ver el mismo motivo en site-header.tsx). */
+const FORMATO_EUROS = new Intl.NumberFormat('es-ES', {
+  style: 'currency',
+  currency: 'EUR',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 2,
+});
 
 export type PiezaSelector = {
   ref: string;
@@ -15,6 +27,10 @@ export type PiezaSelector = {
   /** Si la categoría es de una sola línea, «Qué te interesa» solo lleva su
    *  nombre (sin « · línea»). Hace falta para formar el mismo texto aquí. */
   esFicha: boolean;
+  /** El precio más bajo de su línea (lo que se ve como «desde» en el
+   *  catálogo). Cada pieza se pinta por encargo, así que esto es una
+   *  referencia para hacerse una idea, no un presupuesto cerrado. */
+  precioDesde: number;
 };
 
 /** El mismo texto que ve «Qué te interesa» para esta pieza, para poder
@@ -57,6 +73,7 @@ export function SelectorPieza({
   onCambianElegidas?: (piezas: PiezaSelector[]) => void;
 }) {
   const dialogo = useRef<HTMLDialogElement>(null);
+  const { quitar: quitarDeCesta } = useCesta();
   const [busqueda, setBusqueda] = useState('');
   const [soloDelInteres, setSoloDelInteres] = useState(false);
   const [elegidas, setElegidas] = useState<PiezaSelector[]>(() => {
@@ -129,7 +146,12 @@ export function SelectorPieza({
 
   function quitar(ref: string) {
     setElegidas((actual) => actual.filter((p) => p.ref !== ref));
+    // Si venía de la cesta (o no, da igual: quitar es idempotente), que
+    // tampoco se quede ahí esperando a la próxima visita.
+    quitarDeCesta(ref);
   }
+
+  const totalDesde = elegidas.reduce((suma, p) => suma + p.precioDesde, 0);
 
   return (
     <div>
@@ -162,6 +184,7 @@ export function SelectorPieza({
                   {pieza.categoriaNombre} · {pieza.lineaNombre}
                 </p>
               </div>
+              <p className="shrink-0 text-sm text-ink-soft">desde {FORMATO_EUROS.format(pieza.precioDesde)}</p>
               <button
                 type="button"
                 onClick={() => quitar(pieza.ref)}
@@ -172,6 +195,13 @@ export function SelectorPieza({
               </button>
             </li>
           ))}
+          {/* «Desde», no un total cerrado: cada pieza se pinta por encargo y el
+              precio final depende de lo que se decida (tamaño, retrato...). Esto
+              es para hacerse una idea al vuelo, no un presupuesto. */}
+          <li className="flex items-center justify-between px-1 pt-1 text-sm">
+            <span className="font-medium text-ink">Total, a partir de</span>
+            <span className="font-medium text-verde">{FORMATO_EUROS.format(totalDesde)}</span>
+          </li>
         </ul>
       )}
 
