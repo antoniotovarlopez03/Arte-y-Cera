@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { cx } from '@/lib/ui';
 
 export type PiezaSelector = {
@@ -39,25 +39,59 @@ export function interesDePieza(p: Pick<PiezaSelector, 'categoriaNombre' | 'linea
 export function SelectorPieza({
   piezas,
   valorInicial,
+  valoresIniciales,
   interesSeleccionado,
-  onElegir,
+  onCambianElegidas,
 }: {
   piezas: PiezaSelector[];
   valorInicial?: string;
+  /** Varias referencias de partida a la vez (por ejemplo, las que ya
+   *  estaban en la cesta al llegar a esta página). Se combinan con
+   *  `valorInicial` sin repetir ninguna. */
+  valoresIniciales?: string[];
   /** El valor actual de «Qué te interesa». Si coincide con alguna pieza, el
    *  buscador abre mostrando solo esas, en vez del catálogo entero. */
   interesSeleccionado?: string;
-  /** Cada vez que se añade una foto, avisa al formulario para que pueda
-   *  marcar en «Qué te interesa» la categoría de esa foto. */
-  onElegir?: (pieza: PiezaSelector) => void;
+  /** Cada vez que se añade o se quita una foto, avisa al formulario con la
+   *  lista completa que queda, para que pueda recalcular «Qué te interesa». */
+  onCambianElegidas?: (piezas: PiezaSelector[]) => void;
 }) {
   const dialogo = useRef<HTMLDialogElement>(null);
   const [busqueda, setBusqueda] = useState('');
   const [soloDelInteres, setSoloDelInteres] = useState(false);
   const [elegidas, setElegidas] = useState<PiezaSelector[]>(() => {
-    const inicial = valorInicial ? piezas.find((p) => p.ref === valorInicial) : undefined;
-    return inicial ? [inicial] : [];
+    const refs = new Set([...(valoresIniciales ?? []), ...(valorInicial ? [valorInicial] : [])]);
+    return piezas.filter((p) => refs.has(p.ref));
   });
+
+  // La cesta se lee de localStorage, que no existe en el servidor: llega un
+  // instante después del primer render, así que hace falta un efecto para
+  // recogerla en cuanto esté. El `sembrada` evita repetirlo en cada cambio
+  // de `valoresIniciales` y pisar lo que la persona haya quitado a mano.
+  const sembrada = useRef(false);
+  useEffect(() => {
+    if (sembrada.current) return;
+    if (!valoresIniciales || valoresIniciales.length === 0) return;
+    sembrada.current = true;
+    // Sincroniza con algo de fuera de React (localStorage) en cuanto llega,
+    // la misma excepción que contempla la propia regla: no se puede leer en
+    // el servidor, así que no hay forma de tenerlo ya en el primer render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setElegidas((actual) => {
+      const refsActuales = new Set(actual.map((p) => p.ref));
+      const nuevas = piezas.filter((p) => valoresIniciales.includes(p.ref) && !refsActuales.has(p.ref));
+      return nuevas.length === 0 ? actual : [...actual, ...nuevas];
+    });
+  }, [valoresIniciales, piezas]);
+
+  // Avisar al padre es un efecto secundario sobre OTRO componente, así que
+  // vive en su propio efecto tras el commit, nunca dentro del actualizador
+  // de setElegidas: React no permite actualizar un componente mientras
+  // renderiza otro, y hacerlo ahí lo provocaba.
+  useEffect(() => {
+    onCambianElegidas?.(elegidas);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- onCambianElegidas es una función nueva en cada render del padre; solo importa cuándo cambian las piezas elegidas.
+  }, [elegidas]);
 
   const refsElegidas = useMemo(() => new Set(elegidas.map((p) => p.ref)), [elegidas]);
 
@@ -90,7 +124,6 @@ export function SelectorPieza({
 
   function elegir(pieza: PiezaSelector) {
     setElegidas((actual) => (actual.some((p) => p.ref === pieza.ref) ? actual : [...actual, pieza]));
-    onElegir?.(pieza);
     dialogo.current?.close();
   }
 

@@ -3,8 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { IconoSobre, IconoWhatsapp } from '@/components/iconos';
+import { IconoCesta, IconoSobre, IconoWhatsapp } from '@/components/iconos';
 import type { Pieza } from '@/lib/catalogo/esquemas';
+import { useCesta } from '@/lib/cesta';
 import { whatsappUrl } from '@/lib/site';
 import { clasesBoton, cx } from '@/lib/ui';
 
@@ -37,6 +38,7 @@ export function GaleriaPiezas({
 }) {
   const dialogo = useRef<HTMLDialogElement>(null);
   const [indice, setIndice] = useState<number | null>(null);
+  const { refs: refsCesta, añadir: añadirACesta, quitar: quitarDeCesta } = useCesta();
 
   const abrir = useCallback((i: number) => setIndice(i), []);
   const cerrar = useCallback(() => setIndice(null), []);
@@ -247,10 +249,30 @@ export function GaleriaPiezas({
                   <IconoSobre className="h-4 w-4" />
                   Pedir por correo
                 </Link>
+                {/* No cierra el visor: para pedir varias piezas hace falta poder
+                    seguir mirando fotos después de añadir esta, como en una
+                    tienda. Al llegar al formulario de contacto, la cesta entera
+                    aparece ya elegida (ver lib/cesta.ts). */}
+                <button
+                  type="button"
+                  onClick={() =>
+                    refsCesta.includes(pieza.ref) ? quitarDeCesta(pieza.ref) : añadirACesta(pieza.ref)
+                  }
+                  className={clasesBoton(refsCesta.includes(pieza.ref) ? 'claro' : 'contorno-claro')}
+                >
+                  <IconoCesta className="h-4 w-4" />
+                  {refsCesta.includes(pieza.ref) ? 'En tu cesta ✓' : 'Añadir a la cesta'}
+                </button>
               </div>
               <p className="text-center text-xs text-cream/60">
-                Cada pieza se pinta por encargo: esta foto es el punto de partida, no un artículo en
-                stock.
+                {refsCesta.length > 0
+                  ? `${refsCesta.length} ${refsCesta.length === 1 ? 'pieza' : 'piezas'} en tu cesta. Sigue mirando o `
+                  : 'Cada pieza se pinta por encargo: esta foto es el punto de partida, no un artículo en stock. '}
+                {refsCesta.length > 0 && (
+                  <Link href="/contacto" className="underline decoration-gold underline-offset-4">
+                    ve al formulario
+                  </Link>
+                )}
               </p>
             </div>
           </div>

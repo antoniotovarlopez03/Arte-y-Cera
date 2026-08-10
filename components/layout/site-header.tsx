@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
+import { IconoCesta } from '@/components/iconos';
+import { useCesta } from '@/lib/cesta';
 
 /**
  * Lo mínimo que la cabecera necesita de cada colección. Llega como prop desde
@@ -43,6 +45,7 @@ const ATAJOS = ['velas-de-bautizo', 'velas-de-mesa-y-boda', 'cirios-pascuales', 
  */
 export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
   const pathname = usePathname();
+  const { refs: refsCesta } = useCesta();
   const [movilAbierto, setMovilAbierto] = useState(false);
   const [panelAbierto, setPanelAbierto] = useState(false);
   const idPanel = useId();
@@ -211,6 +214,22 @@ export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
             El taller
           </Link>
 
+          {/* Solo aparece con algo dentro: una cesta vacía en la cabecera de
+              siempre es ruido, y además así se nota que ha pasado algo la
+              primera vez que se añade una pieza desde la galería. */}
+          {refsCesta.length > 0 && (
+            <Link
+              href="/contacto"
+              className="relative flex items-center gap-1.5 text-ink-soft transition-colors hover:text-verde"
+              aria-label={`Tu cesta, ${refsCesta.length} ${refsCesta.length === 1 ? 'pieza' : 'piezas'}`}
+            >
+              <IconoCesta className="h-5 w-5" />
+              <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-terracotta px-1 text-xs font-medium text-ivory">
+                {refsCesta.length}
+              </span>
+            </Link>
+          )}
+
           {/* «Escríbenos» y no «Pedir presupuesto»: para un cirio de 260 € vale,
               pero para una vela de bautizo de 20 € suena a obra, y es justo la
               que más se vende. Además es lo que dice él: «no dudes en
@@ -278,6 +297,18 @@ export function SiteHeader({ colecciones }: { colecciones: EntradaMenu[] }) {
                 El taller
               </Link>
             </li>
+            {refsCesta.length > 0 && (
+              <li>
+                <Link
+                  href="/contacto"
+                  onClick={() => setMovilAbierto(false)}
+                  className="flex items-center gap-2 border-b border-sand/50 py-3.5 text-base text-ink"
+                >
+                  <IconoCesta className="h-5 w-5 text-ink-soft" />
+                  Tu cesta ({refsCesta.length})
+                </Link>
+              </li>
+            )}
           </ul>
           <Link
             href="/contacto"

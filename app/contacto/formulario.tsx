@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useActionState, useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { enviarFormulario, type EstadoEnvio } from './acciones';
 import { IconoWhatsapp } from '@/components/iconos';
 import { SelectorPieza, interesDePieza, type PiezaSelector } from '@/components/contacto/selector-pieza';
+import { useCesta } from '@/lib/cesta';
 import { mailtoUrl, site, whatsappUrl } from '@/lib/site';
 import { clasesBoton, cx } from '@/lib/ui';
 
@@ -25,6 +26,13 @@ export function FormularioContacto({
   // Controlado (no defaultValue) porque tiene que poder cambiar solo cuando
   // se elige una foto en el selector de abajo, sin esperar a un reenvío.
   const [interes, setInteres] = useState(interesInicial ?? '');
+  const { refs: refsCesta, vaciar: vaciarCesta } = useCesta();
+
+  // Enviado el mensaje, la cesta ya cumplió su trabajo: se vacía para que la
+  // próxima visita no arrastre piezas de un pedido que ya se mandó.
+  useEffect(() => {
+    if (estado.estado === 'ok') vaciarCesta();
+  }, [estado.estado, vaciarCesta]);
 
   if (estado.estado === 'ok') {
     return (
@@ -51,6 +59,13 @@ export function FormularioContacto({
   }
 
   const errores = estado.estado === 'error' ? (estado.errores ?? {}) : {};
+
+  // Si las piezas elegidas son de categorías distintas (una vela Y una
+  // toalla, por ejemplo), el desplegable no puede quedarse solo con la
+  // última: aquí no hay «una respuesta», así que se combinan todas con
+  // un «+». Si ese texto no coincide con ninguna opción fija, se añade al
+  // vuelo para que el <select> pueda mostrarlo seleccionado de verdad.
+  const opcionesMostradas = interes && !opciones.includes(interes) ? [interes, ...opciones] : opciones;
 
   return (
     <form action={accion} className="space-y-5" noValidate>
@@ -125,7 +140,7 @@ export function FormularioContacto({
           className="mt-1.5 w-full rounded-xl border border-sand bg-white-warm px-4 py-3 text-ink"
         >
           <option value="">Todavía no lo sé</option>
-          {opciones.map((opcion) => (
+          {opcionesMostradas.map((opcion) => (
             <option key={opcion} value={opcion}>
               {opcion}
             </option>
@@ -136,8 +151,15 @@ export function FormularioContacto({
       <SelectorPieza
         piezas={piezas}
         valorInicial={referenciaInicial}
+        valoresIniciales={refsCesta}
         interesSeleccionado={interes}
-        onElegir={(pieza) => setInteres(interesDePieza(pieza))}
+        onCambianElegidas={(elegidas) => {
+          // Sin piezas no se toca: puede que la persona ya hubiera elegido
+          // algo a mano (o «Todavía no lo sé») antes de quitar la última foto.
+          if (elegidas.length === 0) return;
+          const categorias = [...new Set(elegidas.map(interesDePieza))];
+          setInteres(categorias.join(' + '));
+        }}
       />
 
       <div>
