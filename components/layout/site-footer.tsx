@@ -23,7 +23,7 @@ export function SiteFooter() {
               className="h-9 w-9 rounded-full"
             />
             <span className="font-display text-lg font-bold text-ivory">
-              Arte <span className="text-gold">&amp;</span> Cera
+              Arte <span className="text-cream">&amp;</span> Cera
             </span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
@@ -33,7 +33,7 @@ export function SiteFooter() {
         </div>
 
         <nav aria-label="Secciones">
-          <h2 className="font-display text-sm tracking-[0.14em] text-gold uppercase">Web</h2>
+          <h2 className="font-display text-sm tracking-[0.14em] text-cream/90 uppercase">Web</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <Link href="/colecciones" className="text-cream/80 hover:text-ivory">
@@ -54,7 +54,9 @@ export function SiteFooter() {
         </nav>
 
         <div>
-          <h2 className="font-display text-sm tracking-[0.14em] text-gold uppercase">Hablemos</h2>
+          <h2 className="font-display text-sm tracking-[0.14em] text-cream/90 uppercase">
+            Hablemos
+          </h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
               <a href={`mailto:${site.email}`} className="text-cream/80 hover:text-ivory">

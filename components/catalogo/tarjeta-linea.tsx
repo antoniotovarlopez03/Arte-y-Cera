@@ -43,7 +43,7 @@ export function TarjetaLinea({
           className="flex shrink-0 items-center gap-1.5 border-b border-verde/25 pb-0.5 text-sm font-medium text-verde hover:border-verde"
         >
           Ver los {linea.piezas.length} modelos
-          <IconoFlecha className="h-4 w-4 text-gold-deep transition-transform group-hover:translate-x-1" />
+          <IconoFlecha className="h-4 w-4 text-verde transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </article>

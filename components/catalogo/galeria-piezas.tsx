@@ -184,7 +184,7 @@ export function GaleriaPiezas({
         {pieza && (
           <div className="flex max-h-dvh flex-col gap-4 p-4 sm:p-6">
             <div className="flex items-center justify-between gap-4">
-              <p className="font-mono text-sm tracking-wide text-gold-light">
+              <p className="font-mono text-sm tracking-wide text-ivory">
                 {pieza.ref}
                 <span className="ml-3 font-sans text-cream/60">
                   · {pieza.lineaNombre} · {indice! + 1} de {piezas.length}
@@ -256,9 +256,13 @@ export function GaleriaPiezas({
                 <button
                   type="button"
                   onClick={() =>
-                    refsCesta.includes(pieza.ref) ? quitarDeCesta(pieza.ref) : añadirACesta(pieza.ref)
+                    refsCesta.includes(pieza.ref)
+                      ? quitarDeCesta(pieza.ref)
+                      : añadirACesta(pieza.ref)
                   }
-                  className={clasesBoton(refsCesta.includes(pieza.ref) ? 'claro' : 'contorno-claro')}
+                  className={clasesBoton(
+                    refsCesta.includes(pieza.ref) ? 'claro' : 'contorno-claro',
+                  )}
                 >
                   <IconoCesta className="h-4 w-4" />
                   {refsCesta.includes(pieza.ref) ? 'En tu cesta ✓' : 'Añadir a la cesta'}
@@ -269,7 +273,10 @@ export function GaleriaPiezas({
                   ? `${refsCesta.length} ${refsCesta.length === 1 ? 'pieza' : 'piezas'} en tu cesta. Sigue mirando o `
                   : 'Cada pieza se pinta por encargo: esta foto es el punto de partida, no un artículo en stock. '}
                 {refsCesta.length > 0 && (
-                  <Link href="/contacto" className="underline decoration-gold underline-offset-4">
+                  <Link
+                    href="/contacto"
+                    className="underline decoration-cream/40 underline-offset-4"
+                  >
                     ve al formulario
                   </Link>
                 )}

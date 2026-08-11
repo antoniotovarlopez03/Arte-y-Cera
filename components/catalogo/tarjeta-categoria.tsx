@@ -30,8 +30,8 @@ export function TarjetaCategoriaAncha({
         href={categoria.href}
         className={`grid items-center gap-8 rounded-pieza border p-4 transition-colors sm:grid-cols-[minmax(0,24rem)_1fr] sm:gap-10 sm:p-6 ${
           oscuro
-            ? 'border-cream/20 bg-white-warm/5 hover:border-gold-light hover:bg-white-warm/10'
-            : 'border-sand bg-cream/40 hover:border-gold-deep hover:bg-cream/70'
+            ? 'border-cream/20 bg-white-warm/5 hover:border-cream hover:bg-white-warm/10'
+            : 'border-sand bg-cream/40 hover:border-verde hover:bg-cream/70'
         }`}
       >
         <div className="overflow-hidden rounded-pieza bg-cream">
@@ -59,7 +59,7 @@ export function TarjetaCategoriaAncha({
           </p>
           <p className="mt-5 flex items-baseline gap-2">
             <span
-              className={`font-display text-xl font-bold ${oscuro ? 'text-gold-light' : 'text-verde'}`}
+              className={`font-display text-xl font-bold ${oscuro ? 'text-ivory' : 'text-verde'}`}
             >
               desde {formatearPrecio(desde)}
             </span>
@@ -71,13 +71,13 @@ export function TarjetaCategoriaAncha({
           <p
             className={`mt-4 inline-flex items-center gap-2 border-b pb-0.5 text-sm font-medium transition-colors ${
               oscuro
-                ? 'border-gold-light/30 text-gold-light group-hover:border-gold-light'
+                ? 'border-cream/30 text-cream group-hover:border-cream'
                 : 'border-verde/25 text-verde group-hover:border-verde'
             }`}
           >
             Ver nuestros modelos
             <IconoFlecha
-              className={`h-4 w-4 transition-transform group-hover:translate-x-1 ${oscuro ? 'text-gold-light' : 'text-gold-deep'}`}
+              className={`h-4 w-4 transition-transform group-hover:translate-x-1 ${oscuro ? 'text-cream' : 'text-verde'}`}
             />
           </p>
         </div>
@@ -124,7 +124,7 @@ export function TarjetaCategoria({
 
           <p className="mt-4 flex items-baseline gap-2 text-sm">
             <span
-              className={`font-display text-lg font-bold ${oscuro ? 'text-gold-light' : 'text-verde'}`}
+              className={`font-display text-lg font-bold ${oscuro ? 'text-ivory' : 'text-verde'}`}
             >
               desde {formatearPrecio(desde)}
             </span>
@@ -141,13 +141,13 @@ export function TarjetaCategoria({
           <p
             className={`mt-3 inline-flex items-center gap-2 border-b pb-0.5 text-sm font-medium transition-colors ${
               oscuro
-                ? 'border-gold-light/30 text-gold-light group-hover:border-gold-light'
+                ? 'border-cream/30 text-cream group-hover:border-cream'
                 : 'border-verde/25 text-verde group-hover:border-verde'
             }`}
           >
             Ver nuestros modelos
             <IconoFlecha
-              className={`h-4 w-4 transition-transform group-hover:translate-x-1 ${oscuro ? 'text-gold-light' : 'text-gold-deep'}`}
+              className={`h-4 w-4 transition-transform group-hover:translate-x-1 ${oscuro ? 'text-cream' : 'text-verde'}`}
             />
           </p>
         </div>

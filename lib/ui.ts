@@ -24,7 +24,7 @@ const VARIANTES: Record<Variante, string> = {
   // conviene que el botón se reconozca al instante. Va oscurecido porque el
   // #25d366 oficial con texto blanco da 2:1 y no pasa WCAG AA; este da 5,4:1.
   whatsapp: 'bg-[#0f7a40] text-white hover:bg-[#0b6135] px-6 py-3',
-  discreto: 'text-ink-soft hover:text-verde underline decoration-gold underline-offset-4',
+  discreto: 'text-ink-soft hover:text-verde underline decoration-verde/40 underline-offset-4',
   // Sobre verde profundo: marfil de fondo con el verde de marca encima da
   // 10,07:1, y el contorno en crema al 40 % se ve sin gritar.
   claro: 'bg-ivory text-verde hover:bg-cream px-6 py-3',

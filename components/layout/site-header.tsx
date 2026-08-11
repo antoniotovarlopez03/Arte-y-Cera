@@ -145,7 +145,7 @@ export function SiteHeader({
             priority
           />
           <span className="font-display text-xl font-bold tracking-tight text-verde">
-            Arte <span className="text-gold-ink">&amp;</span> Cera
+            Arte <span className="text-verde">&amp;</span> Cera
           </span>
         </Link>
 
@@ -166,7 +166,7 @@ export function SiteHeader({
                   aria-current={pathname === coleccion.href ? 'page' : undefined}
                   className={`hidden text-[0.95rem] transition-colors hover:text-verde lg:block ${
                     pathname === coleccion.href
-                      ? 'font-medium text-verde underline decoration-gold decoration-2 underline-offset-8'
+                      ? 'font-medium text-verde underline decoration-verde decoration-2 underline-offset-8'
                       : 'text-ink-soft'
                   }`}
                 >
@@ -183,7 +183,7 @@ export function SiteHeader({
                 aria-controls={idPanel}
                 className={`flex items-center gap-1.5 text-[0.95rem] transition-colors hover:text-verde ${
                   enCatalogo
-                    ? 'font-medium text-verde underline decoration-gold decoration-2 underline-offset-8'
+                    ? 'font-medium text-verde underline decoration-verde decoration-2 underline-offset-8'
                     : 'text-ink-soft'
                 }`}
               >
@@ -256,7 +256,7 @@ export function SiteHeader({
               aria-current={enTaller ? 'page' : undefined}
               className={`text-[0.95rem] transition-colors hover:text-verde ${
                 enTaller
-                  ? 'font-medium text-verde underline decoration-gold decoration-2 underline-offset-8'
+                  ? 'font-medium text-verde underline decoration-verde decoration-2 underline-offset-8'
                   : 'text-ink-soft'
               }`}
             >

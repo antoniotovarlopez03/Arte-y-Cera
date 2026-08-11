@@ -35,7 +35,9 @@ export type PiezaSelector = {
 
 /** El mismo texto que ve «Qué te interesa» para esta pieza, para poder
  *  comparar los dos campos y mantenerlos sincronizados en los dos sentidos. */
-export function interesDePieza(p: Pick<PiezaSelector, 'categoriaNombre' | 'lineaNombre' | 'esFicha'>): string {
+export function interesDePieza(
+  p: Pick<PiezaSelector, 'categoriaNombre' | 'lineaNombre' | 'esFicha'>,
+): string {
   return p.esFicha ? p.categoriaNombre : `${p.categoriaNombre} · ${p.lineaNombre}`;
 }
 
@@ -96,7 +98,9 @@ export function SelectorPieza({
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setElegidas((actual) => {
       const refsActuales = new Set(actual.map((p) => p.ref));
-      const nuevas = piezas.filter((p) => valoresIniciales.includes(p.ref) && !refsActuales.has(p.ref));
+      const nuevas = piezas.filter(
+        (p) => valoresIniciales.includes(p.ref) && !refsActuales.has(p.ref),
+      );
       return nuevas.length === 0 ? actual : [...actual, ...nuevas];
     });
   }, [valoresIniciales, piezas]);
@@ -113,7 +117,8 @@ export function SelectorPieza({
   const refsElegidas = useMemo(() => new Set(elegidas.map((p) => p.ref)), [elegidas]);
 
   const piezasDelInteres = useMemo(
-    () => (interesSeleccionado ? piezas.filter((p) => interesDePieza(p) === interesSeleccionado) : []),
+    () =>
+      interesSeleccionado ? piezas.filter((p) => interesDePieza(p) === interesSeleccionado) : [],
     [piezas, interesSeleccionado],
   );
 
@@ -140,7 +145,9 @@ export function SelectorPieza({
   }
 
   function elegir(pieza: PiezaSelector) {
-    setElegidas((actual) => (actual.some((p) => p.ref === pieza.ref) ? actual : [...actual, pieza]));
+    setElegidas((actual) =>
+      actual.some((p) => p.ref === pieza.ref) ? actual : [...actual, pieza],
+    );
     dialogo.current?.close();
   }
 
@@ -161,7 +168,9 @@ export function SelectorPieza({
        *  tocar nada más ahí, solo sabe leer más de un código. */}
       <input type="hidden" name="referencia" value={elegidas.map((p) => p.ref).join(',')} />
 
-      <span className="block text-sm text-ink-soft">Fotos de las piezas que te gustan (opcional)</span>
+      <span className="block text-sm text-ink-soft">
+        Fotos de las piezas que te gustan (opcional)
+      </span>
 
       {elegidas.length > 0 && (
         <ul role="list" className="mt-1.5 space-y-2">
@@ -186,12 +195,14 @@ export function SelectorPieza({
                     Navidad») parecía un error de la web. */}
                 <p className="truncate text-xs text-ink-soft">{interesDePieza(pieza)}</p>
               </div>
-              <p className="shrink-0 text-sm text-ink-soft">desde {FORMATO_EUROS.format(pieza.precioDesde)}</p>
+              <p className="shrink-0 text-sm text-ink-soft">
+                desde {FORMATO_EUROS.format(pieza.precioDesde)}
+              </p>
               <button
                 type="button"
                 onClick={() => quitar(pieza.ref)}
                 aria-label={`Quitar la pieza ${pieza.ref}`}
-                className="shrink-0 text-sm text-ink-soft underline underline-offset-4 hover:text-terracotta"
+                className="shrink-0 text-sm text-ink-soft underline underline-offset-4 hover:text-ink"
               >
                 Quitar
               </button>
@@ -211,7 +222,7 @@ export function SelectorPieza({
         type="button"
         onClick={abrir}
         className={cx(
-          'w-full rounded-xl border border-dashed border-sand bg-white-warm px-4 py-3 text-left text-sm text-ink-soft transition-colors hover:border-gold-deep hover:text-verde',
+          'w-full rounded-xl border border-dashed border-sand bg-white-warm px-4 py-3 text-left text-sm text-ink-soft transition-colors hover:border-verde hover:text-verde',
           elegidas.length > 0 ? 'mt-2' : 'mt-1.5',
         )}
       >
@@ -237,7 +248,7 @@ export function SelectorPieza({
               <button
                 type="button"
                 onClick={() => setSoloDelInteres(false)}
-                className="font-medium text-verde underline decoration-gold underline-offset-4"
+                className="font-medium text-verde underline decoration-verde/40 underline-offset-4"
               >
                 Ver todo el catálogo
               </button>
@@ -309,4 +320,3 @@ export function SelectorPieza({
     </div>
   );
 }
-

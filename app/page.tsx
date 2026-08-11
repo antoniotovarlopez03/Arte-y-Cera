@@ -84,7 +84,7 @@ export default function PaginaInicio() {
       <section className="bg-verde-profundo text-cream">
         <div className="lg:grid lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
           <div className={`px-5 py-16 lg:py-28 lg:pr-14 ${SANGRADO}`}>
-            <p className="text-xs tracking-[0.14em] text-gold uppercase">
+            <p className="text-xs tracking-[0.14em] text-cream/80 uppercase">
               Hecho a mano · Pieza única
             </p>
 
@@ -122,28 +122,28 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Colecciones ===== */}
-      <section
-        className="bg-morado text-cream"
-        aria-labelledby="titulo-colecciones"
-      >
+      <section className="bg-cream-2" aria-labelledby="titulo-colecciones">
         <div className="mx-auto max-w-6xl px-5 py-20 lg:py-28">
-        <div className="max-w-2xl">
-          <p className="rotulo text-gold">Catálogo</p>
-          <h2 id="titulo-colecciones" className="mt-3 font-display text-[2.75rem] font-semibold text-white-warm sm:text-[3.5rem]">
-            Elige la celebración
-          </h2>
-          <span className="filete mt-6" />
-          <p className="mt-6 text-lg leading-relaxed text-cream/75">
-            Seis colecciones y {totalPiezas} piezas ya pintadas, con los precios a la vista. Ninguna
-            se repite: sirven para que veas el estilo y nos digas cuál te gusta.
-          </p>
-        </div>
+          <div className="max-w-2xl">
+            <p className="rotulo">Catálogo</p>
+            <h2
+              id="titulo-colecciones"
+              className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]"
+            >
+              Elige la celebración
+            </h2>
+            <span className="filete mt-6" />
+            <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+              Seis colecciones y {totalPiezas} piezas ya pintadas, con los precios a la vista.
+              Ninguna se repite: sirven para que veas el estilo y nos digas cuál te gusta.
+            </p>
+          </div>
 
-        <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {categorias.map((categoria) => (
-            <TarjetaCategoria key={categoria.slug} categoria={categoria} oscuro />
-          ))}
-        </div>
+          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {categorias.map((categoria) => (
+              <TarjetaCategoria key={categoria.slug} categoria={categoria} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -153,10 +153,7 @@ export default function PaginaInicio() {
           enseña es la cantidad, que detrás de seis colecciones hay más de ciento
           sesenta velas ya pintadas. Es una sola frase dicha con fotos, y con las
           de 300 px de antes habría sido una mancha. */}
-      <section
-        aria-labelledby="titulo-muestra"
-        className="border-y border-morado bg-morado py-14"
-      >
+      <section aria-labelledby="titulo-muestra" className="border-y border-sand bg-cream-2 py-14">
         <h2 id="titulo-muestra" className="sr-only">
           Una muestra de las piezas ya pintadas
         </h2>
@@ -184,10 +181,10 @@ export default function PaginaInicio() {
         <p className="mt-9 text-center">
           <Link
             href="/colecciones"
-            className="inline-flex items-center gap-2 border-b border-gold-light/40 pb-0.5 font-medium text-gold-light hover:border-gold-light"
+            className="inline-flex items-center gap-2 border-b border-verde/30 pb-0.5 font-medium text-verde hover:border-verde"
           >
             Ver las {totalPiezas} piezas
-            <IconoFlecha className="h-4 w-4 text-gold-light" />
+            <IconoFlecha className="h-4 w-4 text-verde" />
           </Link>
         </p>
       </section>
@@ -196,7 +193,7 @@ export default function PaginaInicio() {
       <section className="bg-verde-profundo text-cream" aria-labelledby="titulo-pasos">
         <div className="mx-auto max-w-6xl px-5 py-20 lg:py-28">
           <div className="max-w-2xl">
-            <p className="text-xs tracking-[0.14em] text-gold uppercase">Cómo funciona</p>
+            <p className="text-xs tracking-[0.14em] text-cream/80 uppercase">Cómo funciona</p>
             <h2
               id="titulo-pasos"
               className="mt-3 font-display text-4xl font-semibold text-ivory sm:text-5xl"
@@ -208,7 +205,7 @@ export default function PaginaInicio() {
           <ol className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {PASOS.map((paso, i) => (
               <li key={paso.titulo}>
-                <p className="font-display text-3xl font-bold text-gold">
+                <p className="font-display text-3xl font-bold text-ivory">
                   {String(i + 1).padStart(2, '0')}
                 </p>
                 <h3 className="mt-3 font-display text-xl font-semibold text-ivory">
@@ -222,11 +219,14 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== El taller ===== */}
-      <section className="bg-terracotta/18" aria-labelledby="titulo-taller">
+      <section className="bg-sand/35" aria-labelledby="titulo-taller">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <div>
             <p className="rotulo">Nuestro oficio</p>
-            <h2 id="titulo-taller" className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">
+            <h2
+              id="titulo-taller"
+              className="mt-3 font-display text-[2.75rem] font-semibold sm:text-[3.5rem]"
+            >
               Cada vela empieza en un papel
             </h2>
             <span className="filete mt-6" />
@@ -241,7 +241,7 @@ export default function PaginaInicio() {
                 className="inline-flex items-center gap-2 border-b border-verde/25 pb-0.5 font-medium text-verde hover:border-verde"
               >
                 Ver cómo trabajamos
-                <IconoFlecha className="h-4 w-4 text-gold-deep" />
+                <IconoFlecha className="h-4 w-4 text-verde" />
               </Link>
             </p>
           </div>
@@ -251,14 +251,14 @@ export default function PaginaInicio() {
       </section>
 
       {/* ===== Cierre ===== */}
-      <section className="bg-morado">
+      <section className="bg-cream-2">
         <div className="mx-auto max-w-3xl px-5 py-20 text-center lg:py-28">
           {/* Su cierre, tal cual lo tenía en el WordPress: invita a preguntar en
               vez de pedir un pliego de condiciones. */}
-          <h2 className="font-display text-[2.75rem] font-semibold text-white-warm sm:text-[3.5rem]">
+          <h2 className="font-display text-[2.75rem] font-semibold sm:text-[3.5rem]">
             ¿Tienes alguna duda?
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-cream/75">
+          <p className="mt-6 text-lg leading-relaxed text-ink-soft">
             No dudes en contactarnos y cuéntanos qué tipo de vela tienes pensada para tu momento;
             estaremos encantados de ayudarte a encontrar lo que buscas. Si ya has visto una pieza
             que te gusta, dinos su referencia.
@@ -273,15 +273,15 @@ export default function PaginaInicio() {
               <IconoWhatsapp className="h-4 w-4" />
               Escribir por WhatsApp
             </a>
-            <Link href="/contacto" className={clasesBoton('contorno-claro')}>
+            <Link href="/contacto" className={clasesBoton('secundario')}>
               Rellenar el formulario
             </Link>
           </div>
-          <p className="mt-7 text-sm text-cream/60">
+          <p className="mt-7 text-sm text-ink-soft">
             O por correo:{' '}
             <a
               href={`mailto:${site.email}`}
-              className="text-gold-light underline decoration-gold-light/50 underline-offset-4"
+              className="text-verde underline decoration-verde/40 underline-offset-4"
             >
               {site.email}
             </a>

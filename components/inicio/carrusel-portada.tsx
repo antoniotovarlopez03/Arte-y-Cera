@@ -205,7 +205,7 @@ export function CarruselPortada({ diapositivas }: { diapositivas: Diapositiva[] 
         className="absolute right-4 bottom-4 left-4 flex items-center justify-between gap-3 rounded-full bg-verde-profundo/85 px-4 py-2.5 text-sm text-cream backdrop-blur-sm transition-colors hover:bg-verde-profundo sm:right-auto sm:w-auto sm:gap-5"
       >
         <span>
-          <span className="font-mono tracking-wide text-gold-light">{actual.ref}</span>
+          <span className="font-mono tracking-wide text-ivory">{actual.ref}</span>
           <span className="ml-2.5 text-cream/70">
             {actual.categoria} · {actual.linea}
           </span>

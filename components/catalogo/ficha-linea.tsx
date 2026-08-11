@@ -77,10 +77,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
               encargo, arriba y sin acordeones. */}
           <div>
             {!categoria.esFicha && (
-              <Link
-                href={categoria.href}
-                className="rotulo hover:underline"
-              >
+              <Link href={categoria.href} className="rotulo hover:underline">
                 {categoria.nombre}
               </Link>
             )}
@@ -98,26 +95,26 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                 recorrido por el que viajar. Quien está mirando piezas tiene el
                 botón de WhatsApp con la referencia dentro del visor de cada foto,
                 que es el camino que se usa. En móvil sí hay barra fija. */}
-            <div className="mt-7 rounded-pieza bg-morado p-6 sm:p-7">
-              <Precio precios={linea.precios} nota={linea.notaPrecio} tamano="grande" oscuro />
+            <div className="mt-7 rounded-pieza border border-sand bg-ivory p-6 sm:p-7">
+              <Precio precios={linea.precios} nota={linea.notaPrecio} tamano="grande" />
 
               <dl className="mt-6 space-y-4 text-sm">
                 {linea.medidas && (
                   <div>
-                    <dt className="text-cream/60">Tamaño</dt>
-                    <dd className="font-medium text-white-warm">{linea.medidas}</dd>
+                    <dt className="text-ink-soft">Tamaño</dt>
+                    <dd className="font-medium text-ink">{linea.medidas}</dd>
                   </div>
                 )}
                 {linea.incluye.length > 0 && (
                   <div>
-                    <dt className="text-cream/60">Incluye</dt>
+                    <dt className="text-ink-soft">Incluye</dt>
                     <dd>
                       <ul className="mt-1.5 space-y-1.5">
                         {linea.incluye.map((item) => (
-                          <li key={item} className="flex gap-2 text-cream">
+                          <li key={item} className="flex gap-2 text-ink">
                             <span
                               aria-hidden="true"
-                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-light"
+                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-verde"
                             />
                             {item}
                           </li>
@@ -127,8 +124,8 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                   </div>
                 )}
                 <div>
-                  <dt className="text-cream/60">Plazo</dt>
-                  <dd className="text-cream">
+                  <dt className="text-ink-soft">Plazo</dt>
+                  <dd className="text-ink">
                     Se pinta por encargo. Escríbenos con la fecha de tu celebración y te confirmamos
                     si llegamos.
                   </dd>
@@ -150,12 +147,12 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                     pathname: '/contacto',
                     query: { linea: `${categoria.slug}/${linea.slug}` },
                   }}
-                  className={clasesBoton('contorno-claro')}
+                  className={clasesBoton('secundario')}
                 >
                   Pedir presupuesto por email
                 </Link>
               </div>
-              <p className="mt-3 text-center text-xs text-cream/60">{site.tiempoRespuesta}</p>
+              <p className="mt-3 text-center text-xs text-ink-soft">{site.tiempoRespuesta}</p>
             </div>
           </div>
         </header>
@@ -202,7 +199,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
               href="/colecciones"
               className="inline-flex items-center gap-2 text-ink-soft hover:text-verde"
             >
-              <IconoFlecha className="h-4 w-4 rotate-180 text-gold-deep" />
+              <IconoFlecha className="h-4 w-4 rotate-180 text-verde" />
               Ver todas las colecciones
             </Link>
           </p>

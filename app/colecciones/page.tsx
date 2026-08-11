@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  TarjetaCategoria,
-  TarjetaCategoriaAncha,
-} from '@/components/catalogo/tarjeta-categoria';
+import { TarjetaCategoria, TarjetaCategoriaAncha } from '@/components/catalogo/tarjeta-categoria';
 import { Migas } from '@/components/ui/migas';
 import { categorias, categoriasDe, ocasionesConCategorias } from '@/lib/catalogo';
 import { ETIQUETAS_OCASION } from '@/lib/catalogo/esquemas';
@@ -44,7 +41,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-morado/20 bg-morado px-4 py-2 text-sm text-cream transition-colors hover:border-gold-light hover:text-gold-light"
+                className="inline-block rounded-full border border-sand bg-cream-2 px-4 py-2 text-sm text-ink-soft transition-colors hover:border-verde hover:text-verde"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -61,12 +58,9 @@ export default function PaginaColecciones() {
               key={ocasion}
               id={ocasion}
               aria-labelledby={`titulo-${ocasion}`}
-              className="bg-morado rounded-pieza p-6 sm:p-10"
+              className="bg-cream-2 rounded-pieza p-6 sm:p-10"
             >
-              <h2
-                id={`titulo-${ocasion}`}
-                className="font-display text-[1.7rem] font-semibold text-white-warm"
-              >
+              <h2 id={`titulo-${ocasion}`} className="font-display text-[1.7rem] font-semibold">
                 {ETIQUETAS_OCASION[ocasion]}
               </h2>
               {/* Con una sola colección en el grupo, la tarjeta de un tercio
@@ -74,12 +68,12 @@ export default function PaginaColecciones() {
                   ancha. */}
               {grupo.length === 1 && grupo[0] ? (
                 <div className="mt-6">
-                  <TarjetaCategoriaAncha categoria={grupo[0]} oscuro />
+                  <TarjetaCategoriaAncha categoria={grupo[0]} />
                 </div>
               ) : (
                 <div className="mt-6 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
                   {grupo.map((categoria) => (
-                    <TarjetaCategoria key={categoria.slug} categoria={categoria} oscuro />
+                    <TarjetaCategoria key={categoria.slug} categoria={categoria} />
                   ))}
                 </div>
               )}
@@ -88,10 +82,7 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      {/* Texto oscuro porque el dorado es un color claro y el texto claro de
-          las demás secciones (pensado para fondos oscuros) no se leería
-          aquí. */}
-      <p className="mt-20 rounded-pieza bg-gold p-6 text-center text-ink">
+      <p className="mt-20 rounded-pieza bg-sand p-6 text-center text-ink">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"

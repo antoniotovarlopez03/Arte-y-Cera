@@ -4,7 +4,11 @@ import Link from 'next/link';
 import { useActionState, useEffect, useState } from 'react';
 import { enviarFormulario, type EstadoEnvio } from './acciones';
 import { IconoWhatsapp } from '@/components/iconos';
-import { SelectorPieza, interesDePieza, type PiezaSelector } from '@/components/contacto/selector-pieza';
+import {
+  SelectorPieza,
+  interesDePieza,
+  type PiezaSelector,
+} from '@/components/contacto/selector-pieza';
 import { useCesta } from '@/lib/cesta';
 import { mailtoUrl, site, whatsappUrl } from '@/lib/site';
 import { clasesBoton, cx } from '@/lib/ui';
@@ -36,7 +40,7 @@ export function FormularioContacto({
 
   if (estado.estado === 'ok') {
     return (
-      <div className="rounded-pieza border border-gold/60 bg-cream/60 p-8 text-center">
+      <div className="rounded-pieza border border-verde/30 bg-cream/60 p-8 text-center">
         <p className="font-display text-2xl font-semibold text-verde">Mensaje enviado</p>
         <p className="mt-3 text-ink-soft">
           Gracias por escribirnos. Te contestamos al correo que nos has dejado, normalmente en menos
@@ -48,7 +52,7 @@ export function FormularioContacto({
             href={whatsappUrl()}
             target="_blank"
             rel="noopener"
-            className="text-ink underline decoration-gold underline-offset-4"
+            className="text-ink underline decoration-verde/40 underline-offset-4"
           >
             {site.whatsappVisible}
           </a>
@@ -65,7 +69,8 @@ export function FormularioContacto({
   // última: aquí no hay «una respuesta», así que se combinan todas con
   // un «+». Si ese texto no coincide con ninguna opción fija, se añade al
   // vuelo para que el <select> pueda mostrarlo seleccionado de verdad.
-  const opcionesMostradas = interes && !opciones.includes(interes) ? [interes, ...opciones] : opciones;
+  const opcionesMostradas =
+    interes && !opciones.includes(interes) ? [interes, ...opciones] : opciones;
 
   return (
     <form action={accion} className="space-y-5" noValidate>
@@ -205,7 +210,7 @@ export function FormularioContacto({
             Acepto que Arte y Cera use mis datos para responderme.{' '}
             <Link
               href="/privacidad"
-              className="text-ink underline decoration-gold underline-offset-4"
+              className="text-ink underline decoration-verde/40 underline-offset-4"
             >
               Cómo tratamos tus datos
             </Link>

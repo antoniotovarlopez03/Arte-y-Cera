@@ -24,7 +24,7 @@ export function Precio({
   oscuro?: boolean;
 }) {
   const grande = tamano === 'grande';
-  const colorPrecio = oscuro ? 'text-gold-light' : 'text-verde';
+  const colorPrecio = oscuro ? 'text-ivory' : 'text-verde';
   const colorTexto = oscuro ? 'text-cream/70' : 'text-ink-soft';
 
   return (
@@ -46,7 +46,13 @@ export function Precio({
                 )}
                 aria-hidden="true"
               />
-              <span className={cx('font-display font-bold', colorPrecio, grande ? 'text-2xl' : 'text-lg')}>
+              <span
+                className={cx(
+                  'font-display font-bold',
+                  colorPrecio,
+                  grande ? 'text-2xl' : 'text-lg',
+                )}
+              >
                 {formatearPrecio(precio.importe)}
               </span>
             </li>

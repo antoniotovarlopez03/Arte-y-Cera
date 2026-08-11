@@ -47,7 +47,7 @@ export default async function Imagen() {
             fontSize: 22,
             letterSpacing: 6,
             textTransform: 'uppercase',
-            color: '#7d6029',
+            color: '#14453d',
           }}
         >
           Hecho a mano · Pieza única
@@ -55,7 +55,7 @@ export default async function Imagen() {
         <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05, marginTop: 24 }}>
           Velas pintadas a mano, una a una
         </div>
-        <div style={{ width: 96, height: 3, backgroundColor: '#c9a463', marginTop: 32 }} />
+        <div style={{ width: 96, height: 3, backgroundColor: '#14453d', marginTop: 32 }} />
         <div style={{ fontSize: 28, color: '#4a4038', marginTop: 32, lineHeight: 1.4 }}>
           Cirios pascuales, bautizos, bodas y Navidad
         </div>

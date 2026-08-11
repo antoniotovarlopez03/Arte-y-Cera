@@ -36,8 +36,7 @@ function urlImagenCorreo(ruta: string): string {
    Los correos de texto plano de lib/contacto.ts se quedan como
    alternativa (Resend los manda junto al HTML, es lo que hacen los
    clientes de correo que no muestran HTML). Esto es la versión con la
-   misma identidad visual de la web: los mismos tres colores de la
-   paleta (verde, morado, dorado) sobre marfil.
+   misma identidad visual de la web: verde y beige, sin más, sobre marfil.
 
    Todo con tablas y estilos en línea porque es lo único que Outlook de
    escritorio soporta de verdad: no lee <style> de forma fiable ni
@@ -48,12 +47,18 @@ function urlImagenCorreo(ruta: string): string {
 
 const COLOR = {
   verde: '#14453d',
-  morado: '#1c1024',
-  dorado: '#c9a463',
-  doradoProfundo: '#9c7a3a',
+  verdeProfundo: '#0e332d',
+  /* Fondo general del correo, igual que --color-cream de la web. */
+  crema: '#f6f1e7',
+  /* Acentos claros sobre el verde oscuro (enlaces del pie, filete), igual
+   *  que --color-sand de la web. */
+  beige: '#e6d6b3',
   marfil: '#faf7f0',
   texto: '#0f0d0b',
   textoSuave: '#4a4038',
+  /* El verde de WhatsApp no es un color de marca, es de reconocimiento: es
+   *  el canal por el que este negocio recibe los encargos de verdad, y el
+   *  botón tiene que verse igual que en cualquier otro sitio. */
   whatsapp: '#0f7a40',
 } as const;
 
@@ -85,7 +90,7 @@ function cabecera(): string {
           <td align="center">
             <img src="${logo}" width="52" height="52" alt="Arte y Cera" style="display:block;margin:0 auto 14px;border:0;border-radius:50%;">
             <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;letter-spacing:0.04em;color:${COLOR.marfil};">
-              Arte <span style="color:${COLOR.dorado};">&amp;</span> Cera
+              Arte <span style="color:${COLOR.marfil};">&amp;</span> Cera
             </div>
           </td>
         </tr>
@@ -93,7 +98,7 @@ function cabecera(): string {
     </td>
   </tr>
   <tr>
-    <td style="line-height:3px;font-size:0;background-color:${COLOR.dorado};">&nbsp;</td>
+    <td style="line-height:3px;font-size:0;background-color:${COLOR.beige};">&nbsp;</td>
   </tr>`;
 }
 
@@ -103,13 +108,13 @@ function pie(): string {
     <td bgcolor="${COLOR.verde}" style="background-color:${COLOR.verde};border-radius:0 0 16px 16px;padding:32px 40px;text-align:center;">
       <div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;color:${COLOR.marfil};margin:0 0 10px;">Arte &amp; Cera</div>
       <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:2;color:#f6f1e7bf;">
-        <a href="mailto:${site.email}" style="color:${COLOR.dorado};text-decoration:none;">${site.email}</a>
+        <a href="mailto:${site.email}" style="color:${COLOR.beige};text-decoration:none;">${site.email}</a>
         &nbsp;·&nbsp;
-        <a href="${site.url}" style="color:${COLOR.dorado};text-decoration:none;">arteycera.es</a>
+        <a href="${site.url}" style="color:${COLOR.beige};text-decoration:none;">arteycera.es</a>
         &nbsp;·&nbsp;
-        <a href="${site.instagram.url}" style="color:${COLOR.dorado};text-decoration:none;">${site.instagram.usuario}</a>
+        <a href="${site.instagram.url}" style="color:${COLOR.beige};text-decoration:none;">${site.instagram.usuario}</a>
         &nbsp;·&nbsp;
-        <a href="${whatsappUrl()}" style="color:${COLOR.dorado};text-decoration:none;">WhatsApp</a>
+        <a href="${whatsappUrl()}" style="color:${COLOR.beige};text-decoration:none;">WhatsApp</a>
       </div>
       <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;color:#f6f1e773;margin-top:16px;">
         © ${new Date().getFullYear()} Arte y Cera. Hecho a mano en España.
@@ -138,8 +143,8 @@ function boton(texto: string, href: string, colorFondo: string, colorTexto: stri
 function filaDetalle(etiqueta: string, valorHtml: string, esUltima: boolean): string {
   return `
   <tr>
-    <td style="padding:14px 0;${esUltima ? '' : `border-bottom:1px solid #c9a46340;`}">
-      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${COLOR.doradoProfundo};">${escaparHtml(etiqueta)}</div>
+    <td style="padding:14px 0;${esUltima ? '' : `border-bottom:1px solid #e6d6b360;`}">
+      <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${COLOR.verde};">${escaparHtml(etiqueta)}</div>
       <div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:${COLOR.texto};margin-top:4px;">${valorHtml}</div>
     </td>
   </tr>`;
@@ -151,11 +156,11 @@ function filaDetalle(etiqueta: string, valorHtml: string, esUltima: boolean): st
 function bloquePieza(pieza: PiezaElegida): string {
   const alturaMostrada = Math.round((320 * pieza.alto) / pieza.ancho);
   return `
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #c9a46355;border-radius:14px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e6d6b380;border-radius:14px;">
     <tr>
       <td align="center" style="padding:20px;">
         <img src="${urlImagenCorreo(pieza.src)}" width="320" height="${alturaMostrada}" alt="${escaparHtml(pieza.alt)}" style="display:block;width:100%;max-width:320px;height:auto;border:0;border-radius:10px;">
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.08em;color:${COLOR.doradoProfundo};margin-top:12px;">${escaparHtml(pieza.ref)}</div>
+        <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;letter-spacing:0.08em;color:${COLOR.verde};margin-top:12px;">${escaparHtml(pieza.ref)}</div>
         <div style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:${COLOR.textoSuave};margin-top:2px;">${escaparHtml(pieza.interes)}</div>
         <a href="${urlImagenCorreo(pieza.href)}" style="font-family:Arial,Helvetica,sans-serif;font-size:13px;color:${COLOR.verde};text-decoration:underline;margin-top:8px;display:inline-block;">Ver esta pieza en la web</a>
       </td>
@@ -167,13 +172,15 @@ function bloquePieza(pieza: PiezaElegida): string {
  *  aire. Quien escribe puede pedir más de una vela en el mismo mensaje. */
 function bloquePiezas(piezas: PiezaElegida[]): string {
   return piezas
-    .map((pieza, i) => (i === 0 ? bloquePieza(pieza) : `<div style="margin-top:14px;">${bloquePieza(pieza)}</div>`))
+    .map((pieza, i) =>
+      i === 0 ? bloquePieza(pieza) : `<div style="margin-top:14px;">${bloquePieza(pieza)}</div>`,
+    )
     .join('');
 }
 
 function tarjetaFilas(filas: string): string {
   return `
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #c9a46355;border-radius:14px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e6d6b380;border-radius:14px;">
     <tr>
       <td style="padding:6px 24px;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -211,9 +218,9 @@ function envoltura(preheader: string, contenido: string): string {
   }
 </style>
 </head>
-<body style="margin:0;padding:0;background-color:${COLOR.dorado};">
+<body style="margin:0;padding:0;background-color:${COLOR.crema};">
   <div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;">${escaparHtml(preheader)}</div>
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${COLOR.dorado}" style="background-color:${COLOR.dorado};">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${COLOR.crema}" style="background-color:${COLOR.crema};">
     <tr>
       <td align="center" style="padding:32px 16px;">
         <!--[if mso]>
@@ -240,7 +247,9 @@ export function cuerpoHtmlConfirmacionCliente(
 ): string {
   const filas: Array<[string, string]> = [
     ['Interés', datos.interes ? escaparHtml(datos.interes) : 'Todavía sin decidir'],
-    ...(datos.fecha ? ([['Fecha de la celebración', escaparHtml(datos.fecha)]] as [string, string][]) : []),
+    ...(datos.fecha
+      ? ([['Fecha de la celebración', escaparHtml(datos.fecha)]] as [string, string][])
+      : []),
     ['Nombre', escaparHtml(datos.nombre)],
     ...(datos.telefono ? ([['Teléfono', escaparHtml(datos.telefono)]] as [string, string][]) : []),
     ['Correo electrónico', escaparHtml(datos.email)],
@@ -305,15 +314,12 @@ export function cuerpoHtmlConfirmacionCliente(
   </tr>
   ${pie()}`;
 
-  return envoltura(
-    'Hemos recibido tu solicitud. Te contestamos en menos de 48 h.',
-    contenido,
-  );
+  return envoltura('Hemos recibido tu solicitud. Te contestamos en menos de 48 h.', contenido);
 }
 
 /** Email al taller: avisa de una solicitud nueva, con los mismos datos que
  *  el texto plano pero maquetados como tarjeta, y el mensaje del cliente
- *  resaltado en morado para que se distinga del resto de un vistazo. */
+ *  resaltado en verde oscuro para que se distinga del resto de un vistazo. */
 export function cuerpoHtmlNotificacionNegocio(
   datos: Omit<DatosFormulario, 'trampa'>,
   meta: { ip?: string; enviadoEn: Date },
@@ -330,7 +336,9 @@ export function cuerpoHtmlNotificacionNegocio(
     ['Correo', escaparHtml(datos.email)],
     ...(datos.telefono ? ([['Teléfono', escaparHtml(datos.telefono)]] as [string, string][]) : []),
     ['Producto', datos.interes ? escaparHtml(datos.interes) : 'Sin especificar'],
-    ...(datos.fecha ? ([['Fecha de la celebración', escaparHtml(datos.fecha)]] as [string, string][]) : []),
+    ...(datos.fecha
+      ? ([['Fecha de la celebración', escaparHtml(datos.fecha)]] as [string, string][])
+      : []),
     ['Hora de envío', escaparHtml(fecha)],
   ];
   const filasHtml = filas
@@ -345,7 +353,7 @@ export function cuerpoHtmlNotificacionNegocio(
       '#ffffff',
     ),
     datos.telefono
-      ? boton('Llamar', `tel:${datos.telefono.replace(/\s+/g, '')}`, COLOR.morado, '#ffffff')
+      ? boton('Llamar', `tel:${datos.telefono.replace(/\s+/g, '')}`, COLOR.verdeProfundo, '#ffffff')
       : null,
     datos.telefono
       ? boton(
@@ -385,10 +393,10 @@ export function cuerpoHtmlNotificacionNegocio(
   }
   <tr>
     <td bgcolor="${COLOR.marfil}" class="pad-movil" style="background-color:${COLOR.marfil};padding:8px 40px 8px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${COLOR.morado};border-radius:14px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:${COLOR.verde};border-radius:14px;">
         <tr>
           <td style="padding:24px 28px;">
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${COLOR.dorado};margin:0 0 10px;">Mensaje</div>
+            <div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:${COLOR.beige};margin:0 0 10px;">Mensaje</div>
             <div style="font-family:Georgia,'Times New Roman',serif;font-size:16px;line-height:1.7;color:${COLOR.marfil};">${escaparHtmlConSaltos(datos.mensaje)}</div>
           </td>
         </tr>
