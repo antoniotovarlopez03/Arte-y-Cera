@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { FormularioContacto } from './formulario';
 import { IconoInstagram, IconoSobre, IconoWhatsapp } from '@/components/iconos';
 import { Migas } from '@/components/ui/migas';
-import { categorias, getCategoria, getLinea, lineas, precioMinimo } from '@/lib/catalogo';
+import { categorias, getCategoria, getLinea, lineas, todasLasPiezas } from '@/lib/catalogo';
 import { site, whatsappUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -13,27 +13,6 @@ export const metadata: Metadata = {
 };
 
 type Props = { searchParams: Promise<{ linea?: string; pieza?: string }> };
-
-/** Todas las piezas del catálogo, aplanadas para el selector visual del
- *  formulario: ya no hace falta escribir ni copiar ningún código, se elige
- *  la foto con un clic (ver components/contacto/selector-pieza.tsx). */
-function piezasParaSelector() {
-  return categorias.flatMap((categoria) =>
-    categoria.lineas.flatMap((linea) =>
-      linea.piezas.map((pieza) => ({
-        ref: pieza.ref,
-        src: pieza.src,
-        alt: pieza.alt,
-        ancho: pieza.ancho,
-        alto: pieza.alto,
-        lineaNombre: pieza.lineaNombre,
-        categoriaNombre: categoria.nombre,
-        esFicha: categoria.esFicha,
-        precioDesde: precioMinimo(linea),
-      })),
-    ),
-  );
-}
 
 /** Todas las líneas, como «Cirios pascuales · Elaborados». */
 function opcionesDeInteres(): string[] {
@@ -152,7 +131,7 @@ export default async function PaginaContacto({ searchParams }: Props) {
           <FormularioContacto
             interesInicial={interes}
             referenciaInicial={pieza}
-            piezas={piezasParaSelector()}
+            piezas={todasLasPiezas()}
             opciones={opcionesDeInteres()}
           />
         </div>

@@ -167,6 +167,44 @@ export function formatearPrecio(importe: number): string {
   return FORMATO_EUROS.format(importe);
 }
 
+/** Una pieza aplanada, con su categoría y precio a mano: lo que necesitan el
+ *  selector de fotos del formulario y el panel de la cesta en la cabecera.
+ *  Vive aquí y no en cada sitio que lo usa para que los dos, con el tiempo,
+ *  no se acaben desviando el uno del otro. */
+export type PiezaPlana = {
+  ref: string;
+  src: string;
+  alt: string;
+  ancho: number;
+  alto: number;
+  lineaNombre: string;
+  categoriaNombre: string;
+  /** Si la categoría es de una sola línea, el nombre de la categoría y el de
+   *  la línea son el mismo texto: quien lo muestre no debe repetirlo. */
+  esFicha: boolean;
+  precioDesde: number;
+  href: string;
+};
+
+export function todasLasPiezas(): PiezaPlana[] {
+  return categorias.flatMap((categoria) =>
+    categoria.lineas.flatMap((linea) =>
+      linea.piezas.map((pieza) => ({
+        ref: pieza.ref,
+        src: pieza.src,
+        alt: pieza.alt,
+        ancho: pieza.ancho,
+        alto: pieza.alto,
+        lineaNombre: pieza.lineaNombre,
+        categoriaNombre: categoria.nombre,
+        esFicha: categoria.esFicha,
+        precioDesde: precioMinimo(linea),
+        href: `${linea.href}?pieza=${pieza.ref}`,
+      })),
+    ),
+  );
+}
+
 /**
  * Una muestra del catálogo para la portada, repartida entre todas las líneas.
  *

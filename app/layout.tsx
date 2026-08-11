@@ -4,7 +4,7 @@ import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { BotonWhatsapp } from '@/components/layout/boton-whatsapp';
-import { categorias, formatearPrecio, precioMinimo } from '@/lib/catalogo';
+import { categorias, formatearPrecio, precioMinimo, todasLasPiezas } from '@/lib/catalogo';
 import { site } from '@/lib/site';
 
 /* El menú se arma aquí, en el servidor, y baja como prop. Si la cabecera
@@ -24,6 +24,12 @@ const COLECCIONES_MENU = categorias.map((categoria) => ({
     alto: categoria.portada.alto,
   },
 }));
+
+/* Igual de plano, pero de piezas: es lo que necesita el panel de la cesta de
+   la cabecera para enseñar la foto y el precio de lo que llevas, sin que
+   ese componente tenga que importar el catálogo entero (ver el porqué justo
+   arriba). */
+const PIEZAS_CESTA = todasLasPiezas();
 
 /* Las fuentes se sirven desde el propio dominio (next/font las descarga en
    build). La web original las pedía a fonts.googleapis.com en cada visita:
@@ -85,7 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Saltar al contenido
         </a>
-        <SiteHeader colecciones={COLECCIONES_MENU} />
+        <SiteHeader colecciones={COLECCIONES_MENU} piezas={PIEZAS_CESTA} />
         <main id="contenido" className="flex-1">
           {children}
         </main>
