@@ -108,29 +108,29 @@ export default function PaginaTaller() {
         <Migas migas={[{ href: '/', texto: 'Inicio' }, { texto: 'El taller' }]} />
       </div>
 
-      <section className="mx-auto grid max-w-6xl items-start gap-12 rounded-pieza bg-sand/30 px-5 py-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+      <section className="mx-auto grid max-w-6xl items-start gap-12 rounded-pieza bg-verde-profundo px-5 py-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div>
           <p className="rotulo">Nuestro oficio</p>
           <h1 className="mt-2 font-display text-[2.75rem] leading-tight font-bold sm:text-[3.5rem]">
             Cada vela cuenta una historia
           </h1>
           <span className="filete mt-5" />
-          <p className="mt-6 text-lg leading-relaxed text-ink-soft">
+          <p className="mt-6 text-lg leading-relaxed text-dorado">
             En Arte y Cera pintamos cada vela a mano, trazo a trazo, para que sea irrepetible.
             Trabajamos cirios pascuales, velas de bautizo y velas de mesa para bodas, cuidando el
             color, la textura y el detalle que cada familia imagina. También bordamos toallas
             personalizadas, para que la pieza y su recuerdo vayan a juego.
           </p>
-          <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+          <p className="mt-4 text-lg leading-relaxed text-dorado">
             No trabajamos con un catálogo cerrado: las fotos de las colecciones son piezas que ya
             hemos hecho y sirven para que veas el estilo. La tuya se pinta desde cero.
           </p>
 
-          <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-sand pt-8">
+          <dl className="mt-10 grid grid-cols-3 gap-6 border-t border-cream/15 pt-8">
             {DATOS.map((item) => (
               <div key={item.pie}>
-                <dt className="font-display text-3xl font-bold text-verde">{item.dato}</dt>
-                <dd className="mt-1 text-sm text-ink-soft">{item.pie}</dd>
+                <dt className="font-display text-3xl font-bold text-blanco">{item.dato}</dt>
+                <dd className="mt-1 text-sm text-dorado">{item.pie}</dd>
               </div>
             ))}
           </dl>
@@ -148,7 +148,7 @@ export default function PaginaTaller() {
               style={{ objectPosition: '38% 50%' }}
               className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
             />
-            <p className="mt-2.5 font-mono text-xs tracking-wide text-ink-soft">CP-E-15</p>
+            <p className="mt-2.5 font-mono text-xs tracking-wide text-dorado/70">CP-E-15</p>
           </div>
           <div className="sm:mt-10">
             <Image
@@ -161,7 +161,7 @@ export default function PaginaTaller() {
               style={{ objectPosition: '38% 50%' }}
               className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
             />
-            <p className="mt-2.5 font-mono text-xs tracking-wide text-ink-soft">CP-E-03</p>
+            <p className="mt-2.5 font-mono text-xs tracking-wide text-dorado/70">CP-E-03</p>
           </div>
           <div>
             <Image
@@ -173,22 +173,22 @@ export default function PaginaTaller() {
               quality={90}
               className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
             />
-            <p className="mt-2.5 font-mono text-xs tracking-wide text-ink-soft">PK-04</p>
+            <p className="mt-2.5 font-mono text-xs tracking-wide text-dorado/70">PK-04</p>
           </div>
         </div>
       </section>
 
-      <section className="mt-24 bg-verde-profundo text-cream" aria-labelledby="titulo-proceso">
+      <section className="mt-24 bg-verde-profundo text-dorado" aria-labelledby="titulo-proceso">
         <div className="mx-auto max-w-6xl px-5 py-16 lg:py-20">
           <div className="max-w-2xl">
-            <p className="text-xs tracking-[0.14em] text-cream/80 uppercase">Cómo lo hacemos</p>
+            <p className="text-xs tracking-[0.14em] text-dorado/80 uppercase">Cómo lo hacemos</p>
             <h2
               id="titulo-proceso"
-              className="mt-2 font-display text-3xl font-semibold text-ivory sm:text-4xl"
+              className="mt-2 font-display text-3xl font-semibold sm:text-4xl"
             >
               Del boceto a la cera
             </h2>
-            <p className="mt-4 leading-relaxed text-cream/75">
+            <p className="mt-4 leading-relaxed text-dorado/75">
               Ocho etapas y el mismo cuidado en todas. Ninguna se salta, aunque la pieza sea la más
               sencilla del catálogo.
             </p>
@@ -208,11 +208,11 @@ export default function PaginaTaller() {
               quality={90}
               className="aspect-16/10 w-full rounded-pieza object-cover"
             />
-            <figcaption className="mt-3 text-sm text-cream/60">
+            <figcaption className="mt-3 text-sm text-dorado/60">
               La pieza terminada junto a los bocetos de los que salió. Es la{' '}
               <Link
                 href="/colecciones/velas-de-bautizo/elaboradas?pieza=BZ-E-04"
-                className="text-cream underline decoration-cream/40 underline-offset-4 hover:decoration-cream"
+                className="text-blanco underline decoration-blanco/40 underline-offset-4 hover:decoration-blanco"
               >
                 BZ-E-04
               </Link>{' '}
@@ -223,13 +223,11 @@ export default function PaginaTaller() {
           <ol className="mt-14 grid gap-x-12 gap-y-10 sm:grid-cols-2">
             {ETAPAS.map((etapa, i) => (
               <li key={etapa.titulo} className="border-t border-cream/15 pt-5">
-                <p className="font-display text-sm font-bold text-ivory">
+                <p className="font-display text-sm font-bold text-blanco">
                   {String(i + 1).padStart(2, '0')}
                 </p>
-                <h3 className="mt-2 font-display text-xl font-semibold text-ivory">
-                  {etapa.titulo}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-cream/75">{etapa.texto}</p>
+                <h3 className="mt-2 font-display text-xl font-semibold">{etapa.titulo}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-dorado/75">{etapa.texto}</p>
               </li>
             ))}
           </ol>
@@ -242,7 +240,7 @@ export default function PaginaTaller() {
           nuevo. Enseñan lo que de verdad vende una vela pintada a mano y lo que
           antes no se veía nunca, que es el pincel. */}
       <section
-        className="mx-auto max-w-6xl rounded-pieza bg-cream-2 px-5 py-20 lg:py-24"
+        className="mx-auto max-w-6xl rounded-pieza bg-verde-profundo px-5 py-20 lg:py-24"
         aria-labelledby="titulo-detalles"
       >
         <div className="max-w-2xl">
@@ -250,7 +248,7 @@ export default function PaginaTaller() {
           <h2 id="titulo-detalles" className="mt-3 font-display text-[2.25rem] font-semibold">
             El trazo, a un palmo
           </h2>
-          <p className="mt-4 leading-relaxed text-ink-soft">
+          <p className="mt-4 leading-relaxed text-dorado">
             Tres piezas del catálogo, ampliadas. Se ve el pulso de la mano, el grosor del pincel y
             el oro dado a mano, que es lo que distingue una vela pintada de una estampada.
           </p>
@@ -285,16 +283,16 @@ export default function PaginaTaller() {
                     style={{ objectPosition: detalle.foco, transformOrigin: detalle.foco }}
                   />
                 </div>
-                <p className="mt-3 font-mono text-xs tracking-wide text-ink-soft">{detalle.ref}</p>
+                <p className="mt-3 font-mono text-xs tracking-wide text-dorado/70">{detalle.ref}</p>
               </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="mx-auto max-w-3xl rounded-pieza bg-cream-2 px-5 py-16 text-center lg:py-20">
+      <section className="mx-auto max-w-3xl rounded-pieza bg-verde-profundo px-5 py-16 text-center lg:py-20">
         <h2 className="font-display text-3xl font-semibold">¿Empezamos con la tuya?</h2>
-        <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+        <p className="mt-4 text-lg leading-relaxed text-dorado">
           Mira las colecciones para coger ideas o escríbenos directamente con la fecha de tu
           celebración.
         </p>
@@ -306,7 +304,7 @@ export default function PaginaTaller() {
             Pedir presupuesto
           </Link>
         </div>
-        <p className="mt-6 text-sm text-ink-soft">
+        <p className="mt-6 text-sm text-dorado">
           {site.zona} · {site.tiempoRespuesta}
         </p>
       </section>

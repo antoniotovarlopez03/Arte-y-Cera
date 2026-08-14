@@ -3,26 +3,38 @@
 /* ============================================================
    Sistema de diseño de Arte y Cera
 
-   El verde y el marfil vienen del WordPress que Antonio se hizo
-   él mismo (arteycera.wordpress.com): es la paleta que eligió
-   para su propio trabajo, no la que le pusieron después.
+   El verde viene del WordPress que Antonio se hizo él mismo
+   (arteycera.wordpress.com): es la paleta que eligió para su
+   propio trabajo, no la que le pusieron después.
 
-   Dos colores, sin más: verde (con sus dos intensidades) para lo
-   que manda —titulares, precios, botones— y una familia de beiges
-   clarísimos para todo lo demás (fondos, tarjetas, bordes). Antes
-   hubo dorado y morado como terciario y secundario; se quitaron
-   los dos a propósito, para que no compitan con el verde.
+   Fondo único en toda la web: el verde de marca, sin alternar con
+   ningún beige. Encima, dos colores de texto por papel, no por
+   sección: los titulares siempre en blanco y el cuerpo —entradillas,
+   párrafos, precios secundarios— siempre en dorado. Plano, sin
+   degradados encima.
    ============================================================ */
 @theme {
-  /* Verde de la marca, tomado del WordPress (era su color de
-     titulares, menú y texto). Manda en titulares, precios y
-     enlaces; sobre marfil da 10,07:1, o sea AAA de sobra. */
+  /* Verde de marca: fondo de toda la web. Dos intensidades, no dos
+     colores: la profunda es para cabecera, pie y capas ligeramente
+     hundidas, pero sigue siendo «el mismo verde». */
   --color-verde: #14453d;
   --color-verde-profundo: #0e332d;
 
-  /* Negros cálidos y beiges. La familia entera de fondos y texto: nada
-     de dorado ni morado, solo estas variaciones de crudo/beige y el
-     verde de arriba. */
+  /* Blanco cálido, solo para titulares (h1-h4 y algún dato suelto que
+     hace de titular). Sobre --color-verde da 10,8:1 de sobra. Nunca se
+     usa en párrafos: es un color de encabezado, no de lectura larga. */
+  --color-blanco: #fffdf9;
+
+  /* Dorado, para todo lo que sea cuerpo de texto: entradillas, párrafos,
+     etiquetas, precios secundarios. Sobre --color-verde da 5,2:1 (AA para
+     texto normal); sobre la profunda, 6,7:1. */
+  --color-dorado: #d4b06a;
+
+  /* Negros cálidos y beiges: ya no son fondo de sección (eso es el verde
+     de arriba), pero se conservan para las superficies flotantes sobre
+     el verde —el desplegable de colecciones, la cesta, los mensajes del
+     formulario— donde conviene una tarjeta clara y compacta en vez de
+     otro verde encima del verde. */
   --color-ink: #0f0d0b;
   --color-ink-2: #1a1613;
   --color-ink-soft: #4a4038;
@@ -34,9 +46,14 @@
 
   /* Solo para avisos de error de formulario (campo mal rellenado): el
      rojo es lo que cualquiera espera ver ahí, y es la única excepción a
-     «solo verde y beige» porque no es una decisión de marca, es una
-     señal de estado que tiene que reconocerse al vuelo. */
+     la paleta de marca porque no es una decisión de marca, es una señal
+     de estado que tiene que reconocerse al vuelo. Dos tonos: el oscuro para
+     bordes y fondos con opacidad (no llevan texto encima, así que su
+     contraste no importa); el claro para el texto de error en sí, que
+     ahora siempre cae sobre el verde y necesita ser más claro para
+     leerse (4,96:1 sobre --color-verde). */
   --color-terracotta: #b5651d;
+  --color-terracotta-clara: #e2a274;
 
   /* Tipografías (se inyectan desde next/font en app/layout.tsx) */
   --font-display: var(--fuente-display), 'EB Garamond', Georgia, serif;
@@ -60,24 +77,23 @@
   }
 
   body {
-    /* Fondo general de toda la web: el beige más suave de la familia
-       (antes era el dorado). */
-    background-color: var(--color-cream);
-    color: var(--color-ink);
+    /* Fondo único de toda la web: el verde de marca. Ya no alterna con
+       ningún beige entre secciones. */
+    background-color: var(--color-verde);
+    color: var(--color-dorado);
     font-family: var(--font-sans);
     font-weight: 400;
     line-height: 1.65;
     text-rendering: optimizeLegibility;
   }
 
-  /* Los titulares van en verde por defecto, en un solo sitio, para que no haya
-     que acordarse de ponerlo en cada componente. Los que caen sobre un fondo
-     oscuro lo sobrescriben con text-ivory o text-cream. */
+  /* Los titulares van en blanco por defecto, en un solo sitio, para que no
+     haya que acordarse de ponerlo en cada componente. */
   h1,
   h2,
   h3,
   h4 {
-    color: var(--color-verde);
+    color: var(--color-blanco);
     font-family: var(--font-display);
     font-weight: 600;
     line-height: 1.15;
@@ -88,21 +104,22 @@
     text-wrap: pretty;
   }
 
-  /* Foco visible siempre, en verde oscuro: sobre los fondos beige de casi
-     toda la web (10:1 y más) se ve perfectamente. La excepción son las
-     secciones de fondo verde oscuro (la portada, el flotante de WhatsApp),
-     donde verde sobre verde se pierde del todo (1,3:1) — ahí la regla de
-     abajo lo cambia a crema, que sobre ese fondo da 11:1. Nunca se elimina
-     el outline. */
+  /* Foco visible siempre, en crema: con el verde de fondo en toda la web,
+     un contorno oscuro se perdería (siempre hay algo de verde detrás). El
+     crema da más de 10:1 sobre los dos verdes. La excepción son las
+     tarjetas claras flotantes (desplegable, cesta), donde manda el verde
+     oscuro de siempre porque ahí el fondo es claro. Nunca se elimina el
+     outline. */
   :focus-visible {
-    outline: 2px solid var(--color-verde-profundo);
+    outline: 2px solid var(--color-cream);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  .bg-verde-profundo :focus-visible,
-  .whatsapp-flotante:focus-visible {
-    outline-color: var(--color-cream);
+  .bg-ivory :focus-visible,
+  .bg-cream :focus-visible,
+  .bg-cream-2 :focus-visible {
+    outline-color: var(--color-verde-profundo);
   }
 
   /* Quien pida menos movimiento, no ve movimiento. */
@@ -130,17 +147,24 @@
     body:has([data-barra-ficha]) .whatsapp-flotante {
       display: none;
     }
+
+    /* La misma barra fija (precio + WhatsApp) también se esconde mientras
+       hay un <dialog> abierto encima: el visor de fotos a pantalla completa
+       en iOS Safari deja ver la barra por debajo del todo, superpuesta a
+       los botones del propio visor y recortándolos. */
+    body:has(dialog[open]) [data-barra-ficha] {
+      display: none;
+    }
   }
 
   /* Rótulo en versalitas que abre casi todas las secciones («CATÁLOGO»,
      «HECHO A MANO · PIEZA ÚNICA»). Estaba copiado con las mismas cuatro clases
-     en seis archivos; aquí se define una vez. Sobre fondo oscuro se le pone
-     encima text-cream. */
+     en seis archivos; aquí se define una vez. */
   .rotulo {
     font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-verde);
+    color: var(--color-dorado);
   }
 
   /* Carrusel de la portada.
@@ -181,20 +205,13 @@
      poner algo ahí, o lo mueves tú o escondes el flotante como se hace más
      abajo con la barra de la ficha. */
 
-  /* Filete: el único adorno recurrente de la marca, en verde. Sobre un fondo
-     verde oscuro (la portada) el verde se pierde, así que ahí se usa
-     .filete-claro, en crema. */
+  /* Filete: el único adorno recurrente de la marca, en dorado (el mismo
+     color del cuerpo de texto que separa), para que se vea sobre el verde
+     de fondo en cualquier sección. */
   .filete {
     display: block;
     width: 3.5rem;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-verde), transparent);
-  }
-
-  .filete-claro {
-    display: block;
-    width: 3.5rem;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-cream), transparent);
+    background: linear-gradient(to right, transparent, var(--color-dorado), transparent);
   }
 }

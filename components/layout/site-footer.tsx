@@ -22,31 +22,31 @@ export function SiteFooter() {
               height={36}
               className="h-9 w-9 rounded-full"
             />
-            <span className="font-display text-lg font-bold text-ivory">
-              Arte <span className="text-cream">&amp;</span> Cera
+            <span className="font-display text-lg font-bold text-blanco">
+              Arte <span className="text-blanco">&amp;</span> Cera
             </span>
           </div>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-dorado/70">
             Velas pintadas a mano para un momento muy especial: bautizos, bodas, cirios pascuales y
             Navidad. {site.zona}.
           </p>
         </div>
 
         <nav aria-label="Secciones">
-          <h2 className="font-display text-sm tracking-[0.14em] text-cream/90 uppercase">Web</h2>
+          <h2 className="font-display text-sm tracking-[0.14em] text-blanco uppercase">Web</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
-              <Link href="/colecciones" className="text-cream/80 hover:text-ivory">
+              <Link href="/colecciones" className="text-dorado/80 hover:text-cream">
                 Colecciones
               </Link>
             </li>
             <li>
-              <Link href="/taller" className="text-cream/80 hover:text-ivory">
+              <Link href="/taller" className="text-dorado/80 hover:text-cream">
                 El taller
               </Link>
             </li>
             <li>
-              <Link href="/contacto" className="text-cream/80 hover:text-ivory">
+              <Link href="/contacto" className="text-dorado/80 hover:text-cream">
                 Contacto
               </Link>
             </li>
@@ -54,19 +54,19 @@ export function SiteFooter() {
         </nav>
 
         <div>
-          <h2 className="font-display text-sm tracking-[0.14em] text-cream/90 uppercase">
+          <h2 className="font-display text-sm tracking-[0.14em] text-blanco uppercase">
             Hablemos
           </h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
-              <a href={`mailto:${site.email}`} className="text-cream/80 hover:text-ivory">
+              <a href={`mailto:${site.email}`} className="text-dorado/80 hover:text-cream">
                 {site.email}
               </a>
             </li>
             <li>
               <a
                 href={whatsappUrl('Hola, os escribo desde la web de Arte y Cera.')}
-                className="inline-flex items-center gap-2 text-cream/80 hover:text-ivory"
+                className="inline-flex items-center gap-2 text-dorado/80 hover:text-cream"
                 target="_blank"
                 rel="noopener"
               >
@@ -77,7 +77,7 @@ export function SiteFooter() {
             <li>
               <a
                 href={site.instagram.url}
-                className="inline-flex items-center gap-2 text-cream/80 hover:text-ivory"
+                className="inline-flex items-center gap-2 text-dorado/80 hover:text-cream"
                 target="_blank"
                 rel="noopener"
               >
@@ -90,7 +90,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-cream/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-6 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-6 text-xs text-dorado/60 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.nombre}. Todos los derechos reservados.
           </p>

@@ -14,18 +14,15 @@ export function Precio({
   nota,
   tamano = 'normal',
   className,
-  oscuro = false,
 }: {
   precios: PrecioFuente[];
   nota?: string;
   tamano?: 'normal' | 'grande';
   className?: string;
-  /** Texto claro, para cuando el precio cae sobre un fondo oscuro. */
-  oscuro?: boolean;
 }) {
   const grande = tamano === 'grande';
-  const colorPrecio = oscuro ? 'text-ivory' : 'text-verde';
-  const colorTexto = oscuro ? 'text-cream/70' : 'text-ink-soft';
+  const colorPrecio = 'text-blanco';
+  const colorTexto = 'text-dorado/70';
 
   return (
     <div className={className}>
@@ -40,10 +37,7 @@ export function Precio({
             <li key={precio.etiqueta ?? precio.importe} className="flex items-baseline gap-2">
               <span className={colorTexto}>{precio.etiqueta}</span>
               <span
-                className={cx(
-                  'h-px flex-1 border-b border-dotted',
-                  oscuro ? 'border-cream/30' : 'border-sand',
-                )}
+                className="h-px flex-1 border-b border-dotted border-cream/25"
                 aria-hidden="true"
               />
               <span

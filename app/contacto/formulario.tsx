@@ -40,19 +40,19 @@ export function FormularioContacto({
 
   if (estado.estado === 'ok') {
     return (
-      <div className="rounded-pieza border border-verde/30 bg-cream/60 p-8 text-center">
-        <p className="font-display text-2xl font-semibold text-verde">Mensaje enviado</p>
-        <p className="mt-3 text-ink-soft">
+      <div className="rounded-pieza border border-blanco/30 bg-verde-profundo p-8 text-center">
+        <p className="font-display text-2xl font-semibold text-blanco">Mensaje enviado</p>
+        <p className="mt-3 text-dorado">
           Gracias por escribirnos. Te contestamos al correo que nos has dejado, normalmente en menos
           de 48 h.
         </p>
-        <p className="mt-6 text-sm text-ink-soft">
+        <p className="mt-6 text-sm text-dorado">
           Si tienes prisa, escríbenos también por WhatsApp al{' '}
           <a
             href={whatsappUrl()}
             target="_blank"
             rel="noopener"
-            className="text-ink underline decoration-verde/40 underline-offset-4"
+            className="text-dorado underline decoration-dorado/40 underline-offset-4"
           >
             {site.whatsappVisible}
           </a>
@@ -78,9 +78,9 @@ export function FormularioContacto({
           enviado (lo que hacía la web anterior), se dice qué pasa y por dónde
           escribir. */}
       {estado.estado === 'sin-configurar' && (
-        <div className="rounded-xl border border-terracotta/40 bg-terracotta/5 p-4 text-sm">
-          <p className="font-medium text-ink">El envío por correo aún no está activado.</p>
-          <p className="mt-1 text-ink-soft">
+        <div className="rounded-xl border border-terracotta/50 bg-terracotta/15 p-4 text-sm">
+          <p className="font-medium text-cream">El envío por correo aún no está activado.</p>
+          <p className="mt-1 text-dorado">
             Tu mensaje no se ha enviado. Copia lo que has escrito y mándanoslo por WhatsApp o por
             correo; los dos llegan igual de bien.
           </p>
@@ -107,7 +107,7 @@ export function FormularioContacto({
       {estado.estado === 'error' && (
         <p
           role="alert"
-          className="rounded-xl border border-terracotta/40 bg-terracotta/5 p-4 text-sm text-ink"
+          className="rounded-xl border border-terracotta/50 bg-terracotta/15 p-4 text-sm text-cream"
         >
           {estado.mensaje}
         </p>
@@ -134,7 +134,7 @@ export function FormularioContacto({
       </div>
 
       <div>
-        <label htmlFor="interes" className="block text-sm text-ink-soft">
+        <label htmlFor="interes" className="block text-sm text-dorado/80">
           Qué te interesa
         </label>
         <select
@@ -168,7 +168,7 @@ export function FormularioContacto({
       />
 
       <div>
-        <label htmlFor="mensaje" className="block text-sm text-ink-soft">
+        <label htmlFor="mensaje" className="block text-sm text-dorado/80">
           Cuéntanos tu idea <span aria-hidden="true">*</span>
         </label>
         <textarea
@@ -184,7 +184,7 @@ export function FormularioContacto({
           )}
         />
         {errores.mensaje && (
-          <p id="error-mensaje" className="mt-1.5 text-sm text-terracotta">
+          <p id="error-mensaje" className="mt-1.5 text-sm text-terracotta-clara">
             {errores.mensaje}
           </p>
         )}
@@ -198,19 +198,19 @@ export function FormularioContacto({
       </div>
 
       <div>
-        <label className="flex gap-3 text-sm text-ink-soft">
+        <label className="flex gap-3 text-sm text-dorado/80">
           <input
             type="checkbox"
             name="consentimiento"
             value="si"
             required
-            className="mt-1 h-4 w-4 shrink-0 accent-ink"
+            className="mt-1 h-4 w-4 shrink-0 accent-blanco"
           />
           <span>
             Acepto que Arte y Cera use mis datos para responderme.{' '}
             <Link
               href="/privacidad"
-              className="text-ink underline decoration-verde/40 underline-offset-4"
+              className="text-dorado underline decoration-dorado/40 underline-offset-4"
             >
               Cómo tratamos tus datos
             </Link>
@@ -218,7 +218,7 @@ export function FormularioContacto({
           </span>
         </label>
         {errores.consentimiento && (
-          <p className="mt-1.5 text-sm text-terracotta">{errores.consentimiento}</p>
+          <p className="mt-1.5 text-sm text-terracotta-clara">{errores.consentimiento}</p>
         )}
       </div>
 
@@ -226,7 +226,7 @@ export function FormularioContacto({
         {enviando ? 'Enviando…' : 'Enviar mensaje'}
       </button>
 
-      <p className="text-center text-xs text-ink-soft">
+      <p className="text-center text-xs text-dorado/80">
         {site.tiempoRespuesta}. También puedes escribirnos por WhatsApp al {site.whatsappVisible}.
       </p>
     </form>
@@ -249,7 +249,7 @@ function Campo({
   const idError = `error-${nombre}`;
   return (
     <div>
-      <label htmlFor={nombre} className="block text-sm text-ink-soft">
+      <label htmlFor={nombre} className="block text-sm text-dorado/80">
         {etiqueta} {requerido && <span aria-hidden="true">*</span>}
       </label>
       <input
@@ -266,7 +266,7 @@ function Campo({
         )}
       />
       {error && (
-        <p id={idError} className="mt-1.5 text-sm text-terracotta">
+        <p id={idError} className="mt-1.5 text-sm text-terracotta-clara">
           {error}
         </p>
       )}

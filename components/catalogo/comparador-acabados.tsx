@@ -20,25 +20,14 @@ import type { Categoria } from '@/lib/catalogo/esquemas';
  * La ficha de cada acabado sigue existiendo y sigue siendo donde está el
  * detalle; esto es el paso previo, el que ayuda a elegir.
  */
-export function ComparadorAcabados({
-  categoria,
-  oscuro = false,
-}: {
-  categoria: Categoria;
-  /** Texto y tarjetas claras, para cuando cae sobre un fondo oscuro. */
-  oscuro?: boolean;
-}) {
+export function ComparadorAcabados({ categoria }: { categoria: Categoria }) {
   return (
     <ol className="mt-8 space-y-4">
       {categoria.lineas.map((linea, i) => (
         <li key={linea.slug}>
           <Link
             href={linea.href}
-            className={`group grid grid-cols-[5.5rem_1fr] items-center gap-5 rounded-pieza border p-4 transition-colors sm:grid-cols-[7rem_1fr_auto] sm:gap-7 sm:p-5 ${
-              oscuro
-                ? 'border-cream/20 bg-white-warm/5 hover:border-cream hover:bg-white-warm/10'
-                : 'border-sand bg-cream/40 hover:border-verde hover:bg-cream/70'
-            }`}
+            className="group grid grid-cols-[5.5rem_1fr] items-center gap-5 rounded-pieza border border-cream/20 bg-white-warm/5 p-4 transition-colors hover:border-cream hover:bg-white-warm/10 sm:grid-cols-[7rem_1fr_auto] sm:gap-7 sm:p-5"
           >
             <Image
               src={linea.portada.src}
@@ -54,40 +43,27 @@ export function ComparadorAcabados({
               <p className="flex items-baseline gap-2.5">
                 {/* El número ordena la escala: quien mira sabe que va de menos a
                     más pintura, no que son cuatro opciones sueltas. Que sea
-                    aria-hidden no exime de contraste: se sigue viendo. Verde
-                    sobre crema pasa de sobra el 3:1 que exige WCAG incluso
-                    para esto (10:1 largos). */}
-                <span
-                  aria-hidden="true"
-                  className={`font-display text-sm font-bold ${oscuro ? 'text-ivory' : 'text-verde'}`}
-                >
+                    aria-hidden no exime de contraste: se sigue viendo. */}
+                <span aria-hidden="true" className="font-display text-sm font-bold text-blanco">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span
-                  className={`font-display text-xl font-semibold sm:text-2xl ${oscuro ? 'text-white-warm' : 'text-verde'}`}
-                >
+                <span className="font-display text-xl font-semibold text-blanco sm:text-2xl">
                   {linea.nombre}
                 </span>
               </p>
-              <p className={`mt-1 leading-relaxed ${oscuro ? 'text-cream/75' : 'text-ink-soft'}`}>
-                {linea.resumen}
-              </p>
+              <p className="mt-1 leading-relaxed text-dorado/75">{linea.resumen}</p>
 
               {/* En móvil el precio va debajo; en escritorio, en su columna. */}
               <div className="mt-3 sm:hidden">
-                <Precio precios={linea.precios} nota={linea.notaPrecio} oscuro={oscuro} />
+                <Precio precios={linea.precios} nota={linea.notaPrecio} />
               </div>
             </div>
 
             <div className="hidden shrink-0 text-right sm:block">
-              <Precio precios={linea.precios} nota={linea.notaPrecio} oscuro={oscuro} />
-              <p
-                className={`mt-2 inline-flex items-center gap-1.5 text-sm font-medium ${oscuro ? 'text-cream' : 'text-verde'}`}
-              >
+              <Precio precios={linea.precios} nota={linea.notaPrecio} />
+              <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-blanco">
                 Ver los {linea.piezas.length}
-                <IconoFlecha
-                  className={`h-4 w-4 transition-transform group-hover:translate-x-1 ${oscuro ? 'text-cream' : 'text-verde'}`}
-                />
+                <IconoFlecha className="h-4 w-4 text-blanco transition-transform group-hover:translate-x-1" />
               </p>
             </div>
           </Link>

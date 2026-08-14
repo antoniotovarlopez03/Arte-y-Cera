@@ -32,7 +32,7 @@ export function TarjetaLinea({
           <h3 className="mt-1 font-display text-[1.7rem] font-semibold">{linea.nombre}</h3>
           {/* El resumen de cada acabado está escrito para compararse con el de sus
               hermanos: es aquí donde alguien decide entre 30 € y 40 €. */}
-          <p className="mt-1.5 leading-relaxed text-ink-soft">{linea.resumen}</p>
+          <p className="mt-1.5 leading-relaxed text-dorado/75">{linea.resumen}</p>
         </div>
       </Link>
 
@@ -40,10 +40,10 @@ export function TarjetaLinea({
         <Precio precios={linea.precios} nota={linea.notaPrecio} />
         <Link
           href={linea.href}
-          className="flex shrink-0 items-center gap-1.5 border-b border-verde/25 pb-0.5 text-sm font-medium text-verde hover:border-verde"
+          className="flex shrink-0 items-center gap-1.5 border-b border-blanco/25 pb-0.5 text-sm font-medium text-blanco hover:border-blanco"
         >
           Ver los {linea.piezas.length} modelos
-          <IconoFlecha className="h-4 w-4 text-verde transition-transform group-hover:translate-x-1" />
+          <IconoFlecha className="h-4 w-4 text-blanco transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
     </article>

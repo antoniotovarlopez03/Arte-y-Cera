@@ -75,7 +75,7 @@ export function SelectorPieza({
   onCambianElegidas?: (piezas: PiezaSelector[]) => void;
 }) {
   const dialogo = useRef<HTMLDialogElement>(null);
-  const { quitar: quitarDeCesta } = useCesta();
+  const { añadir: añadirACesta, quitar: quitarDeCesta } = useCesta();
   const [busqueda, setBusqueda] = useState('');
   const [soloDelInteres, setSoloDelInteres] = useState(false);
   const [elegidas, setElegidas] = useState<PiezaSelector[]>(() => {
@@ -148,6 +148,11 @@ export function SelectorPieza({
     setElegidas((actual) =>
       actual.some((p) => p.ref === pieza.ref) ? actual : [...actual, pieza],
     );
+    // Igual que al añadir desde la galería: si no se guarda también en la
+    // cesta de verdad (localStorage), esta pieza no cuenta en el icono de la
+    // cabecera y desaparece del formulario en cuanto se navega fuera y se
+    // vuelve, porque `elegidas` se reconstruye desde la cesta al montar.
+    añadirACesta(pieza.ref);
     dialogo.current?.close();
   }
 
@@ -168,7 +173,7 @@ export function SelectorPieza({
        *  tocar nada más ahí, solo sabe leer más de un código. */}
       <input type="hidden" name="referencia" value={elegidas.map((p) => p.ref).join(',')} />
 
-      <span className="block text-sm text-ink-soft">
+      <span className="block text-sm text-dorado/80">
         Fotos de las piezas que te gustan (opcional)
       </span>
 
@@ -212,8 +217,8 @@ export function SelectorPieza({
               precio final depende de lo que se decida (tamaño, retrato...). Esto
               es para hacerse una idea al vuelo, no un presupuesto. */}
           <li className="flex items-center justify-between px-1 pt-1 text-sm">
-            <span className="font-medium text-ink">Total, a partir de</span>
-            <span className="font-medium text-verde">{FORMATO_EUROS.format(totalDesde)}</span>
+            <span className="font-medium text-dorado">Total, a partir de</span>
+            <span className="font-medium text-blanco">{FORMATO_EUROS.format(totalDesde)}</span>
           </li>
         </ul>
       )}

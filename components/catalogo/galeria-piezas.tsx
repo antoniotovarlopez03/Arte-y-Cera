@@ -182,7 +182,7 @@ export function GaleriaPiezas({
         className="m-auto max-h-dvh w-full max-w-5xl bg-transparent p-0 text-cream outline-none backdrop:bg-ink/92"
       >
         {pieza && (
-          <div className="flex max-h-dvh flex-col gap-4 p-4 sm:p-6">
+          <div className="flex max-h-dvh flex-col gap-4 overflow-y-auto p-4 sm:p-6">
             <div className="flex items-center justify-between gap-4">
               <p className="font-mono text-sm tracking-wide text-ivory">
                 {pieza.ref}
@@ -220,7 +220,7 @@ export function GaleriaPiezas({
                 quality={90}
                 priority
                 style={{ maxWidth: `${anchoMaximo}px` }}
-                className="h-auto max-h-[78dvh] w-full rounded-lg object-contain shadow-alzada"
+                className="h-auto max-h-[50dvh] w-full rounded-lg object-contain shadow-alzada sm:max-h-[78dvh]"
               />
               <FlechaGaleria direccion="siguiente" onClick={() => mover(1)} />
             </div>
@@ -244,7 +244,7 @@ export function GaleriaPiezas({
                     cuál es. */}
                 <Link
                   href={{ pathname: '/contacto', query: { pieza: pieza.ref } }}
-                  className={clasesBoton('contorno-claro')}
+                  className={clasesBoton('secundario')}
                 >
                   <IconoSobre className="h-4 w-4" />
                   Pedir por correo
@@ -261,7 +261,7 @@ export function GaleriaPiezas({
                       : añadirACesta(pieza.ref)
                   }
                   className={clasesBoton(
-                    refsCesta.includes(pieza.ref) ? 'claro' : 'contorno-claro',
+                    refsCesta.includes(pieza.ref) ? 'primario' : 'secundario',
                   )}
                 >
                   <IconoCesta className="h-4 w-4" />

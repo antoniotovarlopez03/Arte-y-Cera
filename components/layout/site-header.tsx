@@ -124,7 +124,7 @@ export function SiteHeader({
   const enTaller = pathname.startsWith('/taller');
 
   return (
-    <header className="sticky top-0 z-40 border-b border-sand/70 bg-ivory/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-cream/10 bg-verde-profundo/95 backdrop-blur-sm">
       <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-5">
         {/* El rótulo se escribe «Arte & Cera», así que el aria-label tiene que
             contener ese texto tal cual y no «Arte y Cera»: si el nombre accesible
@@ -144,8 +144,8 @@ export function SiteHeader({
             className="h-10 w-10 rounded-full"
             priority
           />
-          <span className="font-display text-xl font-bold tracking-tight text-verde">
-            Arte <span className="text-verde">&amp;</span> Cera
+          <span className="font-display text-xl font-bold tracking-tight text-blanco">
+            Arte <span className="text-blanco">&amp;</span> Cera
           </span>
         </Link>
 
@@ -164,10 +164,10 @@ export function SiteHeader({
                   key={coleccion.slug}
                   href={coleccion.href}
                   aria-current={pathname === coleccion.href ? 'page' : undefined}
-                  className={`hidden text-[0.95rem] transition-colors hover:text-verde lg:block ${
+                  className={`hidden text-[0.95rem] transition-colors hover:text-blanco lg:block ${
                     pathname === coleccion.href
-                      ? 'font-medium text-verde underline decoration-verde decoration-2 underline-offset-8'
-                      : 'text-ink-soft'
+                      ? 'font-medium text-blanco underline decoration-blanco decoration-2 underline-offset-8'
+                      : 'text-dorado/80'
                   }`}
                 >
                   {coleccion.nombreMenu}
@@ -181,10 +181,10 @@ export function SiteHeader({
                 onClick={() => setPanelAbierto((v) => !v)}
                 aria-expanded={panelAbierto}
                 aria-controls={idPanel}
-                className={`flex items-center gap-1.5 text-[0.95rem] transition-colors hover:text-verde ${
+                className={`flex items-center gap-1.5 text-[0.95rem] transition-colors hover:text-blanco ${
                   enCatalogo
-                    ? 'font-medium text-verde underline decoration-verde decoration-2 underline-offset-8'
-                    : 'text-ink-soft'
+                    ? 'font-medium text-blanco underline decoration-blanco decoration-2 underline-offset-8'
+                    : 'text-dorado/80'
                 }`}
               >
                 Todas las colecciones
@@ -254,10 +254,10 @@ export function SiteHeader({
             <Link
               href="/taller"
               aria-current={enTaller ? 'page' : undefined}
-              className={`text-[0.95rem] transition-colors hover:text-verde ${
+              className={`text-[0.95rem] transition-colors hover:text-blanco ${
                 enTaller
-                  ? 'font-medium text-verde underline decoration-verde decoration-2 underline-offset-8'
-                  : 'text-ink-soft'
+                  ? 'font-medium text-blanco underline decoration-blanco decoration-2 underline-offset-8'
+                  : 'text-dorado/80'
               }`}
             >
               El taller
@@ -269,7 +269,7 @@ export function SiteHeader({
               contactarnos». */}
             <Link
               href="/contacto"
-              className="rounded-full bg-verde px-5 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-verde-profundo"
+              className="rounded-full bg-ivory px-5 py-2.5 text-sm font-medium text-verde-profundo transition-colors hover:bg-cream"
             >
               Escríbenos
             </Link>
@@ -290,10 +290,10 @@ export function SiteHeader({
                 aria-expanded={cestaAbierta}
                 aria-controls={idCesta}
                 aria-label={`Tu cesta, ${refsCesta.length} ${refsCesta.length === 1 ? 'pieza' : 'piezas'}`}
-                className="relative flex h-11 w-11 items-center justify-center rounded-full text-ink-soft transition-colors hover:text-verde"
+                className="relative flex h-11 w-11 items-center justify-center rounded-full text-dorado/80 transition-colors hover:text-blanco"
               >
                 <IconoCesta className="h-5 w-5" />
-                <span className="absolute top-1 right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-verde px-1 text-[0.65rem] font-medium text-ivory">
+                <span className="absolute top-1 right-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-dorado px-1 text-[0.65rem] font-medium text-verde-profundo">
                   {refsCesta.length}
                 </span>
               </button>
@@ -373,7 +373,7 @@ export function SiteHeader({
             aria-expanded={movilAbierto}
             aria-controls="menu-movil"
             aria-label={movilAbierto ? 'Cerrar menú' : 'Abrir menú'}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-sand text-ink md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-dorado/30 text-dorado md:hidden"
           >
             <svg
               viewBox="0 0 24 24"
@@ -399,7 +399,7 @@ export function SiteHeader({
         <nav
           id="menu-movil"
           aria-label="Principal"
-          className="max-h-[70dvh] overflow-y-auto border-t border-sand/70 bg-ivory px-5 pb-5 md:hidden"
+          className="max-h-[70dvh] overflow-y-auto border-t border-cream/10 bg-verde-profundo px-5 pb-5 md:hidden"
         >
           <ul className="flex flex-col">
             {colecciones.map((coleccion) => (
@@ -407,10 +407,10 @@ export function SiteHeader({
                 <Link
                   href={coleccion.href}
                   onClick={() => setMovilAbierto(false)}
-                  className="flex items-center justify-between gap-3 border-b border-sand/50 py-3.5"
+                  className="flex items-center justify-between gap-3 border-b border-cream/10 py-3.5"
                 >
-                  <span className="text-base text-ink">{coleccion.nombre}</span>
-                  <span className="shrink-0 text-sm text-ink-soft">desde {coleccion.desde}</span>
+                  <span className="text-base text-blanco">{coleccion.nombre}</span>
+                  <span className="shrink-0 text-sm text-dorado/80">desde {coleccion.desde}</span>
                 </Link>
               </li>
             ))}
@@ -418,7 +418,7 @@ export function SiteHeader({
               <Link
                 href="/taller"
                 onClick={() => setMovilAbierto(false)}
-                className="block border-b border-sand/50 py-3.5 text-base text-ink"
+                className="block border-b border-cream/10 py-3.5 text-base text-blanco"
               >
                 El taller
               </Link>
@@ -427,7 +427,7 @@ export function SiteHeader({
           <Link
             href="/contacto"
             onClick={() => setMovilAbierto(false)}
-            className="mt-5 block rounded-full bg-verde px-5 py-3 text-center text-sm font-medium text-ivory"
+            className="mt-5 block rounded-full bg-ivory px-5 py-3 text-center text-sm font-medium text-verde-profundo"
           >
             Escríbenos
           </Link>

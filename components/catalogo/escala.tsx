@@ -40,7 +40,7 @@ export function EscalaDePiezas({ linea }: { linea: Linea }) {
   const aPixeles = (cm: number) => (cm / altoMaximo) * ALTO_DIBUJO;
 
   return (
-    <figure className="mt-6 rounded-pieza border border-sand bg-cream/40 p-5">
+    <figure className="mt-6 rounded-pieza border border-cream/20 bg-verde-profundo p-5">
       <figcaption className="rotulo">Tamaño real, comparado</figcaption>
 
       {/* Sin altura fija en el contenedor: las barras ya la traen, y fijarla aquí
@@ -60,13 +60,13 @@ export function EscalaDePiezas({ linea }: { linea: Linea }) {
                   para que se vea de un vistazo cuál es cuál. */}
               <div
                 aria-hidden="true"
-                className={`rounded-t-full ${esta ? 'bg-verde' : 'bg-sand'}`}
+                className={`rounded-t-full ${esta ? 'bg-blanco' : 'bg-cream/30'}`}
                 style={{ height: `${alto}px`, width: `${Math.max(ancho, 10)}px` }}
               />
               {/* nowrap: la columna es tan estrecha como la vela (el cirio mide
                   19 px de ancho a esta escala) y «20 cm» se partía en dos. */}
               <p
-                className={`text-center text-xs whitespace-nowrap ${esta ? 'font-medium text-verde' : 'text-ink-soft'}`}
+                className={`text-center text-xs whitespace-nowrap ${esta ? 'font-medium text-blanco' : 'text-dorado/70'}`}
               >
                 {p.dimensiones!.alto} cm
               </p>
@@ -77,7 +77,7 @@ export function EscalaDePiezas({ linea }: { linea: Linea }) {
         {/* No se repite aquí la medida: ya está arriba, en la caja del precio, y
             además las barras la llevan escrita debajo. Decirla por tercera vez
             no añadía nada (y hacía ambiguo el test que la buscaba). */}
-        <p className="self-center text-sm leading-relaxed text-ink-soft">
+        <p className="self-center text-sm leading-relaxed text-dorado">
           A escala, junto a {piezas.length === 2 ? 'la otra medida' : 'las otras medidas'} del
           catálogo.
         </p>

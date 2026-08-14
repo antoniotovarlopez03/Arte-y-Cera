@@ -85,7 +85,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
               {categoria.esFicha ? categoria.nombre : linea.nombre}
             </h1>
             <span className="filete mt-5" />
-            <p className="mt-5 max-w-prose text-lg leading-relaxed text-ink-soft">
+            <p className="mt-5 max-w-prose text-lg leading-relaxed text-dorado">
               {linea.resumen}
             </p>
 
@@ -95,26 +95,26 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                 recorrido por el que viajar. Quien está mirando piezas tiene el
                 botón de WhatsApp con la referencia dentro del visor de cada foto,
                 que es el camino que se usa. En móvil sí hay barra fija. */}
-            <div className="mt-7 rounded-pieza border border-sand bg-ivory p-6 sm:p-7">
+            <div className="mt-7 rounded-pieza border border-cream/20 bg-verde-profundo p-6 sm:p-7">
               <Precio precios={linea.precios} nota={linea.notaPrecio} tamano="grande" />
 
               <dl className="mt-6 space-y-4 text-sm">
                 {linea.medidas && (
                   <div>
-                    <dt className="text-ink-soft">Tamaño</dt>
-                    <dd className="font-medium text-ink">{linea.medidas}</dd>
+                    <dt className="text-dorado/60">Tamaño</dt>
+                    <dd className="font-medium text-dorado">{linea.medidas}</dd>
                   </div>
                 )}
                 {linea.incluye.length > 0 && (
                   <div>
-                    <dt className="text-ink-soft">Incluye</dt>
+                    <dt className="text-dorado/60">Incluye</dt>
                     <dd>
                       <ul className="mt-1.5 space-y-1.5">
                         {linea.incluye.map((item) => (
-                          <li key={item} className="flex gap-2 text-ink">
+                          <li key={item} className="flex gap-2 text-dorado">
                             <span
                               aria-hidden="true"
-                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-verde"
+                              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-blanco"
                             />
                             {item}
                           </li>
@@ -124,8 +124,8 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                   </div>
                 )}
                 <div>
-                  <dt className="text-ink-soft">Plazo</dt>
-                  <dd className="text-ink">
+                  <dt className="text-dorado/60">Plazo</dt>
+                  <dd className="text-dorado">
                     Se pinta por encargo. Escríbenos con la fecha de tu celebración y te confirmamos
                     si llegamos.
                   </dd>
@@ -152,13 +152,13 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                   Pedir presupuesto por email
                 </Link>
               </div>
-              <p className="mt-3 text-center text-xs text-ink-soft">{site.tiempoRespuesta}</p>
+              <p className="mt-3 text-center text-xs text-dorado/70">{site.tiempoRespuesta}</p>
             </div>
           </div>
         </header>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:items-start">
-          <p className="max-w-prose text-base leading-relaxed text-ink-soft">
+          <p className="max-w-prose text-base leading-relaxed text-dorado">
             {categoria.descripcion}
           </p>
           {/* «70 × 7 cm» no se lo imagina nadie. Solo aparece en las líneas que
@@ -171,7 +171,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
             <h2 id="titulo-piezas" className="font-display text-[1.7rem] font-semibold">
               {linea.piezas.length} piezas ya pintadas
             </h2>
-            <p className="text-sm text-ink-soft">
+            <p className="text-sm text-dorado">
               Cada foto lleva su referencia: dínosla y sabemos exactamente cuál te gusta.
             </p>
           </div>
@@ -197,9 +197,9 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
           <p className="mt-16 text-sm">
             <Link
               href="/colecciones"
-              className="inline-flex items-center gap-2 text-ink-soft hover:text-verde"
+              className="inline-flex items-center gap-2 text-dorado hover:text-blanco"
             >
-              <IconoFlecha className="h-4 w-4 rotate-180 text-verde" />
+              <IconoFlecha className="h-4 w-4 rotate-180 text-blanco" />
               Ver todas las colecciones
             </Link>
           </p>
@@ -210,7 +210,7 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
           precio y el botón tienen que estar siempre a mano. */}
       <div
         data-barra-ficha
-        className="sticky bottom-0 z-30 border-t border-sand bg-ivory/95 backdrop-blur-sm sm:hidden"
+        className="sticky bottom-0 z-30 border-t border-cream/10 bg-verde-profundo/95 backdrop-blur-sm sm:hidden"
       >
         <div className="flex items-center justify-between gap-3 px-5 py-3">
           <Precio precios={linea.precios} />

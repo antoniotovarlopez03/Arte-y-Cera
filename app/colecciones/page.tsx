@@ -26,7 +26,7 @@ export default function PaginaColecciones() {
           Nuestras colecciones
         </h1>
         <span className="filete mt-5" />
-        <p className="mt-5 text-lg leading-relaxed text-ink-soft">
+        <p className="mt-5 text-lg leading-relaxed text-dorado">
           {totalPiezas} piezas pintadas a mano, agrupadas por celebración y con el precio a la
           vista. Ninguna se repite: sirven para que veas el estilo y nos digas cuál te gusta.
         </p>
@@ -41,7 +41,7 @@ export default function PaginaColecciones() {
             <li key={ocasion}>
               <a
                 href={`#${ocasion}`}
-                className="inline-block rounded-full border border-sand bg-cream-2 px-4 py-2 text-sm text-ink-soft transition-colors hover:border-verde hover:text-verde"
+                className="inline-block rounded-full border border-cream/20 bg-verde-profundo px-4 py-2 text-sm text-dorado transition-colors hover:border-blanco hover:text-blanco"
               >
                 {ETIQUETAS_OCASION[ocasion]}
               </a>
@@ -58,7 +58,7 @@ export default function PaginaColecciones() {
               key={ocasion}
               id={ocasion}
               aria-labelledby={`titulo-${ocasion}`}
-              className="bg-cream-2 rounded-pieza p-6 sm:p-10"
+              className="rounded-pieza bg-verde-profundo p-6 sm:p-10"
             >
               <h2 id={`titulo-${ocasion}`} className="font-display text-[1.7rem] font-semibold">
                 {ETIQUETAS_OCASION[ocasion]}
@@ -82,11 +82,11 @@ export default function PaginaColecciones() {
         })}
       </div>
 
-      <p className="mt-20 rounded-pieza bg-sand p-6 text-center text-ink">
+      <p className="mt-20 rounded-pieza bg-verde-profundo p-6 text-center text-dorado">
         ¿Buscas algo que no está aquí? Se puede pintar casi cualquier motivo.{' '}
         <Link
           href="/contacto"
-          className="font-medium text-verde underline decoration-verde/40 underline-offset-4"
+          className="font-medium text-blanco underline decoration-blanco/40 underline-offset-4"
         >
           Cuéntanos tu idea
         </Link>

@@ -14,25 +14,14 @@ import type { Categoria } from '@/lib/catalogo/esquemas';
  * apaisada a un lado, así que el hueco se aprovecha en vez de disimularse y
  * esas tres colecciones ganan presencia en lugar de parecer restos.
  */
-export function TarjetaCategoriaAncha({
-  categoria,
-  oscuro = false,
-}: {
-  categoria: Categoria;
-  /** Igual que en TarjetaCategoria: texto claro para fondos oscuros. */
-  oscuro?: boolean;
-}) {
+export function TarjetaCategoriaAncha({ categoria }: { categoria: Categoria }) {
   const desde = Math.min(...categoria.lineas.map(precioMinimo));
 
   return (
     <article className="group">
       <Link
         href={categoria.href}
-        className={`grid items-center gap-8 rounded-pieza border p-4 transition-colors sm:grid-cols-[minmax(0,24rem)_1fr] sm:gap-10 sm:p-6 ${
-          oscuro
-            ? 'border-cream/20 bg-white-warm/5 hover:border-cream hover:bg-white-warm/10'
-            : 'border-sand bg-cream/40 hover:border-verde hover:bg-cream/70'
-        }`}
+        className="grid items-center gap-8 rounded-pieza border border-cream/20 bg-white-warm/5 p-4 transition-colors hover:border-cream hover:bg-white-warm/10 sm:grid-cols-[minmax(0,24rem)_1fr] sm:gap-10 sm:p-6"
       >
         <div className="overflow-hidden rounded-pieza bg-cream">
           <Image
@@ -47,38 +36,22 @@ export function TarjetaCategoriaAncha({
         </div>
 
         <div>
-          <h3
-            className={`font-display text-[2rem] font-semibold ${oscuro ? 'text-white-warm' : ''}`}
-          >
-            {categoria.nombre}
-          </h3>
-          <p
-            className={`mt-2 max-w-prose text-lg leading-relaxed ${oscuro ? 'text-cream/75' : 'text-ink-soft'}`}
-          >
+          <h3 className="font-display text-[2rem] font-semibold">{categoria.nombre}</h3>
+          <p className="mt-2 max-w-prose text-lg leading-relaxed text-dorado/75">
             {categoria.resumen}
           </p>
           <p className="mt-5 flex items-baseline gap-2">
-            <span
-              className={`font-display text-xl font-bold ${oscuro ? 'text-ivory' : 'text-verde'}`}
-            >
+            <span className="font-display text-xl font-bold text-blanco">
               desde {formatearPrecio(desde)}
             </span>
-            <span className={oscuro ? 'text-cream/40' : 'text-ink-soft/50'}>·</span>
-            <span className={`text-sm ${oscuro ? 'text-cream/75' : 'text-ink-soft'}`}>
+            <span className="text-dorado/40">·</span>
+            <span className="text-sm text-dorado/75">
               {categoria.totalPiezas} {categoria.totalPiezas === 1 ? 'modelo' : 'modelos'}
             </span>
           </p>
-          <p
-            className={`mt-4 inline-flex items-center gap-2 border-b pb-0.5 text-sm font-medium transition-colors ${
-              oscuro
-                ? 'border-cream/30 text-cream group-hover:border-cream'
-                : 'border-verde/25 text-verde group-hover:border-verde'
-            }`}
-          >
+          <p className="mt-4 inline-flex items-center gap-2 border-b border-cream/30 pb-0.5 text-sm font-medium text-blanco transition-colors group-hover:border-cream">
             Ver nuestros modelos
-            <IconoFlecha
-              className={`h-4 w-4 transition-transform group-hover:translate-x-1 ${oscuro ? 'text-cream' : 'text-verde'}`}
-            />
+            <IconoFlecha className="h-4 w-4 text-blanco transition-transform group-hover:translate-x-1" />
           </p>
         </div>
       </Link>
@@ -86,15 +59,7 @@ export function TarjetaCategoriaAncha({
   );
 }
 
-export function TarjetaCategoria({
-  categoria,
-  oscuro = false,
-}: {
-  categoria: Categoria;
-  /** Para cuando la tarjeta cae sobre un fondo oscuro (carbón, oliva oscuro):
-   * cambia el texto a tonos claros para que siga cumpliendo contraste AA. */
-  oscuro?: boolean;
-}) {
+export function TarjetaCategoria({ categoria }: { categoria: Categoria }) {
   const desde = Math.min(...categoria.lineas.map(precioMinimo));
 
   return (
@@ -113,23 +78,15 @@ export function TarjetaCategoria({
         </div>
 
         <div className="mt-5">
-          <h3
-            className={`font-display text-[1.7rem] font-semibold ${oscuro ? 'text-white-warm' : ''}`}
-          >
-            {categoria.nombre}
-          </h3>
-          <p className={`mt-1.5 leading-relaxed ${oscuro ? 'text-cream/75' : 'text-ink-soft'}`}>
-            {categoria.resumen}
-          </p>
+          <h3 className="font-display text-[1.7rem] font-semibold">{categoria.nombre}</h3>
+          <p className="mt-1.5 leading-relaxed text-dorado/75">{categoria.resumen}</p>
 
           <p className="mt-4 flex items-baseline gap-2 text-sm">
-            <span
-              className={`font-display text-lg font-bold ${oscuro ? 'text-ivory' : 'text-verde'}`}
-            >
+            <span className="font-display text-lg font-bold text-blanco">
               desde {formatearPrecio(desde)}
             </span>
-            <span className={oscuro ? 'text-cream/40' : 'text-ink-soft/50'}>·</span>
-            <span className={oscuro ? 'text-cream/75' : 'text-ink-soft'}>
+            <span className="text-dorado/40">·</span>
+            <span className="text-dorado/75">
               {categoria.totalPiezas} {categoria.totalPiezas === 1 ? 'modelo' : 'modelos'}
             </span>
           </p>
@@ -138,17 +95,9 @@ export function TarjetaCategoria({
               colección en su WordPress. Antes aquí solo había una flecha, y una
               flecha no dice a dónde lleva: en un catálogo, el enlace que más se
               pulsa merece estar escrito. */}
-          <p
-            className={`mt-3 inline-flex items-center gap-2 border-b pb-0.5 text-sm font-medium transition-colors ${
-              oscuro
-                ? 'border-cream/30 text-cream group-hover:border-cream'
-                : 'border-verde/25 text-verde group-hover:border-verde'
-            }`}
-          >
+          <p className="mt-3 inline-flex items-center gap-2 border-b border-cream/30 pb-0.5 text-sm font-medium text-blanco transition-colors group-hover:border-cream">
             Ver nuestros modelos
-            <IconoFlecha
-              className={`h-4 w-4 transition-transform group-hover:translate-x-1 ${oscuro ? 'text-cream' : 'text-verde'}`}
-            />
+            <IconoFlecha className="h-4 w-4 text-blanco transition-transform group-hover:translate-x-1" />
           </p>
         </div>
       </Link>

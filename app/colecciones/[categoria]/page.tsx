@@ -71,21 +71,21 @@ export default async function PaginaCategoria({ params }: Props) {
             {categoria.nombre}
           </h1>
           <span className="filete mt-5" />
-          <p className="mt-5 text-lg leading-relaxed text-ink-soft">{categoria.descripcion}</p>
-          <p className="mt-4 text-sm text-ink-soft">
+          <p className="mt-5 text-lg leading-relaxed text-dorado">{categoria.descripcion}</p>
+          <p className="mt-4 text-sm text-dorado">
             {categoria.lineas.length} acabados · {categoria.totalPiezas} piezas · desde{' '}
-            <span className="font-display font-bold text-verde">{desde} €</span>
+            <span className="font-display font-bold text-blanco">{desde} €</span>
           </p>
         </header>
 
         <section
-          className="mt-16 rounded-pieza bg-cream-2 p-6 sm:p-10"
+          className="mt-16 rounded-pieza bg-verde-profundo p-6 sm:p-10"
           aria-labelledby="titulo-acabados"
         >
           <h2 id="titulo-acabados" className="font-display text-[1.7rem] font-semibold">
             Elige el acabado
           </h2>
-          <p className="mt-2 max-w-2xl text-ink-soft">
+          <p className="mt-2 max-w-2xl text-dorado">
             Lo que cambia de un precio a otro es cuánta pintura lleva la pieza.
           </p>
           <ComparadorAcabados categoria={categoria} />
@@ -103,7 +103,7 @@ export default async function PaginaCategoria({ params }: Props) {
             <h2 id="titulo-todas" className="font-display text-[1.7rem] font-semibold">
               Las {categoria.totalPiezas} piezas de la colección
             </h2>
-            <p className="text-sm text-ink-soft">
+            <p className="text-sm text-dorado">
               Cada foto lleva su referencia: dínosla y sabemos exactamente cuál te gusta.
             </p>
           </div>
