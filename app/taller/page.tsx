@@ -64,6 +64,45 @@ const DATOS = [
   { dato: '100 %', pie: 'hecho a mano' },
 ];
 
+/** Las tres fotos de la cabecera: piezas reales del catálogo, no ilustración
+ *  suelta, así que también enlazan a su ficha (y desde ahí, a la cesta). */
+const FOTOS_CABECERA: {
+  ref: string;
+  href: string;
+  src: string;
+  alt: string;
+  ancho: number;
+  alto: number;
+  foco?: string;
+}[] = [
+  {
+    ref: 'CP-E-15',
+    href: '/colecciones/cirios-pascuales/elaborados?pieza=CP-E-15',
+    src: '/images/colecciones/cirios-elaborados/cirios-elaborados-15.webp',
+    alt: 'Detalle de un cirio pascual pintado a mano con la cruz en blanco y negro sobre pan de oro y el año 2025',
+    ancho: 1600,
+    alto: 1600,
+    foco: '38% 50%',
+  },
+  {
+    ref: 'CP-E-03',
+    href: '/colecciones/cirios-pascuales/elaborados?pieza=CP-E-03',
+    src: '/images/colecciones/cirios-elaborados/cirios-elaborados-03.webp',
+    alt: 'Detalle de un cirio pascual pintado a mano con Cristo y la inscripción «Amad a vuestros enemigos»',
+    ancho: 1200,
+    alto: 1200,
+    foco: '38% 50%',
+  },
+  {
+    ref: 'PK-04',
+    href: '/colecciones/pack-vela-y-toalla?pieza=PK-04',
+    src: '/images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-04.jpeg',
+    alt: 'Toalla de bautizo bordada con el nombre Tomás, junto a la vela a juego',
+    ancho: 826,
+    alto: 1100,
+  },
+];
+
 /**
  * Tres piezas del catálogo, ampliadas para que se vea el pincel.
  *
@@ -137,44 +176,27 @@ export default function PaginaTaller() {
         </div>
 
         <div className="grid grid-cols-3 gap-5">
-          <div>
-            <Image
-              src="/images/colecciones/cirios-elaborados/cirios-elaborados-15.webp"
-              alt="Detalle de un cirio pascual pintado a mano con la cruz en blanco y negro sobre pan de oro y el año 2025"
-              width={1600}
-              height={1600}
-              sizes="(max-width: 640px) 30vw, 260px"
-              quality={90}
-              style={{ objectPosition: '38% 50%' }}
-              className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
-            />
-            <p className="mt-2.5 font-mono text-xs tracking-wide text-dorado/70">CP-E-15</p>
-          </div>
-          <div className="sm:mt-10">
-            <Image
-              src="/images/colecciones/cirios-elaborados/cirios-elaborados-03.webp"
-              alt="Detalle de un cirio pascual pintado a mano con Cristo y la inscripción «Amad a vuestros enemigos»"
-              width={1200}
-              height={1200}
-              sizes="(max-width: 640px) 30vw, 260px"
-              quality={90}
-              style={{ objectPosition: '38% 50%' }}
-              className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
-            />
-            <p className="mt-2.5 font-mono text-xs tracking-wide text-dorado/70">CP-E-03</p>
-          </div>
-          <div>
-            <Image
-              src="/images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-04.jpeg"
-              alt="Toalla de bautizo bordada con el nombre Tomás, junto a la vela a juego"
-              width={826}
-              height={1100}
-              sizes="(max-width: 640px) 30vw, 260px"
-              quality={90}
-              className="aspect-4/5 w-full rounded-pieza object-cover shadow-pieza"
-            />
-            <p className="mt-2.5 font-mono text-xs tracking-wide text-dorado/70">PK-04</p>
-          </div>
+          {FOTOS_CABECERA.map((foto, i) => (
+            <Link
+              key={foto.ref}
+              href={foto.href}
+              className={`group relative block overflow-hidden rounded-pieza shadow-pieza ${i === 1 ? 'sm:mt-10' : ''}`}
+            >
+              <Image
+                src={foto.src}
+                alt={foto.alt}
+                width={foto.ancho}
+                height={foto.alto}
+                sizes="(max-width: 640px) 30vw, 260px"
+                quality={90}
+                style={foto.foco ? { objectPosition: foto.foco } : undefined}
+                className="aspect-4/5 w-full object-cover transition-transform duration-500 ease-suave group-hover:scale-105"
+              />
+              <span className="absolute bottom-0 left-0 rounded-tr-lg bg-verde-profundo/85 px-2 py-1 font-mono text-[0.68rem] tracking-wide text-cream">
+                {foto.ref}
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -199,15 +221,23 @@ export default function PaginaTaller() {
               con los dibujos a lápiz de los que salió, apoyados al lado. Es una
               pieza real del catálogo, no una foto de archivo. */}
           <figure className="mt-12">
-            <Image
-              src="/images/colecciones/lazos-elaborados/lazos-elaborados-04.webp"
-              alt="Vela de bautizo con el retrato de Francisco pintado a mano, junto a los bocetos a lápiz de los que salió"
-              width={1200}
-              height={1200}
-              sizes="(max-width: 1024px) 92vw, 1100px"
-              quality={90}
-              className="aspect-16/10 w-full rounded-pieza object-cover"
-            />
+            <Link
+              href="/colecciones/velas-de-bautizo/elaboradas?pieza=BZ-E-04"
+              className="group relative block overflow-hidden rounded-pieza"
+            >
+              <Image
+                src="/images/colecciones/lazos-elaborados/lazos-elaborados-04.webp"
+                alt="Vela de bautizo con el retrato de Francisco pintado a mano, junto a los bocetos a lápiz de los que salió"
+                width={1200}
+                height={1200}
+                sizes="(max-width: 1024px) 92vw, 1100px"
+                quality={90}
+                className="aspect-16/10 w-full object-cover transition-transform duration-500 ease-suave group-hover:scale-[1.02]"
+              />
+              <span className="absolute bottom-0 left-0 rounded-tr-lg bg-verde-profundo/85 px-2 py-1 font-mono text-[0.68rem] tracking-wide text-cream">
+                BZ-E-04
+              </span>
+            </Link>
             <figcaption className="mt-3 text-sm text-dorado/60">
               La pieza terminada junto a los bocetos de los que salió. Es la{' '}
               <Link

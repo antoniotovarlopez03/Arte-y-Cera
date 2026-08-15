@@ -217,9 +217,13 @@ export function todasLasPiezas(): PiezaPlana[] {
  * que la portada no cambia entre compilaciones ni provoca diferencias de
  * hidratación.
  */
-export function muestraDelCatalogo(limite = 12): Pieza[] {
-  const porLinea = lineas.map((l) => l.piezas.filter((p) => p.ref !== l.portada.ref));
-  const muestra: Pieza[] = [];
+export function muestraDelCatalogo(limite = 12): (Pieza & { href: string })[] {
+  const porLinea = lineas.map((l) =>
+    l.piezas
+      .filter((p) => p.ref !== l.portada.ref)
+      .map((p) => ({ ...p, href: `${l.href}?pieza=${p.ref}` })),
+  );
+  const muestra: (Pieza & { href: string })[] = [];
 
   for (let vuelta = 0; muestra.length < limite; vuelta += 1) {
     const antes = muestra.length;

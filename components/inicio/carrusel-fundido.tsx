@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 import { SEGUNDOS } from './carrusel-portada';
 
@@ -10,6 +11,10 @@ export type FotoFundido = {
   alt: string;
   ancho: number;
   alto: number;
+  /** A dónde lleva «Ver esta pieza»: la ficha con esta foto ya abierta. */
+  href: string;
+  categoria: string;
+  linea: string;
 };
 
 /**
@@ -53,6 +58,8 @@ export function CarruselFundido({
     return () => clearInterval(reloj);
   }, [enMarcha, total]);
 
+  const actual = piezas[indice];
+
   return (
     <div className={`relative aspect-[3/2] w-full overflow-hidden ${className}`}>
       {piezas.map((p, i) => {
@@ -82,6 +89,24 @@ export function CarruselFundido({
           />
         );
       })}
+
+      {/* La misma etiqueta que en el carrusel de portada: la foto no es solo
+          ilustración, es una pieza real del catálogo y se puede ir a verla
+          (y desde ahí, añadirla a la cesta). */}
+      {actual && (
+        <Link
+          href={actual.href}
+          className="absolute right-4 bottom-4 left-4 flex items-center justify-between gap-3 rounded-full bg-verde-profundo/85 px-4 py-2.5 text-sm text-cream backdrop-blur-sm transition-colors hover:bg-verde-profundo sm:right-auto sm:w-auto sm:gap-5"
+        >
+          <span>
+            <span className="font-mono tracking-wide text-ivory">{actual.ref}</span>
+            <span className="ml-2.5 text-cream/70">
+              {actual.categoria} · {actual.linea}
+            </span>
+          </span>
+          <span className="shrink-0 font-medium">Ver esta pieza</span>
+        </Link>
+      )}
 
       {total > 1 && (
         <>

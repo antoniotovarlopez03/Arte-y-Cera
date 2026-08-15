@@ -68,7 +68,19 @@ export default function PaginaInicio() {
       linea: linea.nombre,
     };
   });
-  const fotosTaller = REFS_TALLER.map((ref) => piezaPorRef(ref).pieza);
+  const fotosTaller = REFS_TALLER.map((ref) => {
+    const { pieza, linea } = piezaPorRef(ref);
+    return {
+      ref: pieza.ref,
+      src: pieza.src,
+      alt: pieza.alt,
+      ancho: pieza.ancho,
+      alto: pieza.alto,
+      href: `${linea.href}?pieza=${pieza.ref}`,
+      categoria: linea.categoria.nombre,
+      linea: linea.nombre,
+    };
+  });
   const muestra = muestraDelCatalogo(12);
 
   return (
@@ -149,10 +161,11 @@ export default function PaginaInicio() {
 
       {/* ===== Muestra del catálogo =====
           Una tira a sangre con piezas de todas las colecciones, sin pies ni
-          botones. No repite las portadas que están justo encima: aquí lo que se
-          enseña es la cantidad, que detrás de seis colecciones hay más de ciento
-          sesenta velas ya pintadas. Es una sola frase dicha con fotos, y con las
-          de 300 px de antes habría sido una mancha. */}
+          botones grandes. No repite las portadas que están justo encima: aquí
+          lo que se enseña es la cantidad, que detrás de seis colecciones hay
+          más de ciento sesenta velas ya pintadas. Cada foto es una pieza real
+          y lleva a su ficha, igual que en el resto de la web: quien vea una
+          que le guste en esta tira no tiene que ir a buscarla al catálogo. */}
       <section aria-labelledby="titulo-muestra" className="border-y border-cream/10 bg-verde py-14">
         <h2 id="titulo-muestra" className="sr-only">
           Una muestra de las piezas ya pintadas
@@ -163,18 +176,17 @@ export default function PaginaInicio() {
         >
           {muestra.map((pieza) => (
             <li key={pieza.ref}>
-              {/* alt vacío: son decorativas. Lo que dicen ya está en el titular
-                  oculto, y 12 textos alternativos seguidos en un lector de
-                  pantalla serían ruido, no información. */}
-              <Image
-                src={pieza.src}
-                alt=""
-                width={pieza.ancho}
-                height={pieza.alto}
-                sizes="(max-width: 640px) 25vw, (max-width: 1024px) 17vw, 9vw"
-                quality={85}
-                className="aspect-square w-full rounded-md object-cover"
-              />
+              <Link href={pieza.href} className="group block">
+                <Image
+                  src={pieza.src}
+                  alt={pieza.alt}
+                  width={pieza.ancho}
+                  height={pieza.alto}
+                  sizes="(max-width: 640px) 25vw, (max-width: 1024px) 17vw, 9vw"
+                  quality={85}
+                  className="aspect-square w-full rounded-md object-cover transition-transform duration-500 ease-suave group-hover:scale-105"
+                />
+              </Link>
             </li>
           ))}
         </ul>
