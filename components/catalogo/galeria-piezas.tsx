@@ -252,6 +252,11 @@ export function GaleriaPiezas({
               alcanzarse con el dedo. */}
           <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 sm:px-6 sm:pb-6">
             <div className="mx-auto flex min-h-full w-full flex-col justify-center gap-4">
+              {/* min-w-0 en la foto es lo que evita que las flechas se corten:
+                  por defecto, un elemento dentro de un flex no encoge nunca
+                  por debajo de su tamaño natural (aquí, hasta 1600 px), así
+                  que sin esto la foto empujaba las flechas fuera de la
+                  pantalla en vez de dejarles sitio. */}
               <div className="flex items-center justify-center gap-2 sm:gap-4">
                 <FlechaGaleria direccion="anterior" onClick={() => mover(-1)} />
                 <Image
@@ -263,7 +268,7 @@ export function GaleriaPiezas({
                   quality={90}
                   priority
                   style={{ maxWidth: `${anchoMaximo}px` }}
-                  className="h-auto max-h-[45dvh] w-full rounded-lg object-contain shadow-alzada sm:max-h-[70dvh]"
+                  className="h-auto min-w-0 max-h-[45dvh] w-full rounded-lg object-contain shadow-alzada sm:max-h-[70dvh]"
                 />
                 <FlechaGaleria direccion="siguiente" onClick={() => mover(1)} />
               </div>
