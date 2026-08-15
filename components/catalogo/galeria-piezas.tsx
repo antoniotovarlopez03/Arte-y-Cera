@@ -19,9 +19,15 @@ import { clasesBoton, cx } from '@/lib/ui';
  *    puede decir exactamente cuál quiere.
  * 2. La pieza abierta se refleja en la URL (?pieza=CP-E-18), así que el enlace
  *    que comparte una novia con su madre abre justo esa vela.
- * 3. Se usa <dialog> nativo: el navegador se encarga del foco atrapado, de
- *    devolver el foco al salir y de cerrar con Escape. Menos código nuestro y
- *    accesibilidad de verdad.
+ * 3. El visor es un <div> con position:fixed, no un <dialog> nativo. Antes lo
+ *    era, pero el navegador integrado de WhatsApp (donde llega buena parte de
+ *    las visitas, porque así se comparten las fotos) no calcula bien su alto
+ *    a pantalla completa: quedaba un hueco por el que se veía la página de
+ *    detrás, y ni fijando la altura a mano se arreglaba. `position:fixed;
+ *    inset:0` es más tosco —el foco atrapado y el cierre con Escape hay que
+ *    montarlos a mano, más abajo— pero no depende de que el navegador calcule
+ *    bien nada: siempre ocupa toda la pantalla, la tenga del tamaño que la
+ *    tenga en ese instante.
  *
  * La vista grande nunca amplía una foto por encima de su tamaño real: con los
  * originales recuperados del WordPress eso permite llegar a 1200 px, y las seis
@@ -36,11 +42,16 @@ export function GaleriaPiezas({
    *  `pieza.lineaNombre`, porque en la página de colección van mezcladas. */
   nombreLinea: string;
 }) {
-  const dialogo = useRef<HTMLDialogElement>(null);
+  const contenedor = useRef<HTMLDivElement>(null);
+  /** La foto que tenía el foco al abrir el visor, para devolvérselo al cerrar. */
+  const disparador = useRef<HTMLElement | null>(null);
   const [indice, setIndice] = useState<number | null>(null);
   const { refs: refsCesta, añadir: añadirACesta, quitar: quitarDeCesta } = useCesta();
 
-  const abrir = useCallback((i: number) => setIndice(i), []);
+  const abrir = useCallback((i: number, origen?: HTMLElement) => {
+    disparador.current = origen ?? null;
+    setIndice(i);
+  }, []);
   const cerrar = useCallback(() => setIndice(null), []);
 
   // Al llegar con ?pieza=REF en la URL, se abre esa pieza. Se lee de
@@ -56,32 +67,49 @@ export function GaleriaPiezas({
     // servidor no conoce los parámetros de la petición en una página estática,
     // y hacerlo provocaría un desajuste de hidratación.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (i >= 0) abrir(i);
-  }, [piezas, abrir]);
+    if (i >= 0) setIndice(i);
+  }, [piezas]);
 
-  // El estado de React manda y el <dialog> lo sigue. Antes esto iba al revés
-  // (abrir/cerrar el elemento y escuchar su evento «close»), pero ese evento no
-  // llega en todos los navegadores y el modal se quedaba con la pieza vieja
-  // dentro y la URL sin limpiar. Con una sola fuente de verdad no puede pasar.
+  // Sin <dialog>, el scroll de la página de detrás no se bloquea solo: hay que
+  // apagarlo a mano mientras el visor está abierto. Y el foco entra en el
+  // visor al abrir y vuelve a la foto que lo abrió al cerrar (o se queda donde
+  // el navegador decida si se abrió solo, por el ?pieza= de la URL).
   useEffect(() => {
-    const elemento = dialogo.current;
-    if (!elemento) return;
-    if (indice === null && elemento.open) elemento.close();
-    if (indice !== null && !elemento.open) elemento.showModal();
+    if (indice === null) return;
+    const overflowPrevio = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    contenedor.current?.focus();
+    return () => {
+      document.body.style.overflow = overflowPrevio;
+      disparador.current?.focus();
+    };
   }, [indice]);
 
-  // Escape en un <dialog> modal dispara «cancel» y cierra el elemento por su
-  // cuenta: se cancela para que el cierre pase siempre por el estado.
+  // Trampa de foco: con un <dialog> nativo la pone el navegador; aquí hay que
+  // impedir a mano que Tab / Mayús+Tab saquen el foco del visor mientras está
+  // abierto, o se iría a los enlaces de la página de detrás sin que se note
+  // (el fondo sigue siendo visible bajo el visor, solo que tapado).
   useEffect(() => {
-    const elemento = dialogo.current;
+    if (indice === null) return;
+    const elemento = contenedor.current;
     if (!elemento) return;
-    const alCancelar = (evento: Event) => {
-      evento.preventDefault();
-      cerrar();
+    const alPulsarTab = (evento: KeyboardEvent) => {
+      if (evento.key !== 'Tab') return;
+      const focusables = elemento.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      const primero = focusables[0];
+      const ultimo = focusables[focusables.length - 1];
+      if (!primero || !ultimo) return;
+      if (evento.shiftKey && document.activeElement === primero) {
+        evento.preventDefault();
+        ultimo.focus();
+      } else if (!evento.shiftKey && document.activeElement === ultimo) {
+        evento.preventDefault();
+        primero.focus();
+      }
     };
-    elemento.addEventListener('cancel', alCancelar);
-    return () => elemento.removeEventListener('cancel', alCancelar);
-  }, [cerrar]);
+    document.addEventListener('keydown', alPulsarTab);
+    return () => document.removeEventListener('keydown', alPulsarTab);
+  }, [indice]);
 
   // La URL sigue a la pieza abierta con replaceState: no queremos llenar el
   // historial de pasos ni provocar una navegación de Next por cada flecha.
@@ -114,7 +142,7 @@ export function GaleriaPiezas({
           algún recorte, y ninguna se hizo para recortarse otra vez.
 
           Es CSS puro: no entra JavaScript, y siguen funcionando la carga
-          perezosa, el <dialog> y el enlace ?pieza=. Las tarjetas de categoría y
+          perezosa, el visor y el enlace ?pieza=. Las tarjetas de categoría y
           de línea SÍ mantienen el recorte 4:5, porque ahí lo que hace legible la
           comparación entre colecciones es que todas midan igual.
 
@@ -127,7 +155,7 @@ export function GaleriaPiezas({
           <li key={p.ref} className="mb-4 break-inside-avoid sm:mb-6">
             <button
               type="button"
-              onClick={() => abrir(i)}
+              onClick={(e) => abrir(i, e.currentTarget)}
               className="group relative block w-full cursor-zoom-in overflow-hidden rounded-lg bg-cream text-left"
             >
               <Image
@@ -150,52 +178,46 @@ export function GaleriaPiezas({
         ))}
       </ul>
 
-      {/* El diálogo recibe el foco al abrirse (de ahí que funcionen las
+      {/* El visor recibe el foco al abrirse (de ahí que funcionen las
           flechas), pero no es un control: el anillo de foco rodearía todo el
-          modal sin aportar nada, así que se le quita con outline-none. Los
+          visor sin aportar nada, así que se le quita con outline-none. Los
           botones de dentro sí lo llevan.
 
           El fondo se queda en negro cálido y NO pasa al verde de la marca: un
           velo verde le cambia la percepción del color a la foto que hay encima,
           y aquí lo único que importa es cómo se ve la vela.
 
-          Altura fija (h-dvh, no max-h-dvh) y fondo sólido en el propio
-          <dialog>, no solo en su ::backdrop: en iOS Safari, con la barra de
-          direcciones cambiando de tamaño, el ::backdrop y el dvh del diálogo
-          a veces no miden lo mismo en el mismo instante, y por ese hueco se
-          veía la rejilla de fotos de detrás. Con el propio diálogo siempre a
-          pantalla completa y opaco, no hay hueco que pueda dejarla ver. */}
-      <dialog
-        ref={dialogo}
-        onKeyDown={(e) => {
-          if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            mover(1);
-          }
-          if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            mover(-1);
-          }
-          if (e.key === 'Escape') {
-            e.preventDefault();
-            cerrar();
-          }
-        }}
-        // Clic en el fondo oscuro (fuera del contenido) también cierra.
-        onClick={(e) => {
-          if (e.target === dialogo.current) cerrar();
-        }}
-        aria-label={`${nombreLinea}: piezas en grande`}
-        // El navegador trae, de serie, un max-height/max-width algo menor que
-        // el 100 % para el <dialog> abierto como modal (para que no toque los
-        // bordes de la pantalla). max-height siempre gana sobre height si no
-        // se sobreescribe, así que sin repetir aquí el mismo h-dvh como
-        // max-h-dvh, ese límite de fábrica ganaba y dejaba un hueco arriba y
-        // abajo por el que se veía la rejilla de fotos de detrás.
-        className="m-0 h-dvh max-h-dvh w-full max-w-full bg-ink p-0 text-cream outline-none backdrop:bg-ink sm:m-auto sm:max-w-5xl"
-      >
-        {pieza && (
-          <div className="flex max-h-dvh flex-col gap-4 overflow-y-auto p-4 sm:p-6">
+          position:fixed + inset-0, no <dialog>: ver el porqué en el comentario
+          de arriba del componente. z-50 para quedar por encima de la cabecera
+          (z-40) y de la barra fija de precio de la ficha en móvil (z-30). */}
+      {pieza && (
+        <div
+          ref={contenedor}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${nombreLinea}: piezas en grande`}
+          tabIndex={-1}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowRight') {
+              e.preventDefault();
+              mover(1);
+            }
+            if (e.key === 'ArrowLeft') {
+              e.preventDefault();
+              mover(-1);
+            }
+            if (e.key === 'Escape') {
+              e.preventDefault();
+              cerrar();
+            }
+          }}
+          // Clic en el fondo oscuro (fuera del contenido) también cierra.
+          onClick={(e) => {
+            if (e.target === contenedor.current) cerrar();
+          }}
+          className="fixed inset-0 z-50 bg-ink text-cream outline-none"
+        >
+          <div className="flex h-full flex-col gap-4 overflow-y-auto p-4 sm:p-6">
             <div className="flex items-center justify-between gap-4">
               <p className="font-mono text-sm tracking-wide text-ivory">
                 {pieza.ref}
@@ -296,8 +318,8 @@ export function GaleriaPiezas({
               </p>
             </div>
           </div>
-        )}
-      </dialog>
+        </div>
+      )}
     </>
   );
 }

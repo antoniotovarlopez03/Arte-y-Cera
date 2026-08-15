@@ -147,14 +147,6 @@
     body:has([data-barra-ficha]) .whatsapp-flotante {
       display: none;
     }
-
-    /* La misma barra fija (precio + WhatsApp) también se esconde mientras
-       hay un <dialog> abierto encima: el visor de fotos a pantalla completa
-       en iOS Safari deja ver la barra por debajo del todo, superpuesta a
-       los botones del propio visor y recortándolos. */
-    body:has(dialog[open]) [data-barra-ficha] {
-      display: none;
-    }
   }
 
   /* Rótulo en versalitas que abre casi todas las secciones («CATÁLOGO»,
