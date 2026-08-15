@@ -157,7 +157,14 @@ export function GaleriaPiezas({
 
           El fondo se queda en negro cálido y NO pasa al verde de la marca: un
           velo verde le cambia la percepción del color a la foto que hay encima,
-          y aquí lo único que importa es cómo se ve la vela. */}
+          y aquí lo único que importa es cómo se ve la vela.
+
+          Altura fija (h-dvh, no max-h-dvh) y fondo sólido en el propio
+          <dialog>, no solo en su ::backdrop: en iOS Safari, con la barra de
+          direcciones cambiando de tamaño, el ::backdrop y el dvh del diálogo
+          a veces no miden lo mismo en el mismo instante, y por ese hueco se
+          veía la rejilla de fotos de detrás. Con el propio diálogo siempre a
+          pantalla completa y opaco, no hay hueco que pueda dejarla ver. */}
       <dialog
         ref={dialogo}
         onKeyDown={(e) => {
@@ -179,7 +186,13 @@ export function GaleriaPiezas({
           if (e.target === dialogo.current) cerrar();
         }}
         aria-label={`${nombreLinea}: piezas en grande`}
-        className="m-auto max-h-dvh w-full max-w-5xl bg-transparent p-0 text-cream outline-none backdrop:bg-ink/92"
+        // El navegador trae, de serie, un max-height/max-width algo menor que
+        // el 100 % para el <dialog> abierto como modal (para que no toque los
+        // bordes de la pantalla). max-height siempre gana sobre height si no
+        // se sobreescribe, así que sin repetir aquí el mismo h-dvh como
+        // max-h-dvh, ese límite de fábrica ganaba y dejaba un hueco arriba y
+        // abajo por el que se veía la rejilla de fotos de detrás.
+        className="m-0 h-dvh max-h-dvh w-full max-w-full bg-ink p-0 text-cream outline-none backdrop:bg-ink sm:m-auto sm:max-w-5xl"
       >
         {pieza && (
           <div className="flex max-h-dvh flex-col gap-4 overflow-y-auto p-4 sm:p-6">
