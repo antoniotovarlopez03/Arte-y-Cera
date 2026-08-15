@@ -215,107 +215,116 @@ export function GaleriaPiezas({
           onClick={(e) => {
             if (e.target === contenedor.current) cerrar();
           }}
-          className="fixed inset-0 z-50 bg-ink text-cream outline-none"
+          className="fixed inset-0 z-50 flex flex-col bg-ink text-cream outline-none"
         >
-          <div className="flex h-full flex-col gap-4 overflow-y-auto p-4 sm:p-6">
-            <div className="flex items-center justify-between gap-4">
-              <p className="font-mono text-sm tracking-wide text-ivory">
-                {pieza.ref}
-                <span className="ml-3 font-sans text-cream/60">
-                  · {pieza.lineaNombre} · {indice! + 1} de {piezas.length}
-                </span>
-              </p>
-              <button
-                type="button"
-                onClick={cerrar}
-                aria-label="Cerrar"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/30 text-cream hover:bg-cream/10"
+          <div className="flex shrink-0 items-center justify-between gap-4 p-4 sm:p-6">
+            <p className="font-mono text-sm tracking-wide text-ivory">
+              {pieza.ref}
+              <span className="ml-3 font-sans text-cream/60">
+                · {pieza.lineaNombre} · {indice! + 1} de {piezas.length}
+              </span>
+            </p>
+            <button
+              type="button"
+              onClick={cerrar}
+              aria-label="Cerrar"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cream/30 text-cream hover:bg-cream/10"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                aria-hidden="true"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.7"
-                  aria-hidden="true"
-                >
-                  <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-                </svg>
-              </button>
-            </div>
+                <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
 
-            <div className="flex items-center justify-center gap-2 sm:gap-4">
-              <FlechaGaleria direccion="anterior" onClick={() => mover(-1)} />
-              <Image
-                src={pieza.src}
-                alt={pieza.alt}
-                width={pieza.ancho}
-                height={pieza.alto}
-                sizes="(max-width: 640px) 84vw, 1100px"
-                quality={90}
-                priority
-                style={{ maxWidth: `${anchoMaximo}px` }}
-                className="h-auto max-h-[50dvh] w-full rounded-lg object-contain shadow-alzada sm:max-h-[78dvh]"
-              />
-              <FlechaGaleria direccion="siguiente" onClick={() => mover(1)} />
-            </div>
-
-            <div className="flex flex-col items-center gap-2">
-              <div className="flex flex-wrap justify-center gap-3">
-                <a
-                  href={whatsappUrl(
-                    `Hola, me interesa la pieza ${pieza.ref} (${pieza.lineaNombre}) que he visto en la web.`,
-                  )}
-                  target="_blank"
-                  rel="noopener"
-                  className={clasesBoton('whatsapp')}
-                >
-                  <IconoWhatsapp className="h-4 w-4" />
-                  Preguntar por la {pieza.ref}
-                </a>
-                {/* Mismo destino que "Un atajo" antes de quitarlo: la página de
-                    contacto lee ?pieza= y deja esta foto ya elegida en el
-                    selector, sin que quien pregunta tenga que volver a decir
-                    cuál es. */}
-                <Link
-                  href={{ pathname: '/contacto', query: { pieza: pieza.ref } }}
-                  className={clasesBoton('secundario')}
-                >
-                  <IconoSobre className="h-4 w-4" />
-                  Pedir por correo
-                </Link>
-                {/* No cierra el visor: para pedir varias piezas hace falta poder
-                    seguir mirando fotos después de añadir esta, como en una
-                    tienda. Al llegar al formulario de contacto, la cesta entera
-                    aparece ya elegida (ver lib/cesta.ts). */}
-                <button
-                  type="button"
-                  onClick={() =>
-                    refsCesta.includes(pieza.ref)
-                      ? quitarDeCesta(pieza.ref)
-                      : añadirACesta(pieza.ref)
-                  }
-                  className={clasesBoton(
-                    refsCesta.includes(pieza.ref) ? 'primario' : 'secundario',
-                  )}
-                >
-                  <IconoCesta className="h-4 w-4" />
-                  {refsCesta.includes(pieza.ref) ? 'En tu cesta ✓' : 'Añadir a la cesta'}
-                </button>
+          {/* Esta franja es la que puede no caber entera (foto grande + tres
+              botones + nota, en un móvil bajo): por eso es ella, y no todo el
+              visor, la que hace scroll. min-h-full en el envoltorio de dentro
+              es lo que la centra cuando sí cabe entera SIN dejar de poder
+              hacer scroll cuando no cabe — con max-height o con
+              justify-center puesto aquí mismo, lo que sobra por arriba deja de
+              alcanzarse con el dedo. */}
+          <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 sm:px-6 sm:pb-6">
+            <div className="mx-auto flex min-h-full w-full flex-col justify-center gap-4">
+              <div className="flex items-center justify-center gap-2 sm:gap-4">
+                <FlechaGaleria direccion="anterior" onClick={() => mover(-1)} />
+                <Image
+                  src={pieza.src}
+                  alt={pieza.alt}
+                  width={pieza.ancho}
+                  height={pieza.alto}
+                  sizes="(max-width: 640px) 84vw, 1100px"
+                  quality={90}
+                  priority
+                  style={{ maxWidth: `${anchoMaximo}px` }}
+                  className="h-auto max-h-[45dvh] w-full rounded-lg object-contain shadow-alzada sm:max-h-[70dvh]"
+                />
+                <FlechaGaleria direccion="siguiente" onClick={() => mover(1)} />
               </div>
-              <p className="text-center text-xs text-cream/60">
-                {refsCesta.length > 0
-                  ? `${refsCesta.length} ${refsCesta.length === 1 ? 'pieza' : 'piezas'} en tu cesta. Sigue mirando o `
-                  : 'Cada pieza se pinta por encargo: esta foto es el punto de partida, no un artículo en stock. '}
-                {refsCesta.length > 0 && (
-                  <Link
-                    href="/contacto"
-                    className="underline decoration-cream/40 underline-offset-4"
+
+              <div className="flex flex-col items-center gap-2">
+                <div className="flex flex-wrap justify-center gap-3">
+                  <a
+                    href={whatsappUrl(
+                      `Hola, me interesa la pieza ${pieza.ref} (${pieza.lineaNombre}) que he visto en la web.`,
+                    )}
+                    target="_blank"
+                    rel="noopener"
+                    className={clasesBoton('whatsapp')}
                   >
-                    ve al formulario
+                    <IconoWhatsapp className="h-4 w-4" />
+                    Preguntar por la {pieza.ref}
+                  </a>
+                  {/* Mismo destino que "Un atajo" antes de quitarlo: la página de
+                      contacto lee ?pieza= y deja esta foto ya elegida en el
+                      selector, sin que quien pregunta tenga que volver a decir
+                      cuál es. */}
+                  <Link
+                    href={{ pathname: '/contacto', query: { pieza: pieza.ref } }}
+                    className={clasesBoton('secundario')}
+                  >
+                    <IconoSobre className="h-4 w-4" />
+                    Pedir por correo
                   </Link>
-                )}
-              </p>
+                  {/* No cierra el visor: para pedir varias piezas hace falta poder
+                      seguir mirando fotos después de añadir esta, como en una
+                      tienda. Al llegar al formulario de contacto, la cesta entera
+                      aparece ya elegida (ver lib/cesta.ts). */}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      refsCesta.includes(pieza.ref)
+                        ? quitarDeCesta(pieza.ref)
+                        : añadirACesta(pieza.ref)
+                    }
+                    className={clasesBoton(
+                      refsCesta.includes(pieza.ref) ? 'primario' : 'secundario',
+                    )}
+                  >
+                    <IconoCesta className="h-4 w-4" />
+                    {refsCesta.includes(pieza.ref) ? 'En tu cesta ✓' : 'Añadir a la cesta'}
+                  </button>
+                </div>
+                <p className="text-center text-xs text-cream/60">
+                  {refsCesta.length > 0
+                    ? `${refsCesta.length} ${refsCesta.length === 1 ? 'pieza' : 'piezas'} en tu cesta. Sigue mirando o `
+                    : 'Cada pieza se pinta por encargo: esta foto es el punto de partida, no un artículo en stock. '}
+                  {refsCesta.length > 0 && (
+                    <Link
+                      href="/contacto"
+                      className="underline decoration-cream/40 underline-offset-4"
+                    >
+                      ve al formulario
+                    </Link>
+                  )}
+                </p>
+              </div>
             </div>
           </div>
         </div>
