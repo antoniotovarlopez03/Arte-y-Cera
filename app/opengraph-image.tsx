@@ -15,13 +15,10 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function Imagen() {
-  const foto = await readFile(
-    path.join(
-      process.cwd(),
-      'public/images/colecciones/toallas-bautizo-vela/toallas-bautizo-vela-03.jpeg',
-    ),
+  const logo = await readFile(
+    path.join(process.cwd(), 'public/images/logo/logo-portada.png'),
   );
-  const fotoBase64 = `data:image/jpeg;base64,${foto.toString('base64')}`;
+  const logoBase64 = `data:image/png;base64,${logo.toString('base64')}`;
 
   return new ImageResponse(
     <div
@@ -64,15 +61,24 @@ export default async function Imagen() {
         </div>
       </div>
 
-      {/* No es una etiqueta de la web: la renderiza Satori para componer el
-          PNG, así que next/image no tiene sentido aquí. */}
-      <img
-        src={fotoBase64}
-        alt=""
-        width={504}
-        height={630}
-        style={{ width: '42%', height: '100%', objectFit: 'cover' }}
-      />
+      {/* El logo, no una foto de producto: es lo que pidió Antonio para la
+          previsualización del enlace. Centrado sobre el mismo verde oscuro
+          de marca, no sobre su propio fondo negro, para que no desentone con
+          el crema de la izquierda. */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '42%',
+          height: '100%',
+          backgroundColor: '#0e332d',
+        }}
+      >
+        {/* No es una etiqueta de la web: la renderiza Satori para componer el
+            PNG, así que next/image no tiene sentido aquí. */}
+        <img src={logoBase64} alt="" width={400} height={400} style={{ width: 320, height: 320 }} />
+      </div>
     </div>,
     size,
   );
