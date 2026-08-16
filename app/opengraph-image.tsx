@@ -77,7 +77,7 @@ export default async function Imagen() {
       >
         {/* No es una etiqueta de la web: la renderiza Satori para componer el
             PNG, así que next/image no tiene sentido aquí. */}
-        <img src={logoBase64} alt="" width={400} height={400} style={{ width: 320, height: 320 }} />
+        <img src={logoBase64} alt="" width={600} height={600} style={{ width: 460, height: 460 }} />
       </div>
     </div>,
     size,
