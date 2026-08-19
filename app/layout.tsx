@@ -75,6 +75,9 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true },
+  // Para dar de alta la web en Google Search Console y poder pedirle que
+  // vuelva a rastrear una página (por ejemplo, tras cambiar el og:image).
+  verification: { google: '8XYoAdzU6fv9fSbyWmbABYInevwn7-TuW3MwSWaTwSM' },
 };
 
 export const viewport: Viewport = {
