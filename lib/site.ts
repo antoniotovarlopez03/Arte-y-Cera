@@ -8,7 +8,13 @@ export const site = {
   titulo: 'Arte y Cera · Velas pintadas a mano',
   descripcion:
     'Velas artesanales pintadas a mano: cirios pascuales, velas de bautizo, velas de mesa para bodas y toallas bordadas. Cada pieza, única y hecha por encargo.',
-  url: 'https://arteycera.es',
+  // www, no el dominio pelado: arteycera.es (sin www) redirige (308) a este,
+  // y esa URL es la base de la que salen el canonical, el og:image y demás
+  // metadatos. Un rastreador que no siga esa redirección para la imagen (a
+  // varios no les hace demasiada gracia) se queda sin previsualización —
+  // justo lo que le pasaba a WhatsApp con este enlace y no con el de Vercel,
+  // que no tiene ese salto de por medio.
+  url: 'https://www.arteycera.es',
 
   email: 'contacto@arteycera.es',
 
