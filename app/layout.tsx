@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { EB_Garamond, Jost } from 'next/font/google';
 import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
@@ -100,6 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <SiteFooter />
         <BotonWhatsapp />
+        <Analytics />
       </body>
     </html>
   );

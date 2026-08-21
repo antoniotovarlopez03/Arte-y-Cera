@@ -21,6 +21,7 @@
     "media:auditar": "node scripts/auditar-media.mjs"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "next": "16.2.12",
     "react": "19.2.8",
     "react-dom": "19.2.8",
@@ -29,8 +30,8 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",
-    "@playwright/test": "1.62.0",
     "@eslint/eslintrc": "3.3.6",
+    "@playwright/test": "1.62.0",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "24.13.3",
     "@types/react": "19.2.17",
