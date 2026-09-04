@@ -29,6 +29,9 @@ export const site = {
 
   zona: 'Envíos a toda España',
   tiempoRespuesta: 'Respuesta en menos de 48 h',
+
+  /** Enlace directo al formulario de reseña de Google (Perfil de Empresa). */
+  enlaceResena: 'https://g.page/r/CYxcpND7i-NAEBM/review',
 } as const;
 
 /**

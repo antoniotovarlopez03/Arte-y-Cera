@@ -85,6 +85,19 @@ export function SiteFooter() {
                 {site.instagram.usuario}
               </a>
             </li>
+            <li>
+              <a
+                href={site.enlaceResena}
+                className="inline-flex items-center gap-2 text-dorado/80 hover:text-cream"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
+                  <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6-5.9-3.3-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+                </svg>
+                Danos tu opinión en Google
+              </a>
+            </li>
           </ul>
         </div>
       </div>
