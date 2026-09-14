@@ -3,18 +3,15 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
-  // Las fotos de producto viven en public/ y son de origen propio: no hace
-  // falta remotePatterns. Se limitan los tamaños generados a los que la web
-  // usa de verdad (ver la prop `sizes` de cada componente) para no producir
-  // decenas de variantes que nadie pide.
+  // La optimización de imágenes de Vercel (el paso que redimensiona cada
+  // foto al vuelo) tiene una cuota gratuita mensual, y con 166 piezas por
+  // varios tamaños de pantalla se agota antes de fin de mes: cuando se
+  // agota, Vercel devuelve 402 y las fotos dejan de cargar en toda la web.
+  // Las fotos ya vienen redimensionadas y comprimidas a un tamaño razonable
+  // desde `recuperar-originales.mjs` (máximo 1600 px, WebP), así que no hace
+  // falta que Vercel las procese otra vez: se sirven tal cual.
   images: {
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [360, 480, 640, 828, 1080, 1280, 1920],
-    imageSizes: [160, 224, 300, 384],
-    // Next 16 exige declarar las calidades que se pueden pedir. Las fotos de
-    // producto son pequeñas (300 px la mayoría) y se ven mejor con 90 que con
-    // el 75 por defecto; el peso extra es de unos pocos KB.
-    qualities: [75, 90],
+    unoptimized: true,
   },
 
   // Cabeceras de seguridad básicas. La web no usa scripts de terceros ni
