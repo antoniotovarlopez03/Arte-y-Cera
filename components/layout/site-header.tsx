@@ -7,6 +7,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { IconoCesta } from '@/components/iconos';
 import { useCesta } from '@/lib/cesta';
 import type { PiezaPlana } from '@/lib/catalogo';
+import { site } from '@/lib/site';
 
 const FORMATO_EUROS = new Intl.NumberFormat('es-ES', {
   style: 'currency',
@@ -263,6 +264,18 @@ export function SiteHeader({
               El taller
             </Link>
 
+            <a
+              href={site.enlaceResena}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-1.5 rounded-full border border-dorado/30 px-4 py-2 text-sm font-medium text-dorado/80 transition-colors hover:border-blanco hover:text-blanco"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-current">
+                <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6-5.9-3.3-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+              </svg>
+              Déjanos tu reseña
+            </a>
+
             {/* «Escríbenos» y no «Pedir presupuesto»: para un cirio de 260 € vale,
               pero para una vela de bautizo de 20 € suena a obra, y es justo la
               que más se vende. Además es lo que dice él: «no dudes en
@@ -431,6 +444,18 @@ export function SiteHeader({
           >
             Escríbenos
           </Link>
+          <a
+            href={site.enlaceResena}
+            target="_blank"
+            rel="noopener"
+            onClick={() => setMovilAbierto(false)}
+            className="mt-3 flex items-center justify-center gap-1.5 rounded-full border border-dorado/30 px-5 py-3 text-center text-sm font-medium text-dorado/80"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-3.5 w-3.5 fill-current">
+              <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6-5.9-3.3-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+            </svg>
+            Déjanos tu reseña
+          </a>
         </nav>
       )}
     </header>
