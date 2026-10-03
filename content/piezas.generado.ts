@@ -69,6 +69,9 @@ export const PIEZAS: Record<string, PiezaGenerada[]> = {
     { ref: 'BZ-D-22', src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-22.webp', ancho: 1200, alto: 1200 },
     { ref: 'BZ-D-23', src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-23.webp', ancho: 1200, alto: 900 },
     { ref: 'BZ-D-24', src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-24.webp', ancho: 1600, alto: 1600 },
+    { ref: 'BZ-D-25', src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-25.webp', ancho: 1600, alto: 1600 },
+    { ref: 'BZ-D-26', src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-26.webp', ancho: 1600, alto: 1600 },
+    { ref: 'BZ-D-27', src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-27.webp', ancho: 1600, alto: 1600 },
   ],
   'lazos-basicos': [
     { ref: 'BZ-B-01', src: '/images/colecciones/lazos-basicos/lazos-basicos-01.webp', ancho: 1600, alto: 1200 },
@@ -107,7 +110,7 @@ export const PIEZAS: Record<string, PiezaGenerada[]> = {
     { ref: 'BZ-E-15', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-15.webp', ancho: 1024, alto: 768 },
     { ref: 'BZ-E-16', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-16.webp', ancho: 1024, alto: 1024 },
     { ref: 'BZ-E-17', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-17.webp', ancho: 300, alto: 300 },
-    { ref: 'BZ-E-18', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-18.webp', ancho: 1200, alto: 1200 },
+    { ref: 'BZ-E-18', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-18.webp', ancho: 1600, alto: 1600 },
     { ref: 'BZ-E-19', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-19.webp', ancho: 1200, alto: 1200 },
     { ref: 'BZ-E-20', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-20.webp', ancho: 1600, alto: 1200 },
     { ref: 'BZ-E-21', src: '/images/colecciones/lazos-elaborados/lazos-elaborados-21.webp', ancho: 1200, alto: 1600 },
