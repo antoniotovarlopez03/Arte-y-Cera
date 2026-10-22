@@ -14,8 +14,8 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
 
-  // Cabeceras de seguridad básicas. La web no usa scripts de terceros ni
-  // analítica, así que la CSP puede ser estricta de verdad.
+  // Cabeceras de seguridad básicas. El único script de terceros es Microsoft
+  // Clarity, y solo se carga si el visitante acepta las cookies.
   async headers() {
     return [
       {

@@ -5,6 +5,7 @@ import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { BotonWhatsapp } from '@/components/layout/boton-whatsapp';
+import { AvisoCookies } from '@/components/layout/aviso-cookies';
 import { categorias, formatearPrecio, precioMinimo, todasLasPiezas } from '@/lib/catalogo';
 import { site } from '@/lib/site';
 
@@ -101,6 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <SiteFooter />
         <BotonWhatsapp />
+        <AvisoCookies />
         <Analytics />
       </body>
     </html>

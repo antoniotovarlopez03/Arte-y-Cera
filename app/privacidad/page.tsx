@@ -39,8 +39,9 @@ export default function PaginaPrivacidad() {
           para una única cosa: responderte y preparar el presupuesto de tu encargo.
         </p>
         <p>
-          No hay analítica, ni píxeles de redes sociales, ni perfilado, ni cesión de datos a nadie
-          con fines publicitarios. Tampoco se envían boletines: si no nos escribes, no te
+          No hay píxeles de redes sociales, ni perfilado, ni cesión de datos a nadie con fines
+          publicitarios. La única analítica con cookies, Microsoft Clarity, solo se activa si la
+          aceptas en el aviso de cookies. Tampoco se envían boletines: si no nos escribes, no te
           escribimos.
         </p>
       </section>
@@ -85,8 +86,9 @@ export default function PaginaPrivacidad() {
       <section>
         <h2>Cookies</h2>
         <p>
-          Esta web no usa cookies ni ninguna otra tecnología de seguimiento. Lo contamos con más
-          detalle en <Link href="/cookies">la página de cookies</Link>.
+          Esta web solo usa cookies de analítica (Microsoft Clarity) si das tu permiso en el aviso
+          de cookies. Lo contamos con más detalle en <Link href="/cookies">la página de cookies</Link>
+          , donde también puedes cambiar tu elección.
         </p>
       </section>
     </PaginaTexto>

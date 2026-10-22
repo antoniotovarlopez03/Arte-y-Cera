@@ -28,4 +28,4 @@ export function faltanDatosDelTitular(): boolean {
 }
 
 /** Fecha de la última revisión de los textos legales. */
-export const ULTIMA_REVISION = '29 de julio de 2026';
+export const ULTIMA_REVISION = '22 de octubre de 2026';
