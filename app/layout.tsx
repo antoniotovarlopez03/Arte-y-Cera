@@ -6,6 +6,7 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { BotonWhatsapp } from '@/components/layout/boton-whatsapp';
 import { AvisoCookies } from '@/components/layout/aviso-cookies';
+import { BarraEnvios } from '@/components/layout/barra-envios';
 import { categorias, formatearPrecio, precioMinimo, todasLasPiezas } from '@/lib/catalogo';
 import { site } from '@/lib/site';
 
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Saltar al contenido
         </a>
+        <BarraEnvios />
         <SiteHeader colecciones={COLECCIONES_MENU} piezas={PIEZAS_CESTA} />
         <main id="contenido" className="flex-1">
           {children}

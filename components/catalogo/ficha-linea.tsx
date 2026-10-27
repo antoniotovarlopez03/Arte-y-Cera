@@ -3,8 +3,9 @@ import Link from 'next/link';
 import { GaleriaPiezas } from '@/components/catalogo/galeria-piezas';
 import { EscalaDePiezas } from '@/components/catalogo/escala';
 import { Precio } from '@/components/catalogo/precio';
+import { SobreColeccion } from '@/components/catalogo/sobre-coleccion';
 import { TarjetaLinea } from '@/components/catalogo/tarjeta-linea';
-import { IconoFlecha, IconoWhatsapp } from '@/components/iconos';
+import { IconoEnvio, IconoFlecha, IconoWhatsapp } from '@/components/iconos';
 import { Migas } from '@/components/ui/migas';
 import type { Categoria, Linea, Pieza } from '@/lib/catalogo/esquemas';
 import { site, whatsappUrl } from '@/lib/site';
@@ -130,6 +131,13 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                     si llegamos.
                   </dd>
                 </div>
+                <div>
+                  <dt className="text-dorado/60">Envío</dt>
+                  <dd className="flex items-start gap-2 text-dorado">
+                    <IconoEnvio className="mt-0.5 h-4 w-4 shrink-0 text-blanco" />A cualquier punto
+                    de España, desde nuestro taller de {site.taller.ciudad}.
+                  </dd>
+                </div>
               </dl>
 
               <div className="mt-7 flex flex-col gap-3">
@@ -192,6 +200,12 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
             </div>
           </section>
         )}
+
+        {/* Solo en las colecciones de una línea, donde esta ficha ES la página
+            de la colección. En las fichas de un acabado (bautizo/básicas…) el
+            texto ya está en la página de la colección y repetirlo cuatro veces
+            sería contenido duplicado. */}
+        {categoria.esFicha && <SobreColeccion categoria={categoria} />}
 
         {categoria.esFicha && (
           <p className="mt-16 text-sm">

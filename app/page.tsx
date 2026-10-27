@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { PreguntasFrecuentes } from '@/components/catalogo/preguntas-frecuentes';
 import { TarjetaCategoria } from '@/components/catalogo/tarjeta-categoria';
 import { CarruselFundido } from '@/components/inicio/carrusel-fundido';
 import { CarruselPortada } from '@/components/inicio/carrusel-portada';
 import { DatosEstructurados } from '@/components/datos-estructurados';
-import { IconoFlecha, IconoWhatsapp } from '@/components/iconos';
+import { IconoEnvio, IconoFlecha, IconoWhatsapp } from '@/components/iconos';
+import { PREGUNTAS_GENERALES } from '@/content/preguntas';
 import { categorias, muestraDelCatalogo, piezaPorRef } from '@/lib/catalogo';
-import { jsonLdNegocio } from '@/lib/seo';
+import { jsonLdNegocio, jsonLdPreguntas } from '@/lib/seo';
 import { site, whatsappUrl } from '@/lib/site';
 import { clasesBoton } from '@/lib/ui';
 
@@ -49,7 +51,8 @@ const PASOS = [
   },
   {
     titulo: 'Te llega a casa',
-    texto: 'Se embala con cuidado y se envía a cualquier punto de España.',
+    texto:
+      'Se embala con cuidado y se envía desde nuestro taller de Granada a cualquier punto de España.',
   },
 ];
 
@@ -86,6 +89,7 @@ export default function PaginaInicio() {
   return (
     <>
       <DatosEstructurados datos={jsonLdNegocio()} />
+      <DatosEstructurados datos={jsonLdPreguntas(PREGUNTAS_GENERALES)} />
 
       {/* ===== Portada =====
           El panel va en verde profundo y la foto ocupa más de la mitad: sobre
@@ -97,7 +101,7 @@ export default function PaginaInicio() {
         <div className="lg:grid lg:grid-cols-[0.86fr_1.14fr] lg:items-stretch">
           <div className={`px-5 py-16 lg:py-28 lg:pr-14 ${SANGRADO}`}>
             <p className="text-xs tracking-[0.14em] text-dorado/80 uppercase">
-              Hecho a mano · Pieza única
+              Hecho a mano en {site.taller.ciudad} · Pieza única
             </p>
 
             {/* Titular y entradilla son suyos, del WordPress que se hizo él mismo.
@@ -121,8 +125,15 @@ export default function PaginaInicio() {
               </Link>
             </div>
 
-            <p className="mt-7 text-sm text-dorado/60">
-              {site.zona} · {site.tiempoRespuesta}
+            {/* Antes era una línea gris al 60 % que casi no se veía. El envío a
+                toda España es lo que necesita saber quien llega de fuera de
+                Granada, así que va en claro y con su icono. */}
+            <p className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+              <span className="inline-flex items-center gap-2 font-medium text-blanco">
+                <IconoEnvio className="h-5 w-5" />
+                {site.zona}
+              </span>
+              <span className="text-dorado/70">{site.tiempoRespuesta}</span>
             </p>
           </div>
 
@@ -259,6 +270,28 @@ export default function PaginaInicio() {
           </div>
 
           <CarruselFundido piezas={fotosTaller} className="rounded-pieza shadow-pieza" />
+        </div>
+      </section>
+
+      {/* ===== Preguntas frecuentes =====
+          Las dudas que se repiten por WhatsApp antes de encargar, empezando por
+          el envío. Van en la portada porque es la página que Google ya enseña. */}
+      <section className="bg-verde-profundo text-dorado" aria-labelledby="titulo-preguntas">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16 lg:py-28">
+          <div>
+            <p className="text-xs tracking-[0.14em] text-dorado/80 uppercase">Antes de encargar</p>
+            <h2
+              id="titulo-preguntas"
+              className="mt-3 font-display text-4xl font-semibold text-blanco sm:text-5xl"
+            >
+              Preguntas frecuentes
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-dorado/80">
+              Pintamos en {site.taller.ciudad} y enviamos a toda España. Si tu duda no está aquí,
+              escríbenos y te contestamos.
+            </p>
+          </div>
+          <PreguntasFrecuentes preguntas={PREGUNTAS_GENERALES} />
         </div>
       </section>
 

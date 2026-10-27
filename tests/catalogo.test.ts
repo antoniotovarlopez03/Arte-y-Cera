@@ -10,10 +10,10 @@ import { categorias, formatearPrecio, lineas, precioMinimo } from '@/lib/catalog
 const RAIZ = path.resolve(import.meta.dirname, '..');
 
 describe('catálogo', () => {
-  it('tiene las seis colecciones, sus once líneas y las 166 piezas', () => {
+  it('tiene las seis colecciones, sus once líneas y las 169 piezas', () => {
     expect(categorias).toHaveLength(6);
     expect(lineas).toHaveLength(11);
-    expect(lineas.flatMap((l) => l.piezas)).toHaveLength(166);
+    expect(lineas.flatMap((l) => l.piezas)).toHaveLength(169);
   });
 
   /* NO hay aquí un test que detecte fotos generadas con IA, y es a propósito.

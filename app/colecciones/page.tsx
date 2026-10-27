@@ -8,7 +8,7 @@ import { ETIQUETAS_OCASION } from '@/lib/catalogo/esquemas';
 export const metadata: Metadata = {
   title: 'Colecciones',
   description:
-    'Todas las colecciones de Arte y Cera: cirios pascuales, velas de bautizo, velas de mesa y boda, velas de Navidad y toallas bordadas. Con los precios a la vista.',
+    'Todas las colecciones de Arte y Cera: cirios pascuales, velas de bautizo, velas de mesa y boda, velas de Navidad y toallas bordadas, con los precios a la vista. Pintadas a mano en Granada y con envíos a toda España.',
   alternates: { canonical: '/colecciones' },
 };
 

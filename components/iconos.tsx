@@ -61,6 +61,23 @@ export function IconoFlecha({ className }: Props) {
   );
 }
 
+export function IconoEnvio({ className }: Props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      aria-hidden="true"
+    >
+      <path d="M3 6.5h11v9H3zM14 9.5h3.6l3.4 3.4v2.6h-7" strokeLinejoin="round" />
+      <circle cx="7" cy="17.5" r="1.8" />
+      <circle cx="17.5" cy="17.5" r="1.8" />
+    </svg>
+  );
+}
+
 export function IconoCesta({ className }: Props) {
   return (
     <svg

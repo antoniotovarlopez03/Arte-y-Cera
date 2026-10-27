@@ -8,7 +8,7 @@ import { clasesBoton } from '@/lib/ui';
 export const metadata: Metadata = {
   title: 'El taller',
   description:
-    'Cómo trabajamos en Arte y Cera: ocho etapas desde la primera conversación hasta la pieza acabada, todas a mano.',
+    'Cómo trabajamos en nuestro taller de Granada: ocho etapas desde la primera conversación hasta la pieza acabada, todas a mano. Envíos a toda España.',
   alternates: { canonical: '/taller' },
 };
 

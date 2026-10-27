@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { FichaLinea } from '@/components/catalogo/ficha-linea';
 import { GaleriaPiezas } from '@/components/catalogo/galeria-piezas';
 import { ComparadorAcabados } from '@/components/catalogo/comparador-acabados';
+import { SobreColeccion } from '@/components/catalogo/sobre-coleccion';
 import { Migas } from '@/components/ui/migas';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { categorias, getCategoria, precioMinimo } from '@/lib/catalogo';
@@ -111,6 +112,8 @@ export default async function PaginaCategoria({ params }: Props) {
             <GaleriaPiezas piezas={todasLasPiezas} nombreLinea={categoria.nombre} />
           </div>
         </section>
+
+        <SobreColeccion categoria={categoria} />
       </div>
     </>
   );

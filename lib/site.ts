@@ -5,9 +5,9 @@
  */
 export const site = {
   nombre: 'Arte y Cera',
-  titulo: 'Arte y Cera · Velas pintadas a mano',
+  titulo: 'Arte y Cera · Velas pintadas a mano con envío a toda España',
   descripcion:
-    'Velas artesanales pintadas a mano: cirios pascuales, velas de bautizo, velas de mesa para bodas y toallas bordadas. Cada pieza, única y hecha por encargo.',
+    'Velas pintadas a mano en Granada: velas de bautizo personalizadas, cirios pascuales, velas de boda y toallas bordadas. Hechas por encargo y con envíos a toda España.',
   // www, no el dominio pelado: arteycera.es (sin www) redirige (308) a este,
   // y esa URL es la base de la que salen el canonical, el og:image y demás
   // metadatos. Un rastreador que no siga esa redirección para la imagen (a
@@ -28,6 +28,12 @@ export const site = {
   },
 
   zona: 'Envíos a toda España',
+
+  /** Dónde se pinta. Sale en la franja superior, en los textos de las
+   *  colecciones y en los datos estructurados, para que Google sepa que es
+   *  un taller de Granada que envía a todo el país. Sin calle a propósito:
+   *  no se atiende al público. */
+  taller: { ciudad: 'Granada', region: 'Andalucía', pais: 'ES' },
   tiempoRespuesta: 'Respuesta en menos de 48 h',
 
   /** Enlace directo al formulario de reseña de Google (Perfil de Empresa). */

@@ -4,6 +4,7 @@ import { FichaLinea } from '@/components/catalogo/ficha-linea';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { categorias, getCategoria, getLinea } from '@/lib/catalogo';
 import { jsonLdFicha } from '@/lib/seo';
+import { site } from '@/lib/site';
 
 type Props = { params: Promise<{ categoria: string; linea: string }> };
 
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const titulo = `${linea.nombre} · ${categoria.nombre}`;
   const descripcion = `${linea.resumen} ${linea.piezas.length} piezas pintadas a mano desde ${Math.min(
     ...linea.precios.map((p) => p.importe),
-  )} €.`;
+  )} €. ${site.zona}.`;
 
   return {
     title: titulo,

@@ -71,6 +71,18 @@ export const CategoriaFuenteSchema = z.object({
   descripcion: z.string().min(1),
   /** Title y description para Google. */
   seo: z.object({ titulo: z.string().min(1), descripcion: z.string().min(1) }),
+  /**
+   * Texto largo de la colección, un párrafo por elemento. Va al pie de la
+   * página, después de las fotos: quien compra ya ha visto lo que quería
+   * arriba, y a Google le da algo que leer más allá de un titular y una
+   * galería, que es lo que tenían estas páginas y por lo que solo
+   * posicionaba la portada.
+   */
+  texto: z.array(z.string().min(1)).default([]),
+  /** Preguntas frecuentes propias de la colección. La del envío se añade sola. */
+  preguntas: z
+    .array(z.object({ pregunta: z.string().min(1), respuesta: z.string().min(1) }))
+    .default([]),
   lineas: z.array(LineaFuenteSchema).min(1),
   /**
    * Portada de la categoría, si tiene que ser una pieza distinta de la
