@@ -6,9 +6,9 @@ import { site } from '@/lib/site';
    Salen en la portada y, la del envío, también al pie de cada colección.
    Las de cada colección están en content/catalogo.ts, junto a su texto.
 
-   Ni el coste del envío ni el plazo de entrega llevan cifra: dependen de
-   cada encargo y el taller no los tiene fijados. Cuando los haya, se
-   cambian aquí y aparecen en toda la web.
+   El coste del envío no lleva cifra: depende de cada encargo y el taller no
+   lo tiene fijado. El plazo sí: 24 horas las velas de Navidad y 48 horas el
+   resto (lo dice el taller; cada colección lo repite en su campo `plazo`).
    ============================================================ */
 
 export type Pregunta = { pregunta: string; respuesta: string };
@@ -28,7 +28,7 @@ export const PREGUNTAS_GENERALES: Pregunta[] = [
   {
     pregunta: '¿Con cuánto tiempo tengo que encargarla?',
     respuesta:
-      'Cada vela se pinta por encargo, así que cuanto antes, mejor. Escríbenos con la fecha de tu celebración y te confirmamos si llegamos. Para Navidad y para la Vigilia Pascual conviene pedir con más margen.',
+      'Las velas de Navidad las tienes en 24 horas, y el resto de piezas en 48 horas. Cada una se pinta por encargo: escríbenos con la fecha de tu celebración y te la preparamos.',
   },
   {
     pregunta: '¿Puedo personalizar la vela?',

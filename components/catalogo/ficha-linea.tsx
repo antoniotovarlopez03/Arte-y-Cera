@@ -127,8 +127,8 @@ export function FichaLinea({ linea, categoria }: { linea: Linea; categoria: Cate
                 <div>
                   <dt className="text-dorado/60">Plazo</dt>
                   <dd className="text-dorado">
-                    Se pinta por encargo. Escríbenos con la fecha de tu celebración y te confirmamos
-                    si llegamos.
+                    {categoria.plazo} Se hace por encargo: escríbenos con la fecha de tu
+                    celebración.
                   </dd>
                 </div>
                 <div>

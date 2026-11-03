@@ -24,10 +24,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const linea = getLinea(slugCategoria, slugLinea);
   if (!categoria || !linea) return {};
 
-  const titulo = `${linea.nombre} · ${categoria.nombre}`;
-  const descripcion = `${linea.resumen} ${linea.piezas.length} piezas pintadas a mano desde ${Math.min(
-    ...linea.precios.map((p) => p.importe),
-  )} €. ${site.zona}.`;
+  // La categoría delante (es lo que busca la gente) y el precio detrás, que es
+  // lo que hace pulsar en un resultado de Google.
+  const minimo = Math.min(...linea.precios.map((p) => p.importe));
+  const precio = linea.precios.length > 1 ? `desde ${minimo} €` : `${minimo} €`;
+  const titulo = `${categoria.nombre} · ${linea.nombre} · ${precio}`;
+  const descripcion = `${linea.resumen} ${linea.piezas.length} piezas pintadas a mano desde ${minimo} €. ${categoria.plazo} ${site.zona}.`;
 
   return {
     title: titulo,

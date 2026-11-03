@@ -69,8 +69,18 @@ export const CategoriaFuenteSchema = z.object({
   resumen: z.string().min(1),
   /** Párrafo de la cabecera de la categoría. */
   descripcion: z.string().min(1),
-  /** Title y description para Google. */
-  seo: z.object({ titulo: z.string().min(1), descripcion: z.string().min(1) }),
+  /**
+   * Title y description para Google. `titulo` es también el titular del texto
+   * de la colección; `tituloGoogle`, si está, sustituye solo al <title> para
+   * poder llevar el precio, que en un titular de la página sobra.
+   */
+  seo: z.object({
+    titulo: z.string().min(1),
+    tituloGoogle: z.string().min(1).optional(),
+    descripcion: z.string().min(1),
+  }),
+  /** Plazo de entrega tal como lo dice el taller: «En 48 horas tienes tu vela.» */
+  plazo: z.string().min(1),
   /**
    * Texto largo de la colección, un párrafo por elemento. Va al pie de la
    * página, después de las fotos: quien compra ya ha visto lo que quería

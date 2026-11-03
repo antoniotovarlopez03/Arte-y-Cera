@@ -21,11 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!categoria) return {};
 
   return {
-    title: categoria.seo.titulo,
+    title: categoria.seo.tituloGoogle ?? categoria.seo.titulo,
     description: categoria.seo.descripcion,
     alternates: { canonical: categoria.href },
     openGraph: {
-      title: `${categoria.seo.titulo} · Arte y Cera`,
+      title: `${categoria.seo.tituloGoogle ?? categoria.seo.titulo} · Arte y Cera`,
       description: categoria.seo.descripcion,
       url: categoria.href,
       images: [{ url: categoria.portada.src, alt: categoria.portada.alt }],

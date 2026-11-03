@@ -35,15 +35,21 @@ export const CATALOGO: CategoriaFuente[] = [
       'La vela del bautizo se guarda toda la vida, así que la pintamos con el nombre del niño o la niña, la fecha y el motivo que la familia elija. Hay cuatro niveles según cuánta pintura lleva la pieza, del lazo con el nombre bordado a la vela cubierta de color.',
     seo: {
       titulo: 'Velas de bautizo personalizadas',
+      tituloGoogle: 'Velas de bautizo personalizadas desde 20 €',
       descripcion:
-        'Velas de bautizo pintadas a mano con el nombre y la fecha. Cuatro acabados, desde 20 € con la vela incluida. Envíos a toda España.',
+        'Velas de bautizo pintadas a mano con el nombre y la fecha. Cuatro acabados desde 20 € y en 48 horas la tienes. Envíos a toda España.',
     },
+    plazo: 'En 48 horas tienes tu vela.',
     texto: [
-      'Una vela de bautizo personalizada es de los pocos recuerdos del bautizo que se guardan toda la vida. Por eso cada una se pinta a mano, por encargo, en nuestro taller de Granada: con el nombre del niño o la niña, la fecha del bautizo y el dibujo que elija la familia, en los colores que queráis.',
+      'Una vela de bautizo personalizada (o vela de bautismo) es de los pocos recuerdos del bautizo que se guardan toda la vida. Por eso cada una se pinta a mano, por encargo, en nuestro taller de Granada: con el nombre del niño o la niña, la fecha del bautizo y el dibujo que elija la familia, en los colores que queráis.',
       'Hay cuatro acabados y lo que cambia entre ellos es cuánta pintura lleva la vela. Lazos y bordado (20 €) es la vela sin pintar, con lazo de raso y el nombre bordado. Las básicas (30 €) llevan un icono pintado en dos tonos. Las elaboradas (35 €) tienen más trazo y más color, y en ellas ya cabe un retrato o un motivo propio. Las de al detalle (40 €) van pintadas a todo color alrededor de toda la vela. En todos los casos el precio incluye la vela.',
-      'Si queréis que vaya a juego, la toalla de bautizo bordada con el mismo nombre y los mismos colores se añade por 15 €. Enviamos las velas de bautizo a cualquier punto de España, así que no importa dónde se celebre el bautizo.',
+      'Si queréis que vaya a juego, la toalla de bautizo bordada con el mismo nombre y los mismos colores se añade por 15 €. Enviamos las velas de bautizo a cualquier punto de España y en 48 horas tenéis la vela con el nombre, así que no importa dónde se celebre el bautizo.',
     ],
     preguntas: [
+      {
+        pregunta: '¿Cuánto tardáis en hacer una vela de bautizo?',
+        respuesta: 'En 48 horas tienes tu vela de bautizo, pintada a mano con el nombre y la fecha.',
+      },
       {
         pregunta: '¿Qué se puede poner en una vela de bautizo personalizada?',
         respuesta:
@@ -130,13 +136,15 @@ export const CATALOGO: CategoriaFuente[] = [
       'Velas más anchas y más bajas, pensadas para que se vean de cerca: el altar de una boda, la mesa de los novios o un regalo de aniversario. Se piden de una en una o en pareja, y se pintan con los colores y el motivo de la celebración.',
     seo: {
       titulo: 'Velas de mesa y boda pintadas a mano',
+      tituloGoogle: 'Velas de boda pintadas a mano desde 55 €',
       descripcion:
-        'Velas artesanales de 20 × 9 cm pintadas a mano para bodas y celebraciones. Sueltas o en pareja, desde 55 €. Envíos a toda España.',
+        'Velas de 20 × 9 cm pintadas a mano para bodas y celebraciones. Sueltas o en pareja, desde 55 € y en 48 horas. Envíos a toda España.',
     },
+    plazo: 'En 48 horas tienes tu vela.',
     texto: [
       'Velas de boda pintadas a mano para el altar, la mesa de los novios o un regalo de aniversario. Son más anchas y más bajas que una vela de bautizo, de 20 × 9 cm, porque están pensadas para verse de cerca, y se pintan en nuestro taller de Granada con los colores y el motivo de cada celebración.',
       'Se pueden pedir de una en una o en pareja. Las básicas llevan un icono pintado en dos tonos con remates en oro y cuestan 55 € (100 € las dos). Las elaboradas van a todo color y con mucho más detalle en el dibujo: 70 € la vela y 130 € la pareja.',
-      'Las enviamos a cualquier punto de España. Si tenéis la fecha de la boda, escribidnos con ella y os decimos si llegamos a tiempo.',
+      'Las enviamos a cualquier punto de España y en 48 horas tenéis vuestras velas. Escribidnos con la fecha de la boda y os las preparamos.',
     ],
     preguntas: [
       {
@@ -195,13 +203,15 @@ export const CATALOGO: CategoriaFuente[] = [
       'El cirio pascual es la pieza más grande que sale del taller y la que más horas lleva. Se pinta a mano sobre cera, con el año, la cruz y la iconografía que la comunidad pida. Trabajamos con parroquias, comunidades y grupos, y podemos repetir un motivo de un año para otro o partir de una idea nueva.',
     seo: {
       titulo: 'Cirios pascuales pintados a mano',
+      tituloGoogle: 'Cirios pascuales pintados a mano desde 200 €',
       descripcion:
-        'Cirios pascuales pintados a mano para parroquias y comunidades, con el año, la cruz y la iconografía que elijas. Desde 200 €. Envíos a toda España.',
+        'Cirios pascuales pintados a mano para parroquias y comunidades, con el año, la cruz y la iconografía que elijas. Desde 200 € y en 48 horas.',
     },
+    plazo: 'En 48 horas tienes tu cirio.',
     texto: [
       'Pintamos cirios pascuales a mano para parroquias, comunidades y grupos de toda España. Cada cirio se pinta sobre la cera en nuestro taller de Granada, con el año, la cruz y la iconografía que pida la comunidad.',
       'El tamaño de referencia es de 70 × 7 cm. Los básicos (200 €) llevan un color de fondo con la cruz, el año y los trazos en oro. Los elaborados (260 €) van cubiertos de escenas a todo color al estilo de los iconos, dando la vuelta al cirio entero. Para otros tamaños, consultad el precio.',
-      'Podemos repetir el motivo de un año para otro o partir de una idea nueva. Es la pieza que más horas lleva del taller, así que conviene encargarla con margen antes de la Vigilia Pascual.',
+      'Podemos repetir el motivo de un año para otro o partir de una idea nueva. En 48 horas tenéis el cirio, pintado y listo para la Vigilia Pascual.',
     ],
     preguntas: [
       {
@@ -217,7 +227,7 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         pregunta: '¿Con cuánto tiempo hay que encargar el cirio pascual?',
         respuesta:
-          'Cuanto antes, mejor, porque es la pieza que más horas lleva del taller. Escribidnos con la fecha en la que lo necesitáis y os confirmamos si llegamos.',
+          'En 48 horas tenéis vuestro cirio. Escribidnos con la fecha en la que lo necesitáis y os lo preparamos.',
       },
     ],
     lineas: [
@@ -264,21 +274,27 @@ export const CATALOGO: CategoriaFuente[] = [
     ocasiones: ['navidad'],
     resumen: 'Nacimientos y motivos de Navidad, pintados uno a uno.',
     descripcion:
-      'Velas de Navidad pintadas a mano, con escenas del nacimiento y motivos navideños. Se hacen por encargo cada temporada, así que conviene pedirlas con tiempo.',
+      'Velas de Navidad pintadas a mano, con escenas del nacimiento y motivos navideños. Se hacen por encargo y en 24 horas tienes la tuya.',
     seo: {
       titulo: 'Velas de Navidad pintadas a mano',
+      tituloGoogle: 'Velas de Navidad pintadas a mano · 20 € en 24 horas',
       descripcion:
-        'Velas de Navidad artesanales pintadas a mano con escenas del nacimiento. 20 € por pieza, hechas por encargo. Envíos a toda España.',
+        'Velas de Navidad artesanales pintadas a mano con escenas del nacimiento. 20 € por pieza y en 24 horas tienes tu vela. Envíos a toda España.',
     },
+    plazo: 'En 24 horas tienes tu vela.',
     texto: [
       'Velas de Navidad pintadas a mano con escenas del nacimiento y motivos navideños. Cada una se pinta por encargo en nuestro taller de Granada y cuesta 20 €, con la vela incluida.',
-      'Son un regalo para la mesa de Nochebuena, para un belén o para tener un detalle con alguien que vive lejos: las enviamos a cualquier punto de España. Como se pintan cada temporada, conviene pedirlas con tiempo.',
+      'Son un regalo para la mesa de Nochebuena, para un belén o para tener un detalle con alguien que vive lejos: las enviamos a cualquier punto de España. Y en 24 horas tienes tu vela.',
     ],
     preguntas: [
       {
-        pregunta: '¿Cuándo hay que encargar las velas de Navidad?',
+        pregunta: '¿Cuánto tardáis en hacer una vela de Navidad?',
+        respuesta: 'En 24 horas tienes tu vela de Navidad, pintada a mano.',
+      },
+      {
+        pregunta: '¿Sirven como regalo de Navidad?',
         respuesta:
-          'Con tiempo, porque se pintan por encargo cada temporada. Escríbenos con la fecha en la que las necesitas y te confirmamos si llegamos.',
+          'Sí. Son un regalo para la mesa de Nochebuena, para un belén o para alguien que vive lejos: las enviamos a cualquier punto de España.',
       },
     ],
     lineas: [
@@ -305,9 +321,11 @@ export const CATALOGO: CategoriaFuente[] = [
       'Toallas de rizo bordadas a mano con el nombre del niño o la niña, en el color de hilo que elijáis. Se pueden pedir solas o junto a la vela de bautizo, para que las dos piezas vayan a juego.',
     seo: {
       titulo: 'Toallas de bautizo bordadas',
+      tituloGoogle: 'Toallas de bautizo bordadas con nombre · 18 €',
       descripcion:
-        'Toallas de bautizo bordadas con el nombre, en el color de hilo que elijas. 18 € por toalla, a juego con la vela. Envíos a toda España.',
+        'Toallas de bautizo bordadas con el nombre, en el color de hilo que elijas. 18 € por toalla y en 48 horas la tienes. Envíos a toda España.',
     },
+    plazo: 'En 48 horas tienes tu toalla.',
     texto: [
       'Toallas de bautizo de rizo con el nombre del bebé bordado en el color de hilo que elijáis. Cuestan 18 € y se bordan por encargo en nuestro taller de Granada.',
       'Se pueden pedir solas o a juego con la vela de bautizo pintada a mano, con el mismo nombre y los mismos colores; en ese caso la toalla sale por 15 €. Las enviamos a cualquier punto de España.',
@@ -343,8 +361,9 @@ export const CATALOGO: CategoriaFuente[] = [
     seo: {
       titulo: 'Pack bautizo: vela pintada + toalla bordada',
       descripcion:
-        'Añade la toalla bordada a juego a tu vela de bautizo por 15 €. Mismo nombre y mismos colores en las dos piezas. Envíos a toda España.',
+        'Añade la toalla bordada a juego a tu vela de bautizo por 15 €. Mismo nombre y mismos colores, y en 48 horas lo tienes. Envíos a toda España.',
     },
+    plazo: 'En 48 horas tienes tu vela y tu toalla.',
     texto: [
       'El pack de bautizo junta las dos piezas que más se regalan: la vela de bautizo pintada a mano y la toalla de rizo con el nombre bordado. Al pedirlas juntas, la toalla sale por 15 € en lugar de 18 €, y las dos llevan el mismo nombre y los mismos colores.',
       'La vela se elige aparte, en cualquiera de sus cuatro acabados (de 20 € a 40 €). Lo preparamos todo en nuestro taller de Granada y lo enviamos junto a cualquier punto de España.',
