@@ -7,6 +7,7 @@ const LEGALES = [
   { href: '/aviso-legal', texto: 'Aviso legal' },
   { href: '/privacidad', texto: 'Privacidad' },
   { href: '/cookies', texto: 'Cookies' },
+  { href: '/devoluciones', texto: 'Devoluciones' },
 ] as const;
 
 export function SiteFooter() {
