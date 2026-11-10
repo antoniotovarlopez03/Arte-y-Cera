@@ -16,7 +16,7 @@ export function BarraEnvios() {
     <p className="flex items-center justify-center gap-2 bg-dorado px-4 py-1.5 text-center text-xs font-medium tracking-[0.04em] text-verde-profundo sm:text-[0.8rem]">
       <IconoEnvio className="h-4 w-4 shrink-0" />
       <span>
-        Pintadas a mano en {site.taller.ciudad} · <strong className="font-semibold">{site.zona}</strong>
+        Hechas a mano en {site.taller.ciudad} · <strong className="font-semibold">{site.zona}</strong>
       </span>
     </p>
   );

@@ -142,7 +142,7 @@ export function CampanaNavidad() {
               <IconoFlecha className="h-4 w-4" />
             </Link>
           </div>
-          <p className="text-sm text-dorado/75">Pintadas a mano en Granada · Envío a toda España</p>
+          <p className="text-sm text-dorado/75">Hechas a mano en Granada · Envío a toda España</p>
         </div>
       </div>
 

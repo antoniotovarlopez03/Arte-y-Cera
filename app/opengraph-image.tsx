@@ -10,7 +10,7 @@ import { site } from '@/lib/site';
  * siquiera estaba en el repositorio, así que el enlace se compartía sin
  * previsualización. Aquí se genera en el build a partir de una foto real.
  */
-export const alt = 'Arte y Cera · Velas pintadas a mano';
+export const alt = 'Arte y Cera · Velas hechas a mano';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -50,7 +50,7 @@ export default async function Imagen() {
           Hecho a mano · Pieza única
         </div>
         <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05, marginTop: 24 }}>
-          Velas pintadas a mano, una a una
+          Velas hechas a mano, una a una
         </div>
         <div style={{ width: 96, height: 3, backgroundColor: '#14453d', marginTop: 32 }} />
         <div style={{ fontSize: 28, color: '#4a4038', marginTop: 32, lineHeight: 1.4 }}>

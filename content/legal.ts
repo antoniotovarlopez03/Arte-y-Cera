@@ -20,7 +20,7 @@ export const TITULAR = {
   /** Provincia para la sumisión a los tribunales. */
   provincia: null as string | null,
   /** Actividad, tal y como esté dada de alta. */
-  actividad: 'Fabricación y venta de velas artesanales pintadas a mano',
+  actividad: 'Fabricación y venta de velas artesanales hechas a mano',
 } as const;
 
 export function faltanDatosDelTitular(): boolean {

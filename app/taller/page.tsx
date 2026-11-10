@@ -79,7 +79,7 @@ const FOTOS_CABECERA: {
     ref: 'CP-E-15',
     href: '/colecciones/cirios-pascuales/elaborados?pieza=CP-E-15',
     src: '/images/colecciones/cirios-elaborados/cirios-elaborados-15.webp',
-    alt: 'Detalle de un cirio pascual pintado a mano con la cruz en blanco y negro sobre pan de oro y el año 2025',
+    alt: 'Detalle de un cirio pascual hecho a mano con la cruz en blanco y negro sobre pan de oro y el año 2025',
     ancho: 1600,
     alto: 1600,
     foco: '38% 50%',
@@ -88,7 +88,7 @@ const FOTOS_CABECERA: {
     ref: 'CP-E-03',
     href: '/colecciones/cirios-pascuales/elaborados?pieza=CP-E-03',
     src: '/images/colecciones/cirios-elaborados/cirios-elaborados-03.webp',
-    alt: 'Detalle de un cirio pascual pintado a mano con Cristo y la inscripción «Amad a vuestros enemigos»',
+    alt: 'Detalle de un cirio pascual hecho a mano con Cristo y la inscripción «Amad a vuestros enemigos»',
     ancho: 1200,
     alto: 1200,
     foco: '38% 50%',
@@ -115,7 +115,7 @@ const DETALLES = [
     ref: 'BZ-D-05',
     href: '/colecciones/velas-de-bautizo/al-detalle?pieza=BZ-D-05',
     src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-05.webp',
-    alt: 'Detalle de un icono de un santo pintado a mano en azul y oro sobre una vela de bautizo, con el nombre Andrés',
+    alt: 'Detalle de un icono de un santo hecho a mano en azul y oro sobre una vela de bautizo, con el nombre Andrés',
     ancho: 1600,
     alto: 1600,
     foco: '60% 35%',
@@ -124,7 +124,7 @@ const DETALLES = [
     ref: 'BZ-E-22',
     href: '/colecciones/velas-de-bautizo/elaboradas?pieza=BZ-E-22',
     src: '/images/colecciones/lazos-elaborados/lazos-elaborados-22.webp',
-    alt: 'Detalle de una Virgen con el Niño pintada a mano en azul y oro sobre una vela de bautizo, con el nombre Leticia',
+    alt: 'Detalle de una Virgen con el Niño hecha a mano en azul y oro sobre una vela de bautizo, con el nombre Leticia',
     ancho: 1200,
     alto: 1200,
     foco: '62% 45%',
@@ -133,7 +133,7 @@ const DETALLES = [
     ref: 'BZ-D-09',
     href: '/colecciones/velas-de-bautizo/al-detalle?pieza=BZ-D-09',
     src: '/images/colecciones/lazos-al-detalle/lazos-al-detalle-09.webp',
-    alt: 'Detalle de un rostro pintado a mano en trazo fino sobre una vela de bautizo',
+    alt: 'Detalle de un rostro hecho a mano en trazo fino sobre una vela de bautizo',
     ancho: 1200,
     alto: 1200,
     foco: '80% 40%',
@@ -227,7 +227,7 @@ export default function PaginaTaller() {
             >
               <Image
                 src="/images/colecciones/lazos-elaborados/lazos-elaborados-04.webp"
-                alt="Vela de bautizo con el retrato de Francisco pintado a mano, junto a los bocetos a lápiz de los que salió"
+                alt="Vela de bautizo con el retrato de Francisco hecho a mano, junto a los bocetos a lápiz de los que salió"
                 width={1200}
                 height={1200}
                 sizes="(max-width: 1024px) 92vw, 1100px"
@@ -267,7 +267,7 @@ export default function PaginaTaller() {
       {/* Detalles a tamaño grande.
           Esto solo se puede hacer desde que las fotos son de 1200-1600 px: son
           recortes cerrados sobre piezas que ya están en el catálogo, no material
-          nuevo. Enseñan lo que de verdad vende una vela pintada a mano y lo que
+          nuevo. Enseñan lo que de verdad vende una vela hecha a mano y lo que
           antes no se veía nunca, que es el pincel. */}
       <section
         className="mx-auto max-w-6xl rounded-pieza bg-verde-profundo px-5 py-20 lg:py-24"

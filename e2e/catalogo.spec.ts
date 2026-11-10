@@ -6,7 +6,7 @@ import { expect, test } from '@playwright/test';
 
 test('la portada lleva al catálogo', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Velas pintadas a mano');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Velas hechas a mano');
   // «Ver nuestros modelos» es la llamada a la acción del cliente, la de su
   // WordPress. En la portada hay una sola, la del hero.
   await page.getByRole('link', { name: 'Ver nuestros modelos' }).first().click();

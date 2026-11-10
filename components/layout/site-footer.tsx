@@ -28,7 +28,7 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-dorado/70">
-            Velas pintadas a mano para un momento muy especial: bautizos, bodas, cirios pascuales y
+            Velas hechas a mano para un momento muy especial: bautizos, bodas, cirios pascuales y
             Navidad. {site.zona}.
           </p>
         </div>

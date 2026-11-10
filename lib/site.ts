@@ -5,9 +5,9 @@
  */
 export const site = {
   nombre: 'Arte y Cera',
-  titulo: 'Arte y Cera · Velas pintadas a mano con envío a toda España',
+  titulo: 'Arte y Cera · Velas hechas a mano con envío a toda España',
   descripcion:
-    'Velas pintadas a mano en Granada: velas de bautizo personalizadas, cirios pascuales, velas de boda y toallas bordadas. Hechas por encargo y con envíos a toda España.',
+    'Velas hechas a mano en Granada: velas de bautizo personalizadas, cirios pascuales, velas de boda y toallas bordadas. Hechas por encargo y con envíos a toda España.',
   // www, no el dominio pelado: arteycera.es (sin www) redirige (308) a este,
   // y esa URL es la base de la que salen el canonical, el og:image y demás
   // metadatos. Un rastreador que no siga esa redirección para la imagen (a

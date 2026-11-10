@@ -17,7 +17,7 @@ export const CAMPANA_NAVIDAD = {
   titulo: 'Ya llega la Navidad',
   subtitulo: 'Encarga tu vela',
   texto:
-    'Tres escenas nuevas pintadas a mano, una a una, para presidir la mesa de Nochebuena o regalar a quien más quieres.',
+    'Tres escenas nuevas hechas a mano, una a una, para presidir la mesa de Nochebuena o regalar a quien más quieres.',
 } as const;
 
 /** Fecha de hoy en Madrid, en formato AAAA-MM-DD (comparable como texto). */

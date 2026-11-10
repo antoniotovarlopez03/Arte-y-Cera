@@ -8,7 +8,7 @@ import { site, whatsappUrl } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Contacto',
   description:
-    'Escríbenos y te ayudamos a diseñar tu vela pintada a mano: cuéntanos la celebración, la fecha y los colores. Envíos a toda España y respuesta en menos de 48 h.',
+    'Escríbenos y te ayudamos a diseñar tu vela hecha a mano: cuéntanos la celebración, la fecha y los colores. Envíos a toda España y respuesta en menos de 48 h.',
   alternates: { canonical: '/contacto' },
 };
 

@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const minimo = Math.min(...linea.precios.map((p) => p.importe));
   const precio = linea.precios.length > 1 ? `desde ${minimo} €` : `${minimo} €`;
   const titulo = `${categoria.nombre} · ${linea.nombre} · ${precio}`;
-  const descripcion = `${linea.resumen} ${linea.piezas.length} piezas pintadas a mano desde ${minimo} €. ${categoria.plazo} ${site.zona}.`;
+  const descripcion = `${linea.resumen} ${linea.piezas.length} piezas hechas a mano desde ${minimo} €. ${categoria.plazo} ${site.zona}.`;
 
   return {
     title: titulo,

@@ -37,7 +37,7 @@ export const CATALOGO: CategoriaFuente[] = [
       titulo: 'Velas de bautizo personalizadas',
       tituloGoogle: 'Velas de bautizo personalizadas desde 20 €',
       descripcion:
-        'Velas de bautizo pintadas a mano con el nombre y la fecha. Cuatro acabados desde 20 € y en 48 horas la tienes. Envíos a toda España.',
+        'Velas de bautizo hechas a mano con el nombre y la fecha. Cuatro acabados desde 20 € y en 48 horas la tienes. Envíos a toda España.',
     },
     plazo: 'En 48 horas tienes tu vela.',
     texto: [
@@ -48,7 +48,7 @@ export const CATALOGO: CategoriaFuente[] = [
     preguntas: [
       {
         pregunta: '¿Cuánto tardáis en hacer una vela de bautizo?',
-        respuesta: 'En 48 horas tienes tu vela de bautizo, pintada a mano con el nombre y la fecha.',
+        respuesta: 'En 48 horas tienes tu vela de bautizo, hecha a mano con el nombre y la fecha.',
       },
       {
         pregunta: '¿Qué se puede poner en una vela de bautizo personalizada?',
@@ -84,10 +84,10 @@ export const CATALOGO: CategoriaFuente[] = [
         slug: 'basicas',
         nombre: 'Básicas',
         resumen:
-          'Un icono pintado a mano en dos tonos y el nombre. El resto de la vela se queda con la cera a la vista.',
+          'Un icono hecho a mano en dos tonos y el nombre. El resto de la vela se queda con la cera a la vista.',
         precios: [{ importe: 30 }],
-        incluye: ['La vela', 'Un icono pintado a mano', 'El nombre y la fecha'],
-        altBase: 'Vela de bautizo básica pintada a mano',
+        incluye: ['La vela', 'Un icono hecho a mano', 'El nombre y la fecha'],
+        altBase: 'Vela de bautizo básica hecha a mano',
         carpeta: 'lazos-basicos',
         portadaRef: 'BZ-B-15',
       },
@@ -103,7 +103,7 @@ export const CATALOGO: CategoriaFuente[] = [
           'El nombre y la fecha',
           'Posibilidad de retrato o motivo propio',
         ],
-        altBase: 'Vela de bautizo elaborada pintada a mano',
+        altBase: 'Vela de bautizo elaborada hecha a mano',
         carpeta: 'lazos-elaborados',
         portadaRef: 'BZ-E-04',
       },
@@ -135,14 +135,14 @@ export const CATALOGO: CategoriaFuente[] = [
     descripcion:
       'Velas más anchas y más bajas, pensadas para que se vean de cerca: el altar de una boda, la mesa de los novios o un regalo de aniversario. Se piden de una en una o en pareja, y se pintan con los colores y el motivo de la celebración.',
     seo: {
-      titulo: 'Velas de mesa y boda pintadas a mano',
-      tituloGoogle: 'Velas de boda pintadas a mano desde 55 €',
+      titulo: 'Velas de mesa y boda hechas a mano',
+      tituloGoogle: 'Velas de boda hechas a mano desde 55 €',
       descripcion:
-        'Velas de 20 × 9 cm pintadas a mano para bodas y celebraciones. Sueltas o en pareja, desde 55 € y en 48 horas. Envíos a toda España.',
+        'Velas de 20 × 9 cm hechas a mano para bodas y celebraciones. Sueltas o en pareja, desde 55 € y en 48 horas. Envíos a toda España.',
     },
     plazo: 'En 48 horas tienes tu vela.',
     texto: [
-      'Velas de boda pintadas a mano para el altar, la mesa de los novios o un regalo de aniversario. Son más anchas y más bajas que una vela de bautizo, de 20 × 9 cm, porque están pensadas para verse de cerca, y se pintan en nuestro taller de Granada con los colores y el motivo de cada celebración.',
+      'Velas de boda hechas a mano para el altar, la mesa de los novios o un regalo de aniversario. Son más anchas y más bajas que una vela de bautizo, de 20 × 9 cm, porque están pensadas para verse de cerca, y se pintan en nuestro taller de Granada con los colores y el motivo de cada celebración.',
       'Se pueden pedir de una en una o en pareja. Las básicas llevan un icono pintado en dos tonos con remates en oro y cuestan 55 € (100 € las dos). Las elaboradas van a todo color y con mucho más detalle en el dibujo: 70 € la vela y 130 € la pareja.',
       'Las enviamos a cualquier punto de España y en 48 horas tenéis vuestras velas. Escribidnos con la fecha de la boda y os las preparamos.',
     ],
@@ -162,15 +162,15 @@ export const CATALOGO: CategoriaFuente[] = [
         slug: 'basicas',
         nombre: 'Básicas',
         resumen:
-          'Un icono pintado a mano en dos tonos, con los remates en oro y la cera a la vista alrededor.',
+          'Un icono hecho a mano en dos tonos, con los remates en oro y la cera a la vista alrededor.',
         precios: [
           { etiqueta: '1 vela', importe: 55 },
           { etiqueta: '2 velas', importe: 100 },
         ],
         medidas: '20 × 9 cm',
         dimensiones: { alto: 20, diametro: 9 },
-        incluye: ['La vela', 'Fondo en el color que elijas', 'Un icono pintado a mano'],
-        altBase: 'Vela de mesa y boda básica pintada a mano',
+        incluye: ['La vela', 'Fondo en el color que elijas', 'Un icono hecho a mano'],
+        altBase: 'Vela de mesa y boda básica hecha a mano',
         carpeta: 'mesa-basicas',
         portadaRef: 'MB-B-03',
       },
@@ -186,7 +186,7 @@ export const CATALOGO: CategoriaFuente[] = [
         medidas: '20 × 9 cm',
         dimensiones: { alto: 20, diametro: 9 },
         incluye: ['La vela', 'Pintura a todo color', 'Composición diseñada para la celebración'],
-        altBase: 'Vela de mesa y boda elaborada pintada a mano',
+        altBase: 'Vela de mesa y boda elaborada hecha a mano',
         carpeta: 'mesa-elaboradas',
         portadaRef: 'MB-E-01',
       },
@@ -198,14 +198,14 @@ export const CATALOGO: CategoriaFuente[] = [
     nombre: 'Cirios pascuales',
     nombreMenu: 'Cirios',
     ocasiones: ['pascua'],
-    resumen: 'Para la Vigilia Pascual, pintados a mano de arriba abajo.',
+    resumen: 'Para la Vigilia Pascual, hechos a mano de arriba abajo.',
     descripcion:
       'El cirio pascual es la pieza más grande que sale del taller y la que más horas lleva. Se pinta a mano sobre cera, con el año, la cruz y la iconografía que la comunidad pida. Trabajamos con parroquias, comunidades y grupos, y podemos repetir un motivo de un año para otro o partir de una idea nueva.',
     seo: {
-      titulo: 'Cirios pascuales pintados a mano',
-      tituloGoogle: 'Cirios pascuales pintados a mano desde 200 €',
+      titulo: 'Cirios pascuales hechos a mano',
+      tituloGoogle: 'Cirios pascuales hechos a mano desde 200 €',
       descripcion:
-        'Cirios pascuales pintados a mano para parroquias y comunidades, con el año, la cruz y la iconografía que elijas. Desde 200 € y en 48 horas.',
+        'Cirios pascuales hechos a mano para parroquias y comunidades, con el año, la cruz y la iconografía que elijas. Desde 200 € y en 48 horas.',
     },
     plazo: 'En 48 horas tienes tu cirio.',
     texto: [
@@ -241,7 +241,7 @@ export const CATALOGO: CategoriaFuente[] = [
         medidas: '70 × 7 cm',
         dimensiones: { alto: 70, diametro: 7 },
         incluye: ['El cirio', 'La pintura a mano', 'El año y la iconografía que elijas'],
-        altBase: 'Cirio pascual básico pintado a mano',
+        altBase: 'Cirio pascual básico hecho a mano',
         carpeta: 'cirios-basicos',
         portadaRef: 'CP-B-02',
       },
@@ -260,7 +260,7 @@ export const CATALOGO: CategoriaFuente[] = [
           'Varias escenas alrededor del cirio',
           'El año y la iconografía que elijas',
         ],
-        altBase: 'Cirio pascual elaborado pintado a mano',
+        altBase: 'Cirio pascual elaborado hecho a mano',
         carpeta: 'cirios-elaborados',
         portadaRef: 'CP-E-18',
       },
@@ -274,22 +274,22 @@ export const CATALOGO: CategoriaFuente[] = [
     ocasiones: ['navidad'],
     resumen: 'Nacimientos y motivos de Navidad, pintados uno a uno.',
     descripcion:
-      'Velas de Navidad pintadas a mano, con escenas del nacimiento y motivos navideños. Se hacen por encargo y en 24 horas tienes la tuya.',
+      'Velas de Navidad hechas a mano, con escenas del nacimiento y motivos navideños. Se hacen por encargo y en 24 horas tienes la tuya.',
     seo: {
-      titulo: 'Velas de Navidad pintadas a mano',
-      tituloGoogle: 'Velas de Navidad pintadas a mano · 20 € en 24 horas',
+      titulo: 'Velas de Navidad hechas a mano',
+      tituloGoogle: 'Velas de Navidad hechas a mano · 20 € en 24 horas',
       descripcion:
-        'Velas de Navidad artesanales pintadas a mano con escenas del nacimiento. 20 € por pieza y en 24 horas tienes tu vela. Envíos a toda España.',
+        'Velas de Navidad artesanales hechas a mano con escenas del nacimiento. 20 € por pieza y en 24 horas tienes tu vela. Envíos a toda España.',
     },
     plazo: 'En 24 horas tienes tu vela.',
     texto: [
-      'Velas de Navidad pintadas a mano con escenas del nacimiento y motivos navideños. Cada una se pinta por encargo en nuestro taller de Granada y cuesta 20 €, con la vela incluida.',
+      'Velas de Navidad hechas a mano con escenas del nacimiento y motivos navideños. Cada una se pinta por encargo en nuestro taller de Granada y cuesta 20 €, con la vela incluida.',
       'Son un regalo para la mesa de Nochebuena, para un belén o para tener un detalle con alguien que vive lejos: las enviamos a cualquier punto de España. Y en 24 horas tienes tu vela.',
     ],
     preguntas: [
       {
         pregunta: '¿Cuánto tardáis en hacer una vela de Navidad?',
-        respuesta: 'En 24 horas tienes tu vela de Navidad, pintada a mano.',
+        respuesta: 'En 24 horas tienes tu vela de Navidad, hecha a mano.',
       },
       {
         pregunta: '¿Sirven como regalo de Navidad?',
@@ -301,10 +301,10 @@ export const CATALOGO: CategoriaFuente[] = [
       {
         slug: 'velas-de-navidad',
         nombre: 'Velas de Navidad',
-        resumen: 'Escenas del nacimiento y motivos navideños pintados a mano.',
+        resumen: 'Escenas del nacimiento y motivos navideños hechos a mano.',
         precios: [{ importe: 20 }],
-        incluye: ['La vela', 'Escena pintada a mano', 'Motivo a elegir'],
-        altBase: 'Vela de Navidad pintada a mano',
+        incluye: ['La vela', 'Escena hecha a mano', 'Motivo a elegir'],
+        altBase: 'Vela de Navidad hecha a mano',
         carpeta: 'navidad',
         portadaRef: 'NV-03',
       },
@@ -328,7 +328,7 @@ export const CATALOGO: CategoriaFuente[] = [
     plazo: 'En 48 horas tienes tu toalla.',
     texto: [
       'Toallas de bautizo de rizo con el nombre del bebé bordado en el color de hilo que elijáis. Cuestan 18 € y se bordan por encargo en nuestro taller de Granada.',
-      'Se pueden pedir solas o a juego con la vela de bautizo pintada a mano, con el mismo nombre y los mismos colores; en ese caso la toalla sale por 15 €. Las enviamos a cualquier punto de España.',
+      'Se pueden pedir solas o a juego con la vela de bautizo hecha a mano, con el mismo nombre y los mismos colores; en ese caso la toalla sale por 15 €. Las enviamos a cualquier punto de España.',
     ],
     preguntas: [
       {
@@ -365,7 +365,7 @@ export const CATALOGO: CategoriaFuente[] = [
     },
     plazo: 'En 48 horas tienes tu vela y tu toalla.',
     texto: [
-      'El pack de bautizo junta las dos piezas que más se regalan: la vela de bautizo pintada a mano y la toalla de rizo con el nombre bordado. Al pedirlas juntas, la toalla sale por 15 € en lugar de 18 €, y las dos llevan el mismo nombre y los mismos colores.',
+      'El pack de bautizo junta las dos piezas que más se regalan: la vela de bautizo hecha a mano y la toalla de rizo con el nombre bordado. Al pedirlas juntas, la toalla sale por 15 € en lugar de 18 €, y las dos llevan el mismo nombre y los mismos colores.',
       'La vela se elige aparte, en cualquiera de sus cuatro acabados (de 20 € a 40 €). Lo preparamos todo en nuestro taller de Granada y lo enviamos junto a cualquier punto de España.',
     ],
     lineas: [
@@ -380,7 +380,7 @@ export const CATALOGO: CategoriaFuente[] = [
           'El mismo nombre y los mismos colores que la vela',
           'La vela se pide aparte, en Velas de bautizo',
         ],
-        altBase: 'Toalla de bautizo bordada a juego con su vela pintada a mano',
+        altBase: 'Toalla de bautizo bordada a juego con su vela hecha a mano',
         carpeta: 'toallas-bautizo-vela',
         portadaRef: 'PK-03',
       },

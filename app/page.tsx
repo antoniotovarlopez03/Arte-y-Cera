@@ -102,7 +102,7 @@ export default function PaginaInicio() {
 
       {/* ===== Portada =====
           El panel va en verde profundo y la foto ocupa más de la mitad: sobre
-          fondo oscuro, una vela pintada a mano con estos colores se ve como en
+          fondo oscuro, una vela hecha a mano con estos colores se ve como en
           una galería, y el texto en marfil da 12:1 de contraste, más que antes.
           Nada de esto se mueve ni aparece al hacer scroll: el efecto lo pone la
           pieza, no una animación. */}
@@ -117,7 +117,7 @@ export default function PaginaInicio() {
                 Dicen en dos frases lo que yo decía en cuatro, y lo dicen como él
                 habla; solo se les corrige la ortografía. */}
             <h1 className="mt-4 font-display text-[clamp(2.4rem,4.4vw,3.6rem)] leading-[1.08] font-bold text-blanco">
-              Velas pintadas a mano para un momento muy especial
+              Velas hechas a mano para un momento muy especial
             </h1>
             <span className="filete mt-7" />
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-dorado/80 sm:text-xl">

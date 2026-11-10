@@ -41,7 +41,7 @@ const PIEZAS_CESTA = todasLasPiezas();
    EB Garamond es la que Antonio eligió para su propio WordPress. Sustituye a
    Playfair Display, que venía del sitio que le montaron: Playfair es una didone
    de alto contraste, de portada de revista de moda, y al lado de unas velas de
-   cera pintadas a mano queda fría. La Garamond es una humanista, más cálida y
+   cera hechas a mano queda fría. La Garamond es una humanista, más cálida y
    más de oficio, y va con el verde que también es suyo.
 
    Tiene el ojo medio más pequeño, así que los cuerpos de los titulares están
