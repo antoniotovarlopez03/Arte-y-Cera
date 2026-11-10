@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PreguntasFrecuentes } from '@/components/catalogo/preguntas-frecuentes';
 import { TarjetaCategoria } from '@/components/catalogo/tarjeta-categoria';
 import { CarruselFundido } from '@/components/inicio/carrusel-fundido';
+import { CampanaNavidad } from '@/components/inicio/campana-navidad';
 import { CarruselPortada } from '@/components/inicio/carrusel-portada';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { IconoEnvio, IconoFlecha, IconoWhatsapp } from '@/components/iconos';
@@ -32,6 +33,11 @@ const REFS_TALLER = ['MB-B-01', 'CP-B-09', 'BZ-E-20', 'TB-03', 'BZ-D-16'] as con
    derecho de la pantalla. De ahí el max(): por debajo de 72rem+aire se queda
    en el margen normal y no se pega al borde. */
 const SANGRADO = 'lg:pl-[max(1.25rem,calc(50vw_-_36rem_+_1.25rem))]';
+
+/* La portada se vuelve a generar cada hora, para que las campañas de temporada
+   (content/campanas.ts) se enciendan y se apaguen en su fecha sin volver a
+   publicar la web. El resto de la página sigue siendo igual de rápida. */
+export const revalidate = 3600;
 
 const PASOS = [
   {
@@ -90,6 +96,9 @@ export default function PaginaInicio() {
     <>
       <DatosEstructurados datos={jsonLdNegocio()} />
       <DatosEstructurados datos={jsonLdPreguntas(PREGUNTAS_GENERALES)} />
+
+      {/* Campaña de temporada: solo se pinta entre sus fechas */}
+      <CampanaNavidad />
 
       {/* ===== Portada =====
           El panel va en verde profundo y la foto ocupa más de la mitad: sobre
