@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/next';
-import { EB_Garamond, Jost } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -34,9 +34,14 @@ const COLECCIONES_MENU = categorias.map((categoria) => ({
    arriba). */
 const PIEZAS_CESTA = todasLasPiezas();
 
-/* Las fuentes se sirven desde el propio dominio (next/font las descarga en
-   build). La web original las pedía a fonts.googleapis.com en cada visita:
-   dos conexiones extra antes de poder pintar el texto.
+/* Las fuentes se sirven desde el propio dominio. La web original las pedía a
+   fonts.googleapis.com en cada visita: dos conexiones extra antes de poder
+   pintar el texto.
+
+   Los archivos están guardados en app/fuentes (versión variable, subconjunto
+   latino, licencia SIL Open Font License) en lugar de descargarse de Google
+   Fonts en cada build: si Google no responde a tiempo, el build fallaba y la
+   web no se publicaba (pasó el 10/11/2026 con Jost).
 
    EB Garamond es la que Antonio eligió para su propio WordPress. Sustituye a
    Playfair Display, que venía del sitio que le montaron: Playfair es una didone
@@ -46,18 +51,22 @@ const PIEZAS_CESTA = todasLasPiezas();
 
    Tiene el ojo medio más pequeño, así que los cuerpos de los titulares están
    subidos respecto a lo que pedía Playfair. */
-const display = EB_Garamond({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
+const display = localFont({
+  src: './fuentes/eb-garamond-latin-variable.woff2',
+  weight: '500 700',
+  style: 'normal',
   variable: '--fuente-display',
   display: 'swap',
+  fallback: ['Georgia', 'Times New Roman', 'serif'],
 });
 
-const sans = Jost({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+const sans = localFont({
+  src: './fuentes/jost-latin-variable.woff2',
+  weight: '300 600',
+  style: 'normal',
   variable: '--fuente-sans',
   display: 'swap',
+  fallback: ['system-ui', 'Segoe UI', 'Arial', 'sans-serif'],
 });
 
 export const metadata: Metadata = {
