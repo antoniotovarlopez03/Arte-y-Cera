@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PreguntasFrecuentes } from '@/components/catalogo/preguntas-frecuentes';
@@ -7,6 +8,7 @@ import { CampanaNavidad } from '@/components/inicio/campana-navidad';
 import { CarruselPortada } from '@/components/inicio/carrusel-portada';
 import { DatosEstructurados } from '@/components/datos-estructurados';
 import { IconoEnvio, IconoFlecha, IconoWhatsapp } from '@/components/iconos';
+import { CAMPANA_NAVIDAD, campanaActiva } from '@/content/campanas';
 import { PREGUNTAS_GENERALES } from '@/content/preguntas';
 import { categorias, muestraDelCatalogo, piezaPorRef } from '@/lib/catalogo';
 import { jsonLdNegocio, jsonLdPreguntas } from '@/lib/seo';
@@ -38,6 +40,14 @@ const SANGRADO = 'lg:pl-[max(1.25rem,calc(50vw_-_36rem_+_1.25rem))]';
    (content/campanas.ts) se enciendan y se apaguen en su fecha sin volver a
    publicar la web. El resto de la página sigue siendo igual de rápida. */
 export const revalidate = 3600;
+
+/* Durante la campaña, el resultado de Google habla de Navidad para ganar
+   clics en las búsquedas de temporada. El resto del año, lo de app/layout.tsx. */
+export function generateMetadata(): Metadata {
+  if (!campanaActiva(CAMPANA_NAVIDAD)) return {};
+  const { titulo, descripcion } = CAMPANA_NAVIDAD.google;
+  return { title: { absolute: titulo }, description: descripcion };
+}
 
 const PASOS = [
   {

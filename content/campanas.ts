@@ -18,6 +18,13 @@ export const CAMPANA_NAVIDAD = {
   subtitulo: 'Encarga tu vela',
   texto:
     'Tres escenas nuevas hechas a mano, una a una, para presidir la mesa de Nochebuena o regalar a quien más quieres.',
+  /** Cómo sale la portada en Google mientras dura la campaña. Fuera de las
+      fechas vuelven el título y la descripción de siempre (lib/site.ts). */
+  google: {
+    titulo: 'Velas de Navidad, bautizo y boda hechas a mano · Arte y Cera',
+    descripcion:
+      'Velas de Navidad, bautizo y boda hechas a mano en Granada, una a una. Encarga la tuya por WhatsApp y te la enviamos a cualquier punto de España.',
+  },
 } as const;
 
 /** Fecha de hoy en Madrid, en formato AAAA-MM-DD (comparable como texto). */
