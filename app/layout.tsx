@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/next';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import './globals.css';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -96,10 +97,62 @@ export const viewport: Viewport = {
   themeColor: '#faf7f0',
 };
 
+/* Google Tag Manager solo en producción: en `next dev` no queremos ensuciar
+   las estadísticas con nuestras propias visitas. */
+const GTM_ACTIVO = process.env.NODE_ENV === 'production';
+
+/* Modo de consentimiento v2 de Google. Tiene que ejecutarse ANTES de que
+   cargue GTM, por eso va como <script> normal en el <head> y GTM después,
+   con next/script. Todo empieza denegado; si el visitante ya aceptó en una
+   visita anterior (lib/consentimiento.ts guarda «aceptadas» en localStorage)
+   se concede la analítica aquí mismo, antes de que GTM lea el estado. La
+   publicidad se queda denegada siempre: esta web no hace publicidad. */
+const CONSENTIMIENTO_POR_DEFECTO = `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  wait_for_update: 500
+});
+try {
+  if (localStorage.getItem('arteycera-cookies') === 'aceptadas') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+} catch (e) {}
+`;
+
+const FRAGMENTO_GTM = `
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${site.gtmId}');
+`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${display.variable} ${sans.variable}`}>
+      {GTM_ACTIVO && (
+        <head>
+          <script id="consentimiento-google" dangerouslySetInnerHTML={{ __html: CONSENTIMIENTO_POR_DEFECTO }} />
+          <Script id="gtm" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: FRAGMENTO_GTM }} />
+        </head>
+      )}
       <body className="flex min-h-dvh flex-col antialiased">
+        {GTM_ACTIVO && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${site.gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
         <a
           href="#contenido"
           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-verde focus:px-5 focus:py-2 focus:text-sm focus:text-ivory"

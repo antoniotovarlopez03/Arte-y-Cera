@@ -42,6 +42,11 @@ export const site = {
   /** Proyecto de Microsoft Clarity. Solo se carga si el visitante acepta
    *  las cookies (ver lib/consentimiento.ts). */
   clarityId: 'z1rsnq1bcx',
+
+  /** Contenedor de Google Tag Manager. Se carga en producción, pero con el
+   *  modo de consentimiento de Google en «denegado» hasta que el visitante
+   *  acepta las cookies (ver app/layout.tsx y lib/consentimiento.ts). */
+  gtmId: 'GTM-M6M6LC62',
 } as const;
 
 /**

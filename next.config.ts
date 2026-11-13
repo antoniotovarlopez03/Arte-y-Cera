@@ -14,8 +14,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
 
-  // Cabeceras de seguridad básicas. El único script de terceros es Microsoft
-  // Clarity, y solo se carga si el visitante acepta las cookies.
+  // Cabeceras de seguridad básicas. Los scripts de terceros son Google Tag
+  // Manager (con el consentimiento de Google denegado hasta que se aceptan
+  // las cookies) y Microsoft Clarity, que solo se carga si se aceptan.
   async headers() {
     return [
       {

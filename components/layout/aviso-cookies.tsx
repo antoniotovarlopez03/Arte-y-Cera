@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react';
 import {
   EVENTO_REABRIR,
   cargarClarity,
+  concederAnaliticaGoogle,
   guardarEleccion,
   leerEleccion,
+  retirarAnaliticaGoogle,
   retirarClarity,
   type Eleccion,
 } from '@/lib/consentimiento';
@@ -41,8 +43,13 @@ export function AvisoCookies() {
     const antes = leerEleccion();
     guardarEleccion(eleccion);
     setVisible(false);
-    if (eleccion === 'aceptadas') cargarClarity();
-    else if (antes === 'aceptadas') retirarClarity();
+    if (eleccion === 'aceptadas') {
+      cargarClarity();
+      concederAnaliticaGoogle();
+    } else if (antes === 'aceptadas') {
+      retirarClarity();
+      retirarAnaliticaGoogle();
+    }
   }
 
   if (!visible) return null;
@@ -56,9 +63,9 @@ export function AvisoCookies() {
     >
       <p className="font-display text-lg font-semibold text-cream">¿Nos ayudas a mejorar la web?</p>
       <p className="mt-2 leading-relaxed">
-        Con tu permiso usamos Microsoft Clarity para ver, de forma anónima, cómo se navega por el
-        catálogo (clics y desplazamiento) y así ponértelo más fácil. Si lo rechazas, la web funciona
-        igual. <Link href="/cookies" className="underline decoration-dorado/40 underline-offset-4">Más información</Link>.
+        Con tu permiso usamos Google Analytics y Microsoft Clarity para saber, de forma anónima,
+        cuántas visitas recibe la web y cómo se navega por el catálogo, y así ponértelo más fácil.
+        No hay publicidad. Si lo rechazas, la web funciona igual. <Link href="/cookies" className="underline decoration-dorado/40 underline-offset-4">Más información</Link>.
       </p>
       <div className="mt-4 grid grid-cols-2 gap-3">
         <button type="button" onClick={() => elegir('rechazadas')} className={clasesBoton('secundario', 'px-4')}>

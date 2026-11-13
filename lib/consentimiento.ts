@@ -3,7 +3,8 @@
 import { site } from '@/lib/site';
 
 /**
- * Consentimiento de cookies para Microsoft Clarity.
+ * Consentimiento de cookies para Microsoft Clarity y Google Analytics (vía
+ * Google Tag Manager, más abajo).
  *
  * Clarity graba cómo se mueve la gente por la web (clics, scroll, mapas de
  * calor) y deja cookies propias, así que la LSSI (art. 22.2) obliga a pedir
@@ -80,4 +81,53 @@ export function cargarClarity() {
 export function retirarClarity() {
   window.clarity?.('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' });
   window.clarity?.('consent', false);
+}
+
+/* ------------------------------------------------------------------
+   Google Tag Manager (y la etiqueta de Google Analytics que va dentro).
+
+   GTM sí se carga desde el layout en cada visita, pero antes se fija el modo
+   de consentimiento v2 de Google con todo en «denied» (app/layout.tsx). Con
+   eso Analytics no deja cookies ni guarda identificadores: como mucho manda
+   pings sin cookies. Solo al pulsar «Aceptar» se pasa analytics_storage a
+   «granted». Los permisos de publicidad se quedan siempre denegados porque
+   esta web no hace publicidad y el aviso no lo pide.
+   ------------------------------------------------------------------ */
+
+declare global {
+  interface Window {
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function gtag(..._args: unknown[]) {
+  // GTM espera el objeto `arguments`, no un array: así lo hace el fragmento
+  // oficial de Google, y con un array normal el comando se ignora.
+  window.dataLayer = window.dataLayer || [];
+  // eslint-disable-next-line prefer-rest-params
+  window.dataLayer.push(arguments);
+}
+
+export function concederAnaliticaGoogle() {
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+}
+
+/** Retirar el permiso: se vuelve a «denied» y se borran las cookies _ga que
+ *  Analytics hubiera dejado mientras estuvo concedido. */
+export function retirarAnaliticaGoogle() {
+  gtag('consent', 'update', { analytics_storage: 'denied' });
+  try {
+    const dominio = window.location.hostname.replace(/^www\./, '');
+    for (const cookie of document.cookie.split(';')) {
+      const nombre = (cookie.split('=')[0] ?? '').trim();
+      if (!nombre.startsWith('_ga')) continue;
+      for (const d of ['', `; domain=.${dominio}`, `; domain=${window.location.hostname}`]) {
+        document.cookie = `${nombre}=; Max-Age=0; path=/${d}`;
+      }
+    }
+  } catch {
+    // Sin acceso a cookies no hay nada que borrar.
+  }
 }

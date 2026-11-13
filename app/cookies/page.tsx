@@ -16,16 +16,44 @@ export default function PaginaCookies() {
   return (
     <PaginaTexto titulo="Cookies" entradilla={`Última revisión: ${ULTIMA_REVISION}.`}>
       <section>
-        <h2>Solo una herramienta, y solo si aceptas</h2>
+        <h2>Dos herramientas de analítica, y solo si aceptas</h2>
         <p>
-          Esta web usa una única herramienta con cookies: <strong>Microsoft Clarity</strong>, que nos
-          enseña de forma anónima cómo se navega por el catálogo (dónde se hace clic, hasta dónde se
-          baja en cada página) para poder mejorarlo. No hay publicidad, ni Google Analytics, ni
+          Esta web usa dos herramientas con cookies, las dos para entender cómo se usa y poder
+          mejorarla: <strong>Google Analytics</strong>, que cuenta las visitas y las páginas más
+          vistas, y <strong>Microsoft Clarity</strong>, que enseña de forma anónima cómo se navega por
+          el catálogo (dónde se hace clic, hasta dónde se baja en cada página). No hay publicidad ni
           píxel de Meta.
         </p>
         <p>
-          Clarity no se carga hasta que pulsas «Aceptar» en el aviso. Si lo rechazas, no se
-          instala ninguna cookie y la web funciona exactamente igual.
+          Ninguna deja cookies hasta que pulsas «Aceptar» en el aviso. Si lo rechazas, no se
+          instala ninguna cookie de analítica y la web funciona exactamente igual.
+        </p>
+      </section>
+
+      <section>
+        <h2>Google Analytics y Google Tag Manager</h2>
+        <p>
+          Google Analytics se carga a través de <strong>Google Tag Manager</strong>, un gestor de
+          etiquetas que no deja cookies por sí mismo. Se usa el modo de consentimiento de Google:
+          mientras no aceptes, Analytics no guarda cookies ni identificadores en tu navegador, y los
+          permisos de publicidad están siempre desactivados. Si aceptas, deja estas cookies:
+        </p>
+        <ul>
+          <li>
+            <strong>_ga</strong>: distingue de forma anónima a un navegador de otro para contar
+            visitantes. Dura dos años.
+          </li>
+          <li>
+            <strong>_ga_&lt;ID&gt;</strong>: guarda el estado de la visita en curso. Dura dos años.
+          </li>
+        </ul>
+        <p>
+          Las gestiona Google Ireland Limited, que puede tratar los datos fuera de la Unión Europea
+          con las garantías del Marco de Privacidad de Datos UE-EE. UU. Más detalles en la{' '}
+          <a href="https://policies.google.com/technologies/cookies?hl=es" target="_blank" rel="noopener">
+            información de Google sobre cookies
+          </a>
+          .
         </p>
       </section>
 
