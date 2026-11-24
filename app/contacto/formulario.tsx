@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useActionState, useEffect, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import { enviarFormulario, type EstadoEnvio } from './acciones';
 import { IconoWhatsapp } from '@/components/iconos';
 import {
@@ -37,6 +37,16 @@ export function FormularioContacto({
   useEffect(() => {
     if (estado.estado === 'ok') vaciarCesta();
   }, [estado.estado, vaciarCesta]);
+
+  // Aviso a Tag Manager (evento GA4 `formulario_enviado`), una sola vez y solo
+  // si el envío salió bien. Sin datos personales: solo la categoría elegida.
+  const avisado = useRef(false);
+  useEffect(() => {
+    if (estado.estado !== 'ok' || avisado.current) return;
+    avisado.current = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'formulario_enviado', interes: interes || 'sin indicar' });
+  }, [estado.estado, interes]);
 
   if (estado.estado === 'ok') {
     return (
