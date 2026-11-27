@@ -58,12 +58,16 @@ function Acebo({ className = '' }: { className?: string }) {
 export function CampanaNavidad() {
   if (!campanaActiva(CAMPANA_NAVIDAD)) return null;
 
-  const piezas = CAMPANA_NAVIDAD.refs.map((ref) => {
+  const todas = CAMPANA_NAVIDAD.refs.map((ref) => {
     const { pieza, linea } = piezaPorRef(ref);
     return { ...pieza, href: `${linea.href}?pieza=${pieza.ref}`, precio: linea.precios[0]?.importe };
   });
+  // Verticales (una vela) arriba; apaisadas (parejas y conjuntos) debajo.
+  const piezas = todas.filter((p) => p.alto >= p.ancho);
+  const apaisadas = todas.filter((p) => p.alto < p.ancho);
+  const { ficha } = CAMPANA_NAVIDAD;
   const { linea } = piezaPorRef(CAMPANA_NAVIDAD.refs[0]);
-  const mensaje = `Hola, me gustaría encargar una vela de Navidad. Me interesa la ${CAMPANA_NAVIDAD.refs.join(', la ')}.`;
+  const mensaje = 'Hola, me gustaría encargar una vela de Navidad de la nueva edición.';
 
   return (
     <section
@@ -115,7 +119,7 @@ export function CampanaNavidad() {
                   priority={i === 0}
                   // Las fotos apaisadas (montajes con varias vistas de la vela) se
                   // enseñan enteras sobre fondo claro en lugar de recortarlas.
-                  className={`aspect-[3/4] w-full rounded-[0.9rem] ${pieza.ancho > pieza.alto * 0.9 ? 'bg-[#f3f1ec] object-contain' : 'object-cover'}`}
+                  className="aspect-[3/4] w-full rounded-[0.9rem] object-cover"
                 />
                 <span className="absolute top-5 left-5 rounded-full bg-verde-profundo/85 px-3 py-1 font-mono text-[0.7rem] tracking-wider text-dorado backdrop-blur-sm">
                   {pieza.ref}
@@ -129,6 +133,47 @@ export function CampanaNavidad() {
             </li>
           ))}
         </ul>
+
+        {apaisadas.length > 0 && (
+          <ul role="list" className="mx-auto mt-6 grid max-w-5xl gap-6 sm:mt-7 sm:grid-cols-3 sm:gap-7">
+            {apaisadas.map((pieza) => (
+              <li key={pieza.ref}>
+                <Link
+                  href={pieza.href}
+                  className="group relative block rounded-[1.25rem] border border-dorado/35 bg-verde p-2.5 shadow-[0_24px_50px_rgba(0,0,0,.35)] transition-transform duration-500 ease-suave hover:-translate-y-1.5"
+                >
+                  <Image
+                    src={pieza.src}
+                    alt={pieza.alt}
+                    width={pieza.ancho}
+                    height={pieza.alto}
+                    sizes="(max-width: 640px) 90vw, 30vw"
+                    quality={85}
+                    className="aspect-[4/3] w-full rounded-[0.9rem] object-cover"
+                  />
+                  <span className="absolute top-5 left-5 rounded-full bg-verde-profundo/85 px-3 py-1 font-mono text-[0.7rem] tracking-wider text-dorado backdrop-blur-sm">
+                    {pieza.ref}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {/* Ficha de la vela: medidas, materiales y cuidados */}
+        <div className="mx-auto mt-12 max-w-3xl rounded-[1.25rem] border border-dorado/30 bg-verde/60 p-6 sm:p-8">
+          <h3 className="text-center font-display text-2xl font-semibold text-blanco">La vela</h3>
+          <dl className="mt-5 grid grid-cols-3 gap-3 text-center">
+            {ficha.medidas.map((m) => (
+              <div key={m.etiqueta} className="rounded-xl border border-dorado/20 px-2 py-3">
+                <dt className="text-xs tracking-[0.18em] text-dorado/75 uppercase">{m.etiqueta}</dt>
+                <dd className="mt-1 font-display text-xl font-semibold text-blanco">{m.valor}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-5 leading-relaxed text-dorado/90">{ficha.descripcion}</p>
+          <p className="mt-2 text-sm text-dorado/75">{ficha.cuidados}</p>
+        </div>
 
         <div className="mt-12 flex flex-col items-center gap-5">
           <Acebo className="h-9 w-14" />

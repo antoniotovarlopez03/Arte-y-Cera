@@ -11,13 +11,26 @@
 export const CAMPANA_NAVIDAD = {
   desde: '2026-11-10',
   hasta: '2027-01-06',
-  /** Las piezas que se enseñan, por su referencia del catálogo. */
-  refs: ['NV-14', 'NV-15', 'NV-16'],
+  /** Las piezas que se enseñan, por su referencia del catálogo. Las fotos
+      verticales (una sola vela) van en la primera fila y las apaisadas
+      (parejas y conjuntos) debajo, sin recortar. */
+  refs: ['NV-17', 'NV-18', 'NV-19', 'NV-20', 'NV-21', 'NV-22'],
   rotulo: 'Edición de Navidad',
   titulo: 'Ya llega la Navidad',
   subtitulo: 'Encarga tu vela',
   texto:
-    'Tres escenas nuevas hechas a mano, una a una, para presidir la mesa de Nochebuena o regalar a quien más quieres.',
+    'Escenas nuevas del Nacimiento y los Reyes Magos hechas a mano, una a una, para presidir la mesa de Nochebuena o regalar a quien más quieres.',
+  /** Ficha de la vela de esta edición. */
+  ficha: {
+    medidas: [
+      { etiqueta: 'Alto', valor: '23 cm' },
+      { etiqueta: 'Diámetro', valor: '7,8 cm' },
+      { etiqueta: 'Duración', valor: 'unas 90 horas' },
+    ],
+    descripcion:
+      'Vela de pilar blanca de cera vegetal y parafina, con mecha de algodón. La escena ocupa la parte baja de la vela, con remate dorado, y la parte superior queda lisa para encenderla.',
+    cuidados: 'Guárdala en un lugar fresco y seco, lejos de fuentes de calor.',
+  },
   /** Cómo sale la portada en Google mientras dura la campaña. Fuera de las
       fechas vuelven el título y la descripción de siempre (lib/site.ts). */
   google: {
