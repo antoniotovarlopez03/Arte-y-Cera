@@ -11,10 +11,12 @@
 export const CAMPANA_NAVIDAD = {
   desde: '2026-11-10',
   hasta: '2027-01-06',
-  /** Las piezas que se enseñan, por su referencia del catálogo. Las fotos
-      verticales (una sola vela) van en la primera fila y las apaisadas
-      (parejas y conjuntos) debajo, sin recortar. */
-  refs: ['NV-17', 'NV-18', 'NV-19', 'NV-20', 'NV-21', 'NV-22'],
+  /** Las velas que se venden, por su referencia del catálogo (llevan precio).
+      Las verticales van en la primera fila; la apaisada (NV-20, la pareja),
+      en grande debajo. */
+  refs: ['NV-17', 'NV-18', 'NV-19', 'NV-20'],
+  /** Fotos de conjunto, solo para ver las velas juntas: sin precio. */
+  vistas: ['NV-21', 'NV-22'],
   rotulo: 'Edición de Navidad',
   titulo: 'Ya llega la Navidad',
   subtitulo: 'Encarga tu vela',
