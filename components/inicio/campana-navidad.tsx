@@ -66,7 +66,7 @@ export function CampanaNavidad() {
   // Verticales (una vela) en la primera fila; la apaisada, en grande debajo.
   const piezas = todas.filter((p) => p.alto >= p.ancho);
   const destacada = todas.find((p) => p.alto < p.ancho);
-  const vistas = CAMPANA_NAVIDAD.vistas.map(aPieza);
+  const { vistas } = CAMPANA_NAVIDAD;
   const { ficha } = CAMPANA_NAVIDAD;
   const { linea } = piezaPorRef(CAMPANA_NAVIDAD.refs[0]);
   const mensaje = 'Hola, me gustaría encargar una vela de Navidad de la nueva edición.';
@@ -167,24 +167,21 @@ export function CampanaNavidad() {
             )}
             {vistas.length > 0 && (
               <ul role="list" className="grid gap-6 sm:gap-7">
-                {vistas.map((pieza) => (
-                  <li key={pieza.ref}>
+                {vistas.map((vista) => (
+                  <li key={vista.src}>
                     <Link
-                      href={pieza.href}
+                      href={linea.href}
                       className="group relative block rounded-[1.25rem] border border-dorado/35 bg-verde p-2.5 shadow-[0_24px_50px_rgba(0,0,0,.35)] transition-transform duration-500 ease-suave hover:-translate-y-1.5"
                     >
                       <Image
-                        src={pieza.src}
-                        alt={pieza.alt}
-                        width={pieza.ancho}
-                        height={pieza.alto}
+                        src={vista.src}
+                        alt={vista.alt}
+                        width={vista.ancho}
+                        height={vista.alto}
                         sizes="(max-width: 640px) 90vw, 30vw"
                         quality={85}
                         className="aspect-[4/3] w-full rounded-[0.9rem] object-cover"
                       />
-                      <span className="absolute top-5 left-5 rounded-full bg-verde-profundo/85 px-3 py-1 font-mono text-[0.7rem] tracking-wider text-dorado backdrop-blur-sm">
-                        {pieza.ref}
-                      </span>
                     </Link>
                   </li>
                 ))}

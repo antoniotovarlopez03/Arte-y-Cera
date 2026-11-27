@@ -15,8 +15,22 @@ export const CAMPANA_NAVIDAD = {
       Las verticales van en la primera fila; la apaisada (NV-20, la pareja),
       en grande debajo. */
   refs: ['NV-17', 'NV-18', 'NV-19', 'NV-20'],
-  /** Fotos de conjunto, solo para ver las velas juntas: sin precio. */
-  vistas: ['NV-21', 'NV-22'],
+  /** Fotos de conjunto, solo para ver las velas juntas: sin precio ni
+      referencia, y fuera de la galería de Navidad (no están en el catálogo). */
+  vistas: [
+    {
+      src: '/images/campanas/navidad-conjunto-1.webp',
+      ancho: 1200,
+      alto: 896,
+      alt: 'Las cuatro velas de Navidad hechas a mano juntas en una mesa de Nochebuena',
+    },
+    {
+      src: '/images/campanas/navidad-conjunto-2.webp',
+      ancho: 1200,
+      alto: 896,
+      alt: 'Tres velas de Navidad hechas a mano en el centro de una mesa navideña',
+    },
+  ],
   rotulo: 'Edición de Navidad',
   titulo: 'Ya llega la Navidad',
   subtitulo: 'Encarga tu vela',
